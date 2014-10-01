@@ -1,0 +1,200 @@
+<html style="height: 100%;">
+ <head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"/>
+  <title>VSCP My House Ui ..</title>
+  <link rel="stylesheet" type="text/css" href="../css/singleFloorStyle.css"/>
+  <script type="text/javascript" src="settings.js"></script>
+  <script type="text/javascript" src="../lib/jquery.js"></script>
+  <script type="text/javascript" src="../lib/wz_jsgraphics.js"></script>
+  <script type="text/javascript" src="../lib/md5.js"></script>
+  <script type="text/javascript" src="../lib/vscpwslib.js"></script>
+  <script type="text/javascript" src="../lib/vscpStateButton_mod.js"></script>
+  <script type="text/javascript" src="../lib/vscpSimpleText_mod.js"></script>
+  <script type="text/javascript" src="../lib/vscpslider.js"></script>
+  <script type="text/javascript" src="../lib/vscpVariableButton.js"></script>
+  <script type="text/javascript" src="../lib/singleFloorsSocketCfg.js"></script>
+  <script type="text/javascript" src="../lib/singleFloorCfg.js"></script>
+  <script type="text/javascript" src="../lib/singleFloorScript.js"></script>
+ </head>
+ <body onload="doc_onload(0)">
+  <div class="scrollable" id="images">
+   <div class="input" id="Bedroom">
+    <input class="image_scrollable" type="image" id="Bedroom_Image" onclick="show_area_single(div_class_scrollable_Image,'Bedroom_Image',div_class_scrollable_Hr,'Bedroom_Hr','First_Floor_Area_Bedroom')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Bedroom_txt">Bedroom</p>
+    <input class="hr_scrollable" id="Bedroom_Hr"/>
+   </div>
+   <div class="input" id="Balcony">
+    <input class="image_scrollable" type="image" id="Balcony_Image" onclick="show_area_single(div_class_scrollable_Image,'Balcony_Image',div_class_scrollable_Hr,'Balcony_Hr','First_Floor_Area_Balcony')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Balcony_txt">Balcony</p>
+    <input class="hr_scrollable" id="Balcony_Hr"/>
+   </div>
+   <div class="input" id="Bedroom1">
+    <input class="image_scrollable" type="image" id="Bedroom1_Image" onclick="show_area_single(div_class_scrollable_Image,'Bedroom1_Image',div_class_scrollable_Hr,'Bedroom1_Hr','First_Floor_Area_Bedroom1')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Bedroom1_txt">Bedroom1</p>
+    <input class="hr_scrollable" id="Bedroom1_Hr"/>
+   </div>
+   <div class="input" id="Kitchen">
+    <input class="image_scrollable" type="image" id="Kitchen_Image" onclick="show_area_single(div_class_scrollable_Image,'Kitchen_Image',div_class_scrollable_Hr,'Kitchen_Hr','First_Floor_Area_Kitchen')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Kitchen_txt">Kitchen</p>
+    <input class="hr_scrollable" id="Kitchen_Hr"/>
+   </div>
+   <div class="input" id="DrawingRoom">
+    <input class="image_scrollable" type="image" id="DrawingRoom_Image" onclick="show_area_single(div_class_scrollable_Image,'DrawingRoom_Image',div_class_scrollable_Hr,'DrawingRoom_Hr','First_Floor_Area_DrawingRoom')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="DrawingRoom_txt">DrawingRoom</p>
+    <input class="hr_scrollable" id="DrawingRoom_Hr"/>
+   </div>
+   <div class="input" id="Toilet">
+    <input class="image_scrollable" type="image" id="Toilet_Image" onclick="show_area_single(div_class_scrollable_Image,'Toilet_Image',div_class_scrollable_Hr,'Toilet_Hr','First_Floor_Area_Toilet')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Toilet_txt">Toilet</p>
+    <input class="hr_scrollable" id="Toilet_Hr"/>
+   </div>
+   <div class="input" id="Balcony1">
+    <input class="image_scrollable" type="image" id="Balcony1_Image" onclick="show_area_single(div_class_scrollable_Image,'Balcony1_Image',div_class_scrollable_Hr,'Balcony1_Hr','First_Floor_Area_Balcony1')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Balcony1_txt">Balcony1</p>
+    <input class="hr_scrollable" id="Balcony1_Hr"/>
+   </div>
+   <div class="input" id="Loby">
+    <input class="image_scrollable" type="image" id="Loby_Image" onclick="show_area_single(div_class_scrollable_Image,'Loby_Image',div_class_scrollable_Hr,'Loby_Hr','First_Floor_Area_Loby')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Loby_txt">Loby</p>
+    <input class="hr_scrollable" id="Loby_Hr"/>
+   </div>
+   <div class="input" id="group_Light_Button">
+    <input class="image_scrollable" type="image" id="group_Light_Image" onclick="show_area_group(div_class_scrollable_Image,'group_Light_Image',div_class_scrollable_Hr,'group_Light_Hr','group_Lights','group_Light_Txt')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="group_Light_Txt_Id">Lights</p>
+    <input class="hr_scrollable" id="group_Light_Hr"/>
+   </div>
+   <div class="input" id="group_Accessories_Button">
+    <input class="image_scrollable" type="image" id="group_Accessories_Image" onclick="show_area_group(div_class_scrollable_Image,'group_Accessories_Image',div_class_scrollable_Hr,'group_Accessories_Hr','group_Accessories','group_Accessories_Txt')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="group_Accessories_Txt_Id">Accessories</p>
+    <input class="hr_scrollable" id="group_Accessories_Hr"/>
+   </div>
+   <div class="input" id="group_Sensors_Button">
+    <input class="image_scrollable" type="image" id="group_Sensors_Image" onclick="show_area_group(div_class_scrollable_Image,'group_Sensors_Image',div_class_scrollable_Hr,'group_Sensors_Hr','group_Sensors','group_Sensors_Txt')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="group_Sensors_Txt_Id">Sensors</p>
+    <input class="hr_scrollable" id="group_Sensors_Hr"/>
+   </div>
+   <div class="input" id="Info">
+    <input class="image_scrollable" type="image" id="Info_Image" onclick="alert('Info clicked')" src="../lib/widgets/info/info.jpg"/>
+    <p class="imgtxt" id="Info_txt">info</p>
+    <input class="hr_scrollable" id="Info_Hr"/>
+   </div>
+  </div>
+  <div class="scrollableCenter" id="center">
+   <div class="First_Floor_Area_Bedroom group_Lights">
+    <input class="image_menu_center_first" type="image" id="OneFirstBedroombulb_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Bedroom : </span>bulb</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Bedroom group_Sensors">
+    <input class="image_menu_center_second" type="image" id="OneFirstBedroomTemeratureIndicator_Image_ID" src="../lib/widgets/measurement/temprature.png"/>
+    <p class="imgtxt_center" id="OneFirstBedroomTemeratureIndicator_Remote_Txt_ID">
+     <span class="spantxt_center group_Sensors_Txt" type="text">Bedroom : </span>No Data From Sensor</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Bedroom group_Lights">
+    <input class="image_menu_center_second" type="image" id="OneFirstBedroomTubeLight_Image_ID" src="../lib/widgets/lightbulb/semi-matte-light-bulb-unlit-th.png"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Bedroom : </span>Tube Light.</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Bedroom group_Lights">
+    <input class="image_menu_center_second" type="image" id="OneFirstBedroomTempleLight_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Bedroom : </span>Temple Light</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Bedroom group_Lights">
+    <input class="image_menu_center_second" type="range" value="0" id="OneFirstBedroomDimmer_Image_ID" min="0" step="1" max="100"/>
+    <span class="spantxt_center" type="text" id="OneFirstBedroomDimmer_Local_Txt_ID_Fix">Dimmer Value : </span>
+    <span class="spantxt_center" type="text" id="OneFirstBedroomDimmer_Local_Txt_ID">0</span>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Bedroom : </span>Dimmer : <span class="spantxt_center" type="text" id="OneFirstBedroomDimmer_Remote_Txt_ID"> Disconnected</span>
+    </p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Bedroom group_Lights">
+    <input class="image_menu_center_second" type="image" id="OneFirstBedroomBulbSteppable_Inc_Image_ID" src="../lib/widgets/button_variable/up.jpg"/>
+    <span class="spantxt_button_center" type="text" id="OneFirstBedroomBulbSteppable_Local_Txt_ID">0</span>
+    <input class="image_menu_center_second_sec" type="image" id="OneFirstBedroomBulbSteppable_Dec_Image_ID" src="../lib/widgets/button_variable/down.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Bedroom : </span>Bulb Steppable : <span class="spantxt_center" type="text" id="OneFirstBedroomBulbSteppable_Remote_Txt_ID"> Disconnected</span>
+    </p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Balcony group_Lights">
+    <input class="image_menu_center_first" type="image" id="OneFirstBalconyBulb_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Balcony : </span>Bulb</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Bedroom1 group_Lights">
+    <input class="image_menu_center_first" type="image" id="OneFirstBedroom1Bulb_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Bedroom1 : </span>Bulb</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Kitchen group_Accessories">
+    <input class="image_menu_center_first" type="image" id="OneFirstKitchenFan_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Accessories_Txt" type="text">Kitchen : </span>Fan</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_DrawingRoom group_Accessories">
+    <input class="image_menu_center_first" type="image" id="OneFirstDrawingRoomFan_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Accessories_Txt" type="text">DrawingRoom : </span>Fan</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_DrawingRoom group_Sensors">
+    <input class="image_menu_center_second" type="image" id="OneFirstDrawingRoomTemperatureSensor_Image_ID" src="../lib/widgets/measurement/intensity_of_light.jpg"/>
+    <p class="imgtxt_center" id="OneFirstDrawingRoomTemperatureSensor_Remote_Txt_ID">
+     <span class="spantxt_center group_Sensors_Txt" type="text">DrawingRoom : </span>No Data From Sensor</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_DrawingRoom group_Sensors">
+    <input class="image_menu_center_second" type="image" id="OneFirstDrawingRoomHeater_Image_ID" src="../lib/widgets/measurement/length.jpg"/>
+    <p class="imgtxt_center" id="OneFirstDrawingRoomHeater_Remote_Txt_ID">
+     <span class="spantxt_center group_Sensors_Txt" type="text">DrawingRoom : </span>No Data From Sensor</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_DrawingRoom group_Lights">
+    <input class="image_menu_center_second" type="image" id="OneFirstDrawingRoomled_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">DrawingRoom : </span>led</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_DrawingRoom group_Accessories">
+    <input class="image_menu_center_second" type="image" id="OneFirstDrawingRoomtap_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Accessories_Txt" type="text">DrawingRoom : </span>tap</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_DrawingRoom group_Accessories">
+    <input class="image_menu_center_second" type="image" id="OneFirstDrawingRoomPress_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Accessories_Txt" type="text">DrawingRoom : </span>Press</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Toilet group_Lights">
+    <input class="image_menu_center_first" type="image" id="OneFirstToiletBulb_Image_ID" src="../lib/widgets/button/off-button.png"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Toilet : </span>Bulb</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Balcony1 group_Accessories">
+    <input class="image_menu_center_first" type="image" id="OneFirstBalcony1Press_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Accessories_Txt" type="text">Balcony1 : </span>Press</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Loby group_Accessories">
+    <input class="image_menu_center_first" type="image" id="OneFirstLobyOven_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Accessories_Txt" type="text">Loby : </span>Oven</p>
+    <hr/>
+   </div>
+  </div>
+  <div id="fotter">Copyright © 2014 VSCP Single Floor Layout</div>
+ </body>
+</html>
