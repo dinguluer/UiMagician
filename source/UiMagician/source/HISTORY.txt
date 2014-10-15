@@ -1,0 +1,14 @@
+readme for release 1.0.0
+========================
+
+- This release use to generate Html app.
+- Widget completed Normal button, slider buttons, variable buttons& Sensors.
+- Single floor & multifloor house can be controlled by html app.
+- Target system: QT - 4.8.1
+- Plan for next release :--
+  1> Multiple houses control
+  2> Adding Graph for sensor in Html app.
+  3> Integration of phonegap cloud service to generate mobile aps.
+
+
+Dinesh Guleria. India 2014-10-29
