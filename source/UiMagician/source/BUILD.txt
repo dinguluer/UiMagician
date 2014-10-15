@@ -1,0 +1,8 @@
+Tool       : uiMagician
+Copyright  : Dinesh Guleria
+Project    : VSCP
+
+
+Target system: QT - 4.8.1
+
+Open project file uiMagician.pro in QT creator & build & run the project.
