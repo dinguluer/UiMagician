@@ -53,16 +53,14 @@ var VSCP_CLASS1_AOL=50;
 var VSCP_CLASS1_MEASUREMENT64=60;
 var VSCP_CLASS1_MEASUREZONE=65;
 var VSCP_CLASS1_SETVALUEZONE=85;
+var VSCP_CLASS1_WEATHER=90;
+var VSCP_CLASS1_WEATHER_FORECAST=95;
 var VSCP_CLASS1_PHONE=100;
 var VSCP_CLASS1_LIN=101;
 var VSCP_CLASS1_DISPLAY=102;
 var VSCP_CLASS1_RC5=110;
-var VSCP_CLASS1_ONEWIRE=200;
-var VSCP_CLASS1_X10=201;
-var VSCP_CLASS1_LON=202;
-var VSCP_CLASS1_EIB=203;
-var VSCP_CLASS1_SNAP=204;
-var VSCP_CLASS1_MUMIN=205;
+var VSCP_CLASS1_GPS=206;
+var VSCP_CLASS1_WIRELESS=212;
 var VSCP_CLASS1_LOG=509;
 var VSCP_CLASS1_LAB=510;
 var VSCP_CLASS1_LOCAL=511;
@@ -84,12 +82,8 @@ var VSCP_CLASS2_SETVALUEZONE = ( 512 + 85 );
 var VSCP_CLASS2_LEVEL1_PHONE = ( 512 + 100 );
 var VSCP_CLASS2_LEVEL1_LIN = ( 512 + 101 );
 var VSCP_CLASS2_LEVEL1_RC5 = ( 512 + 110 );
-var VSCP_CLASS2_LEVEL1_ONEWIRE = ( 512 + 200 );
-var VSCP_CLASS2_LEVEL1_X10 = ( 512 + 201 );
-var VSCP_CLASS2_LEVEL1_LON = ( 512 + 202 );
-var VSCP_CLASS2_LEVEL1_EIB = ( 512 + 203 );
-var VSCP_CLASS2_LEVEL1_SNAP = ( 512 + 204 );
-var VSCP_CLASS2_LEVEL1_MUMIN = ( 512 + 205 );
+var VSCP_CLASS2_LEVEL1_GPS = ( 512 + 206 );
+var VSCP_CLASS2_LEVEL1_WIRELESS = ( 512 + 212 );
 var VSCP_CLASS2_LEVEL1_LOG = ( 512 + 509 );
 var VSCP_CLASS2_LEVEL1_LAB = ( 512 + 510 );
 var VSCP_CLASS2_LEVEL1_LOCAL = ( 512 + 511 );
@@ -305,7 +299,14 @@ var VSCP_TYPE_INFORMATION_END_OF_RECORD = 47;
 var VSCP_TYPE_INFORMATION_PRESET_ACTIVE = 48;
 var VSCP_TYPE_INFORMATION_DETECT = 49;
 var VSCP_TYPE_INFORMATION_OVERFLOW = 50;
-var VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED = 51
+var VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED = 51;
+var VSCP_TYPE_INFORMATION_CIVIL_SUNRISE_TWILIGHT = 52;
+var VSCP_TYPE_INFORMATION_CIVIL_SUNSET_TWILIGHT = 53;
+var VSCP_TYPE_INFORMATION_CIVIL_NAUTICAL_SUNRISE_TWILIGHT = 54;
+var VSCP_TYPE_INFORMATION_CIVIL_NAUTICAL_SUNSET_TWILIGHT = 55;
+var VSCP_TYPE_INFORMATION_CIVIL_ASTRONOMICAL_SUNRISE_TWILIGHT = 56;
+var VSCP_TYPE_INFORMATION_CIVIL_ASTRONOMICAL_SUNSET_TWILIGHT = 57;
+var VSCP_TYPE_INFORMATION_CALCULATED_NOON = 58;
 
 // class 30 (0x1E) -- CONTROL
 var VSCP_TYPE_CONTROL_GENERAL = 0;
@@ -577,6 +578,114 @@ var VSCP_TYPE_SETVALUEZONE_IRRADIANCE = 55;
 var VSCP_TYPE_SETVALUEZONE_SPECTRAL_RADIANCE = 56;
 var VSCP_TYPE_SETVALUEZONE_SPECTRAL_IRRADIANCE = 57;
 
+// class 90 (0x5A) -- WEATHER
+var VSCP_TYPE_WEATHER_GENERAL = 0;
+var VSCP_TYPE_WEATHER_SEASONS_WINTER = 1;
+var VSCP_TYPE_WEATHER_SEASONS_SPRING = 2;
+var VSCP_TYPE_WEATHER_SEASONS_SUMMER = 3;
+var VSCP_TYPE_WEATHER_SEASONS_AUTUMN = 4;
+var VSCP_TYPE_WEATHER_WIND_NONE = 5;
+var VSCP_TYPE_WEATHER_WIND_LOW = 6;
+var VSCP_TYPE_WEATHER_WIND_MEDIUM = 7;
+var VSCP_TYPE_WEATHER_WIND_HIGH = 8;
+var VSCP_TYPE_WEATHER_WIND_VERY_HIGH = 9;
+var VSCP_TYPE_WEATHER_AIR_FOGGY = 10;
+var VSCP_TYPE_WEATHER_AIR_FREEZING = 11;
+var VSCP_TYPE_WEATHER_AIR_COLD = 12;
+var VSCP_TYPE_WEATHER_AIR_VERY_COLD = 13;
+var VSCP_TYPE_WEATHER_AIR_NORMAL = 14;
+var VSCP_TYPE_WEATHER_AIR_HOT = 15;
+var VSCP_TYPE_WEATHER_AIR_VERY_HOT = 16;
+var VSCP_TYPE_WEATHER_AIR_POLLUTION_LOW = 17;
+var VSCP_TYPE_WEATHER_AIR_POLLUTION_MEDIUM = 18;
+var VSCP_TYPE_WEATHER_AIR_POLLUTION_HIGH = 19;
+var VSCP_TYPE_WEATHER_AIR_HUMID = 20;
+var VSCP_TYPE_WEATHER_AIR_DRY = 21;
+var VSCP_TYPE_WEATHER_SOIL_HUMID = 22;
+var VSCP_TYPE_WEATHER_SOIL_DRY = 23;
+var VSCP_TYPE_WEATHER_RAIN_NONE = 24;
+var VSCP_TYPE_WEATHER_RAIN_LIGHT = 25;
+var VSCP_TYPE_WEATHER_RAIN_HEAVY = 26;
+var VSCP_TYPE_WEATHER_RAIN_VERY_HEAVY = 27;
+var VSCP_TYPE_WEATHER_SUN_NONE = 28;
+var VSCP_TYPE_WEATHER_SUN_LIGHT = 29;
+var VSCP_TYPE_WEATHER_SUN_HEAVY = 30;
+var VSCP_TYPE_WEATHER_SNOW_NONE = 31;
+var VSCP_TYPE_WEATHER_SNOW_LIGHT = 32;
+var VSCP_TYPE_WEATHER_SNOW_HEAVY = 33;
+var VSCP_TYPE_WEATHER_DEW_POINT = 34;
+var VSCP_TYPE_WEATHER_STORM = 35;
+var VSCP_TYPE_WEATHER_FLOOD = 36;
+var VSCP_TYPE_WEATHER_EARTHQUAKE = 37;
+var VSCP_TYPE_WEATHER_NUCLEAR_DISASTER = 38;
+var VSCP_TYPE_WEATHER_FIRE = 39;
+var VSCP_TYPE_WEATHER_LIGHTNING = 40;
+var VSCP_TYPE_WEATHER_UV_RADIATION_LOW = 41;
+var VSCP_TYPE_WEATHER_UV_RADIATION_MEDIUM = 42;
+var VSCP_TYPE_WEATHER_UV_RADIATION_NORMAL = 43;
+var VSCP_TYPE_WEATHER_UV_RADIATION_HIGH = 44;
+var VSCP_TYPE_WEATHER_UV_RADIATION_VERY_HIGH = 45;
+var VSCP_TYPE_WEATHER_WARNING_LEVEL1 = 46;
+var VSCP_TYPE_WEATHER_WARNING_LEVEL2 = 47;
+var VSCP_TYPE_WEATHER_WARNING_LEVEL3 = 48;
+var VSCP_TYPE_WEATHER_WARNING_LEVEL4 = 49;
+var VSCP_TYPE_WEATHER_WARNING_LEVEL5 = 50;
+var VSCP_TYPE_WEATHER_ARMAGEDON = 51;
+
+// class 95 (0x5F) -- WEATHER FORECAST
+var VSCP_TYPE_WEATHER_FORECAST_GENERAL = 0;
+var VSCP_TYPE_WEATHER_FORECAST_SEASONS_WINTER = 1;
+var VSCP_TYPE_WEATHER_FORECAST_SEASONS_SPRING = 2;
+var VSCP_TYPE_WEATHER_FORECAST_SEASONS_SUMMER = 3;
+var VSCP_TYPE_WEATHER_FORECAST_SEASONS_AUTUMN = 4;
+var VSCP_TYPE_WEATHER_FORECAST_WIND_NONE = 5;
+var VSCP_TYPE_WEATHER_FORECAST_WIND_LOW = 6;
+var VSCP_TYPE_WEATHER_FORECAST_WIND_MEDIUM = 7;
+var VSCP_TYPE_WEATHER_FORECAST_WIND_HIGH = 8;
+var VSCP_TYPE_WEATHER_FORECAST_WIND_VERY_HIGH = 9;
+var VSCP_TYPE_WEATHER_FORECAST_AIR_FOGGY = 10;
+var VSCP_TYPE_WEATHER_FORECAST_AIR_FREEZING = 11;
+var VSCP_TYPE_WEATHER_FORECAST_AIR_COLD = 12;
+var VSCP_TYPE_WEATHER_FORECAST_AIR_VERY_COLD = 13;
+var VSCP_TYPE_WEATHER_FORECAST_AIR_NORMAL = 14;
+var VSCP_TYPE_WEATHER_FORECAST_AIR_HOT = 15;
+var VSCP_TYPE_WEATHER_FORECAST_AIR_VERY_HOT = 16;
+var VSCP_TYPE_WEATHER_FORECAST_AIR_POLLUTION_LOW = 17;
+var VSCP_TYPE_WEATHER_FORECAST_AIR_POLLUTION_MEDIUM = 18;
+var VSCP_TYPE_WEATHER_FORECAST_AIR_POLLUTION_HIGH = 19;
+var VSCP_TYPE_WEATHER_FORECAST_AIR_HUMID = 20;
+var VSCP_TYPE_WEATHER_FORECAST_AIR_DRY = 21;
+var VSCP_TYPE_WEATHER_FORECAST_SOIL_HUMID = 22;
+var VSCP_TYPE_WEATHER_FORECAST_SOIL_DRY = 23;
+var VSCP_TYPE_WEATHER_FORECAST_RAIN_NONE = 24;
+var VSCP_TYPE_WEATHER_FORECAST_RAIN_LIGHT = 25;
+var VSCP_TYPE_WEATHER_FORECAST_RAIN_HEAVY = 26;
+var VSCP_TYPE_WEATHER_FORECAST_RAIN_VERY_HEAVY = 27;
+var VSCP_TYPE_WEATHER_FORECAST_SUN_NONE = 28;
+var VSCP_TYPE_WEATHER_FORECAST_SUN_LIGHT = 29;
+var VSCP_TYPE_WEATHER_FORECAST_SUN_HEAVY = 30;
+var VSCP_TYPE_WEATHER_FORECAST_SNOW_NONE = 31;
+var VSCP_TYPE_WEATHER_FORECAST_SNOW_LIGHT = 32;
+var VSCP_TYPE_WEATHER_FORECAST_SNOW_HEAVY = 33;
+var VSCP_TYPE_WEATHER_FORECAST_DEW_POINT = 34;
+var VSCP_TYPE_WEATHER_FORECAST_STORM = 35;
+var VSCP_TYPE_WEATHER_FORECAST_FLOOD = 36;
+var VSCP_TYPE_WEATHER_FORECAST_EARTHQUAKE = 37;
+var VSCP_TYPE_WEATHER_FORECAST_NUCLEAR_DISASTER = 38;
+var VSCP_TYPE_WEATHER_FORECAST_FIRE = 39;
+var VSCP_TYPE_WEATHER_FORECAST_LIGHTNING = 40;
+var VSCP_TYPE_WEATHER_FORECAST_UV_RADIATION_LOW = 41;
+var VSCP_TYPE_WEATHER_FORECAST_UV_RADIATION_MEDIUM = 42;
+var VSCP_TYPE_WEATHER_FORECAST_UV_RADIATION_NORMAL = 43;
+var VSCP_TYPE_WEATHER_FORECAST_UV_RADIATION_HIGH = 44;
+var VSCP_TYPE_WEATHER_FORECAST_UV_RADIATION_VERY_HIGH = 45;
+var VSCP_TYPE_WEATHER_FORECAST_WARNING_LEVEL1 = 46;
+var VSCP_TYPE_WEATHER_FORECAST_WARNING_LEVEL2 = 47;
+var VSCP_TYPE_WEATHER_FORECAST_WARNING_LEVEL3 = 48;
+var VSCP_TYPE_WEATHER_FORECAST_WARNING_LEVEL4 = 49;
+var VSCP_TYPE_WEATHER_FORECAST_WARNING_LEVEL5 = 50;
+var VSCP_TYPE_WEATHER_FORECAST_ARMAGEDON = 51;
+
 // class 100 (0x64) -- PHONE
 var VSCP_TYPE_PHONE_GENERAL = 0;
 var VSCP_TYPE_PHONE_INCOMING_CALL = 1;
@@ -833,6 +942,65 @@ function vscpws_encodeFloat(number) {
     return ((signal ? 0x80000000 : 0) + (exponent << 23) + mantissa) | 0;
 }
 
+
+///////////////////////////////////////////////////////////////////////////////
+// vscpws_littleEndian
+//
+// Return true for little endian/false for big endian
+//
+
+var vscpws_littleEndian = (function() {
+    var buffer = new ArrayBuffer(2);
+    new DataView(buffer).setInt16(0, 256, true);
+    return new Int16Array(buffer)[0] === 256;
+})();
+
+///////////////////////////////////////////////////////////////////////////////
+// vscpws_checkEndian
+//
+// Byte swap word and dword
+//
+
+function vscpws_swapBytes(buf, size)
+{
+
+    var bytes = Uint8Array(buf);
+    var len = bytes.length;
+ 
+    if (size == 'WORD'){
+        var holder;
+        for(var i =0; i<len; i+=2){
+            holder = bytes[i];
+            bytes[i] = bytes[i+1];
+            bytes[i+1] = holder;
+        }
+    } 
+    else if(size == 'DWORD'){
+        var holder;
+        for(var i =0; i<len; i+=4){
+            holder = bytes[i];
+            bytes[i] = bytes[i+3];
+            bytes[i+3] = holder;
+            holder = bytes[i+1];
+            bytes[i+1] = bytes[i+2];
+            bytes[i+2] = holder;
+        }
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// vscpws_sleep
+//
+
+function vscpws_sleep( milliseconds ) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // vscpws_toFixed
 //
@@ -1018,6 +1186,34 @@ function vscp_make_websocket_auth_hash( user, password, sid ){
 	return hex_md5( user + ":" + password + ":" + sid ); 
 };
 
+
+function vscpws_varInteger2Float( data ) {    
+    var rval = 0.0;
+
+    var bNegative = false;
+    
+    if ( data[0] & 0x80 ) {    
+        bNegative = true;
+    
+        for ( i=0; i<data.length; i++ ) {
+            data[i] = ~data[i] & 0xff; 
+        }
+    }
+        
+    for (i=0;i<data.length;i++) {
+        rval = rval << 8;
+        rval += data[i];
+    }
+            
+    if ( bNegative ) {
+        rval = -1.0 * (rval + 1);
+    }
+
+    //console.log( data.length );
+    //console.log( rval );
+    return rval;
+}
+
 /////////////////////////////////////////////////////////////////////////////
 // vscpws_getDatacoding
 //
@@ -1056,12 +1252,14 @@ function vscpws_measurementClass10Decode(data){
     switch ( vscpws_getDatacoding(data[0]) ){
         case 0: // Bits
         case 1: // Bytes
-        case 3: // Integer    
+        case 3: // Integer   
             {
+                var newdata = new Array(data.length-1);
+                
                 for (i=1;i<data.length;i++) {
-                    rval = rval << 8;
-                    rval += data[i];
+                    newdata[i-1] = data[i];
                 }
+                rval = vscpws_varInteger2Float( newdata );
             }
             break;
 
@@ -1077,41 +1275,14 @@ function vscpws_measurementClass10Decode(data){
         case 4: // Normalized integer
             {
                 var exp = data[1];
-                var bNegative = (data[2] & 0x80) ? true : false ;
-                //if (bNegative) data[2] = (data[2] & 0x7f);
+                var newdata = new Array(data.length-2);
                 
                 for (i=2;i<data.length;i++) {
-                    rval = (rval << 8);
-                    mask = (mask << 8);
-                    rval += data[i];
-                    mask += 0xff;
-                }
-     
-                if (bNegative) {
-                
-                    switch ( data.length ) {
-                        case 3:
-                            rval = 0xffffffffff00 + rval;
-                            break;
-                        case 4:
-                            rval = 0xffffffff0000 + rval;
-                            break;
-                        case 5:
-                            rval = 0xffffff000000 + rval;
-                            break;
-                        case 6:
-                            rval = 0xffff00000000 + rval;
-                            break;
-                        case 7:
-                            rval = 0xff0000000000 + rval;
-                            break;      
-                    }
-                    
-                    console.log("Negative value " + rval );
-                    rval = ~~rval; // Fix two's complement value
-                    console.log( 'negiated = ' + rval );
+                    newdata[i-2] = data[i];
                 }
                 
+                rval = vscpws_varInteger2Float( newdata );
+              
                 // Handle mantissa
                 if ( exp & 0x80 ) {
                     exp &= 0x7f;
@@ -1675,429 +1846,6 @@ function vscpws_global_mouseover(obj) {
 
 
 
-
-
-//*****************************************************************************
-//                                 vscpws_leddigits
-//*****************************************************************************
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////
-// vscpws_leddigits
-//
-// username 	- name to login with to the VSCP server
-// passwordhash - Hash for login to VSCP server
-// ndigits		- Number of digits
-// x            - x-position for leftmost digit
-// y            - y-position for leftmost digit.
-// ctrlname     - name for control
-
-function vscpws_leddigits( username, password, ndigits, x, y, ctrlname ) {
-
-        this.count = ndigits;
-        var maxvalue = Math.pow(10, count) - 1;
-        this.maxvalue = maxvalue;
-        this.x = x;
-        this.y = y;
-        this.name = ctrlname;
-        // Preload redled0 image
-        image_redled0 = new Image();
-        image_redled0.src = "../lib/widgets/digit/redled0.png";
-        // Preload redled1 image
-        image_redled1 = new Image();
-        image_redled1.src = "../lib/widgets/digit/redled1.png";
-        // Preload redled2 image
-        image_redled2 = new Image();
-        image_redled2.src = "../lib/widgets/digit/redled2.png";
-        // Preload redled3 image
-        image_redled3 = new Image();
-        image_redled3.src = "../lib/widgets/digit/redled3.png";
-        // Preload redled4 image
-        image_redled4 = new Image();
-        image_redled4.src = "../lib/widgets/digit/redled4.png";
-        // Preload redled5 image
-        image_redled5 = new Image();
-        image_redled5.src = "../lib/widgets/digit/redled5.png";
-        // Preload redled6 image
-        image_redled6 = new Image();
-        image_redled6.src = "../lib/widgets/digit/redled6.png";
-        // Preload redled7 image
-        image_redled7 = new Image();
-        image_redled7.src = "../lib/widgets/digit/redled7.png";
-        // Preload redled8 image
-        image_redled8 = new Image();
-        image_redled8.src = "../lib/widgets/digit/redled8.png";
-        // Preload redled9 image
-        image_redled9 = new Image();
-        image_redled9.src = "../lib/widgets/digit/redled9.png";
-        // Preload redledE image
-        image_redledE = new Image();
-        image_redledE.src = "../lib/widgets/digit/redledE.png";
-        // Preload redledall image
-        image_redledall = new Image();
-        image_redledall.src = "../lib/widgets/digit/redled8source.png";
-        // Preload redledoff image
-        image_redledoff = new Image();
-        image_redledoff.src = "../lib/widgets/digit/redledoff.png";
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// init
-//
-
-vscpws_leddigits.prototype.init = function() {
-    this.jg = new jsGraphics(this.name);
-    this.jg.setPrintable(true);
-    
-    // All led's off
-    for (i = 0; i < this.count; i++) {
-        this.jg.drawImage(image_redledoff.src, this.x + 40 * i, this.y);
-    }
-    
-    this.jg.paint();
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// setDigit
-//
-
-vscpws_leddigits.prototype.setDigit = function(digit, pos) {
-
-    switch (digit) {
-
-        case '0':
-            this.jg.drawImage(image_redled0.src, this.x + 40 * pos, this.y);
-            break;
-            
-        case '1':
-            this.jg.drawImage(image_redled1.src, this.x + 40 * pos, this.y);
-            break;
-            
-        case '2':
-            this.jg.drawImage(image_redled2.src, this.x + 40 * pos, this.y);
-            break;
-            
-        case '3':
-            this.jg.drawImage(image_redled3.src, this.x + 40 * pos, this.y);
-            break;
-            
-        case '4':
-            this.jg.drawImage(image_redled4.src, this.x + 40 * pos, this.y);
-            break;
-            
-        case '5':
-            this.jg.drawImage(image_redled5.src, this.x + 40 * pos, this.y);
-            break;
-            
-        case '6':
-            this.jg.drawImage(image_redled6.src, this.x + 40 * pos, this.y);
-            break;
-            
-        case '7':
-            this.jg.drawImage(image_redled7.src, this.x + 40 * pos, this.y);
-            break;
-            
-        case '8':
-            this.jg.drawImage(image_redled8.src, this.x + 40 * pos, this.y);
-            break;
-            
-        case '9':
-            this.jg.drawImage(image_redled9.src, this.x + 40 * pos, this.y);
-            break;
-            
-        case 'E':
-            this.jg.drawImage(image_redledE.src, this.x + 40 * pos, this.y);
-            break;
-            
-        case 'A':
-            this.jg.drawImage(image_redledall.src, this.x + 40 * pos, this.y);
-            break;
-           
-        case ' ':        
-        default:
-            this.jg.drawImage(image_redledoff.src, this.x + 40 * pos, this.y);
-            break;
-    }
-    
-    // Draw it
-    this.jg.paint();
-}
-
-///////////////////////////////////////////////////////////////////////////////
-// setValue
-//
-
-vscpws_leddigits.prototype.setValue = function(value) {
-
-    if (value <= this.maxvalue) {
-        value = value.toFixed();
-        var str = value.toString(10);
-        var pos = str.length - 1; // Start at end
-
-        for (i = this.count; i > 0; i--) {
-            if (pos >= 0) {
-                //alert(str[pos]);
-                this.setDigit( str[pos], i - 1);
-            }
-            else {
-                this.setDigit(' ', i - 1);
-            }
-            pos--;
-        }
-    }   
-    else {
-        for (i = 0; i < this.count; i++) {
-            this.setDigit('E', i);
-        }
-    }
-}
-
-
-
-
-
-//*****************************************************************************
-//                                 vscpws_buttondigits
-//*****************************************************************************
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////
-// vscpws_buttondigits
-//
-// username 	- name to login with to the VSCP server
-// passwordhash - Hash for login to VSCP server
-// ndigits		- Number of digits
-// x            - x-position for leftmost digit
-// y            - y-position for leftmost digit.
-// ctrlname     - name for control
-
-function vscpws_buttondigits( username, passwordhash, x, y, ndigits, name) {
-    
-    this.ndigits = ndigits;
-    var maxvalue = Math.pow(10, ndigits) - 1;
-    this.maxvalue = maxvalue;
-    this.x = x;
-    this.y = y;
-    this.name = name;
-    
-    // Preload digit0 image
-    image_digit0 = new Image();
-    image_digit0.src = "../lib/widgets/digit/0.png";
-    // Preload digit1 image
-    image_digit1 = new Image();
-    image_digit1.src = "../lib/widgets/digit/1.png";
-    // Preload digit2 image
-    image_digit2 = new Image();
-    image_digit2.src = "../lib/widgets/digit/2.png";
-    // Preload digit3 image
-    image_digit3 = new Image();
-    image_digit3.src = "../lib/widgets/digit/3.png";
-    // Preload digit4 image
-    image_digit4 = new Image();
-    image_digit4.src = "../lib/widgets/digit/4.png";
-    // Preload digit5 image
-    image_digit5 = new Image();
-    image_digit5.src = "../lib/widgets/digit/5.png";
-    // Preload digit6 image
-    image_digit6 = new Image();
-    image_digit6.src = "../lib/widgets/digit/6.png";
-    // Preload digit7 image
-    image_digit7 = new Image();
-    image_digit7.src = "../lib/widgets/digit/7.png";
-    // Preload digit8 image
-    image_digit8 = new Image();
-    image_digit8.src = "../lib/widgets/digit/8.png";
-    // Preload digit9 image
-    image_digit9 = new Image();
-    image_digit9.src = "../lib/widgets/digit/9.png";
-    // Preload numeral image
-    image_numeral = new Image();
-    image_numeral.src = "../lib/widgets/digit/numeral.png";
-    // Preload up image
-    image_up = new Image();
-    image_up.src = "../lib/widgets/digit/up.png";
-    // Preload down image
-    image_down = new Image();
-    image_down.src = "../lib/widgets/digit/down.png";
-}
-
-vscpws_buttondigits.prototype.init = function() {
-    this.jg = new jsGraphics(this.name);
-    this.jg.setPrintable(true);
-    for (i = 0; i < this.ndigits; i++) {
-        this.jg.drawImage(image_numeral, this.x + 32 * i, this.y);
-    }
-    this.jg.paint();
-}
-
-vscpws_buttondigits.prototype.setDigit = function(digit, pos) {
-
-    switch (digit) {
-
-        case '0':
-            this.jg.drawImage(image_digit0.src, this.x + 32 * pos, this.y);
-            break;
-        
-        case '1':
-            this.jg.drawImage(image_digit1.src, this.x + 32 * pos, this.y);
-            break;
-        
-        case '2':
-            this.jg.drawImage(image_digit2.src, this.x + 32 * pos, this.y);
-            break;
-        
-        case '3':
-            this.jg.drawImage(image_digit3.src, this.x + 32 * pos, this.y);
-            break;
-        
-        case '4':
-            this.jg.drawImage(image_digit4.src, this.x + 32 * pos, this.y);
-            break;
-        
-        case '5':
-            this.jg.drawImage(image_digit5.src, this.x + 32 * pos, this.y);
-            break;
-        
-        case '6':
-            this.jg.drawImage(image_digit6.src, this.x + 32 * pos, this.y);
-            break;
-        
-        case '7':
-            this.jg.drawImage(image_digit7.src, this.x + 32 * pos, this.y);
-            break;
-        
-        case '8':
-            this.jg.drawImage(image_digit8.src, this.x + 32 * pos, this.y);
-            break;
-        
-        case '9':
-            this.jg.drawImage(image_digit9.src, this.x + 32 * pos, this.y);
-            break;
-        
-        case 'E':
-            this.jg.drawImage(image_up.src, this.x + 32 * pos, this.y);
-            break;
-        
-        case 'A':
-            this.jg.drawImage(image_down.src, this.x + 32 * pos, this.y);
-            break;
-        
-        case ' ':
-        default:            
-            this.jg.drawImage(image_numeral.src, this.x + 32 * pos, this.y);
-            break;
-    }
-    
-    // Draw it
-    this.jg.paint();
-}
-
-vscpws_buttondigits.prototype.setValue = function(value) {
-  
-    if (value <= this.maxvalue) {
-        
-        value = value.toFixed();
-        var str = value.toString(10);
-        var pos = str.length - 1; // Start at end
-    
-        for (i = this.ndigits; i > 0; i--) {
-            if (pos >= 0) {
-                //alert(str[i-1]);
-                this.setDigit(str[pos], i - 1);
-            }
-            else {
-                this.setDigit(' ', i - 1);
-            }
-            pos--;
-        }
-    }
-    else {
-        for (i = 0; i < this.ndigits; i++) {
-            this.setDigit('E', i);
-        }
-    }
-}
-
-
-
-
-
-
-
-//*****************************************************************************
-//                                 vscpws_buttondigits
-//*****************************************************************************
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////
-// buttonblack
-//
-
-function vscpws_buttonblack(username, passwordhash, x, y, handler, name) {
-
-   this.x = x;
-        this.y = y;
-        this.name = name;
-        this.handler = handler;
-        // Preload up image
-        image_up = new Image();
-        image_up.src = "../lib/widgets/button/pressoff.png";
-        // Preload down image
-        image_down = new Image();
-        image_down.src = "../lib/widgets/button/presson.png";
-        this.jg = new jsGraphics(this.name);
-        this.jg.setPrintable(true);
-        this.jg.drawImage(image_up.src, this.x, this.y, 48, 64, this.handler);
-        this.jg.paint();
-        obj = getObjectClass(this);
-        alert(getVarName(tre));
-}
-
-/* Returns the class name of the argument or undefined if
- it's not a valid JavaScript object.
- */
-function vscpws_getObjectClass(obj) {
-    if (obj && obj.constructor && obj.constructor.toString) {
-    var arr = obj.constructor.toString().match(
-        /function\s*(\w+)/);
-        if (arr && arr.length == 2) {
-            return arr[1];
-        }
-    }
-    
-    return undefined;
-}
-
-vscpws_buttonblack.prototype.onMouseOver = function() {
-//alert("onOver");
-this.jg.clear();
-        this.jg.drawImage(image_down.src, this.x, this.y, 48, 64, this.handler);
-        this.jg.paint();
-}
-
-vscpws_buttonblack.prototype.onMouseOut = function() {
-//alert("onOver");
-this.jg.clear();
-        this.jg.drawImage(image_up.src, this.x, this.y, 48, 64, this.handler);
-        this.jg.paint();
-}
-
-vscpws_buttonblack.prototype.onMouseDown = function() {
-//alert("onMouseDown");
-}
-
-vscpws_buttonblack.prototype.onMouseUp = function() {
-//alert("onMouseUp");
-}
 
 
 
@@ -3558,19 +3306,19 @@ vscpws_stateButton.prototype.onVSCPMessage = function(msg)
             this.bConnected = false;
         }
         else if ("READVAR" == msgitems[1] && (2 == msgitems[2])){
-            if ( ("true" == msgitems[3].toLowerCase()) && 
+            if ( ("true" == msgitems[4].toLowerCase()) && 
                     (false == this.bState )) {
                 // We have a match for ON
                 this.bState = true;
                 this.draw();
             }
-            else if ( ("false" == msgitems[3].toLowerCase()) && 
+            else if ( ("false" == msgitems[4].toLowerCase()) && 
                     (true == this.bState )) {
                 // We have a match for ON
                 this.bState = false;
                 this.draw();
             }
-            if ( this.bOnce && ( typeof interval !== 'undefined' ) ) {
+            if ( this.bOnce && ( typeof  this.monitorVariableName !== 'undefined' ) ) {
                 clearInterval( this.variableTimer );
                 this.bOnce = false;
             }
@@ -3623,10 +3371,10 @@ vscpws_stateButton.prototype.onVSCPMessage = function(msg)
                            (vscpdata[i] != this.receive_data_on[i]) ) return;
                 }
             }
-
+       
             // Check GUID
             if ( ("" != this.receive_guid_on) && 
-                    this.receive_guid_on.toLowerCase() != guid.toLowerCase()) return;
+                    this.receive_guid_on.toLowerCase() != vscpguid.toLowerCase()) return;
             
             // We have a match for ON
             this.bState = true;
@@ -3651,7 +3399,7 @@ vscpws_stateButton.prototype.onVSCPMessage = function(msg)
                  
             // Check GUID
             if (("" != this.receive_guid_off) && 
-                    this.receive_guid_off.toLowerCase() != guid.toLowerCase()) return;
+                    this.receive_guid_off.toLowerCase() != vscpguid.toLowerCase()) return;
                       
             // We have a match for OFF
             this.bState = false;
@@ -3958,6 +3706,10 @@ vscpws_simpleTextEvent.prototype.onVSCPMessage = function(msg)
         if ((vscpclass == undefined) || (vscptype == undefined) ) return;
         if (( -1 != this.vscpclass) && (vscpclass != this.vscpclass)) return;
         if (( -1 != this.vscptype) && (vscptype != this.vscptype)) return;       
+        
+         // Check GUID
+        if ( ("" != this.guid) &&
+                this.guid.toLowerCase() != vscpguid.toLowerCase()) return;
         
         // Classes with data coding byte
         if ((VSCP_CLASS1_MEASUREMENT == this.vscpclass) || 
@@ -5247,507 +4999,6 @@ function vscpws_relocate( username,         // Username for websocket serever
 
 
 
-// ----------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////
-// vscpws_slider
-//
-
-function vscpws_slider( username,               // Username for websocket serever  
-                            passwordhash,       // Password hash for websocket
-                            url,                // url to VSCP websocket i/f
-                            sliderCanvasName,   // Slider ID
-                            slideTxtname,       // Slider Input value ID
-                            txtCanvasName       // Remote device value ID
-                        )
-{
-    // First set default parameter
-    this.username = username;
-    this.passwordhash = passwordhash;
-
-    // Websocket for VSCP daemon communication
-    this.socket_vscp = null;
-
-    // Flag for connected or unconnected state.
-    this.bConnected = false;
-
-    // Set the instance name for the control
-    instanceName = "vscpws_" + sliderCanvasName;
-
-    // move this to global scope
-    eval(instanceName + " = this;");
-
-    // remember instance name
-    this.instanceName = instanceName;
-
-    // Events to send to turn ON
-    this.tansmitt_vscpclass = VSCP_CLASS1_CONTROL;     // Default class is CLASS1.CONTROL
-    this.tansmitt_vscptype = VSCP_TYPE_CONTROL_DIM_LAMPS; // Default type is TurnOn
-    this.tansmitt_data = new Array(0,0,0); // Dimvalue=0, zone=0, subzone=0
-    this.tansmitt_guid = "-";        // Default GUID is GUID of interface.
-
-
-    // Receive events to confirm Turn ON
-    this.receive_vscpclass = VSCP_CLASS1_INFORMATION;   // Default class is CLASS1.INFORMATION
-    this.receive_vscptyp = VSCP_TYPE_INFORMATION_LEVEL_CHANGED;   // Default type is On
-    this.receive_data = new Array(0,0,0); // Dimvalue = 0, zone=0, subzone=0
-    this.receive_guid = "";          // Default GUID (empty is any).
-
-    // Monitorvariabel - Should be a boolean variable
-    this.monitorVariableName = "";      // Default is none
-    this.monitorInterval = 1000;        // Monitor interval is each second
-
-    this.sliderCanvas = document.getElementById(sliderCanvasName);
-    this.sliderTxtCanvas = document.getElementById(slideTxtname);
-    this.txtCanvas = document.getElementById(txtCanvasName);
-
-    this.sliderTxtCanvasId = slideTxtname;
-
-    this.sliderRemoteValue = 0;
-
-    // Open the socket
-    this.socket_vscp = vscpws_openSocket(url);
-
-    if (null==this.socket_vscp ) alert("Could not open websocket to VSCP server!");
-
-    // Bind events
-    this.socket_vscp.onmessage = this.onVSCPMessage.bind(this);
-    this.socket_vscp.onopen = this.onVSCPOpen.bind(this);
-    this.socket_vscp.onclose = this.onVSCPClose.bind(this);
-
-    this.sliderCanvas.onchange = this.updateSlider.bind(this);
-
-    // Set default events
-    this.setTransmittEvent();
-
-    //retreive instance name
-    this.getInstanceName = function() {
-       return this.instanceName;
-    }
-
-    //default property
-    this.toString = function() {
-       return this.getInstanceName();
-    }
-
-}
-
-//-----------------------------------------------------------------------------
-// setTransmittEvent
-//-----------------------------------------------------------------------------
-
-vscpws_slider.prototype.setTransmittEvent = function( vscpclass,
-                                                        vscptype,
-                                                        data,
-                                                        guid )
-{
-    var dataArray;
-
-    // First set default parameter
-    vscpclass = typeof vscpclass !== 'undefined' ? vscpclass : VSCP_CLASS1_CONTROL;
-    vscptype = typeof vscptype !== 'undefined' ? vscptype : VSCP_TYPE_CONTROL_DIM_LAMPS;
-    guid = typeof guid !== 'undefined' ? guid : "-";
-    this.tansmitt_vscpclass = vscpclass;
-    this.tansmitt_vscptype = vscptype;
-    this.tansmitt_guid = guid;
-
-    if (this.tansmitt_vscptype ==VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL)
-    {
-        // index = dont care, zone=0, subzone=0 , data , data, data, data, data
-        dataArray = new Array(-1,0,0,0,0,0,0,0); 
-    }
-    else   // VSCP_TYPE_CONTROL_DIM_LAMPS
-    {
-        dataArray = new Array(0,0,0); // Dimvalue = 0, zone=0, subzone=0
-    }
-
-    data = typeof data !== 'undefined' ? data : dataArray;
-    this.tansmitt_data = data;
-
-}
-
-//-----------------------------------------------------------------------------
-// setTransmittZone
-//-----------------------------------------------------------------------------
-
-vscpws_slider.prototype.setTransmittZone = function(index,zone,subzone)
-{
-    if((this.tansmitt_vscpclass == VSCP_CLASS1_CONTROL) && 
-            (this.tansmitt_vscptype == VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL))
-    {
-        this.tansmitt_data[0] = typeof index !== 'undefined' ? index : 0;
-    }
-
-    this.tansmitt_data[1] = typeof zone !== 'undefined' ? zone : 0;
-    this.tansmitt_data[2] = typeof subzone !== 'undefined' ? subzone : 0;
-}
-
-//-----------------------------------------------------------------------------
-// setReceiveEvent
-//-----------------------------------------------------------------------------
-
-vscpws_slider.prototype.setReceiveEvent = function( vscpclass,
-                                                        vscptype,
-                                                        data,
-                                                        guid )
-{
-
-    var dataArray;
-
-    //
-    // First set default parameter
-    vscpclass = typeof vscpclass !== 'undefined' ? vscpclass : VSCP_CLASS1_INFORMATION;
-    vscptype = typeof vscptype !== 'undefined' ? vscptype : VSCP_TYPE_INFORMATION_LEVEL_CHANGED;
-    guid = typeof guid !== 'undefined' ? guid : "";  // GUID dont'care
-    this.receive_vscpclass = vscpclass;
-    this.receive_vscptype = vscptype;
-    this.receive_guid = guid;
-
-    if (this.receive_vscptype ==VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL)
-    {
-        // index = dont care, zone=0, subzone=0 , data , data, data, data, data
-        dataArray = new Array(-1,0,0,0,0,0,0,0); 
-    }
-    else   // VSCP_TYPE_CONTROL_DIM_LAMPS
-    {
-        dataArray = new Array(0,0,0); // Dimvalue = 0, zone=0, subzone=0
-    }
-    data = typeof data !== 'undefined' ? data : dataArray;
-    this.receive_data = data;
-
-
-    // Set filter
-    //this.setFilter();
-}
-
-//-----------------------------------------------------------------------------
-// setReceiveZone
-//-----------------------------------------------------------------------------
-
-vscpws_slider.prototype.setReceiveZone = function(index,zone,subzone)
-{
-    if((this.receive_vscpclass == 
-            VSCP_CLASS1_CONTROL) && 
-            (this.receive_vscptype == VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL))
-    {
-        this.receive_data[0] = typeof index !== 'undefined' ? index : 0;
-    }
-    this.receive_data[1] = typeof zone !== 'undefined' ? zone : 0;
-    this.receive_data[2] = typeof subzone !== 'undefined' ? subzone : 0;
-}
-
-
-//-----------------------------------------------------------------------------
-// updateSlider
-//-----------------------------------------------------------------------------
-
-
-vscpws_slider.prototype.updateSlider = function()
-{
-    //alert("hell0");
-    this.sliderTxtCanvas.innerHTML = this.sliderCanvas.value;
-
-    //send vscp event
-    this.setValue(this.sliderCanvas.value);
-}
-
-//-----------------------------------------------------------------------------
-// setMonitorVariable
-//-----------------------------------------------------------------------------
-
-vscpws_slider.prototype.setMonitorVariable = function(name,interval)
-{
-    // First set default parameter
-    interval = typeof interval !== 'undefined' ? interval : 1000;
-
-    this.monitorVariableName = name;
-    this.monitorInterval = interval;
-
-    var t = this;
-    setInterval(function(){t.time4VariableRead(t.monitorVariableName,t.socket_vscp);}, interval);
-}
-
-
-//-----------------------------------------------------------------------------
-// processTxData
-//-----------------------------------------------------------------------------
-
-vscpws_slider.prototype.processTxData = function(value)
-{
-  // value is the value received from slider  --> VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL
-  // value can be --. +ve or _ve number
-  // Split value into bytes & save into -- this.tansmitt_data[3],this.tansmitt_data[4],this.tansmitt_data[5]
-  //                                       this.tansmitt_data[6], this.tansmitt_data[7]
-}
-
-//-----------------------------------------------------------------------------
-// processRxData
-//-----------------------------------------------------------------------------
-
-vscpws_slider.prototype.processRxData = function(vscpdata)
-{
-  // vscpdata --> is data received for remote device ( +ve or _ve number) --> VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED
-  // depending upon vscpdata.length value -- set the --> this.sliderRemoteValue
-  // vscpdata[3],vscpdata[4],vscpdata[5],vscpdata[6], vscpdata[7]
-
-  this.sliderRemoteValue = 0;
-
-}
-
-//-----------------------------------------------------------------------------
-// setValue
-//-----------------------------------------------------------------------------
-
-vscpws_slider.prototype.setValue = function(value)
-{
-    var cmd="E;0,"; // Event + priority
-
-    if (value) {
-
-        if (vscpws_debug) console.log("True");
-
-        // Send Turn On Event
-        if (this.bConnected && (-1 != this.tansmitt_vscpclass ) ) {
-
-            cmd += this.tansmitt_vscpclass.toString() + ",";
-            cmd += this.tansmitt_vscptype.toString() + ",";
-            cmd += "0,0,"; // obid and timestamp
-            if ("" == this.tansmitt_guid) {
-                cmd += "-"; // Use daemon interface GUID
-            }
-            else {
-                cmd += this.tansmitt_guid.toString();
-            }
-            cmd += ",";
-            if (this.tansmitt_vscptype ==VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL)
-            {
-                this.processTxData(value)
-            }
-            else  // VSCP_TYPE_CONTROL_DIM_LAMPS
-            {
-                this.tansmitt_data[0] = value;
-
-            }
-
-            for (i=0;i<this.tansmitt_data.length;i++) {
-                    cmd += this.tansmitt_data[i].toString() + ",";
-                    if (i<this.tansmitt_data.length-1) cmd += ",";   // No comma for last
-            }
-
-            if (vscpws_debug) console.log(cmd);
-            this.socket_vscp.send(cmd);
-
-        }
-    }
-
-};
-
-//-----------------------------------------------------------------------------
-// onVSCPOpen
-//-----------------------------------------------------------------------------
-
-vscpws_slider.prototype.onVSCPOpen = function()
-{
-    if (vscpws_debug) console.log('Open VSCP websocket');
-    //this.bConnected = true;
-    //this.socket_vscp.send("C;" + "open");
-};
-
-//-----------------------------------------------------------------------------
-// onVSCPClose
-//-----------------------------------------------------------------------------
-
-vscpws_slider.prototype.onVSCPClose = function()
-{
-    if (vscpws_debug) console.log('Close VSCP websocket');
-    //this.bConnected = false;
-    this.socket_vscp.send("C;" + "close");
-
-};
-
-
-//-----------------------------------------------------------------------------
-// onVSCPMessage
-//-----------------------------------------------------------------------------
-// handle VSCP socketcan incoming message/event.
-vscpws_slider.prototype.onVSCPMessage = function(msg)
-{
-    if (vscpws_debug) console.log('onVSCPMessage -' + this.instanceName + " " + msg.data);
-
-    msgitems = msg.data.split(';');
-
-
-    if ("+" == msgitems[0]){        // check for positive reply
-
-        if (vscpws_debug) console.log("Positive reply "+msg.data);
-        respone = msgitems[0].split(";");
-        
-        if ( "AUTH0" == msgitems[1] ) {
-            var msg = "C;AUTH;" + this.username + ";" + 
-                    vscp_make_websocket_auth_hash( this.username, 
-                                                    this.passwordhash, 
-                                                    msgitems[2] );
-			this.socket_vscp.send(msg);
-        }
-        else if ( "AUTH1" == msgitems[1] ) {
-        
-            // We are authenticated and ready to go to work         
-            this.socket_vscp.send("C;" + "OPEN");
-   
-            // Draw the state
-            this.draw();
-    
-            // Set filter
-            this.setFilter();
-        }
-        else if ( "OPEN" == msgitems[1] ) {
-            // Open confirmation => We are connected
-            this.bConnected = true;
-            // Draw the state
-            this.draw();
-        }
-        else if ( "CLOSE" == msgitems[1] ) {
-            // Close confirmation => We are NOT connected
-            this.bConnected = false;
-        }
-        else if ("READVAR" == msgitems[1] && (9 == msgitems[2])){
-                // set the Remote Data
-        }
-    }
-    else if ("-" == msgitems[0]){   // Check for negative reply
-        if (vscpws_debug) console.log("Negative reply " + msg.data);
-    }
-    else if ("E" == msgitems[0]){   // Check for event
-        var offset = 0; // used for Level I events over Level II
-
-        //head;class;type;guid,data
-        var vscpitems = msgitems[1].split(",");
-
-        var vscphead = vscpitems[0];
-        var vscpclass = vscpitems[1];
-        var vscptype = vscpitems[2];
-        var vscpobid = vscpitems[3];
-        var vscptimestamp = vscpitems[4];
-        var vscpguid = vscpitems[5];
-        var vscpdata = new Array();
-        for (i=0;i<vscpitems.length-6;i++){
-            vscpdata[i] = vscpitems[6+i];
-        }
-
-        // Check if we have Level I events over Level II
-        if ( vscpclass >= 512 && vscpclass < 1024 ) {
-            offset = 16;    // Offset into data
-            vscpclass -= 512;
-        }
-
-        if (vscpws_debug) console.log("CLASS = " + vscpclass + " Trigg on " + this.receive_vscpclass );
-        if (vscpws_debug) console.log(" TYPE = " + vscptype + " Trigg on " + this.receive_vscptype );
-
-        // Check GUID
-        if ( ("" != this.receive_guid) &&
-                this.receive_guid.toLowerCase() != guid.toLowerCase()) return;
-
-        // Nothing to do if vscpclass or vscptype is undefined
-        if ((vscpclass == undefined) || (vscptype == undefined) ) return;
-
-        // Check if this is a possible Rx-event
-        if (vscpclass == this.receive_vscpclass &&
-                vscptype == this.receive_vscptype ) {
-            // Check data if any
-            if (this.receive_data.length ) {
-
-                // Check zone & subzone & index
-                if((this.receive_vscpclass == VSCP_CLASS1_INFORMATION) && 
-                        (this.receive_vscptype == VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED))
-                {
-                    //for (i=0;i<this.receive_data.length;i++) {
-                    for (i=0;i<3;i++) {
-                        // Skip a don't care
-                        if (( -1 == this.receive_data[i] )||(this.receive_data[i] == undefined)) continue;
-                        if ((vscpdata[i] != this.receive_data[i])||(vscpdata[i] == undefined))  return;
-                    }
-                }
-                else  // VSCP_TYPE_INFORMATION_LEVEL_CHANGED
-                {
-                    for (i=1;i<3;i++) {
-                        // Skip a don't care
-                        if (( -1 == this.receive_data[i] )||(this.receive_data[i] == undefined)) continue;
-                        if ((vscpdata[i] != this.receive_data[i])||(vscpdata[i] == undefined))  return;
-                    }
-
-                }
-            }
-
-            if ( (this.receive_vscpclass == VSCP_CLASS1_INFORMATION) && 
-              (this.receive_vscptype == VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED))
-            {
-                processRxData(vscpdata);
-            }
-            else // VSCP_TYPE_INFORMATION_LEVEL_CHANGED
-            {
-                this.sliderRemoteValue= vscpdata[0];
-            }
-
-            //set the remote text recived data
-            this.txtCanvas.innerHTML = this.sliderRemoteValue;
-
-            if (vscpws_debug) console.log("****** Data received Correctly ******");
-        }
-
-    }
-}
-
-//-----------------------------------------------------------------------------
-// openConnection
-//-----------------------------------------------------------------------------
-// Open/close event traffic
-vscpws_slider.prototype.openConnection = function()
-{
-    this.socket_vscp.send("C;" + "open");
-}
-
-//-----------------------------------------------------------------------------
-// closeConnection
-//-----------------------------------------------------------------------------
-vscpws_slider.prototype.closeConnection = function()
-{
-    this.socket_vscp.send("C;" + "close");
-}
-
-//-----------------------------------------------------------------------------
-// time4VariableRead
-//-----------------------------------------------------------------------------
-vscpws_slider.prototype.time4VariableRead = function(m,s)
-{
-    var cmd;
-    if (vscpws_debug) console.log("time4VariableRead");
-    cmd = "C;READVAR;" + m;
-    s.send(cmd);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -5786,7 +5037,7 @@ function vscpws_Event( username,            // Username for websocket serever
     this.bConnected = false;
     
     // Set the instance name for the control
-    instanceName = "vscpws_" + this.elementId;
+    instanceName = "vscpws_" + "event";
     
     // move this to global scope
     eval(instanceName + " = this;");
@@ -5797,7 +5048,7 @@ function vscpws_Event( username,            // Username for websocket serever
     // Open the socket
     this.socket_vscp = vscpws_openSocket(serverurl);
     
-    if (null==this.socket_vscp ) {
+    if ( null == this.socket_vscp ) {
         alert("Could not open websocket to VSCP server!");
     }
        
@@ -5806,12 +5057,12 @@ function vscpws_Event( username,            // Username for websocket serever
     this.socket_vscp.onopen = this.onVSCPOpen.bind(this);
     this.socket_vscp.onclose = this.onVSCPClose.bind(this);
        
-    //retrieve instance name
+    // retrieve instance name
     this.getInstanceName = function() {
        return this.instanceName;
     }
 
-    //default property
+    // default property
     this.toString = function() {
        return this.getInstanceName();
     }     
@@ -5835,6 +5086,7 @@ vscpws_Event.prototype.onVSCPOpen = function()
     if (this.elementId) document.getElementById(this.elementId).textContent = 
             " undefined ";
     if (vscpws_debug) console.log('Open VSCP websocket');
+    this.bConnected = true;
 };
 
 //-----------------------------------------------------------------------------
@@ -5861,46 +5113,60 @@ vscpws_Event.prototype.setFilter = function( filter_class,
                                                 mask_guid  )
 {
     var cmd;
+    this.filter_guid = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+    this.mask_guid = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
     
-    //var filter_class = this.vscpclass;
-    //var filter_type = this.vscptype;
-    //var filter_guid = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-    
-    // Zero for a mask is don't care        
-    //var mask_class = -1 != this.vscpclass ? 0xff : 0x00;
-    //var mask_type = -1 != this.vscptype ? 0xff : 0x00;
-    //var mask_guid = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
-    
-    if ( ("" != guid) ) {
-        guid = guid.split(":");
-        for ( i=0; i<16; i++ ) {
-            mask_guid[i] = 0xff;
-            filter_guid[i] = guid[i];
+    this.mask_class = typeof mask_class !== 'undefined' ? mask_class : 0xffff;
+    this.mask_type = typeof mask_type !== 'undefined' ? mask_type : 0xffff;
+   
+    // Filter can be given as string or array
+    if ( typeof filter_guid !== 'undefined' ) {
+        if ( typeof filter_guid == 'array' ) {
+            this.filter_guid = filter_guid;
+        }
+        else if ( typeof filter_guid == 'string' ) {
+            var guid = filter_guid.split(":");
+            for ( i=0; i<16; i++ ) {
+                this.filter_guid[i] = guid[i];
+            }
         }
     }
-           
+    
+    // Mask can be given as string or array
+    if ( typeof mask_guid !== 'undefined' ) {
+        if ( typeof mask_guid == 'array' ) {
+            this.mask_guid = mask_guid;
+        }
+        else if ( typeof mask_guid == 'string' ) {
+            var guid = mask_guid.split(":");
+            for ( i=0; i<16; i++ ) {
+                this.mask_guid[i] = guid[i];
+            }
+        }
+    }
+             
     // Send setfilter command. Format is
     // â€œC;SETFILTER;filter-priority,filter-class,filter-type, 
     //    filter-GUID;mask-priority,mask-class,mask-type,mask-GUIDâ€?
     cmd = "C;SETFILTER;0x00,";
-    cmd += "0x"+filter_class.toString(16) + ",";
-    cmd += "0x"+filter_type.toString(16) + ",";
+    cmd += "0x" + filter_class.toString(16) + ",";
+    cmd += "0x" + filter_type.toString(16) + ",";
     for (i=0;i<16;i++) {
-        cmd += "0x"+(filter_guid[i] & 255).toString(16);
+        cmd += "0x" + (this.filter_guid[i] & 255).toString(16);
         if (i<15) cmd += ":";   // No colon on last
     }
     cmd += ";0x00,";
-    cmd += "0x" + (mask_class & 255).toString(16) + ",";
-    cmd += "0x" + (mask_type & 255).toString(16) + ",";
+    cmd += "0x" + this.mask_class.toString(16) + ",";
+    cmd += "0x" + this.mask_type.toString(16) + ",";
     for (i=0;i<16;i++) {
-        cmd += "0x"+(mask_guid[i] & 255).toString(16);
+        cmd += "0x"+(this.mask_guid[i] & 255).toString(16);
         if (i<15) cmd += ":";   // No colon on last
     }
     
-    if (vscpws_debug) console.log("Set filter = "+ cmd);
+    if ( vscpws_debug ) console.log("Set filter = "+ cmd );
     
     // Set filter/mask on server
-    if (this.bConnected) this.socket_vscp.send(cmd);
+    if (this.bConnected) this.socket_vscp.send( cmd );
 }
 
 
@@ -5917,7 +5183,7 @@ vscpws_Event.prototype.onVSCPMessage = function(msg)
 				
     if ("+" == msgitems[0]){        // check for positive reply
         
-        if (vscpws_debug) console.log("Positive reply "+msg.data);
+        if (vscpws_debug) console.log("Positive reply " + msg.data);
         if ( null !== this.fncallbackresponse ) {
             this.fncallbackresponse.call( this, true, msgitems );                          
         }
@@ -6052,6 +5318,403 @@ vscpws_Event.prototype.sendEvent = function( vscphead,
     }
     
     // Send command
-    if (vscpws_debug) console.log(cmd);
-    this.socket_vscp.send(cmd);
+    if (vscpws_debug) console.log( cmd );
+    this.socket_vscp.send( cmd );
 }
+
+
+//-----------------------------------------------------------------------------
+// clrQueue
+//-----------------------------------------------------------------------------    
+vscpws_Event.prototype.clrQueue = function() 
+{
+	this.socket_vscp.send("C;" + "CLRQUEUE");
+}
+
+
+
+
+//*****************************************************************************
+//                             vscpws_variable
+//*****************************************************************************
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+// vscpws_variable
+//
+
+function vscpws_Variable( username,             // Username for websocket serever  
+                            passwordhash,       // Password hash for websocket
+                            serverurl,          // url to VSCP websocket i/f
+                            variablename,       // The variable to monitor (must exist)
+                            interval,           // Variable check interval in milliseconds
+                            fnCallback,         // function to call when value of variable is changed
+                                                // or to get results from operations.
+                            bAll )              // Call function for every read not just changes.                 
+{
+    // First set default parameter
+    this.username = username;
+    this.passwordhash = passwordhash;
+    this.monitorVariableName = variablename;
+    this.interval = interval;
+    this.fnCallback = (fnCallback && typeof(fnCallback) === "function") ? fnCallback : null;
+    this.bAll =  typeof bAll !== 'undefined' ? bAll : false;
+      
+    // Websocket for VSCP daemon communication
+    this.socket_vscp = null;
+    
+    // Flag for connected or unconnected state.
+    this.bConnected = false;
+    
+    // Unassigned variable value
+    this.value = "unassigned";
+    
+    // Set the instance name for the control
+    instanceName = "vscpws_variable_" + variablename;
+    
+    // move this to global scope
+    eval(instanceName + " = this;");
+        
+    // remember instance name
+    this.instanceName = instanceName;
+        
+    // Open the socket
+    this.socket_vscp = vscpws_openSocket(serverurl);
+    
+    if (null==this.socket_vscp ) {
+        alert("Could not open websocket to VSCP server!");
+    }
+       
+    // Bind events	
+    this.socket_vscp.onmessage = this.onVSCPMessage.bind(this);	
+    this.socket_vscp.onopen = this.onVSCPOpen.bind(this);
+    this.socket_vscp.onclose = this.onVSCPClose.bind(this);
+       
+    //retrieve instance name
+    this.getInstanceName = function() {
+       return this.instanceName;
+    }
+
+    //default property
+    this.toString = function() {
+       return this.getInstanceName();
+    }     
+}
+
+//-----------------------------------------------------------------------------
+// onVSCPOpen
+//-----------------------------------------------------------------------------
+
+vscpws_Variable.prototype.isOpen = function() 
+{
+    return this.bConnected;
+}
+
+//-----------------------------------------------------------------------------
+// onVSCPOpen
+//-----------------------------------------------------------------------------
+
+vscpws_Variable.prototype.onVSCPOpen = function() 
+{
+    if (this.elementId) document.getElementById(this.elementId).textContent = 
+            " undefined ";
+    if (vscpws_debug) console.log('Open VSCP websocket');
+    
+    // Start monitoring
+    this.SetInterval( this.interval );
+};
+
+//-----------------------------------------------------------------------------
+// onVSCPClose
+//-----------------------------------------------------------------------------
+
+vscpws_Variable.prototype.onVSCPClose = function() 
+{
+    if (this.elementId) document.getElementById(this.elementId).textContent = 
+            " websocket connection CLOSED ";
+    if (vscpws_debug) console.log('Close VSCP websocket');
+    this.bConnected = false;
+    this.SetInterval( 0 );
+};
+
+
+//-----------------------------------------------------------------------------
+// onVSCPMessage
+//-----------------------------------------------------------------------------
+// handle VSCP websocket incoming message/event.	
+vscpws_Variable.prototype.onVSCPMessage = function(msg) 
+{	 
+    if (vscpws_debug) console.log('onVSCPMessage - ' + this.instanceName + 
+                                    " " + msg.data);
+	
+    msgitems = msg.data.split(';');
+				
+    if ("+" == msgitems[0]){        // check for positive reply
+        
+        if (vscpws_debug) console.log( "Positive reply " + msgitems );
+        
+        respone = msgitems[0].split(";");
+        
+        if ( "AUTH0" == msgitems[1] ) {
+            var msg = "C;AUTH;" + this.username + ";" + 
+                    vscp_make_websocket_auth_hash( this.username, 
+                                                    this.passwordhash, 
+                                                    msgitems[2] );
+			this.socket_vscp.send(msg);
+        }
+        else if ( "AUTH1" == msgitems[1] ) {
+        
+            // We are authenticated and ready to go to work         
+            this.socket_vscp.send("C;" + "OPEN");
+
+        }
+        else if ( "OPEN" == msgitems[1] ) {
+            // Open confirmation => We are connected
+            this.bConnected = true;
+        }
+        else if ( "CLOSE" == msgitems[1] ) {
+            // Close confirmation => We are NOT connected
+            this.bConnected = false;
+        }
+        // Read a value for a variable
+        else if ( "READVAR" == msgitems[1]  ){
+            if ( null !== this.fnChange ) {
+                if ( this.bAll ) {
+                    this.fnCallback.call( this, true, msgitems[2], msgitems );                         
+                }
+                else {
+                    // Check if value has changed 
+                    if ( this.value != msgitems[3] ) {
+                        this.fnCallback.call( this, true, msgitems[3], msgitems );  
+                    }
+                }
+            }
+        }
+        // Write a value for a variable. Create if not existing.
+        else if ( "WRITEVAR" == msgitems[1]  ){
+            if ( null !== this.fnCallback ) {
+                this.fnCallback.call( this, true, msgitems[1], msgitems );  
+            }
+        }
+        // Create a variable
+        else if ( "CREATEVAR" == msgitems[1]  ){
+            if ( null !== this.fnCallback ) {
+                this.fnCallback.call( this, true, msgitems[1], msgitems );  
+            }
+        }
+        // Set variable to it's default value
+        else if ( "RESETVAR" == msgitems[1]  ){
+            if ( null !== this.fnCallback ) {
+                this.fnCallback.call( this, true, msgitems[1], msgitems );  
+            }
+        }
+        // Remove/delete a variable
+        else if ( "REMOVEVAR" == msgitems[1]  ){
+            if ( null !== this.fnCallback ) {
+                this.fnCallback.call( this, true, msgitems[1], msgitems );  
+            }
+        }
+        // Get length of variable
+        else if ( "LENGTHVAR" == msgitems[1]  ){
+            if ( null !== this.fnCallback ) {
+                this.fnCallback.call( this, true, msgitems[1], msgitems );  
+            }
+        }
+        // Get last change date+time for variable
+        else if ( "LASTCHANGEVAR" == msgitems[1]  ){
+            if ( null !== this.fnCallback ) {
+                this.fnCallback.call( this, true, msgitems[1], msgitems );  
+            }
+        }
+        // List all defined variables
+        else if ( "LISTVAR" == msgitems[1]  ){
+            if ( null !== this.fnCallback ) {
+                this.fnCallback.call( this, true, msgitems[1], msgitems );  
+            }
+        }
+        // Save persistent variables
+        else if ( "SAVEVAR" == msgitems[1]  ){
+            if ( null !== this.fnCallback ) {
+                this.fnCallback.call( this, true, msgitems[1], msgitems );  
+            }
+        }
+        
+    }
+    else if ("-" == msgitems[0]){   // Check for negative reply
+        if (vscpws_debug) console.log("vscpws_variable: Negative reply " + msg.data);
+        if ( null !== this.fnCallback ) {
+            this.fnCallback.call( this, false, msgitems[1], msgitems );  
+        }
+    }
+    
+}
+
+//-----------------------------------------------------------------------------
+// openConnection
+//-----------------------------------------------------------------------------
+// Open/close event traffic	
+vscpws_Variable.prototype.openConnection = function() 
+{
+	this.socket_vscp.send("C;" + "open");
+}
+    
+//-----------------------------------------------------------------------------
+// closeConnection
+//-----------------------------------------------------------------------------    
+vscpws_Variable.prototype.closeConnection = function() 
+{
+	this.socket_vscp.send("C;" + "close");
+}
+
+//-----------------------------------------------------------------------------
+// SetInterval
+//-----------------------------------------------------------------------------
+
+vscpws_Variable.prototype.SetInterval = function(interval) 
+{
+    if ( 0 == interval  ) {
+        clearInterval( this.variableTimer );
+    }
+    else {
+        // First set default parameter
+        interval = typeof interval !== 'undefined' ? interval : 1000;
+        this.monitorInterval = interval;
+    
+        var t = this;
+        this.variableTimer = 
+            setInterval(function(){
+                        t.time4VariableRead(
+                            t.monitorVariableName,t.socket_vscp);},interval);
+    }
+}
+
+//-----------------------------------------------------------------------------
+// time4VariableRead
+//-----------------------------------------------------------------------------    
+vscpws_Variable.prototype.time4VariableRead = function(m,s) 
+{
+    var cmd;
+    
+    cmd = "C;READVAR;" + this.monitorVariableName;
+	this.socket_vscp.send(cmd);
+    if (vscpws_debug) console.log("time4VariableRead - " + cmd);
+}
+
+
+//-----------------------------------------------------------------------------
+// writeVariable
+//-----------------------------------------------------------------------------    
+vscpws_Variable.prototype.writeVariable = function( name, value ) 
+{
+    var cmd;
+    
+    var localPersistence =  typeof persistence !== 'undefined' ? persistence : true;
+    cmd = "C;WRITEVAR;" + name + ";" + value;
+	this.socket_vscp.send(cmd);
+    
+    if (vscpws_debug) console.log("writeVariable" + cmd);
+}
+
+
+
+//-----------------------------------------------------------------------------
+// createVariable
+//-----------------------------------------------------------------------------    
+vscpws_Variable.prototype.createVariable = function( name, type, value, persistence ) 
+{
+    var cmd;
+    
+    var localPersistence =  typeof persistence !== 'undefined' ? persistence : true;
+    cmd = "C;CREATEVAR;" + name + ";" + type + ";" + localPersistence + ";" + value;
+	this.socket_vscp.send(cmd);
+    
+    if (vscpws_debug) console.log("createVariable" + cmd);
+}
+
+
+
+//-----------------------------------------------------------------------------
+// resetVariable
+//-----------------------------------------------------------------------------    
+vscpws_Variable.prototype.resetVariable = function(name) 
+{
+    var cmd;
+    
+    cmd = "C;RESETVAR;" + name;
+	this.socket_vscp.send(cmd);
+    
+    if (vscpws_debug) console.log("resetVariable" + cmd);
+}
+
+//-----------------------------------------------------------------------------
+// removeVariable
+//-----------------------------------------------------------------------------    
+vscpws_Variable.prototype.removeVariable = function(name) 
+{
+    var cmd;
+    
+    cmd = "C;REMOVEVAR;" + name;
+	this.socket_vscp.send(cmd);
+    
+    if (vscpws_debug) console.log("removeVariable" + cmd);
+}
+
+
+
+//-----------------------------------------------------------------------------
+// lengthVariable
+//-----------------------------------------------------------------------------    
+vscpws_Variable.prototype.lengthVariable = function(name) 
+{
+    var cmd;
+    
+    cmd = "C;LENGTHVAR;" + name;
+	this.socket_vscp.send(cmd);
+    
+    if (vscpws_debug) console.log("lengthVariable" + cmd);
+}
+
+//-----------------------------------------------------------------------------
+// lastchangeVariable
+//-----------------------------------------------------------------------------    
+vscpws_Variable.prototype.lastchangeVariable = function(name) 
+{
+    var cmd;
+    
+    cmd = "C;LASTCHANGEVAR;" + name;
+	this.socket_vscp.send(cmd);
+    
+    if (vscpws_debug) console.log("lastchangeVariable" + cmd);
+}
+
+//-----------------------------------------------------------------------------
+// listVariable
+//-----------------------------------------------------------------------------    
+vscpws_Variable.prototype.listVariable = function(name) 
+{
+    var cmd;
+    
+    cmd = "C;LISTVAR;" + name;
+	this.socket_vscp.send(cmd);
+    
+    if (vscpws_debug) console.log("listVariable" + cmd);
+}
+
+//-----------------------------------------------------------------------------
+// saveVariable
+//-----------------------------------------------------------------------------    
+vscpws_Variable.prototype.saveVariable = function(name) 
+{
+    var cmd;
+    
+    cmd = "C;SAVEVAR;" + name;
+	this.socket_vscp.send(cmd);
+    
+    if (vscpws_debug) console.log("saveVariable" + cmd);
+}
+

@@ -88,8 +88,9 @@
    </div>
    <div class="First_Floor_Area_Bedroom group_Sensors">
     <input class="image_menu_center_second" type="image" id="OneFirstBedroomTemeratureIndicator_Image_ID" src="../lib/widgets/measurement/temprature.png"/>
-    <p class="imgtxt_center" id="OneFirstBedroomTemeratureIndicator_Remote_Txt_ID">
-     <span class="spantxt_center group_Sensors_Txt" type="text">Bedroom : </span>No Data From Sensor</p>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Sensors_Txt" type="text">Bedroom : </span>Temerature Indicator : <span class="spantxt_center" type="text" id="OneFirstBedroomTemeratureIndicator_Remote_Txt_ID">No Data From Sensor</span>
+    </p>
     <hr/>
    </div>
    <div class="First_Floor_Area_Bedroom group_Lights">
@@ -122,6 +123,15 @@
     </p>
     <hr/>
    </div>
+   <div class="First_Floor_Area_Bedroom group_Lights">
+    <input class="image_menu_center_second" type="range" value="0" id="OneFirstBedroomDimmerTube_Image_ID" min="-100" step="1" max="100"/>
+    <span class="spantxt_center" type="text" id="OneFirstBedroomDimmerTube_Local_Txt_ID_Fix">Dimmer_Tube Value : </span>
+    <span class="spantxt_center" type="text" id="OneFirstBedroomDimmerTube_Local_Txt_ID">0</span>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Bedroom : </span>Dimmer_Tube : <span class="spantxt_center" type="text" id="OneFirstBedroomDimmerTube_Remote_Txt_ID"> Disconnected</span>
+    </p>
+    <hr/>
+   </div>
    <div class="First_Floor_Area_Balcony group_Lights">
     <input class="image_menu_center_first" type="image" id="OneFirstBalconyBulb_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
     <p class="imgtxt_center">
@@ -148,14 +158,16 @@
    </div>
    <div class="First_Floor_Area_DrawingRoom group_Sensors">
     <input class="image_menu_center_second" type="image" id="OneFirstDrawingRoomTemperatureSensor_Image_ID" src="../lib/widgets/measurement/intensity_of_light.jpg"/>
-    <p class="imgtxt_center" id="OneFirstDrawingRoomTemperatureSensor_Remote_Txt_ID">
-     <span class="spantxt_center group_Sensors_Txt" type="text">DrawingRoom : </span>No Data From Sensor</p>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Sensors_Txt" type="text">DrawingRoom : </span>Temperature Sensor : <span class="spantxt_center" type="text" id="OneFirstDrawingRoomTemperatureSensor_Remote_Txt_ID">No Data From Sensor</span>
+    </p>
     <hr/>
    </div>
    <div class="First_Floor_Area_DrawingRoom group_Sensors">
     <input class="image_menu_center_second" type="image" id="OneFirstDrawingRoomHeater_Image_ID" src="../lib/widgets/measurement/length.jpg"/>
-    <p class="imgtxt_center" id="OneFirstDrawingRoomHeater_Remote_Txt_ID">
-     <span class="spantxt_center group_Sensors_Txt" type="text">DrawingRoom : </span>No Data From Sensor</p>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Sensors_Txt" type="text">DrawingRoom : </span>Heater : <span class="spantxt_center" type="text" id="OneFirstDrawingRoomHeater_Remote_Txt_ID">No Data From Sensor</span>
+    </p>
     <hr/>
    </div>
    <div class="First_Floor_Area_DrawingRoom group_Lights">

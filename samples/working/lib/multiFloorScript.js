@@ -16,13 +16,13 @@ function doc_onload()
    // hide group & floor text
    hide_group_floor_txt_class();
    // Create the Socket for I/O devices
-   // -- create_device_socket(Multi_Floor_Device_Array);
+   create_device_socket(Multi_Floor_Device_Array);
    // Create the Socket for Measurement  devices
-   // -- create_measurement_device_socket(Multi_Floor_Sensor_Device_Array);
+   create_measurement_device_socket(Multi_Floor_Sensor_Device_Array);
    //create socket for slider
-   // -- create_slider_socket(Multi_Floor_Variable_Slider_Device_Array);
+   create_slider_socket(Multi_Floor_Variable_Slider_Device_Array);
    //create socket for variable button
-   // -- create_Variable_Button_socket(Multi_Floor_Variable_Switch_Device_Array);
+   create_Variable_Button_socket(Multi_Floor_Variable_Switch_Device_Array);
 }
 
 function create_measurement_device_socket( Device_Array )
@@ -31,7 +31,7 @@ function create_measurement_device_socket( Device_Array )
 
     for (var i = 0; i < Device_Array.length; i++)
     {
-        var btn = new vscpws_simpleTextEvent( Device_Array[i].userName,
+        var btn = new vscpws_simpleTextEvent_mod( Device_Array[i].userName,
                                              Device_Array[i].password,
                                              Device_Array[i].url,           // url to VSCP websocket i/f
                                              Device_Array[i].id,              // Where it should be placed
@@ -97,7 +97,7 @@ function create_slider_socket( Slider_Array )
         btn.setTransmittEvent(Slider_Array[i].TxEventvscpclass,Slider_Array[i].TxEventvscptype,Slider_Array[i].TxEventdata,Slider_Array[i].TxEventguid);
         btn.setTransmittZone(Slider_Array[i].TxEventindex,Slider_Array[i].TxEventzone, Slider_Array[i].TxEventsubzone);
 
-        btn.setReceiveEvent(Slider_Array[i].RxEventvscpclass,Slider_Array[i].onRxEventvscptype,Slider_Array[i].RxEventdata,Slider_Array[i].RxEventguid);
+        btn.setReceiveEvent(Slider_Array[i].RxEventvscpclass,Slider_Array[i].RxEventvscptype,Slider_Array[i].RxEventdata,Slider_Array[i].RxEventguid);
         btn.setReceiveZone(Slider_Array[i].RxEventindex,Slider_Array[i].RxEventzone, Slider_Array[i].RxEventsubzone);
 
         btn.setMonitorVariable(Slider_Array[i].VariableName,1000,bOnce);

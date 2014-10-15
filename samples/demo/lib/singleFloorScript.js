@@ -21,21 +21,24 @@ function doc_onload(page_type)
    // Show widget on load
    Central_widget_visible_onload();
    // Create the Socket
-   //---create_device_socket(Single_Floor_Device_Array);
-   // Create the Socket for Measurement  devices
-   //---create_measurement_device_socket(Single_Floor_Sensor_Device_Array);
+  //create_device_socket(Single_Floor_Device_Array);
    //create socket for slider
-   //---create_slider_socket(Single_Floor_Variable_Slider_Device_Array);
+  //create_slider_socket(Single_Floor_Variable_Slider_Device_Array);
    //create socket for variable button
-   //---create_Variable_Button_socket(Single_Floor_Variable_Switch_Device_Array);
+  //create_Variable_Button_socket(Single_Floor_Variable_Switch_Device_Array);
+   // Create the Socket for Measurement  devices
+   //create_measurement_device_socket(Single_Floor_Sensor_Device_Array);
 }
 
 function create_measurement_device_socket( Device_Array )
 {
+    var bOnce = true;
 
     for (var i = 0; i < Device_Array.length; i++)
     {
-        var btn = new vscpws_simpleTextEvent( Device_Array[i].url,           // url to VSCP websocket i/f
+        var btn = new vscpws_simpleTextEvent_mod( Device_Array[i].userName,
+                                             Device_Array[i].password,
+                                             Device_Array[i].url,           // url to VSCP websocket i/f
                                              Device_Array[i].id,              // Where it should be placed
                                              Device_Array[i].vscpclass,       // Event class 10/60/65/15
                                              Device_Array[i].vscptype,        // Evet type
@@ -46,16 +49,22 @@ function create_measurement_device_socket( Device_Array )
                                              Device_Array[i].fncallback );     // If set function to call
                                                                                // when data arraives
           btn.setExtraParameters(Device_Array[i].sensorIndex, Device_Array[i].sensorZone, Device_Array[i].sensorSubzone);
+
+         btn.setMonitorVariable(Device_Array[i].VariableName,1000,bOnce);
     }
 
 }
 
 function create_device_socket( Device_Array )
 {
+    var bOnce = true;
 
-    for (var i = 0; i < Device_Array.length; i++)
+    //for (var i = 0; i < 3; i++)
+    for (var i = 0; i < Device_Array.length; i++)    
     {
-        var btn = new vscpws_stateButton_mod( Device_Array[i].url,  // url
+        var btn = new vscpws_stateButton_mod( Device_Array[i].userName,
+                                             Device_Array[i].password,
+                                      Device_Array[i].url,  // url
                                       Device_Array[i].canvasName,    // canvas for button
                                       Device_Array[i].bLocal,            // No local state change
                                       Device_Array[i].btnType,            // Button type
@@ -71,7 +80,7 @@ function create_device_socket( Device_Array )
         btn.setOffReceiveEvent(Device_Array[i].offRxEventvscpclass,Device_Array[i].offRxEventvscptype,Device_Array[i].offRxEventdata,Device_Array[i].offRxEventguid);
         btn.setOffReceiveZone(Device_Array[i].offRxEventindex,Device_Array[i].offRxEventzone, Device_Array[i].offRxEventsubzone);
 
-//        btn.setMonitorVariable(Device_Array[i].VariableName);
+        btn.setMonitorVariable(Device_Array[i].VariableName,1000,bOnce);
 
     }
 
@@ -79,10 +88,13 @@ function create_device_socket( Device_Array )
 
 function create_slider_socket( Slider_Array )
 {
+    var bOnce = true;
 
     for (var i = 0; i < Slider_Array.length; i++)
     {
-        var btn = new vscpws_slider( Slider_Array[i].url,               // url
+        var btn = new vscpws_slider( Slider_Array[i].userName,
+                                    Slider_Array[i].password,
+                                Slider_Array[i].url,               // url
                                       Slider_Array[i].canvasName,            // canvas for slider
                                       Slider_Array[i].canvasLocalTxtName,    // Slider value
                                       Slider_Array[i].canvasRemoteTxtName);  // Remote device value
@@ -90,10 +102,10 @@ function create_slider_socket( Slider_Array )
         btn.setTransmittEvent(Slider_Array[i].TxEventvscpclass,Slider_Array[i].TxEventvscptype,Slider_Array[i].TxEventdata,Slider_Array[i].TxEventguid);
         btn.setTransmittZone(Slider_Array[i].TxEventindex,Slider_Array[i].TxEventzone, Slider_Array[i].TxEventsubzone);
 
-        btn.setReceiveEvent(Slider_Array[i].RxEventvscpclass,Slider_Array[i].onRxEventvscptype,Slider_Array[i].RxEventdata,Slider_Array[i].RxEventguid);
+        btn.setReceiveEvent(Slider_Array[i].RxEventvscpclass,Slider_Array[i].RxEventvscptype,Slider_Array[i].RxEventdata,Slider_Array[i].RxEventguid);
         btn.setReceiveZone(Slider_Array[i].RxEventindex,Slider_Array[i].RxEventzone, Slider_Array[i].RxEventsubzone);
 
-        //btn.setMonitorVariable(Slider_Array[i].VariableName);
+        btn.setMonitorVariable(Slider_Array[i].VariableName,1000,bOnce);
 
     }
 
@@ -104,10 +116,13 @@ function create_slider_socket( Slider_Array )
 //create socket for variable button
 function create_Variable_Button_socket( Variable_Button_Array )
 {
+    var bOnce = true;
 
     for (var i = 0; i < Variable_Button_Array.length; i++)
     {
-        var btn = new vscpws_variableButton( Variable_Button_Array[i].url,               // url
+        var btn = new vscpws_variableButton(  Variable_Button_Array[i].userName,
+                                            Variable_Button_Array[i].password,
+                                       Variable_Button_Array[i].url,               // url
                                       Variable_Button_Array[i].canvasIncName,            // Inc buton ID
                                       Variable_Button_Array[i].canvasDecName,            // Dec buton ID
                                       Variable_Button_Array[i].canvasLocalTxtName,       // local value ID
@@ -119,7 +134,7 @@ function create_Variable_Button_socket( Variable_Button_Array )
         btn.setReceiveEvent(Variable_Button_Array[i].RxEventvscpclass,Variable_Button_Array[i].onRxEventvscptype,Variable_Button_Array[i].RxEventdata,Variable_Button_Array[i].RxEventguid);
         btn.setReceiveZone(Variable_Button_Array[i].RxEventzone, Variable_Button_Array[i].RxEventsubzone);
 
-        //btn.setMonitorVariable(Variable_Button_Array[i].VariableName);
+        btn.setMonitorVariable(Variable_Button_Array[i].VariableName,1000,bOnce);
 
     }
 
