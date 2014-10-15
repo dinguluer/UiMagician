@@ -1,0 +1,1 @@
+NSIS script to produce Exe file for windows.
