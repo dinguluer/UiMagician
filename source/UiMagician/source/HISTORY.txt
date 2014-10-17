@@ -1,5 +1,5 @@
-readme for release 1.0.0
-========================
+readme for release 1.0.0 Jyot
+=================================
 
 - This release use to generate Html app.
 - Widget completed Normal button, slider buttons, variable buttons& Sensors.
