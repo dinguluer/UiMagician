@@ -1,3 +1,9 @@
+/*
+** Author : Dinesh Guleria
+** Date : 17/10/2014
+** Note : This library is designed taking into refrence Ake Hedman, vscpws.js lib
+*/
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // vscpws_slider
@@ -83,8 +89,14 @@ function vscpws_slider( username,           // Username for websocket serever
 
     this.sliderCanvas.onchange = this.updateSlider.bind(this);
 
+    // set event send by gui value to false
+    this.eventSend = 0;
+
     // Set default events
     this.setTransmittEvent();
+
+    //set device details
+    this.setDeviceDetails();
 
     //retreive instance name
     this.getInstanceName = function() {
@@ -97,6 +109,33 @@ function vscpws_slider( username,           // Username for websocket serever
     }
 
 }
+
+//-----------------------------------------------------------------------------
+// setDeviceDetails
+//-----------------------------------------------------------------------------
+
+vscpws_slider.prototype.setDeviceDetails = function(device,
+                                                                room,
+                                                                 floor)
+{
+
+   // floor = typeof floor !== 'undefined' ? floor : "";
+    room = typeof room !== 'undefined' ? room : "";
+    device = typeof device !== 'undefined' ? device : "";
+
+    this.floorName = floor;
+    this.roomName = room;
+    this.deviceName = device;
+
+    if(typeof floor !== 'undefined')
+    {
+      this.infoMessage = floor + " : " + room + " : " + device + " : Level : " ;
+    }
+    else  // i.e for single floor house
+    {
+      this.infoMessage = room + " : " + device + " : Level : " ;
+    }
+};
 
 //-----------------------------------------------------------------------------
 // setTransmittEvent
@@ -215,6 +254,7 @@ vscpws_slider.prototype.updateSlider = function()
     //alert("hell0");
     this.sliderTxtCanvas.innerHTML = this.sliderCanvas.value;
 
+    this.eventSend = 1;
     //send vscp event
     this.setValue(this.sliderCanvas.value);
 }
@@ -612,6 +652,12 @@ vscpws_slider.prototype.onVSCPMessage = function(msg)
 
             //set the remote text recived data
             this.txtCanvas.innerHTML = this.sliderRemoteValue;
+
+            var remoteValue = this.sliderRemoteValue.toString();
+            var message = this.infoMessage + remoteValue.toString();
+            // set global data structure
+            setInfoData(this.eventSend,message);
+            this.eventSend = 0;
 
             if (vscpws_debug) console.log("****** Data received Correctly ******");
         }

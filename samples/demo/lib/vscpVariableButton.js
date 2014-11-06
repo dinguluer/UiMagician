@@ -1,3 +1,8 @@
+/*
+** Author : Dinesh Guleria
+** Date : 17/10/2014
+** Note : This library is designed taking into refrence Ake Hedman, vscpws.js lib
+*/
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -90,8 +95,14 @@ function vscpws_variableButton( username,           // Username for websocket se
     this.incVariableButtonCanvas.onmousedown = this.onIncVariableButtonMouseDown.bind(this);
     this.decVariableButtonCanvas.onmousedown = this.onDecVariableButtonMouseDown.bind(this);
 
+    // set event send by gui value to false
+    this.eventSend = 0;
+
     // Set default events
     this.setTransmittEvent();
+
+    //set device details
+    this.setDeviceDetails();
 
     //retreive instance name
     this.getInstanceName = function() {
@@ -104,6 +115,35 @@ function vscpws_variableButton( username,           // Username for websocket se
     }
 
 }
+
+
+//-----------------------------------------------------------------------------
+// setDeviceDetails
+//-----------------------------------------------------------------------------
+
+vscpws_variableButton.prototype.setDeviceDetails = function(device,
+                                                                room,
+                                                                 floor)
+{
+
+   // floor = typeof floor !== 'undefined' ? floor : "";
+    room = typeof room !== 'undefined' ? room : "";
+    device = typeof device !== 'undefined' ? device : "";
+
+    this.floorName = floor;
+    this.roomName = room;
+    this.deviceName = device;
+
+    if(typeof floor !== 'undefined')
+    {
+      this.infoMessage = floor + " : " + room + " : " + device + " : Level : " ;
+    }
+    else  // i.e for single floor house
+    {
+      this.infoMessage = room + " : " + device + " : Level : " ;
+    }
+};
+
 
 //-----------------------------------------------------------------------------
 // setTransmittEvent
@@ -193,6 +233,7 @@ vscpws_variableButton.prototype.onDecVariableButtonMouseDown = function()
         this.VariableButtonValue--;
         this.variableButtonTxtCanvas.innerHTML = this.VariableButtonValue;
 
+        this.eventSend = 1;
         //send vscp event
         this.setValue(this.VariableButtonValue);
     }
@@ -211,6 +252,7 @@ vscpws_variableButton.prototype.onIncVariableButtonMouseDown = function()
         this.VariableButtonValue++;
         this.variableButtonTxtCanvas.innerHTML = this.VariableButtonValue;
 
+        this.eventSend = 1;
         //send vscp event
         this.setValue(this.VariableButtonValue);
     }
@@ -446,6 +488,12 @@ vscpws_variableButton.prototype.onVSCPMessage = function(msg)
 
             //set the remote text recived data
             this.variableButtonRemoteTxtCanvas.innerHTML = this.sliderRemoteValue;
+
+            var remoteValue = this.sliderRemoteValue.toString();
+            var message = this.infoMessage + remoteValue.toString();
+            // set global data structure
+            setInfoData(this.eventSend,message);
+            this.eventSend = 0;
 
             if (vscpws_debug) console.log("****** Data received Correctly ******");
         }

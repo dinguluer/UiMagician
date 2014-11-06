@@ -28,13 +28,13 @@ function doc_onload(page_type)
    //alert(Info_details.info_text[99].direction);
 
    // Create the Socket
-  create_device_socket(Single_Floor_Device_Array);
+  //create_device_socket(Single_Floor_Device_Array);
    //create socket for slider
-  create_slider_socket(Single_Floor_Variable_Slider_Device_Array);
+  //create_slider_socket(Single_Floor_Variable_Slider_Device_Array);
    //create socket for variable button
-  create_Variable_Button_socket(Single_Floor_Variable_Switch_Device_Array);
+  //create_Variable_Button_socket(Single_Floor_Variable_Switch_Device_Array);
    // Create the Socket for Measurement  devices
-  create_measurement_device_socket(Single_Floor_Sensor_Device_Array);
+  //create_measurement_device_socket(Single_Floor_Sensor_Device_Array);
 }
 
 function create_measurement_device_socket( Device_Array )

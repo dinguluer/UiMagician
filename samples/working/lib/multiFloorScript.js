@@ -15,7 +15,14 @@ function doc_onload()
    Central_widget_visible_onload();
    // hide group & floor text
    hide_group_floor_txt_class();
-   // Create the Socket for I/O devices
+
+    // Initialise the info data structure
+    info_init();
+
+    //alert(Info_details.info_text[50].direction);
+    //alert(Info_details.info_text[99].direction);
+
+   //  the Socket for I/O devices
    create_device_socket(Multi_Floor_Device_Array);
    // Create the Socket for Measurement  devices
    create_measurement_device_socket(Multi_Floor_Sensor_Device_Array);
@@ -64,6 +71,10 @@ function create_device_socket( Device_Array )
                                       Device_Array[i].btnType,            // Button type
                                       Device_Array[i].bNoState);
 
+        //set device details
+        btn.setDeviceDetails(Device_Array[i].deviceName,Device_Array[i].roomName,Device_Array[i].floorName);
+        //btn.setDeviceDetails(Device_Array[i].deviceName,Device_Array[i].roomName);
+
         btn.setOnTransmittEvent(Device_Array[i].onTxEventvscpclass,Device_Array[i].onTxEventvscptype,Device_Array[i].onTxEventdata,Device_Array[i].onTxEventguid);
         btn.setOnTransmittZone(Device_Array[i].onTxEventindex,Device_Array[i].onTxEventzone, Device_Array[i].onTxEventsubzone);
         btn.setOffTransmittEvent(Device_Array[i].offTxEventvscpclass,Device_Array[i].offTxEventvscptype,Device_Array[i].offTxEventdata,Device_Array[i].offTxEventguid);
@@ -94,6 +105,10 @@ function create_slider_socket( Slider_Array )
                                       Slider_Array[i].canvasLocalTxtName,    // Slider value
                                       Slider_Array[i].canvasRemoteTxtName);  // Remote device value
 
+        //set device details
+        btn.setDeviceDetails(Slider_Array[i].deviceName,Slider_Array[i].roomName,Slider_Array[i].floorName);
+        //btn.setDeviceDetails(Slider_Array[i].deviceName,Slider_Array[i].roomName);
+
         btn.setTransmittEvent(Slider_Array[i].TxEventvscpclass,Slider_Array[i].TxEventvscptype,Slider_Array[i].TxEventdata,Slider_Array[i].TxEventguid);
         btn.setTransmittZone(Slider_Array[i].TxEventindex,Slider_Array[i].TxEventzone, Slider_Array[i].TxEventsubzone);
 
@@ -119,6 +134,10 @@ function create_Variable_Button_socket( Variable_Button_Array )
                                       Variable_Button_Array[i].canvasDecName,            // Dec buton ID
                                       Variable_Button_Array[i].canvasLocalTxtName,       // local value ID
                                       Variable_Button_Array[i].canvasRemoteTxtName);     // Remote device value
+
+        //set device details
+        btn.setDeviceDetails(Variable_Button_Array[i].deviceName,Variable_Button_Array[i].roomName,Variable_Button_Array[i].floorName);
+        //btn.setDeviceDetails(Variable_Button_Array[i].deviceName,Variable_Button_Array[i].roomName);
 
         btn.setTransmittEvent(Variable_Button_Array[i].TxEventvscpclass,Variable_Button_Array[i].TxEventvscptype,Variable_Button_Array[i].TxEventdata,Variable_Button_Array[i].TxEventguid);
         btn.setTransmittZone(Variable_Button_Array[i].TxEventzone, Variable_Button_Array[i].TxEventsubzone);
@@ -420,6 +439,62 @@ function show_area(parameter, parameter_image_array, parameter_image, parameter_
    // hide group & floor text
    hide_group_floor_txt_class();
 
+}
+
+function show_info(parameter_central,parameter_image_array,parameter_Hr_array,parameter_Hr)
+{
+    //Show area on the scrollable div
+    // set img src
+    $(parameter_image_array).each(function(index, element) {
+            $("#" +element).attr('src', '../lib/widgets/room/room_unselected.png');
+      });
+
+    // Change the color of horizontal line
+    $(parameter_Hr_array).each(function(index, element) {
+          if(element != parameter_Hr )
+          {
+            //alert("hellooooo");
+            $("#" +element).css('background-color', '#DDDFED');
+
+          }
+          else
+          {
+            //alert("he");
+            $("#" + element).css('background-color', '#00FF00');
+          }
+
+      });
+
+
+  //Hide area on the menu div
+  $(floor_area_id).each(function(index, element) {
+          $("." + element).hide();
+    });
+
+    // Show elements in central area
+    $(central_Area_widgets_id).each(function(index, element) {
+          if(element != parameter_central )
+          {
+            $("." + element).hide();
+
+          }
+          else
+          {
+            $("." + element).show();
+          }
+
+      });
+
+   // hide group & floor text
+   hide_group_floor_txt_class();
+
+
+    // change info div content
+    infoDisplay(parameter_central);  //------------->
+
+    //hide unused info
+    infoShow();
+   
 }
 
 function show_Central_widget(parameter,parameter_image_array, parameter_image)

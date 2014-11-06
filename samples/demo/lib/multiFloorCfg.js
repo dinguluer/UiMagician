@@ -3,7 +3,7 @@ var div_class_scrollable_Image = [
 ];
 
 var div_class_scrollable_Hr = [
-"First_Floor_Hr","Two_Floor_Hr","All_Devices_Hr"
+"First_Floor_Hr","Two_Floor_Hr","All_Devices_Hr","Info_Hr"
 ];
 
 var floor_area_id = [
@@ -40,6 +40,6 @@ var central_Area_Group_Floor_txt_class = [
 
 var central_Area_widgets_id = [
 "First_Floor_Area_Bedroom","First_Floor_Area_Balcony","First_Floor_Area_Bedroom1","First_Floor_Area_Kitchen","Two_Floor_Area_DrawingRoom",
-"Two_Floor_Area_Toilet","Two_Floor_Area_Balcony1","Two_Floor_Area_Loby"
+"Two_Floor_Area_Toilet","Two_Floor_Area_Balcony1","Two_Floor_Area_Loby","info_text"
 ];
 
