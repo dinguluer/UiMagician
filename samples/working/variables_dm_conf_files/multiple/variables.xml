@@ -1,122 +1,97 @@
-<?xml version="1.0" encoding="utf-8" ?>
-
 <persistent>
-
-  <variable type="bool">
-    <name>ONEFIRSTBEDROOMBULB_VAR</name>
-    <note>A boolean Switch variable</note>
-    <value>false</value>
-  </variable>
-
-  <variable type="bool">
-    <name>ONEFIRSTBEDROOMTUBELIGHT_VAR</name>
-    <note>A boolean Switch variable</note>
-    <value>false</value>
-  </variable>
-
-  <variable type="bool">
-    <name>ONEFIRSTBEDROOMTEMPLELIGHT_VAR</name>
-    <note>A boolean Switch variable</note>
-    <value>false</value>
-  </variable>
-
-  <variable type="bool">
-    <name>ONEFIRSTBALCONYBULB_VAR</name>
-    <note>A boolean Switch variable</note>
-    <value>false</value>
-  </variable>
-
-  <variable type="bool">
-    <name>ONEFIRSTBEDROOM1BULB_VAR</name>
-    <note>A boolean Switch variable</note>
-    <value>false</value>
-  </variable>
-
-  <variable type="bool">
-    <name>ONEFIRSTKITCHENFAN_VAR</name>
-    <note>A boolean Switch variable</note>
-    <value>false</value>
-  </variable>
-
-  <variable type="bool">
-    <name>ONETWODRAWINGROOMFAN_VAR</name>
-    <note>A boolean Switch variable</note>
-    <value>false</value>
-  </variable>
-
-  <variable type="data">
-    <name>ONETWODRAWINGROOMTEMPERATURESENSOR_VAR</name>
-    <note>This is an sensor Measurement Data variable</note>
-    <value>0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
-</value>
-  </variable>
-
-  <variable type="data">
-    <name>ONETWODRAWINGROOMHEATER_VAR</name>
-    <note>This is an sensor Measurement Data variable</note>
-    <value>0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00
-</value>
-  </variable>
-
-  <variable type="bool">
-    <name>ONETWODRAWINGROOMLED_VAR</name>
-    <note>A boolean Switch variable</note>
-    <value>false</value>
-  </variable>
-
-  <variable type="bool">
-    <name>ONETWODRAWINGROOMTAP_VAR</name>
-    <note>A boolean Switch variable</note>
-    <value>false</value>
-  </variable>
-
-  <variable type="bool">
-    <name>ONETWODRAWINGROOMPRESS_VAR</name>
-    <note>A boolean Switch variable</note>
-    <value>false</value>
-  </variable>
-
-  <variable type="bool">
-    <name>ONETWOTOILETBULB_VAR</name>
-    <note>A boolean Switch variable</note>
-    <value>false</value>
-  </variable>
-
-  <variable type="bool">
-    <name>ONETWOBALCONY1PRESS_VAR</name>
-    <note>A boolean Switch variable</note>
-    <value>false</value>
-  </variable>
-
-  <variable type="bool">
-    <name>ONETWOLOBYOVEN_VAR</name>
-    <note>A boolean Switch variable</note>
-    <value>false</value>
-  </variable>
-
-  <variable type="data">
-    <name>ONEFIRSTBEDROOMTEMERATUREINDICATOR_VAR</name>
-    <note></note>
-    <value>0x68,0x14</value>
-  </variable>
-
-  <variable type="integer">
-    <name>ONEFIRSTBEDROOMBULBSTEPPABLE_VAR</name>
-    <note></note>
-    <value>32</value>
-  </variable>
-
-  <variable type="integer">
-    <name>ONEFIRSTBEDROOMDIMMER_VAR</name>
-    <note></note>
-    <value>20</value>
-  </variable>
-
-  <variable type="data">
-    <name>ONEFIRSTBEDROOMDIMMERTUBE_VAR</name>
-    <note></note>
-    <value>0x00,0x00,0x00,0xFF,0xFF,0xFF,0xFF,0xB2
-</value>
-  </variable>
-
+ <variable type="bool">
+  <name>OneFirstBedroombulb_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="data">
+  <name>OneFirstBedroomTemeratureIndicator_VAR</name>
+  <value>0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00</value>
+  <note>This is an sensor Measurement Data variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneFirstBedroomTubeLight_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneFirstBedroomTempleLight_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="integer">
+  <name>OneFirstBedroomDimmer_VAR</name>
+  <value>0x00</value>
+  <note>This is an slider variable</note>
+ </variable>
+ <variable type="integer">
+  <name>OneFirstBedroomBulbSteppable_VAR</name>
+  <value>0x00</value>
+  <note>This is an slider/variable button variable</note>
+ </variable>
+ <variable type="data">
+  <name>OneFirstBedroomDimmerTube_VAR</name>
+  <value>0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00</value>
+  <note>This is an slider variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneFirstBalconyBulb_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneFirstBedroom1Bulb_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneFirstKitchenFan_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneTwoDrawingRoomFan_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="data">
+  <name>OneTwoDrawingRoomTemperatureSensor_VAR</name>
+  <value>0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00</value>
+  <note>This is an sensor Measurement Data variable</note>
+ </variable>
+ <variable type="data">
+  <name>OneTwoDrawingRoomHeater_VAR</name>
+  <value>0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00</value>
+  <note>This is an sensor Measurement Data variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneTwoDrawingRoomled_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneTwoDrawingRoomtap_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneTwoDrawingRoomPress_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneTwoToiletBulb_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneTwoBalcony1Press_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneTwoLobyOven_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
 </persistent>

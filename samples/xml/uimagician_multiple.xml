@@ -67,7 +67,7 @@
    <DeviceInfo>Light</DeviceInfo>
    <SliderPacket>
     <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" url="ws://192.168.65.153:8089" id="OneFirstBedroomDimmer_Image_ID" idRemoteTxt="OneFirstBedroomDimmer_Remote_Txt_ID" Min="0" Max="100" idLocalTxt="OneFirstBedroomDimmer_Local_Txt_ID"/>
-    <TxEvent Class="30" Subzone="" Guid="" Type="20" Data="" Zone="" Index="" Obid="" Head="" Timestamp=""/>
+    <TxEvent Class="30" Subzone="0" Guid="" Type="20" Data="" Zone="0" Index="" Obid="" Head="" Timestamp=""/>
     <RxEvent Class="20" Subzone="0" Guid="" Type="40" Data="" Zone="0" Index="" Obid="" Head="" Timestamp=""/>
     <VariableConfigure ActionParameters="OneFirstBedroomDimmer_VAR;3;true;%event.data[0]" GroupID="" AllowedTo="" Priority="0" Action="0x00000050" Class="20" Subzone="0" Control="0x80000018" Guid="" AllowedTime="" Type="40" AllowedFrom="" Comments="Dimmer" Name="OneFirstBedroomDimmer_VAR" Zone="0" AllowedDays="mtwtfss" Index=""/>
    </SliderPacket>
@@ -93,8 +93,8 @@
    <DeviceInfo>Light</DeviceInfo>
    <SliderPacket>
     <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" url="ws://192.168.65.153:8089" id="OneFirstBedroomDimmerTube_Image_ID" idRemoteTxt="OneFirstBedroomDimmerTube_Remote_Txt_ID" Min="-100" Max="100" idLocalTxt="OneFirstBedroomDimmerTube_Local_Txt_ID"/>
-    <TxEvent Class="30" Subzone="" Guid="" Type="33" Data="" Zone="" Index="" Obid="" Head="" Timestamp=""/>
-    <RxEvent Class="20" Subzone="0" Guid="" Type="51" Data="" Zone="0" Index="" Obid="" Head="" Timestamp=""/>
+    <TxEvent Class="30" Subzone="0" Guid="" Type="33" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxEvent Class="20" Subzone="0" Guid="" Type="51" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <VariableConfigure ActionParameters="OneFirstBedroomDimmerTube_VAR;9;true;%event.data" GroupID="" AllowedTo="" Priority="0" Action="0x00000050" Class="20" Subzone="0" Control="0x80000038" Guid="" AllowedTime="" Type="51" AllowedFrom="" Comments="" Name="OneFirstBedroomDimmerTube_VAR" Zone="0" AllowedDays="mtwtfss" Index="0"/>
    </SliderPacket>
   </Device>
