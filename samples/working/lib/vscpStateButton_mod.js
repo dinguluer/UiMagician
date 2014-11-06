@@ -16,6 +16,10 @@ function vscpws_stateButton_mod( username,           // Username for websocket s
                                interval             // Variable monitoring interval
                                    )
 {
+    //console.log("val " + Info_details.info_text[50].direction);
+    //console.log("val_99 " +Info_details.info_text[99].direction);
+    //return;
+
     // First set default parameter
     this.btnType = typeof btnType !== 'undefined' ? btnType : 0;
     this.bNoState = typeof bNoState !== 'undefined' ? bNoState : false;
@@ -882,9 +886,15 @@ function vscpws_stateButton_mod( username,           // Username for websocket s
     //this.image_up.onload = this.onImageLoad.bind(this);
 
 
+    // set event send by gui value to false
+    this.eventSend = 0;
+
     // Set default events
     this.setOnTransmittEvent();
     this.setOffTransmittEvent();
+
+    //set device details
+    this.setDeviceDetails();
    
     //retreive instance name
     this.getInstanceName = function() {
@@ -897,6 +907,38 @@ function vscpws_stateButton_mod( username,           // Username for websocket s
     }
     
 };
+
+
+//-----------------------------------------------------------------------------
+// setDeviceDetails
+//-----------------------------------------------------------------------------
+
+vscpws_stateButton_mod.prototype.setDeviceDetails = function(device,
+                                                                room,
+                                                                 floor)
+{
+
+   // floor = typeof floor !== 'undefined' ? floor : "";
+    room = typeof room !== 'undefined' ? room : "";
+    device = typeof device !== 'undefined' ? device : "";
+
+    this.floorName = floor;
+    this.roomName = room;
+    this.deviceName = device;
+
+    if(typeof floor !== 'undefined')
+    {
+      this.infoMessageOn = floor + " : " + room + " : " + device + " : ON" ;
+      this.infoMessageOff = floor + " : " + room + " : " + device + " : OFF" ;
+    }
+    else  // i.e for single floor house
+    {
+      this.infoMessageOn = room + " : " + device + " : ON" ;
+      this.infoMessageOff = room + " : " + device + " : OFF" ;
+
+    }
+};
+
 
 //-----------------------------------------------------------------------------
 // setOnTransmittEvent
@@ -1284,13 +1326,16 @@ vscpws_stateButton_mod.prototype.onMouseUp = function()
     
     if (this.bConnected && !this.bNoState ) {
         if ( this.bState ) {
+            this.eventSend = 1;
             this.setValue(false);
         }
         else {
+            this.eventSend = 1;
             this.setValue(true);
         }
     }
     else if (this.bConnected && this.bNoState ) {
+        this.eventSend = 1;
         this.setValue(false);
     }
 };
@@ -1458,6 +1503,10 @@ vscpws_stateButton_mod.prototype.onVSCPMessage = function(msg)
 
             //this.canvas.src = "http://www.psdgraphics.com/file/glossy-light-bulb.jpg";
             this.canvas.src = this.image_down.src;
+
+            // set global data structure
+            setInfoData(this.eventSend,this.infoMessageOn);
+            this.eventSend = 0;
             
             if (vscpws_debug) console.log("****** Turned ON ******");
         }
@@ -1486,6 +1535,10 @@ vscpws_stateButton_mod.prototype.onVSCPMessage = function(msg)
 
             //this.canvas.src = "http://www.psdgraphics.com/file/light-bulb-icon.jpg";
             this.canvas.src = this.image_up.src;
+
+            // set global data structure
+            setInfoData(this.eventSend,this.infoMessageOff);
+            this.eventSend = 0;
 
             if (vscpws_debug) console.log("****** Turned OFF ******");
         }

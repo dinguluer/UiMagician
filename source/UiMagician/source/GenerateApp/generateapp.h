@@ -57,6 +57,8 @@
 #define ON_RX_EVENT_INDEX          3
 #define OFF_RX_EVENT_INDEX         4
 
+#define INFO_NODES_COUNT   100
+
 /*
 ** Typedef for
 */
@@ -230,6 +232,10 @@ public:
 
     // list floor nodes
     QList<T_packetFloorNodes> floorNodesList;
+
+    QString floorNameDevice;
+    QString roomNameDevice;
+    QString deviceNameDevice;
 
     QString rxClassTxt;
     QString rxTypeTxt;

@@ -312,6 +312,7 @@ void GenerateApp::createMultiFloorDivScrollable(QDomElement &NodeElementMultiFlo
       // add floor area ID
       scrollableFloorAreaArray += "\"" + floorArea + "\""  ;
 
+
     //==============================================================
 
     //create info node
@@ -330,7 +331,13 @@ void GenerateApp::createMultiFloorDivScrollable(QDomElement &NodeElementMultiFlo
        NodeElementChildTemp.setAttribute("class","image_scrollable");
        NodeElementChildTemp.setAttribute("src","../lib/widgets/info/info.jpg");
        //NodeElementChildTemp.setAttribute("alt",floorNameId);
-       OnClickText = "alert('Info clicked')";
+       //OnClickText = "alert('Info clicked')";
+       OnClickText = "show_info(" "'"  "info_text"  "',"
+                                         "div_class_scrollable_Image,"
+                                         "div_class_scrollable_Hr,"
+                                         "'"  "Info_Hr" "')"
+                                         ;
+       //show_info('info_text',div_class_scrollable_Image,div_class_scrollable_Hr,'Info_Hr')
        NodeElementChildTemp.setAttribute("onclick",OnClickText);
        //Append image div to floor div
        NodeElementTemp.appendChild(NodeElementChildTemp);
@@ -359,6 +366,9 @@ void GenerateApp::createMultiFloorDivScrollable(QDomElement &NodeElementMultiFlo
 
     // Append info div to div scrollable
     NodeElementMultiFloorDivScrollable.appendChild(NodeElementTemp);
+
+    scrollableHrArray += ",";
+    scrollableHrArray += "\"" + floorHrId + "\""  ;
 
     //htmlRoot.appendChild(NodeElement);
 

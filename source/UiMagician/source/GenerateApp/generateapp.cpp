@@ -2231,6 +2231,12 @@ void GenerateApp::prepareSocketConf(QDomNode &tempNodeDevicePacket, QString Devi
     if(PacketType == PACKET_SWITCH_TEXT)
     {
         FloorsSwitchSocketCfgFileString += "\n"  "  { ";
+
+        FloorsSwitchSocketCfgFileString += "floorName: '" + floorNameDevice + "', ";
+        FloorsSwitchSocketCfgFileString += "roomName: '" + roomNameDevice + "', ";
+        FloorsSwitchSocketCfgFileString += "deviceName: '" + deviceNameDevice + "', ";
+        FloorsSwitchSocketCfgFileString += "\n";
+        FloorsSwitchSocketCfgFileString += "    ";
         tempNodeChild = listPacketDetails.at(VSCP_PACKET_SWITCH_WEBSOCKET_CONFIGURE);
 
         //Websocket configuration
@@ -2545,6 +2551,13 @@ void GenerateApp::prepareSocketConf(QDomNode &tempNodeDevicePacket, QString Devi
         prepareVariablesDmXmlFile(tempNodeChild,PacketType);   // -------> todo
 
         FloorsSensorSocketCfgFileString += "\n"  "  { ";
+
+        FloorsSensorSocketCfgFileString += "floorName: '" + floorNameDevice + "', ";
+        FloorsSensorSocketCfgFileString += "roomName: '" + roomNameDevice + "', ";
+        FloorsSensorSocketCfgFileString += "deviceName: '" + deviceNameDevice + "', ";
+        FloorsSensorSocketCfgFileString += "\n";
+        FloorsSensorSocketCfgFileString += "    ";
+
         tempNodeChild = listPacketDetails.at(VSCP_PACKET_SENSOR_WEBSOCKET_CONFIGURE);
 
         //Websocket configuration
@@ -2684,6 +2697,13 @@ void GenerateApp::prepareSocketConf(QDomNode &tempNodeDevicePacket, QString Devi
     {
 
         FloorsVariableSliderSocketCfgFileString += "\n"  "  { ";
+
+        FloorsVariableSliderSocketCfgFileString += "floorName: '" + floorNameDevice + "', ";
+        FloorsVariableSliderSocketCfgFileString += "roomName: '" + roomNameDevice + "', ";
+        FloorsVariableSliderSocketCfgFileString += "deviceName: '" + deviceNameDevice + "', ";
+        FloorsVariableSliderSocketCfgFileString += "\n";
+        FloorsVariableSliderSocketCfgFileString += "    ";
+
         tempNodeChild = listPacketDetails.at(VSCP_PACKET_SLIDER_WEBSOCKET_CONFIGURE);
 
         //Websocket configuration
@@ -2871,6 +2891,13 @@ void GenerateApp::prepareSocketConf(QDomNode &tempNodeDevicePacket, QString Devi
     {
 
         FloorsVariableSwitchSocketCfgFileString += "\n"  "  { ";
+
+        FloorsVariableSwitchSocketCfgFileString += "floorName: '" + floorNameDevice + "', ";
+        FloorsVariableSwitchSocketCfgFileString += "roomName: '" + roomNameDevice + "', ";
+        FloorsVariableSwitchSocketCfgFileString += "deviceName: '" + deviceNameDevice + "', ";
+        FloorsVariableSwitchSocketCfgFileString += "\n";
+        FloorsVariableSwitchSocketCfgFileString += "    ";
+
         tempNodeChild = listPacketDetails.at(VSCP_VARIABLE_SWITCH_WEBSOCKET_CONFIGURE);
 
         //Websocket configuration
@@ -3110,6 +3137,14 @@ void GenerateApp::createHtmlHead()
        }
        NodeElementChild.setAttribute("href",stringAttributeTxt);
        NodeElement.appendChild(NodeElementChild);
+       //Create link node
+       nodeChildName = "link";
+       NodeElementChild = htmlDomDocument.createElement(nodeChildName);
+       NodeElementChild.setAttribute("rel","stylesheet");
+       NodeElementChild.setAttribute("type","text/css");
+       stringAttributeTxt = "../css/info.css";
+       NodeElementChild.setAttribute("href",stringAttributeTxt);
+       NodeElement.appendChild(NodeElementChild);
        //Create vscpws script node
        nodeChildName = "script";
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
@@ -3142,6 +3177,15 @@ void GenerateApp::createHtmlHead()
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
        NodeElementChild.setAttribute("type","text/javascript");
        NodeElementChild.setAttribute("src","../lib/md5.js");
+       stringTxtNode = "";
+       textNode = htmlDomDocument.createTextNode(stringTxtNode);
+       NodeElementChild.appendChild(textNode);
+       NodeElement.appendChild(NodeElementChild);
+       //Create vscpws script node
+       nodeChildName = "script";
+       NodeElementChild = htmlDomDocument.createElement(nodeChildName);
+       NodeElementChild.setAttribute("type","text/javascript");
+       NodeElementChild.setAttribute("src","../lib/infoInit.js");
        stringTxtNode = "";
        textNode = htmlDomDocument.createTextNode(stringTxtNode);
        NodeElementChild.appendChild(textNode);
@@ -3256,6 +3300,7 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
     QDomElement NodeElementTemp;
     QDomElement NodeElementChildTemp;
     QDomElement NodeElementSpan;
+    QDomElement NodeElementHr;
     QString nodeNameTemp;
     QString nodeChildNameTemp;
     QString floorNameArea;
@@ -3401,6 +3446,9 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
 
       floorNameArea = floorName + "_Floor_Area";
 
+      //prepare global floor name
+      floorNameDevice = floorName;
+
       //Load root nodes
       listRooms = floorNodes.floorRooms.childNodes();
 
@@ -3427,6 +3475,9 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
           //Edit room name
           nodeDataTextRoom.replace(" ", "");
           nodeDataTextRoom.remove(QRegExp("[^a-zA-Z\\d\\s]"));
+
+          //prepare global room name
+          roomNameDevice = nodeDataTextRoom;
 
           // Area name ID
           textArea_main = floorNameArea + "_" + nodeDataTextRoom;
@@ -3516,6 +3567,9 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
               {
                   deviceName = "";
               }
+
+              //prepare global device name
+              deviceNameDevice = deviceName;
 
               deviceNameNonFormatted = deviceName;
               //Edit device name
@@ -4003,15 +4057,15 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
 
           scrollableCenterAreaWidgetArray += "\"" + textArea_main + "\"";
           // check if it is last element to put in the array
-          if(((j+1) == listRooms.size()) && ((i+1) == floorNodesList.size()))
+          /*if(((j+1) == listRooms.size()) && ((i+1) == floorNodesList.size()))
           {
               //Append nothing - as last node
 
           }
           else
-          {
+          {*/
               scrollableCenterAreaWidgetArray += ",";
-          }
+          //}
 
           index++;
           if(index == 5u)
@@ -4022,6 +4076,72 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
       }
 
     }
+
+    // Append Info div
+    for (int k = 0; k < INFO_NODES_COUNT; ++k)
+    {
+
+                  QString classTemp;
+                  QString idTemp;
+
+                  classTemp = "info_" + QString::number(k);
+
+                  textArea = "info_text " + classTemp;
+                  // create Info node
+                  nodeNameTemp = "div";
+                  NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
+                  NodeElementTemp.setAttribute("class",textArea);
+
+                      nodeChildNameTemp = "div";
+                      NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                      NodeElementChildTemp.setAttribute("class","green_box arrow_left");
+                      idTemp = "info_class_" + QString::number(k);
+                      NodeElementChildTemp.setAttribute("id",idTemp);
+                      //Create span node : for message
+                      stringTxtNode = "" ;
+                      nodeChildNameTemp = "span";
+                      idTemp = "info_txt_" + QString::number(k);
+                      NodeElementSpan = htmlDomDocument.createElement(nodeChildNameTemp);
+                      NodeElementSpan.setAttribute("id",idTemp);
+                      //create text node
+                      textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                      //Append txt node
+                      NodeElementSpan.appendChild(textNode);
+                      NodeElementChildTemp.appendChild(NodeElementSpan);
+                      NodeElementTemp.appendChild(NodeElementChildTemp);
+
+                      nodeChildNameTemp = "div";
+                      NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                      NodeElementChildTemp.setAttribute("class","time_left_box_class");
+                      idTemp = "info_time_" + QString::number(k);
+                      NodeElementChildTemp.setAttribute("id",idTemp);
+                      //create text node
+                      textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                      //Append txt node
+                      NodeElementChildTemp.appendChild(textNode);
+                      NodeElementTemp.appendChild(NodeElementChildTemp);
+
+
+                      nodeChildNameTemp = "div";
+                      NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                      NodeElementChildTemp.setAttribute("class","padding_Info_text");
+                      //Create hr node
+                      nodeChildNameTemp = "hr";
+                      NodeElementHr = htmlDomDocument.createElement(nodeChildNameTemp);
+                      //Append horizontal line div to room div
+                      NodeElementChildTemp.appendChild(NodeElementHr);
+                      NodeElementTemp.appendChild(NodeElementChildTemp);
+
+
+                  // Append floor div to div scrollable
+                  NodeElementMultiFloorDivScrollableCenter.appendChild(NodeElementTemp);
+
+    }
+
+
+    //Add Info Text class
+    QString classInfo = "info_text";
+    scrollableCenterAreaWidgetArray += "\"" + classInfo + "\"";
 
     //Append new line
     scrollableCenterAreaWidgetArray += "\n";

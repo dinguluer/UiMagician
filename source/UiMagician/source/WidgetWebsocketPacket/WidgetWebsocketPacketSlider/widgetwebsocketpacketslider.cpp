@@ -177,11 +177,11 @@ void WidgetWebsocketPacketSlider::CopySliderPacket()
     // clear Tx line edit
     if(sliderPacket_modify.txEvent.type_value == VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL_VALUE)
     {
-        ui->sliderTxIndexLineEdit->clear();
+        ui->sliderTxIndexLineEdit->setText(sliderPacket_modify.txEvent.index);
     }
     else
     {
-        ui->sliderTxIndexLineEdit->setText(sliderPacket_modify.txEvent.index);
+        ui->sliderTxIndexLineEdit->clear();
     }
     ui->sliderTxZoneLineEdit->setText(sliderPacket_modify.txEvent.zone);
     ui->sliderTxSubZoneLineEdit->setText(sliderPacket_modify.txEvent.subzone);
@@ -219,11 +219,11 @@ void WidgetWebsocketPacketSlider::CopySliderPacket()
     // clear Rx line edit
     if(sliderPacket_modify.rxEvent.type_value == VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED_VALUE)
     {
-        ui->sliderRxIndexLineEdit->clear();
+        ui->sliderRxIndexLineEdit->setText(sliderPacket_modify.rxEvent.index);
     }
     else
     {
-        ui->sliderRxIndexLineEdit->setText(sliderPacket_modify.rxEvent.index);
+        ui->sliderRxIndexLineEdit->clear();
     }
     ui->sliderRxZoneLineEdit->setText(sliderPacket_modify.rxEvent.zone);
     ui->sliderRxSubZoneLineEdit->setText(sliderPacket_modify.rxEvent.subzone);
@@ -663,6 +663,10 @@ void WidgetWebsocketPacketSlider::on_OkSliderPushButton_clicked()
     sliderPacket_modify.txEvent.guid = ui->sliderTxGuidLineEdit->text();
     sliderPacket_modify.txEvent.zone = ui->sliderTxZoneLineEdit->text();
     sliderPacket_modify.txEvent.subzone = ui->sliderTxSubZoneLineEdit->text();
+    if(sliderPacket_modify.txEvent.type_value == VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL_VALUE)
+    {
+        sliderPacket_modify.txEvent.index = ui->sliderTxIndexLineEdit->text();
+    }
     sliderPacket_modify.txEvent.head = ui->sliderTxHeadLineEdit->text();
     sliderPacket_modify.txEvent.obid = ui->sliderTxObidLineEdit->text();
     sliderPacket_modify.txEvent.timeStamp = ui->sliderTxTimeStampLineEdit->text();
@@ -691,9 +695,14 @@ void WidgetWebsocketPacketSlider::on_OkSliderPushButton_clicked()
     //ui->sliderRxTypeListWidget->setCurrentRow(sliderPacket_modify.rxEvent.type_value.toInt());
     sliderPacket_modify.rxEvent.type_value = tempStringType;
     sliderPacket_modify.rxEvent.guid = ui->sliderRxGuidLineEdit->text();
-    sliderPacket_modify.rxEvent.index = ui->sliderRxIndexLineEdit->text();
+    //sliderPacket_modify.rxEvent.index = ui->sliderRxIndexLineEdit->text();
     sliderPacket_modify.rxEvent.zone = ui->sliderRxZoneLineEdit->text();
     sliderPacket_modify.rxEvent.subzone = ui->sliderRxSubZoneLineEdit->text();
+    // clear Rx line edit
+    if(sliderPacket_modify.rxEvent.type_value == VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED_VALUE)
+    {
+      sliderPacket_modify.rxEvent.index = ui->sliderRxIndexLineEdit->text();
+    }
     sliderPacket_modify.rxEvent.head = ui->sliderRxHeadLineEdit->text();
     sliderPacket_modify.rxEvent.obid = ui->sliderRxObidLineEdit->text();
     sliderPacket_modify.rxEvent.timeStamp = ui->sliderRxTimeStampLineEdit->text();

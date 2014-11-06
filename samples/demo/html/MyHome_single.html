@@ -3,10 +3,12 @@
   <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"/>
   <title>VSCP My House Ui ..</title>
   <link rel="stylesheet" type="text/css" href="../css/singleFloorStyle.css"/>
+  <link rel="stylesheet" type="text/css" href="../css/info.css"/>
   <script type="text/javascript" src="settings.js"></script>
   <script type="text/javascript" src="../lib/jquery.js"></script>
   <script type="text/javascript" src="../lib/wz_jsgraphics.js"></script>
   <script type="text/javascript" src="../lib/md5.js"></script>
+  <script type="text/javascript" src="../lib/infoInit.js"></script>
   <script type="text/javascript" src="../lib/vscpwslib.js"></script>
   <script type="text/javascript" src="../lib/vscpStateButton_mod.js"></script>
   <script type="text/javascript" src="../lib/vscpSimpleText_mod.js"></script>
@@ -74,7 +76,7 @@
     <input class="hr_scrollable" id="group_Sensors_Hr"/>
    </div>
    <div class="input" id="Info">
-    <input class="image_scrollable" type="image" id="Info_Image" onclick="alert('Info clicked')" src="../lib/widgets/info/info.jpg"/>
+    <input class="image_scrollable" type="image" id="Info_Image" onclick="show_info(div_class_scrollable_Image,div_class_scrollable_Hr,'Info_Hr','info_text')" src="../lib/widgets/info/info.jpg"/>
     <p class="imgtxt" id="Info_txt">info</p>
     <input class="hr_scrollable" id="Info_Hr"/>
    </div>
@@ -205,6 +207,51 @@
     <p class="imgtxt_center">
      <span class="spantxt_center group_Accessories_Txt" type="text">Loby : </span>Oven</p>
     <hr/>
+   </div>
+   <div class="info_text info_0">
+    <div class="green_box arrow_left" id="info_class_0">
+     <span id="info_txt_0"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_0"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_1">
+    <div class="green_box arrow_left" id="info_class_1">
+     <span id="info_txt_1"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_1"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_2">
+    <div class="green_box arrow_left" id="info_class_2">
+     <span id="info_txt_2"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_2"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_3">
+    <div class="green_box arrow_left" id="info_class_3">
+     <span id="info_txt_3"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_3"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_4">
+    <div class="green_box arrow_left" id="info_class_4">
+     <span id="info_txt_4"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_4"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
    </div>
   </div>
   <div id="fotter">Copyright © 2014 VSCP Single Floor Layout</div>

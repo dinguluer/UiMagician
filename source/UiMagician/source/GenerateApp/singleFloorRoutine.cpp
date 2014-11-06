@@ -346,8 +346,10 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
         if((i+1) < groupsTotal)
         {
             scrollableImageArray += ",";
-            scrollableHrArray += ",";
+            //scrollableHrArray += ",";
         }
+
+        scrollableHrArray += ",";
 
     }
 
@@ -367,7 +369,12 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
        NodeElementChildTemp.setAttribute("class","image_scrollable");
        NodeElementChildTemp.setAttribute("src","../lib/widgets/info/info.jpg");
        //NodeElementChildTemp.setAttribute("alt",floorNameId);
-       OnClickText = "alert('Info clicked')";
+       //OnClickText = "alert('Info clicked')";
+       OnClickText = "show_info(" "div_class_scrollable_Image,"
+                                             "div_class_scrollable_Hr,"
+                                             "'"  "Info_Hr" "',"   "'"  "info_text"  "')"
+                                             ;
+           //show_info(div_class_scrollable_Image,div_class_scrollable_Hr,'Info_Hr','info_text')
        NodeElementChildTemp.setAttribute("onclick",OnClickText);
        //Append image div to floor div
        NodeElementTemp.appendChild(NodeElementChildTemp);
@@ -396,6 +403,9 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
 
     // Append info div to div scrollable
     NodeElementSingleFloorDivScrollable.appendChild(NodeElementTemp);
+
+    //Add Info HR array
+    scrollableHrArray += "\"" + roomHrId + "\""  ;
 
     //htmlRoot.appendChild(NodeElement);
 
