@@ -1221,7 +1221,7 @@ vscpws_stateButton_mod.prototype.setValue = function(value, bUpdate)
             }
             cmd += ",";
             for (i=0;i<this.tansmitt_data_on.length;i++) {
-                    cmd += this.tansmitt_data_on[i].toString() + ",";
+                    cmd += this.tansmitt_data_on[i].toString() ; //+ ",";
                     if (i<this.tansmitt_data_on.length-1) cmd += ",";   // No comma for last
             }
             
@@ -1253,7 +1253,7 @@ vscpws_stateButton_mod.prototype.setValue = function(value, bUpdate)
             }
             cmd += ",";
             for (i=0;i<this.tansmitt_data_off.length;i++) {
-                    cmd += this.tansmitt_data_off[i].toString() + ",";
+                    cmd += this.tansmitt_data_off[i].toString() ; //+ ",";
                     if (i<this.tansmitt_data_off.length-1) cmd += ",";   // No comma for last
             }
             
