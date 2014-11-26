@@ -1341,6 +1341,10 @@ void MainWindow::on_testCaseTableView_doubleClicked(const QModelIndex &index)
                         //{
                             //Set the device ID
                             vscpPacket.vscpPacketSensor.id = houseNameStr + floorNameStr + roomNameStr + deviceName + "_Image" + "_ID";
+                            //Set the device ID
+                            vscpPacket.vscpPacketSensor.graphId = houseNameStr + floorNameStr + roomNameStr + deviceName + "_chart_div";
+                            //Set the device ID
+                            vscpPacket.vscpPacketSensor.graphUnitId = houseNameStr + floorNameStr + roomNameStr + deviceName + "_chart_unit_div";
                             //Set the Remote Txt ID
                             vscpPacket.vscpPacketSensor.idRemoteTxt = houseNameStr + floorNameStr + roomNameStr + deviceName + "_Remote_Txt" + "_ID";
                             //set the variable name
@@ -2262,6 +2266,9 @@ void MainWindow::VscpPacketInitialise(T_vscpDevicePacket &vscpPacket)
 void MainWindow::SensorPacketInitialise(T_widgetwebsocketPacketsensor &packetSensor)
 {
     packetSensor.id = "";
+    packetSensor.graphId = "";
+    packetSensor.graphUnitId = "";
+    packetSensor.graphType = "";
     packetSensor.idRemoteTxt = "";
     packetSensor.url = "";
     packetSensor.class_value = "";

@@ -293,6 +293,10 @@
 
 /* Sensor websocket */
 #define SENSOR_ID              "id"
+#define SENSOR_GRAPH_ID        "graphId"
+#define SENSOR_GRAPH_UNIT_ID   "graphUnitId"
+#define SENSOR_GRAPH_TYPE      "graphType"
+#define SENSOR_ID              "id"
 #define SENSOR_REMOTE_TXT_ID   "idRemoteTxt"
 #define SENSOR_URL             "url"
 #define SENSOR_CLASS           "class"
@@ -378,6 +382,11 @@
 #define VARIABLE_DOMAIN                    "domain"
 
 #define DEFAULT_HOUSE_NAME         "One"
+
+
+#define GRAPH_TYPE_LINE                 "line"
+#define GRAPH_TYPE_BAR                  "bar"
+#define GRAPH_TYPE_AREA                 "area"
 
 /* Typedef */
 
@@ -521,6 +530,9 @@ typedef struct {
 */
 typedef struct {
     QString id;
+    QString graphId;
+    QString graphUnitId;
+    QString graphType;
     QString idRemoteTxt;
     QString url;
     QString class_value;

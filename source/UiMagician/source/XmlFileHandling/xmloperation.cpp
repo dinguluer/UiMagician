@@ -539,11 +539,22 @@ void MainWindow::xmlCreateVscpPacketNode(QDomElement &xmlNode, uint8_t row, T_pa
 
             //Update the sensor ID
             testCaseStepCanMessage.vscpPacketSensor.id = deviceLocation.houseName + deviceLocation.floorName + deviceLocation.roomName + deviceLocation.deviceName   + "_Image" + "_ID";
+            testCaseStepCanMessage.vscpPacketSensor.graphId = deviceLocation.houseName + deviceLocation.floorName + deviceLocation.roomName + deviceLocation.deviceName   + "_chart_div";
+            testCaseStepCanMessage.vscpPacketSensor.graphUnitId = deviceLocation.houseName + deviceLocation.floorName + deviceLocation.roomName + deviceLocation.deviceName   + "_chart_unit_div";
             testCaseStepCanMessage.vscpPacketSensor.idRemoteTxt = deviceLocation.houseName + deviceLocation.floorName + deviceLocation.roomName + deviceLocation.deviceName   + "_Remote_Txt" + "_ID";
 
             // create sensor id attribute
             string = testCaseStepCanMessage.vscpPacketSensor.id;
-            xmlTempNode.setAttribute(SENSOR_ID,string);
+            xmlTempNode.setAttribute(SENSOR_ID,string);            
+            // create sensor graph ID attribute
+            string = testCaseStepCanMessage.vscpPacketSensor.graphId;
+            xmlTempNode.setAttribute(SENSOR_GRAPH_ID,string);
+            // create sensor graph Unit ID attribute
+            string = testCaseStepCanMessage.vscpPacketSensor.graphUnitId;
+            xmlTempNode.setAttribute(SENSOR_GRAPH_UNIT_ID,string);
+            // create sensor graph Type attribute
+            string = testCaseStepCanMessage.vscpPacketSensor.graphType;
+            xmlTempNode.setAttribute(SENSOR_GRAPH_TYPE,string);
             // create sensor Remote txt id attribute
             string = testCaseStepCanMessage.vscpPacketSensor.idRemoteTxt;
             xmlTempNode.setAttribute(SENSOR_REMOTE_TXT_ID,string);
@@ -1823,6 +1834,9 @@ void MainWindow::UpdateListForvscpPacket(QList<T_vscpDevicePacket> &testCaseStep
         //Read sensor websocket configuration
         tempNodeChild = list.at(VSCP_PACKET_SENSOR_WEBSOCKET_CONFIGURE);
         vscpPacket.vscpPacketSensor.id = tempNodeChild.toElement().attribute(SENSOR_ID);
+        vscpPacket.vscpPacketSensor.graphId = tempNodeChild.toElement().attribute(SENSOR_GRAPH_ID);
+        vscpPacket.vscpPacketSensor.graphUnitId = tempNodeChild.toElement().attribute(SENSOR_GRAPH_UNIT_ID);
+        vscpPacket.vscpPacketSensor.graphType = tempNodeChild.toElement().attribute(SENSOR_GRAPH_TYPE);
         vscpPacket.vscpPacketSensor.idRemoteTxt = tempNodeChild.toElement().attribute(SENSOR_REMOTE_TXT_ID);
         vscpPacket.vscpPacketSensor.url = tempNodeChild.toElement().attribute(SENSOR_URL);
         vscpPacket.vscpPacketSensor.userName = tempNodeChild.toElement().attribute(SENSOR_USERNAME);

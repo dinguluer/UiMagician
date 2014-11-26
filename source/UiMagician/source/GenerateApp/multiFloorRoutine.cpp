@@ -453,6 +453,8 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
     bool flagTemperatureControllerFloor;
     uint16_t groupsFloorTotal;
 
+    bool flagSensorGraphFloor;
+
     QString groupDivId;
     QString groupImageId;
     QString groupTxtId;
@@ -671,6 +673,8 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
       {
           groupsFloorTotal++;
           flagsensorFloor = 1;
+          // make a graph
+          flagSensorGraphFloor = 1;
       }
       if(temperatureControllerFloorTotal>0)
       {
@@ -782,13 +786,81 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
 
           scrollableMenuImageArray += "\"" + groupImageId + "\"" ;
           scrollableMenuTxtArray   += "\"" + groupTxtId + "\"" ;
-          if((i+1) < groupsFloorTotal)
+
+          if(flagSensorGraphFloor == 0)
+          {
+              if((i+1) < groupsFloorTotal)
+              {
+                  scrollableMenuImageArray += "," ;
+                  scrollableMenuTxtArray += "," ;
+
+              }
+          }
+          else
           {
               scrollableMenuImageArray += "," ;
               scrollableMenuTxtArray += "," ;
-
           }
 
+      }
+
+      if(flagSensorGraphFloor == 1)
+      {
+          groupDivId = "group_Sensors_Graph_Floor_" + floorName;
+          groupImageId = floorNameArea + "_Sensors_Group_Graph_Image";
+          groupTxtId = floorNameArea + "_Sensors_Group_Graph_txt";
+          groupImageTxt = "Sensors Graph";
+
+          // create floor node
+          nodeNameTemp = "div";
+          NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
+          NodeElementTemp.setAttribute("class",floorNameArea);
+
+             //Create input node
+             nodeChildNameTemp = "input";
+             NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+             NodeElementChildTemp.setAttribute("id",groupImageId);
+             NodeElementChildTemp.setAttribute("type","image");
+             NodeElementChildTemp.setAttribute("class","image_menu_center_second");
+             NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+             OnClickText = "show_Floor_Group(" "'" + groupDivId + "',"
+                                        "div_class_" + floorNameArea + "_Images" ","
+                                        "'" + groupImageId + "')"
+                                        ;
+             NodeElementChildTemp.setAttribute("onclick",OnClickText);
+             //NodeElementChildTemp.setAttribute("alt",roomNameImageId);
+             //Append image div to room div
+             NodeElementTemp.appendChild(NodeElementChildTemp);
+
+             //Create paragraph node
+             nodeChildNameTemp = "p";
+             NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+             roomTxtId = floorNameArea  + "_" + nodeDataTextRoom + "_txt";
+             NodeElementChildTemp.setAttribute("id",groupTxtId);
+             NodeElementChildTemp.setAttribute("class","imgtxt_scrollmenu");
+             stringTxtNode = groupImageTxt;
+                      textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                      //Append txt node
+                      NodeElementChildTemp.appendChild(textNode);
+             //Append paragraph div to room div
+             NodeElementTemp.appendChild(NodeElementChildTemp);
+
+             //Create Hr node
+             nodeChildNameTemp = "hr";
+             NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+             //Append horizontal line div to room div
+             NodeElementTemp.appendChild(NodeElementChildTemp);
+
+          // Append floor div to div scrollable
+          NodeElementMultiFloorDivScrollableMenu.appendChild(NodeElementTemp);
+
+
+
+          scrollableMenuImageArray += "\"" + groupImageId + "\"" ;
+          scrollableMenuTxtArray   += "\"" + groupTxtId + "\"" ;
+
+          //make it zero
+          flagSensorGraphFloor = 0;
       }
 
       //Append new line
@@ -834,6 +906,8 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
     {
         groupsTotal++;
         flagsensorGroup = 1;
+        // make a graph
+        flagSensorGraphFloor = 1;
     }
     if(temperatureControllerGroupTotal>0)
     {
@@ -932,10 +1006,19 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
 
         scrollableMenuHouseGroupsImageIdArray += "\"" + groupImageId + "\"" ;
         centralAreaGroupImageClass += "\"" + groupClass + "\"" ;
-        if((i+1) < groupsTotal)
+
+        if(flagSensorGraphFloor == 0)
         {
-          scrollableMenuHouseGroupsImageIdArray += ",";
-          centralAreaGroupImageClass += ",";
+            if((i+1) < groupsTotal)
+            {
+                scrollableMenuHouseGroupsImageIdArray += ",";
+                centralAreaGroupImageClass += ",";
+            }
+        }
+        else
+        {
+            scrollableMenuHouseGroupsImageIdArray += ",";
+            centralAreaGroupImageClass += ",";
         }
 
         // create floor node
@@ -987,6 +1070,66 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
         // Append floor div to div scrollable
         NodeElementMultiFloorDivScrollableMenu.appendChild(NodeElementTemp);
     }
+
+    if(flagSensorGraphFloor == 1)
+    {
+        groupClass = "group_sensor_graph";
+        groupImageId = "group_Sensors_Graph_Image";
+        groupTxtId = "group_Sensors_Graph_Txt_Id";
+        groupImageTxt = "Sensors Graph";
+
+
+        // create floor node
+        nodeNameTemp = "div";
+        NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
+        NodeElementTemp.setAttribute("class","All_Devices_group");
+
+           //Create input node
+           nodeChildNameTemp = "input";
+           NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+           NodeElementChildTemp.setAttribute("id",groupImageId);
+           NodeElementChildTemp.setAttribute("type","image");
+           NodeElementChildTemp.setAttribute("class","image_menu_center_second");
+
+           NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+           OnClickText = "show_area_group(" "'" + groupClass + "',"
+                                            "'" + groupImageId + "')"
+                                           ;
+           NodeElementChildTemp.setAttribute("onclick",OnClickText);
+           //NodeElementChildTemp.setAttribute("alt",roomNameImageId);
+           //Append image div to room div
+           NodeElementTemp.appendChild(NodeElementChildTemp);
+
+           //Create paragraph node
+           nodeChildNameTemp = "p";
+           NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+           roomTxtId = floorNameArea  + "_" + nodeDataTextRoom + "_txt";
+           NodeElementChildTemp.setAttribute("id",groupTxtId);
+           NodeElementChildTemp.setAttribute("class","imgtxt_scrollmenu");
+                    stringTxtNode = groupImageTxt;
+                    textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                    //Append txt node
+                    NodeElementChildTemp.appendChild(textNode);
+           //Append paragraph div to room div
+           NodeElementTemp.appendChild(NodeElementChildTemp);
+
+           //Create Hr node
+           nodeChildNameTemp = "hr";
+           NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+           //Append horizontal line div to room div
+           NodeElementTemp.appendChild(NodeElementChildTemp);
+
+        // Append floor div to div scrollable
+        NodeElementMultiFloorDivScrollableMenu.appendChild(NodeElementTemp);
+
+        //enter value in array
+        scrollableMenuHouseGroupsImageIdArray += "\"" + groupImageId + "\"" ;
+        centralAreaGroupImageClass += "\"" + groupClass + "\"" ;
+
+        //reset flag
+        flagSensorGraphFloor = 0;
+    }
+
 
     //Append new line
     scrollableMenuHouseGroupsImageIdArray += "\n";

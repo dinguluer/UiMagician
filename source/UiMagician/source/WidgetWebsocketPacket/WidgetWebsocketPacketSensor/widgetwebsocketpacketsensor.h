@@ -67,6 +67,9 @@ private slots :
     void currentItemChanged_slot();
     void on_OkSensorPushButton_clicked();
     void on_CancelSensorPushButton_clicked();
+    void on_sensorGraphTypeLineCheckBox_clicked();
+    void on_sensorGraphTypeBarCheckBox_clicked();
+    void on_sensorGraphTypeAreaCheckBox_clicked();
 };
 
 #endif // WIDGETWEBSOCKETPACKETSENSOR_H

@@ -1638,12 +1638,13 @@ void GenerateApp::prepareVariablesDmXmlFile(QDomNode &tempNodeChild , QString Pa
             else
             {
                 // codingIndex sensor node
-                tempString = codingIndexSensor;
+                /*tempString = codingIndexSensor;
                 if(tempString == "")
                 {
                     tempString = "0";
-                }
-                sensorIndex = tempString;
+                }*/
+                //sensorIndex = tempString;
+                sensorIndex = "";
                 //Create name node
                 nodeChildName = "index";
                 NodeElementChild = xmlDmDomDocument.createElement(nodeChildName);
@@ -2563,6 +2564,9 @@ void GenerateApp::prepareSocketConf(QDomNode &tempNodeDevicePacket, QString Devi
         //Websocket configuration
         FloorsSensorSocketCfgFileString += "url: '" + tempNodeChild.toElement().attribute(SENSOR_URL) + "', ";
         FloorsSensorSocketCfgFileString += "id: '" + DeviceId + "', ";
+        FloorsSensorSocketCfgFileString += "graphId: '" + VariableButtonOneId + "', ";
+        FloorsSensorSocketCfgFileString += "graphUnitId: '" + VariableButtonTwoId + "', ";
+        FloorsSensorSocketCfgFileString += "graphType: '" + DeviceLocalTxtId + "', ";
         tempString =tempNodeChild.toElement().attribute(SENSOR_CLASS);
         if(tempString == "")
         {
@@ -3145,11 +3149,19 @@ void GenerateApp::createHtmlHead()
        stringAttributeTxt = "../css/info.css";
        NodeElementChild.setAttribute("href",stringAttributeTxt);
        NodeElement.appendChild(NodeElementChild);
-       //Create vscpws script node
+       //Create link node
+       nodeChildName = "link";
+       NodeElementChild = htmlDomDocument.createElement(nodeChildName);
+       NodeElementChild.setAttribute("rel","stylesheet");
+       NodeElementChild.setAttribute("type","text/css");
+       stringAttributeTxt = "../css/epoch.min.css";
+       NodeElementChild.setAttribute("href",stringAttributeTxt);
+       NodeElement.appendChild(NodeElementChild);
+       //Create setting jquery script node
        nodeChildName = "script";
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
        NodeElementChild.setAttribute("type","text/javascript");
-       NodeElementChild.setAttribute("src","settings.js");
+       NodeElementChild.setAttribute("src","../lib/jquery.min.js");
        stringTxtNode = "";
        textNode = htmlDomDocument.createTextNode(stringTxtNode);
        NodeElementChild.appendChild(textNode);
@@ -3158,7 +3170,16 @@ void GenerateApp::createHtmlHead()
        nodeChildName = "script";
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
        NodeElementChild.setAttribute("type","text/javascript");
-       NodeElementChild.setAttribute("src","../lib/jquery.js");
+       NodeElementChild.setAttribute("src","../lib/d3.min.js");
+       stringTxtNode = "";
+       textNode = htmlDomDocument.createTextNode(stringTxtNode);
+       NodeElementChild.appendChild(textNode);
+       NodeElement.appendChild(NodeElementChild);
+       //Create setting jquery script node
+       nodeChildName = "script";
+       NodeElementChild = htmlDomDocument.createElement(nodeChildName);
+       NodeElementChild.setAttribute("type","text/javascript");
+       NodeElementChild.setAttribute("src","../lib/epoch.min.js");
        stringTxtNode = "";
        textNode = htmlDomDocument.createTextNode(stringTxtNode);
        NodeElementChild.appendChild(textNode);
@@ -3352,6 +3373,8 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
     //QString sensorRemoteText;
     uint8_t index = 0u;
 
+    bool sensorGraphCreate = 0;
+
     nodeName = "div";
     NodeElementMultiFloorDivScrollableCenter  = htmlDomDocument.createElement(nodeName);
     NodeElementMultiFloorDivScrollableCenter.setAttribute("id","center");
@@ -3412,6 +3435,9 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
                 if(deviceType == DEVICE_SENSOR)
                 {
                     sensorTotal++;
+
+                    //create sensor graph
+                    sensorGraphCreate = 1;
                 }
                 else if (deviceSubType == SWITCH_SUB_TYPE_ONE)
                 {
@@ -3718,8 +3744,14 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
                   TextDeviceImageId =tempNodeSubChild.toElement().attribute(SENSOR_ID);
                   // get the sensor Remote Txt ID
                   TextDevicetxtId = tempNodeSubChild.toElement().attribute(SENSOR_REMOTE_TXT_ID);
+                  // get graph ID
+                  TextImageOneId = tempNodeSubChild.toElement().attribute(SENSOR_GRAPH_ID);
+                  //get graph unit ID
+                  TextImageTwoId = tempNodeSubChild.toElement().attribute(SENSOR_GRAPH_UNIT_ID);
+                  // get graph type
+                  TextDeviceLocalTxtId = tempNodeSubChild.toElement().attribute(SENSOR_GRAPH_TYPE);
                   //prepare the Packet format for each sensor device socket
-                  // TextDeviceLocalTxtId & TextImageOneId & TextImageTwoId --> both are dummy parameter here to satisfy function call
+                  //  --> both are dummy parameter here to satisfy function call
                   prepareSocketConf(tempNodeChild,TextDevicetxtId,TextDeviceLocalTxtId,TextImageOneId,TextImageTwoId,deviceImage);
               }
               else
@@ -4053,9 +4085,99 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
               // Append floor div to div scrollable
               NodeElementMultiFloorDivScrollableCenter.appendChild(NodeElementTemp);
 
+              // If device type is sensor
+              if(deviceType == DEVICE_SENSOR)
+              {
+                  // create Device node
+                  nodeNameTemp = "div";
+                  NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
+                  if(houseFloor == MULTI_FLOOR_HOUSE)
+                  {
+                      textArea = "group_sensor_graph group_Sensors_Graph_Floor_" + floorName;
+                  }
+                  else
+                  {
+                      textArea = "group_sensor_graph";
+                  }
+                  NodeElementTemp.setAttribute("class",textArea);
+
+                      //Create Header node
+                      nodeChildNameTemp = "h3";
+                      NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                      NodeElementChildTemp.setAttribute("class","imgtxt_Heading_graph");
+
+                      if(houseFloor == MULTI_FLOOR_HOUSE)
+                      {
+                          //Create span node : for floor name
+                          nodeChildNameTemp = "span";
+                          NodeElementSpan = htmlDomDocument.createElement(nodeChildNameTemp);
+                          NodeElementSpan.setAttribute("type","text");
+                          NodeElementSpan.setAttribute("class","group_Txt");
+                          stringTxtNode = floorName + " : ";
+                          textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                          //Append txt node
+                          NodeElementSpan.appendChild(textNode);
+                          NodeElementChildTemp.appendChild(NodeElementSpan);
+                      }
+
+                      stringTxtNode = roomNameDevice + " : " + deviceNameDevice + " : ";
+                      textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                     //Append txt node
+                      NodeElementChildTemp.appendChild(textNode);
+
+                      stringTxtNode = " Disconnected" ;
+
+                      //Create span node : for room name
+                      nodeChildNameTemp = "span";
+                      NodeElementSpan = htmlDomDocument.createElement(nodeChildNameTemp);
+                      NodeElementSpan.setAttribute("type","text");
+                      NodeElementSpan.setAttribute("id",TextImageTwoId);
+                      //stringTxtNode = " Disconnected";
+                      textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                      //Append txt node
+                      NodeElementSpan.appendChild(textNode);
+                      NodeElementChildTemp.appendChild(NodeElementSpan);
+
+
+                  NodeElementTemp.appendChild(NodeElementChildTemp);
+
+                  //Create div node
+                  nodeChildNameTemp = "div";
+                  NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                  NodeElementChildTemp.setAttribute("class","graph_sensor epoch category10");
+                  NodeElementChildTemp.setAttribute("id",TextImageOneId);
+                  stringTxtNode = "";
+                  textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                  //Append txt node
+                  NodeElementChildTemp.appendChild(textNode);
+                  //Append horizontal line div to room div
+                  NodeElementTemp.appendChild(NodeElementChildTemp);
+
+
+                  //Create hr node
+                  nodeChildNameTemp = "hr";
+                  NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                  //Append horizontal line div to room div
+                  NodeElementTemp.appendChild(NodeElementChildTemp);
+
+                  // Append floor div to div scrollable
+                  NodeElementMultiFloorDivScrollableCenter.appendChild(NodeElementTemp);
+
+              }
+
           }
 
           scrollableCenterAreaWidgetArray += "\"" + textArea_main + "\"";
+
+          //create sensor graph
+          if(sensorGraphCreate == 1)
+          {
+              textArea_main = "group_sensor_graph";
+              scrollableCenterAreaWidgetArray += ",";
+              scrollableCenterAreaWidgetArray += "\"" + textArea_main + "\"";
+              sensorGraphCreate = 0;
+          }
+
           // check if it is last element to put in the array
           /*if(((j+1) == listRooms.size()) && ((i+1) == floorNodesList.size()))
           {

@@ -69,6 +69,8 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
     QString groupTxtId;
     QString groupImageTxt;
 
+    bool sensorGraphGroup = 0;
+
 
     nodeName = "div";
     NodeElementSingleFloorDivScrollable  = htmlDomDocument.createElement(nodeName);
@@ -193,6 +195,11 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
     SingleFloorGroupTxtClass += "\n";
     SingleFloorGroupTxtClass += "var central_Area_Group_txt_class = [";
     SingleFloorGroupTxtClass += "\n" ;
+
+    if(flagsensorGroup == 1)
+    {
+        sensorGraphGroup = 1;
+    }
 
     //create Group nodes
     for (int i = 0; i < groupsTotal; ++i)
@@ -348,9 +355,87 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
             scrollableImageArray += ",";
             //scrollableHrArray += ",";
         }
+        else
+        {
+            // put comma if graph have to be added
+            if(sensorGraphGroup == 1)
+            {
+               scrollableImageArray += ",";
+            }
+        }
 
         scrollableHrArray += ",";
 
+    }
+
+    if(sensorGraphGroup == 1)
+    {
+        groupDivId = "sensors_Graph";
+        groupImageId = "sensor_graph_Image";
+
+        groupImageTxt = "sensors_Graph";
+        groupHrId = "sensor_graph_Hr";
+
+        groupClassName = "group_sensor_graph";
+        groupTxtId = "sensors_Graph_txt";
+
+                nodeNameTemp = "div";
+                NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
+                NodeElementTemp.setAttribute("id",groupDivId);
+                NodeElementTemp.setAttribute("class","input");
+
+                //Create input node
+                nodeChildNameTemp = "input";
+                NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                //roomNameImageId = nodeDataTextRoom + "_Image";
+                NodeElementChildTemp.setAttribute("id",groupImageId);
+                NodeElementChildTemp.setAttribute("type","image");
+                NodeElementChildTemp.setAttribute("class","image_scrollable");
+                NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+                //NodeElementChildTemp.setAttribute("alt",floorNameId);
+                OnClickText = "show_area_single(" "div_class_scrollable_Image,"
+                                                  "'" + groupImageId + "',"
+                                                  "div_class_scrollable_Hr,"
+                                                  "'" + groupHrId + "'," +
+                                                  "'" + groupClassName + "')"
+                                                  ;
+                NodeElementChildTemp.setAttribute("onclick",OnClickText);
+                //Append image div to floor div
+                NodeElementTemp.appendChild(NodeElementChildTemp);
+
+                //Create paragraph node
+                nodeChildNameTemp = "p";
+                NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                //roomTxtId = nodeDataTextRoom + "_txt";
+                NodeElementChildTemp.setAttribute("id",groupTxtId);
+                NodeElementChildTemp.setAttribute("class","imgtxt");
+                stringTxtNode = groupImageTxt;
+                textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                //Append txt node
+                NodeElementChildTemp.appendChild(textNode);
+                //Append paragraph div to floor div
+                NodeElementTemp.appendChild(NodeElementChildTemp);
+
+                //Create hr node
+                nodeChildNameTemp = "input";
+                NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                //roomHrId = nodeDataTextRoom + "_Hr";
+                NodeElementChildTemp.setAttribute("id",groupHrId);
+                NodeElementChildTemp.setAttribute("class","hr_scrollable");
+                //Append hr div to floor div
+                NodeElementTemp.appendChild(NodeElementChildTemp);
+
+                // Append floor div to div scrollable
+                NodeElementSingleFloorDivScrollable.appendChild(NodeElementTemp);
+
+
+                //add floor image ID
+                scrollableImageArray += "\"" + groupImageId + "\""  ;
+                // add HR line ID
+                scrollableHrArray += "\"" + groupHrId + "\""  ;
+
+
+        scrollableHrArray += ",";
     }
 
     //create info node

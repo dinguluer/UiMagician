@@ -248,6 +248,26 @@ void WidgetWebsocketPacketSensor::CopySensorPacket()
 
     //websocket
     ui->sensorIdValueLabel->setText(sensorPacket_modify.id);
+    ui->sensorGraphIdValueLabel->setText(sensorPacket_modify.graphId);
+    ui->sensorGraphUnitIdValueLabel->setText(sensorPacket_modify.graphUnitId);
+
+    if(sensorPacket_modify.graphType == GRAPH_TYPE_LINE)
+    {
+         ui->sensorGraphTypeLineCheckBox->setChecked(true);
+    }
+    else if (sensorPacket_modify.graphType == GRAPH_TYPE_BAR)
+    {
+         ui->sensorGraphTypeBarCheckBox->setChecked(true);
+    }
+    else if (sensorPacket_modify.graphType == GRAPH_TYPE_AREA)
+    {
+         ui->sensorGraphTypeAreaCheckBox->setChecked(true);
+    }
+    else
+    {
+        ui->sensorGraphTypeLineCheckBox->setChecked(true);
+    }
+
     ui->sensorRemoteTxtIdValueLabel->setText(sensorPacket_modify.idRemoteTxt);
     ui->sensorUrlLineEdit->setText(sensorPacket_modify.url);
     ui->sensorUsernameLineEdit->setText(sensorPacket_modify.userName);
@@ -500,6 +520,27 @@ void WidgetWebsocketPacketSensor::on_OkSensorPushButton_clicked()
     QString typeValue;
     //websocket
     sensorPacket_modify.id  =  ui->sensorIdValueLabel->text();
+
+    sensorPacket_modify.graphId = ui->sensorGraphIdValueLabel->text();
+    sensorPacket_modify.graphUnitId = ui->sensorGraphUnitIdValueLabel->text();
+
+    if(ui->sensorGraphTypeLineCheckBox->isChecked())
+    {
+        sensorPacket_modify.graphType = GRAPH_TYPE_LINE;
+    }
+    else if(ui->sensorGraphTypeBarCheckBox->isChecked())
+    {
+        sensorPacket_modify.graphType = GRAPH_TYPE_BAR;
+    }
+    else if(ui->sensorGraphTypeAreaCheckBox->isChecked())
+    {
+        sensorPacket_modify.graphType = GRAPH_TYPE_AREA;
+    }
+    else
+    {
+        // donothing
+    }
+
     sensorPacket_modify.idRemoteTxt = ui->sensorRemoteTxtIdValueLabel->text();
     sensorPacket_modify.url = ui->sensorUrlLineEdit->text();
 
@@ -765,3 +806,24 @@ WidgetWebsocketPacketSensor::~WidgetWebsocketPacketSensor()
     delete ui;
 }
 
+
+void WidgetWebsocketPacketSensor::on_sensorGraphTypeLineCheckBox_clicked()
+{
+    ui->sensorGraphTypeLineCheckBox->setChecked(true);
+    ui->sensorGraphTypeBarCheckBox->setChecked(false);
+    ui->sensorGraphTypeAreaCheckBox->setChecked(false);
+}
+
+void WidgetWebsocketPacketSensor::on_sensorGraphTypeBarCheckBox_clicked()
+{
+    ui->sensorGraphTypeLineCheckBox->setChecked(false);
+    ui->sensorGraphTypeBarCheckBox->setChecked(true);
+    ui->sensorGraphTypeAreaCheckBox->setChecked(false);
+}
+
+void WidgetWebsocketPacketSensor::on_sensorGraphTypeAreaCheckBox_clicked()
+{
+    ui->sensorGraphTypeLineCheckBox->setChecked(false);
+    ui->sensorGraphTypeBarCheckBox->setChecked(false);
+    ui->sensorGraphTypeAreaCheckBox->setChecked(true);
+}
