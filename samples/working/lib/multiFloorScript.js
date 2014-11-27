@@ -7,6 +7,8 @@
 function doc_onload()
 {
 
+    //hide central area
+    hide_central_area();
    // select Scroll area images on load
    select_scroll_area_image();
    // Show floor area on load
@@ -32,6 +34,14 @@ function doc_onload()
    create_Variable_Button_socket(Multi_Floor_Variable_Switch_Device_Array);
 }
 
+
+function pausecomp(ms)
+{
+    ms += new Date().getTime();
+    while (new Date() < ms){}
+}
+
+
 function create_measurement_device_socket( Device_Array )
 {
     var bOnce = true;
@@ -48,11 +58,19 @@ function create_measurement_device_socket( Device_Array )
                                              Device_Array[i].decimals,        // Number of decimals
                                              Device_Array[i].formatstr,       // A value format string
                                              Device_Array[i].guid,            // GUID we are interested in
-                                             Device_Array[i].fncallback );     // If set function to call
-                                                                               // when data arraives
+                                             Device_Array[i].fncallback ,      // If set function to call                                                                                // when data arraives
+                                             Device_Array[i].graphId,
+                                             Device_Array[i].graphUnitId,
+                                             Device_Array[i].graphType
+                                                     );
+
                   btn.setExtraParameters(Device_Array[i].sensorIndex, Device_Array[i].sensorZone, Device_Array[i].sensorSubzone);
 
+                  //delay ms
+                  pausecomp(20);
+
                   btn.setMonitorVariable(Device_Array[i].VariableName,1000,bOnce);
+
     }
 
 }
@@ -85,6 +103,9 @@ function create_device_socket( Device_Array )
         btn.setOffReceiveEvent(Device_Array[i].offRxEventvscpclass,Device_Array[i].offRxEventvscptype,Device_Array[i].offRxEventdata,Device_Array[i].offRxEventguid);
         btn.setOffReceiveZone(Device_Array[i].offRxEventindex,Device_Array[i].offRxEventzone, Device_Array[i].offRxEventsubzone);
 
+        //delay ms
+        pausecomp(20);
+
         btn.setMonitorVariable(Device_Array[i].VariableName,1000,bOnce);
 
     }
@@ -115,6 +136,9 @@ function create_slider_socket( Slider_Array )
         btn.setReceiveEvent(Slider_Array[i].RxEventvscpclass,Slider_Array[i].RxEventvscptype,Slider_Array[i].RxEventdata,Slider_Array[i].RxEventguid);
         btn.setReceiveZone(Slider_Array[i].RxEventindex,Slider_Array[i].RxEventzone, Slider_Array[i].RxEventsubzone);
 
+        //delay ms
+        pausecomp(20);
+
         btn.setMonitorVariable(Slider_Array[i].VariableName,1000,bOnce);
 
     }
@@ -144,6 +168,9 @@ function create_Variable_Button_socket( Variable_Button_Array )
 
         btn.setReceiveEvent(Variable_Button_Array[i].RxEventvscpclass,Variable_Button_Array[i].onRxEventvscptype,Variable_Button_Array[i].RxEventdata,Variable_Button_Array[i].RxEventguid);
         btn.setReceiveZone(Variable_Button_Array[i].RxEventzone, Variable_Button_Array[i].RxEventsubzone);
+
+        //delay ms
+        pausecomp(20);
 
         btn.setMonitorVariable(Variable_Button_Array[i].VariableName,1000,bOnce);
 
@@ -217,6 +244,10 @@ function Central_widget_visible_onload()
           $("." + element).hide();
 
         }
+        else
+        {
+          $("." + element).show();
+        }
     });
 
 }
@@ -231,6 +262,13 @@ function hide_central_area()
 
             $("." + element).hide();
       });
+
+    // hide central widget area
+    $(central_Area_Group_Image_class).each(function(index, element) {
+
+            $("." + element).hide();
+      });
+
 }
 
 // hide scrollableMenu area
@@ -245,6 +283,10 @@ function hide_scrollableMenu_area()
 
 function show_group(All_Devices_group,All_Devices_Image,All_Devices_Hr)
 {
+
+    //hide central area
+    hide_central_area();
+
     // set img src
     $(div_class_scrollable_Image).each(function(index, element) {
           if(element != All_Devices_Image )
@@ -368,6 +410,7 @@ function show_Floor_Group(group_Floor_class, array_floor_images_id, floor_group_
 
     //hide all central elements
     hide_central_area();
+    //alert("hello");
     $("." + group_Floor_class).show();  // show floor names
     // hide group txt class
     $("." + central_Area_Group_Floor_txt_class[0]).hide();
@@ -384,6 +427,10 @@ function hide_group_floor_txt_class()
 
 function show_area(parameter, parameter_image_array, parameter_image, parameter_Hr_array, parameter_Hr, parameter_central, parameter_Menu_array, parmeter_menu_image)
 {
+
+
+  //hide central area
+  hide_central_area();
 
   //Show area on the scrollable div
   // set img src
@@ -443,6 +490,10 @@ function show_area(parameter, parameter_image_array, parameter_image, parameter_
 
 function show_info(parameter_central,parameter_image_array,parameter_Hr_array,parameter_Hr)
 {
+
+    //hide central area
+    hide_central_area();
+
     //Show area on the scrollable div
     // set img src
     $(parameter_image_array).each(function(index, element) {

@@ -3,7 +3,7 @@
 // vscpws_simpleTextEvent
 //
 
-function vscpws_simpleTextEvent_mod( username,           // Username for websocket serever  
+function vscpws_simpleTextEvent_mod( username,           // Username for websocket serever
                                     passwordhash,    // Password hash for websocket
                                     serverurl,       // url to VSCP websocket i/f
                                     id,              // Where it should be placed
@@ -13,9 +13,23 @@ function vscpws_simpleTextEvent_mod( username,           // Username for websock
                                     decimals,        // Number of decimals
                                     formatstr,       // A value format string
                                     guid,            // GUID we are interested in
-                                    fncallback )     // If set function to call
-                                                     // when data arraives
+                                    fncallback,     // If set function to call    // when data arraives
+                                    graphId,
+                                    graphUnitId,
+                                    graphType
+                                     )
 {
+    var d_time = new Date();
+    //alert(d_time.getTime());
+    var data = [
+                {
+                    label: "sensor Value",
+                    //values: [{ time: d.getTime(), y: 20 }, { time: d.getTime(), y: 2 }]
+                    //values: [{ time: 1370044800, y: 0 }]
+                    values: [{ time: d_time.getTime(), y: 0 }]
+                },
+        ];
+
     // First set default parameter
     this.username = username;
     this.passwordhash = passwordhash;
@@ -27,11 +41,55 @@ function vscpws_simpleTextEvent_mod( username,           // Username for websock
     this.codingIndex = typeof codingIndex !== 'undefined' ? codingIndex : 0;
     this.decimals = typeof decimals !== 'undefined' ? decimals : 2;
     this.fncallback = (fncallback && typeof(fncallback) === "function") ? fncallback : null;      
-    
+
+    this.var_graphId= graphId;
+    this.var_graphUnitId = graphUnitId;
+    this.var_graphType = graphType;
+    this.graphVar = '';
+
+    // ************* Create Epoch Graph  ************* //
+    if(this.var_graphType == 'line')
+    {
+        this.graphVar = $("#" + this.var_graphId).epoch({
+            type: 'time.line',
+            tickFormats: { time: function(d) { return new Date(time*1000).toISOString() } },
+            data: data,
+            axes: ['left', 'right', 'bottom']
+        });
+    }
+    else if(this.var_graphType == 'bar')
+    {
+        this.graphVar = $("#" + this.var_graphId).epoch({
+            type: 'time.bar',
+            tickFormats: { time: function(d) { return new Date(time*1000).toISOString() } },
+            data: data,
+            axes: ['left', 'right', 'bottom']
+        });
+    }
+    else if(this.var_graphType == 'area')
+    {
+        this.graphVar = $("#" + this.var_graphId).epoch({
+            type: 'time.area',
+            tickFormats: { time: function(d) { return new Date(time*1000).toISOString() } },
+            data: data,
+            axes: ['left', 'right', 'bottom']
+        });
+    }
+    else  // by default create line
+    {
+        this.graphVar = $("#" + this.var_graphId).epoch({
+            type: 'time.line',
+            tickFormats: { time: function(d) { return new Date(time*1000).toISOString() } },
+            data: data,
+            axes: ['left', 'right', 'bottom']
+        });
+    }
+
     this.index = -1;
     this.zone = -1;
     this.subzone = -1;
     
+    //alert(this.guid);
     // Websocket for VSCP daemon communication
     this.socket_vscp = null;
     
@@ -208,7 +266,8 @@ vscpws_simpleTextEvent_mod.prototype.onVSCPMessage = function(msg)
                                     " " + msg.data);
 	
     msgitems = msg.data.split(';');
-				
+
+
     if ("+" == msgitems[0]){        // check for positive reply
         
         if (vscpws_debug) console.log("Positive reply "+msg.data);
@@ -228,11 +287,13 @@ vscpws_simpleTextEvent_mod.prototype.onVSCPMessage = function(msg)
             this.socket_vscp.send("C;" + "OPEN");
        
             // Set filter
-            this.setFilter();
+            //this.setFilter();
         }
         else if ( "OPEN" == msgitems[1] ) {
             // Open confirmation => We are connected
             this.bConnected = true;
+                //alert(msgitems.length);
+            console.log("OPENED --- ++ ");
         }
         else if ( "CLOSE" == msgitems[1] ) {
             // Close confirmation => We are NOT connected
@@ -282,6 +343,17 @@ msgitems_comma = msgitems[4].split(',')
                         vscpws_units[this.vscptype][vscpws_getDatacodingUnit(vscpdataVar[0])],
                         vscpws_getDatacodingUnit(vscpdataVar[0]),
                         vscpws_getSensorIndexFromDataCoding(vscpdataVar[0]));
+
+
+                    // ***** update graph ***** //
+                    //Modify the graph unit
+                    document.getElementById(this.var_graphUnitId).textContent = vscpws_units[this.vscptype][vscpws_getDatacodingUnit(vscpdataVar[0])];
+                    // Push data on graph
+                    var d = new Date();
+                    var time_var = 100 ; // = d.getTime();
+                    var data = [{ time: d.getTime(), y: value }];
+                    this.graphVar.push( data );
+
 
                 }
                 // Floating point
@@ -340,6 +412,16 @@ msgitems_comma = msgitems[4].split(',')
                         vscpws_getDatacodingUnit(vscpdataVar[0]),
                         vscpws_getSensorIndexFromDataCoding(vscpdataVar[0]));
 
+
+
+                    // ***** update graph ***** //
+                    //Modify the graph unit
+                    document.getElementById(this.var_graphUnitId).textContent = vscpws_units[this.vscptype][vscpws_getDatacodingUnit(vscpdataVar[0])];
+                    // Push data on graph
+                    var d = new Date();
+                    var data = [{ time: d.getTime(), y: value }];
+                    this.graphVar.push( data );
+
                 }
                 // Other event
                 else {
@@ -366,6 +448,7 @@ msgitems_comma = msgitems[4].split(',')
     }
     else if ("E" == msgitems[0]){   // Check for event
 
+        //alert("event");
         var offset = 0;
 
         //head;class;type;guid,data
@@ -435,6 +518,17 @@ msgitems_comma = msgitems[4].split(',')
                 vscpws_units[vscptype][vscpws_getDatacodingUnit(vscpdata[0])],
                 vscpws_getDatacodingUnit(vscpdata[0]),
                 vscpws_getSensorIndexFromDataCoding(vscpdata[0]));
+
+
+            //alert("jjj");
+            // ***** update graph ***** //
+            //Modify the graph unit
+            document.getElementById(this.var_graphUnitId).textContent = vscpws_units[vscptype][vscpws_getDatacodingUnit(vscpdata[0])];
+            // Push data on graph
+            var d = new Date();
+            var data = [{ time: d.getTime(), y: parseInt(value) }];
+            this.graphVar.push( data );
+            //alert("kkk");
 
         }
         // Floating point
@@ -509,6 +603,16 @@ msgitems_comma = msgitems[4].split(',')
                 vscpws_units[vscptype][vscpws_getDatacodingUnit(vscpdata[0])],
                 vscpws_getDatacodingUnit(vscpdata[0]),
                 vscpws_getSensorIndexFromDataCoding(vscpdata[0]));
+
+
+
+            // ***** update graph ***** //
+            //Modify the graph unit
+            document.getElementById(this.var_graphUnitId).textContent = vscpws_units[vscptype][vscpws_getDatacodingUnit(vscpdata[0])];
+            // Push data on graph
+            var d = new Date();
+            var data = [{ time: d.getTime(), y: value }];
+            this.graphVar.push( data );
 
         }
         // Other event

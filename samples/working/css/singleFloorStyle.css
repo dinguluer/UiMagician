@@ -60,6 +60,34 @@ body, html {
     height:48px;
 }
 
+/*
+.graph_sensor {
+    width:640px;
+    height:480px;
+}*/
+
+
+/* best
+.graph_sensor {
+    width:440px;
+    height:330px;
+    background-color:#ffffff;
+}
+*/
+
+.graph_sensor {
+    width:800px;
+    height:200px;
+}
+
+.imgtxt_Heading_graph {
+    padding-left: 25px;
+}
+
+.group_sensor_graph{
+  background-color:#DDDFED;
+}
+
 .spantxt_center {
     color:#DDDFED;
 }

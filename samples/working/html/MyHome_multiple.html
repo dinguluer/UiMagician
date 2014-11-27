@@ -4,8 +4,10 @@
   <title>VSCP My House Ui ..</title>
   <link rel="stylesheet" type="text/css" href="../css/multiFloorStyle.css"/>
   <link rel="stylesheet" type="text/css" href="../css/info.css"/>
-  <script type="text/javascript" src="settings.js"></script>
-  <script type="text/javascript" src="../lib/jquery.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/epoch.min.css"/>
+  <script type="text/javascript" src="../lib/jquery.min.js"></script>
+  <script type="text/javascript" src="../lib/d3.min.js"></script>
+  <script type="text/javascript" src="../lib/epoch.min.js"></script>
   <script type="text/javascript" src="../lib/wz_jsgraphics.js"></script>
   <script type="text/javascript" src="../lib/md5.js"></script>
   <script type="text/javascript" src="../lib/infoInit.js"></script>
@@ -77,6 +79,11 @@
     <p class="imgtxt_scrollmenu" id="First_Floor_Area_Sensors_Group_txt">Sensors</p>
     <hr/>
    </div>
+   <div class="First_Floor_Area">
+    <input class="image_menu_center_second" type="image" id="First_Floor_Area_Sensors_Group_Graph_Image" onclick="show_Floor_Group('group_Sensors_Graph_Floor_First',div_class_First_Floor_Area_Images,'First_Floor_Area_Sensors_Group_Graph_Image')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt_scrollmenu" id="First_Floor_Area_Sensors_Group_Graph_txt">Sensors Graph</p>
+    <hr/>
+   </div>
    <div class="Two_Floor_Area">
     <input class="image_menu_center_first" type="image" id="Two_Floor_Area_DrawingRoom_Image" onclick="show_Central_widget('Two_Floor_Area_DrawingRoom',div_class_Two_Floor_Area_Images,'Two_Floor_Area_DrawingRoom_Image')" src="../lib/widgets/room/room_selected.jpg"/>
     <p class="imgtxt_scrollmenu" id="Two_Floor_Area_DrawingRoom_txt">DrawingRoom</p>
@@ -112,6 +119,11 @@
     <p class="imgtxt_scrollmenu" id="Two_Floor_Area_Sensors_Group_txt">Sensors</p>
     <hr/>
    </div>
+   <div class="Two_Floor_Area">
+    <input class="image_menu_center_second" type="image" id="Two_Floor_Area_Sensors_Group_Graph_Image" onclick="show_Floor_Group('group_Sensors_Graph_Floor_Two',div_class_Two_Floor_Area_Images,'Two_Floor_Area_Sensors_Group_Graph_Image')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt_scrollmenu" id="Two_Floor_Area_Sensors_Group_Graph_txt">Sensors Graph</p>
+    <hr/>
+   </div>
    <div class="All_Devices_group">
     <input class="image_menu_center_first" type="image" id="group_Lights_Image" onclick="show_area_group('group_Lights','group_Lights_Image')" src="../lib/widgets/room/room_unselected.png"/>
     <p class="imgtxt_scrollmenu" id="group_Lights_Txt_Id">Lights</p>
@@ -125,6 +137,11 @@
    <div class="All_Devices_group">
     <input class="image_menu_center_second" type="image" id="group_Sensors_Image" onclick="show_area_group('group_Sensors','group_Sensors_Image')" src="../lib/widgets/room/room_unselected.png"/>
     <p class="imgtxt_scrollmenu" id="group_Sensors_Txt_Id">Sensors</p>
+    <hr/>
+   </div>
+   <div class="All_Devices_group">
+    <input class="image_menu_center_second" type="image" id="group_Sensors_Graph_Image" onclick="show_area_group('group_sensor_graph','group_Sensors_Graph_Image')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt_scrollmenu" id="group_Sensors_Graph_Txt_Id">Sensors Graph</p>
     <hr/>
    </div>
   </div>
@@ -142,6 +159,13 @@
      <span class="spantxt_center group_Txt" type="text">First :</span>
      <span class="spantxt_center group_Floor_Txt" type="text">Bedroom : </span>Temerature Indicator : <span class="spantxt_center" type="text" id="OneFirstBedroomTemeratureIndicator_Remote_Txt_ID">No Data From Sensor</span>
     </p>
+    <hr/>
+   </div>
+   <div class="group_sensor_graph group_Sensors_Graph_Floor_First">
+    <h3 class="imgtxt_Heading_graph">
+     <span class="group_Txt" type="text">First : </span>Bedroom : Temerature Indicator : <span type="text" id="OneFirstBedroomTemeratureIndicator_chart_unit_div"> Disconnected</span>
+    </h3>
+    <div class="graph_sensor epoch category10" id="OneFirstBedroomTemeratureIndicator_chart_div"></div>
     <hr/>
    </div>
    <div class="First_Floor_Area_Bedroom group_Lights group_Lights_Floor_First">
@@ -224,12 +248,26 @@
     </p>
     <hr/>
    </div>
+   <div class="group_sensor_graph group_Sensors_Graph_Floor_Two">
+    <h3 class="imgtxt_Heading_graph">
+     <span class="group_Txt" type="text">Two : </span>DrawingRoom : Temperature Sensor : <span type="text" id="OneTwoDrawingRoomTemperatureSensor_chart_unit_div"> Disconnected</span>
+    </h3>
+    <div class="graph_sensor epoch category10" id="OneTwoDrawingRoomTemperatureSensor_chart_div"></div>
+    <hr/>
+   </div>
    <div class="Two_Floor_Area_DrawingRoom group_Sensors group_Sensors_Floor_Two">
     <input class="image_menu_center_second" type="image" id="OneTwoDrawingRoomHeater_Image_ID" src="../lib/widgets/measurement/length.jpg"/>
     <p class="imgtxt_center">
      <span class="spantxt_center group_Txt" type="text">Two :</span>
      <span class="spantxt_center group_Floor_Txt" type="text">DrawingRoom : </span>Heater : <span class="spantxt_center" type="text" id="OneTwoDrawingRoomHeater_Remote_Txt_ID">No Data From Sensor</span>
     </p>
+    <hr/>
+   </div>
+   <div class="group_sensor_graph group_Sensors_Graph_Floor_Two">
+    <h3 class="imgtxt_Heading_graph">
+     <span class="group_Txt" type="text">Two : </span>DrawingRoom : Heater : <span type="text" id="OneTwoDrawingRoomHeater_chart_unit_div"> Disconnected</span>
+    </h3>
+    <div class="graph_sensor epoch category10" id="OneTwoDrawingRoomHeater_chart_div"></div>
     <hr/>
    </div>
    <div class="Two_Floor_Area_DrawingRoom group_Lights group_Lights_Floor_Two">

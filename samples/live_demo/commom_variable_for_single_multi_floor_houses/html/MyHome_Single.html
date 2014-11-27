@@ -1,0 +1,1139 @@
+<html style="height: 100%;">
+ <head>
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"/>
+  <title>VSCP My House Ui ..</title>
+  <link rel="stylesheet" type="text/css" href="../css/singleFloorStyle.css"/>
+  <link rel="stylesheet" type="text/css" href="../css/info.css"/>
+  <link rel="stylesheet" type="text/css" href="../css/epoch.min.css"/>
+  <script type="text/javascript" src="../lib/jquery.min.js"></script>
+  <script type="text/javascript" src="../lib/d3.min.js"></script>
+  <script type="text/javascript" src="../lib/epoch.min.js"></script>
+  <script type="text/javascript" src="../lib/wz_jsgraphics.js"></script>
+  <script type="text/javascript" src="../lib/md5.js"></script>
+  <script type="text/javascript" src="../lib/infoInit.js"></script>
+  <script type="text/javascript" src="../lib/vscpwslib.min.js"></script>
+  <script type="text/javascript" src="../lib/vscpStateButton_mod.js"></script>
+  <script type="text/javascript" src="../lib/vscpSimpleText_mod.js"></script>
+  <script type="text/javascript" src="../lib/vscpslider.js"></script>
+  <script type="text/javascript" src="../lib/vscpVariableButton.js"></script>
+  <script type="text/javascript" src="../lib/singleFloorsSocketCfg.js"></script>
+  <script type="text/javascript" src="../lib/singleFloorCfg.js"></script>
+  <script type="text/javascript" src="../lib/singleFloorScript_new.js"></script>
+ </head>
+ <body onload="doc_onload(0)">
+  <div class="scrollable" id="images">
+   <div class="input" id="Bedroom">
+    <input class="image_scrollable" type="image" id="Bedroom_Image" onclick="show_area_single(div_class_scrollable_Image,'Bedroom_Image',div_class_scrollable_Hr,'Bedroom_Hr','First_Floor_Area_Bedroom')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Bedroom_txt">Bedroom</p>
+    <input class="hr_scrollable" id="Bedroom_Hr"/>
+   </div>
+   <div class="input" id="Balcony">
+    <input class="image_scrollable" type="image" id="Balcony_Image" onclick="show_area_single(div_class_scrollable_Image,'Balcony_Image',div_class_scrollable_Hr,'Balcony_Hr','First_Floor_Area_Balcony')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Balcony_txt">Balcony</p>
+    <input class="hr_scrollable" id="Balcony_Hr"/>
+   </div>
+   <div class="input" id="Bedroom1">
+    <input class="image_scrollable" type="image" id="Bedroom1_Image" onclick="show_area_single(div_class_scrollable_Image,'Bedroom1_Image',div_class_scrollable_Hr,'Bedroom1_Hr','First_Floor_Area_Bedroom1')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Bedroom1_txt">Bedroom1</p>
+    <input class="hr_scrollable" id="Bedroom1_Hr"/>
+   </div>
+   <div class="input" id="Kitchen">
+    <input class="image_scrollable" type="image" id="Kitchen_Image" onclick="show_area_single(div_class_scrollable_Image,'Kitchen_Image',div_class_scrollable_Hr,'Kitchen_Hr','First_Floor_Area_Kitchen')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Kitchen_txt">Kitchen</p>
+    <input class="hr_scrollable" id="Kitchen_Hr"/>
+   </div>
+   <div class="input" id="DrawingRoom">
+    <input class="image_scrollable" type="image" id="DrawingRoom_Image" onclick="show_area_single(div_class_scrollable_Image,'DrawingRoom_Image',div_class_scrollable_Hr,'DrawingRoom_Hr','First_Floor_Area_DrawingRoom')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="DrawingRoom_txt">DrawingRoom</p>
+    <input class="hr_scrollable" id="DrawingRoom_Hr"/>
+   </div>
+   <div class="input" id="Toilet">
+    <input class="image_scrollable" type="image" id="Toilet_Image" onclick="show_area_single(div_class_scrollable_Image,'Toilet_Image',div_class_scrollable_Hr,'Toilet_Hr','First_Floor_Area_Toilet')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Toilet_txt">Toilet</p>
+    <input class="hr_scrollable" id="Toilet_Hr"/>
+   </div>
+   <div class="input" id="Balcony1">
+    <input class="image_scrollable" type="image" id="Balcony1_Image" onclick="show_area_single(div_class_scrollable_Image,'Balcony1_Image',div_class_scrollable_Hr,'Balcony1_Hr','First_Floor_Area_Balcony1')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Balcony1_txt">Balcony1</p>
+    <input class="hr_scrollable" id="Balcony1_Hr"/>
+   </div>
+   <div class="input" id="Loby">
+    <input class="image_scrollable" type="image" id="Loby_Image" onclick="show_area_single(div_class_scrollable_Image,'Loby_Image',div_class_scrollable_Hr,'Loby_Hr','First_Floor_Area_Loby')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Loby_txt">Loby</p>
+    <input class="hr_scrollable" id="Loby_Hr"/>
+   </div>
+   <div class="input" id="group_Light_Button">
+    <input class="image_scrollable" type="image" id="group_Light_Image" onclick="show_area_group(div_class_scrollable_Image,'group_Light_Image',div_class_scrollable_Hr,'group_Light_Hr','group_Lights','group_Light_Txt')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="group_Light_Txt_Id">Lights</p>
+    <input class="hr_scrollable" id="group_Light_Hr"/>
+   </div>
+   <div class="input" id="group_Accessories_Button">
+    <input class="image_scrollable" type="image" id="group_Accessories_Image" onclick="show_area_group(div_class_scrollable_Image,'group_Accessories_Image',div_class_scrollable_Hr,'group_Accessories_Hr','group_Accessories','group_Accessories_Txt')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="group_Accessories_Txt_Id">Accessories</p>
+    <input class="hr_scrollable" id="group_Accessories_Hr"/>
+   </div>
+   <div class="input" id="group_Sensors_Button">
+    <input class="image_scrollable" type="image" id="group_Sensors_Image" onclick="show_area_group(div_class_scrollable_Image,'group_Sensors_Image',div_class_scrollable_Hr,'group_Sensors_Hr','group_Sensors','group_Sensors_Txt')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="group_Sensors_Txt_Id">Sensors</p>
+    <input class="hr_scrollable" id="group_Sensors_Hr"/>
+   </div>
+   <div class="input" id="sensors_Graph">
+    <input class="image_scrollable" type="image" id="sensor_graph_Image" onclick="show_area_single(div_class_scrollable_Image,'sensor_graph_Image',div_class_scrollable_Hr,'sensor_graph_Hr','group_sensor_graph')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="sensors_Graph_txt">sensors_Graph</p>
+    <input class="hr_scrollable" id="sensor_graph_Hr"/>
+   </div>
+   <div class="input" id="Info">
+    <input class="image_scrollable" type="image" id="Info_Image" onclick="show_info(div_class_scrollable_Image,div_class_scrollable_Hr,'Info_Hr','info_text')" src="../lib/widgets/info/info.jpg"/>
+    <p class="imgtxt" id="Info_txt">info</p>
+    <input class="hr_scrollable" id="Info_Hr"/>
+   </div>
+  </div>
+  <div class="scrollableCenter" id="center">
+   <div class="First_Floor_Area_Bedroom group_Lights">
+    <input class="image_menu_center_first" type="image" id="OneFirstBedroombulb_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Bedroom : </span>bulb</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Bedroom group_Sensors">
+    <input class="image_menu_center_second" type="image" id="OneFirstBedroomTemeratureIndicator_Image_ID" src="../lib/widgets/measurement/temprature.png"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Sensors_Txt" type="text">Bedroom : </span>Temerature Indicator : <span class="spantxt_center" type="text" id="OneFirstBedroomTemeratureIndicator_Remote_Txt_ID">No Data From Sensor</span>
+    </p>
+    <hr/>
+   </div>
+   <div class="group_sensor_graph">
+    <h3 class="imgtxt_Heading_graph">Bedroom : Temerature Indicator : <span type="text" id="OneFirstBedroomTemeratureIndicator_chart_unit_div"> Disconnected</span>
+    </h3>
+    <div class="graph_sensor epoch category10" id="OneFirstBedroomTemeratureIndicator_chart_div"></div>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Bedroom group_Lights">
+    <input class="image_menu_center_second" type="image" id="OneFirstBedroomTubeLight_Image_ID" src="../lib/widgets/lightbulb/semi-matte-light-bulb-unlit-th.png"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Bedroom : </span>Tube Light.</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Bedroom group_Lights">
+    <input class="image_menu_center_second" type="image" id="OneFirstBedroomTempleLight_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Bedroom : </span>Temple Light</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Bedroom group_Lights">
+    <input class="image_menu_center_second" type="range" value="0" id="OneFirstBedroomDimmer_Image_ID" min="0" step="1" max="100"/>
+    <span class="spantxt_center" type="text" id="OneFirstBedroomDimmer_Local_Txt_ID_Fix">Dimmer Value : </span>
+    <span class="spantxt_center" type="text" id="OneFirstBedroomDimmer_Local_Txt_ID">0</span>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Bedroom : </span>Dimmer : <span class="spantxt_center" type="text" id="OneFirstBedroomDimmer_Remote_Txt_ID"> Disconnected</span>
+    </p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Bedroom group_Lights">
+    <input class="image_menu_center_second" type="image" id="OneFirstBedroomBulbSteppable_Inc_Image_ID" src="../lib/widgets/button_variable/up.jpg"/>
+    <span class="spantxt_button_center" type="text" id="OneFirstBedroomBulbSteppable_Local_Txt_ID">0</span>
+    <input class="image_menu_center_second_sec" type="image" id="OneFirstBedroomBulbSteppable_Dec_Image_ID" src="../lib/widgets/button_variable/down.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Bedroom : </span>Bulb Steppable : <span class="spantxt_center" type="text" id="OneFirstBedroomBulbSteppable_Remote_Txt_ID"> Disconnected</span>
+    </p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Bedroom group_Lights">
+    <input class="image_menu_center_second" type="range" value="0" id="OneFirstBedroomDimmerTube_Image_ID" min="-100" step="1" max="100"/>
+    <span class="spantxt_center" type="text" id="OneFirstBedroomDimmerTube_Local_Txt_ID_Fix">Dimmer_Tube Value : </span>
+    <span class="spantxt_center" type="text" id="OneFirstBedroomDimmerTube_Local_Txt_ID">0</span>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Bedroom : </span>Dimmer_Tube : <span class="spantxt_center" type="text" id="OneFirstBedroomDimmerTube_Remote_Txt_ID"> Disconnected</span>
+    </p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Balcony group_Lights">
+    <input class="image_menu_center_first" type="image" id="OneFirstBalconyBulb_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Balcony : </span>Bulb</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Bedroom1 group_Lights">
+    <input class="image_menu_center_first" type="image" id="OneFirstBedroom1Bulb_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Bedroom1 : </span>Bulb</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Kitchen group_Accessories">
+    <input class="image_menu_center_first" type="image" id="OneFirstKitchenFan_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Accessories_Txt" type="text">Kitchen : </span>Fan</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_DrawingRoom group_Accessories">
+    <input class="image_menu_center_first" type="image" id="OneFirstDrawingRoomFan_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Accessories_Txt" type="text">DrawingRoom : </span>Fan</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_DrawingRoom group_Sensors">
+    <input class="image_menu_center_second" type="image" id="OneFirstDrawingRoomTemperatureSensor_Image_ID" src="../lib/widgets/measurement/intensity_of_light.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Sensors_Txt" type="text">DrawingRoom : </span>Temperature Sensor : <span class="spantxt_center" type="text" id="OneFirstDrawingRoomTemperatureSensor_Remote_Txt_ID">No Data From Sensor</span>
+    </p>
+    <hr/>
+   </div>
+   <div class="group_sensor_graph">
+    <h3 class="imgtxt_Heading_graph">DrawingRoom : Temperature Sensor : <span type="text" id="OneFirstDrawingRoomTemperatureSensor_chart_unit_div"> Disconnected</span>
+    </h3>
+    <div class="graph_sensor epoch category10" id="OneFirstDrawingRoomTemperatureSensor_chart_div"></div>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_DrawingRoom group_Sensors">
+    <input class="image_menu_center_second" type="image" id="OneFirstDrawingRoomHeater_Image_ID" src="../lib/widgets/measurement/length.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Sensors_Txt" type="text">DrawingRoom : </span>Heater : <span class="spantxt_center" type="text" id="OneFirstDrawingRoomHeater_Remote_Txt_ID">No Data From Sensor</span>
+    </p>
+    <hr/>
+   </div>
+   <div class="group_sensor_graph">
+    <h3 class="imgtxt_Heading_graph">DrawingRoom : Heater : <span type="text" id="OneFirstDrawingRoomHeater_chart_unit_div"> Disconnected</span>
+    </h3>
+    <div class="graph_sensor epoch category10" id="OneFirstDrawingRoomHeater_chart_div"></div>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_DrawingRoom group_Lights">
+    <input class="image_menu_center_second" type="image" id="OneFirstDrawingRoomled_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">DrawingRoom : </span>led</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_DrawingRoom group_Accessories">
+    <input class="image_menu_center_second" type="image" id="OneFirstDrawingRoomtap_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Accessories_Txt" type="text">DrawingRoom : </span>tap</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_DrawingRoom group_Accessories">
+    <input class="image_menu_center_second" type="image" id="OneFirstDrawingRoomPress_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Accessories_Txt" type="text">DrawingRoom : </span>Press</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Toilet group_Lights">
+    <input class="image_menu_center_first" type="image" id="OneFirstToiletBulb_Image_ID" src="../lib/widgets/button/off-button.png"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Light_Txt" type="text">Toilet : </span>Bulb</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Balcony1 group_Accessories">
+    <input class="image_menu_center_first" type="image" id="OneFirstBalcony1Press_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Accessories_Txt" type="text">Balcony1 : </span>Press</p>
+    <hr/>
+   </div>
+   <div class="First_Floor_Area_Loby group_Accessories">
+    <input class="image_menu_center_first" type="image" id="OneFirstLobyOven_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
+    <p class="imgtxt_center">
+     <span class="spantxt_center group_Accessories_Txt" type="text">Loby : </span>Oven</p>
+    <hr/>
+   </div>
+   <div class="info_text info_0">
+    <div class="green_box arrow_left" id="info_class_0">
+     <span id="info_txt_0"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_0"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_1">
+    <div class="green_box arrow_left" id="info_class_1">
+     <span id="info_txt_1"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_1"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_2">
+    <div class="green_box arrow_left" id="info_class_2">
+     <span id="info_txt_2"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_2"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_3">
+    <div class="green_box arrow_left" id="info_class_3">
+     <span id="info_txt_3"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_3"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_4">
+    <div class="green_box arrow_left" id="info_class_4">
+     <span id="info_txt_4"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_4"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_5">
+    <div class="green_box arrow_left" id="info_class_5">
+     <span id="info_txt_5"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_5"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_6">
+    <div class="green_box arrow_left" id="info_class_6">
+     <span id="info_txt_6"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_6"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_7">
+    <div class="green_box arrow_left" id="info_class_7">
+     <span id="info_txt_7"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_7"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_8">
+    <div class="green_box arrow_left" id="info_class_8">
+     <span id="info_txt_8"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_8"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_9">
+    <div class="green_box arrow_left" id="info_class_9">
+     <span id="info_txt_9"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_9"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_10">
+    <div class="green_box arrow_left" id="info_class_10">
+     <span id="info_txt_10"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_10"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_11">
+    <div class="green_box arrow_left" id="info_class_11">
+     <span id="info_txt_11"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_11"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_12">
+    <div class="green_box arrow_left" id="info_class_12">
+     <span id="info_txt_12"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_12"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_13">
+    <div class="green_box arrow_left" id="info_class_13">
+     <span id="info_txt_13"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_13"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_14">
+    <div class="green_box arrow_left" id="info_class_14">
+     <span id="info_txt_14"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_14"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_15">
+    <div class="green_box arrow_left" id="info_class_15">
+     <span id="info_txt_15"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_15"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_16">
+    <div class="green_box arrow_left" id="info_class_16">
+     <span id="info_txt_16"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_16"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_17">
+    <div class="green_box arrow_left" id="info_class_17">
+     <span id="info_txt_17"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_17"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_18">
+    <div class="green_box arrow_left" id="info_class_18">
+     <span id="info_txt_18"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_18"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_19">
+    <div class="green_box arrow_left" id="info_class_19">
+     <span id="info_txt_19"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_19"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_20">
+    <div class="green_box arrow_left" id="info_class_20">
+     <span id="info_txt_20"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_20"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_21">
+    <div class="green_box arrow_left" id="info_class_21">
+     <span id="info_txt_21"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_21"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_22">
+    <div class="green_box arrow_left" id="info_class_22">
+     <span id="info_txt_22"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_22"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_23">
+    <div class="green_box arrow_left" id="info_class_23">
+     <span id="info_txt_23"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_23"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_24">
+    <div class="green_box arrow_left" id="info_class_24">
+     <span id="info_txt_24"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_24"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_25">
+    <div class="green_box arrow_left" id="info_class_25">
+     <span id="info_txt_25"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_25"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_26">
+    <div class="green_box arrow_left" id="info_class_26">
+     <span id="info_txt_26"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_26"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_27">
+    <div class="green_box arrow_left" id="info_class_27">
+     <span id="info_txt_27"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_27"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_28">
+    <div class="green_box arrow_left" id="info_class_28">
+     <span id="info_txt_28"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_28"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_29">
+    <div class="green_box arrow_left" id="info_class_29">
+     <span id="info_txt_29"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_29"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_30">
+    <div class="green_box arrow_left" id="info_class_30">
+     <span id="info_txt_30"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_30"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_31">
+    <div class="green_box arrow_left" id="info_class_31">
+     <span id="info_txt_31"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_31"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_32">
+    <div class="green_box arrow_left" id="info_class_32">
+     <span id="info_txt_32"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_32"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_33">
+    <div class="green_box arrow_left" id="info_class_33">
+     <span id="info_txt_33"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_33"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_34">
+    <div class="green_box arrow_left" id="info_class_34">
+     <span id="info_txt_34"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_34"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_35">
+    <div class="green_box arrow_left" id="info_class_35">
+     <span id="info_txt_35"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_35"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_36">
+    <div class="green_box arrow_left" id="info_class_36">
+     <span id="info_txt_36"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_36"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_37">
+    <div class="green_box arrow_left" id="info_class_37">
+     <span id="info_txt_37"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_37"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_38">
+    <div class="green_box arrow_left" id="info_class_38">
+     <span id="info_txt_38"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_38"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_39">
+    <div class="green_box arrow_left" id="info_class_39">
+     <span id="info_txt_39"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_39"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_40">
+    <div class="green_box arrow_left" id="info_class_40">
+     <span id="info_txt_40"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_40"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_41">
+    <div class="green_box arrow_left" id="info_class_41">
+     <span id="info_txt_41"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_41"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_42">
+    <div class="green_box arrow_left" id="info_class_42">
+     <span id="info_txt_42"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_42"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_43">
+    <div class="green_box arrow_left" id="info_class_43">
+     <span id="info_txt_43"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_43"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_44">
+    <div class="green_box arrow_left" id="info_class_44">
+     <span id="info_txt_44"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_44"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_45">
+    <div class="green_box arrow_left" id="info_class_45">
+     <span id="info_txt_45"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_45"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_46">
+    <div class="green_box arrow_left" id="info_class_46">
+     <span id="info_txt_46"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_46"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_47">
+    <div class="green_box arrow_left" id="info_class_47">
+     <span id="info_txt_47"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_47"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_48">
+    <div class="green_box arrow_left" id="info_class_48">
+     <span id="info_txt_48"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_48"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_49">
+    <div class="green_box arrow_left" id="info_class_49">
+     <span id="info_txt_49"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_49"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_50">
+    <div class="green_box arrow_left" id="info_class_50">
+     <span id="info_txt_50"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_50"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_51">
+    <div class="green_box arrow_left" id="info_class_51">
+     <span id="info_txt_51"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_51"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_52">
+    <div class="green_box arrow_left" id="info_class_52">
+     <span id="info_txt_52"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_52"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_53">
+    <div class="green_box arrow_left" id="info_class_53">
+     <span id="info_txt_53"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_53"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_54">
+    <div class="green_box arrow_left" id="info_class_54">
+     <span id="info_txt_54"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_54"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_55">
+    <div class="green_box arrow_left" id="info_class_55">
+     <span id="info_txt_55"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_55"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_56">
+    <div class="green_box arrow_left" id="info_class_56">
+     <span id="info_txt_56"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_56"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_57">
+    <div class="green_box arrow_left" id="info_class_57">
+     <span id="info_txt_57"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_57"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_58">
+    <div class="green_box arrow_left" id="info_class_58">
+     <span id="info_txt_58"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_58"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_59">
+    <div class="green_box arrow_left" id="info_class_59">
+     <span id="info_txt_59"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_59"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_60">
+    <div class="green_box arrow_left" id="info_class_60">
+     <span id="info_txt_60"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_60"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_61">
+    <div class="green_box arrow_left" id="info_class_61">
+     <span id="info_txt_61"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_61"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_62">
+    <div class="green_box arrow_left" id="info_class_62">
+     <span id="info_txt_62"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_62"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_63">
+    <div class="green_box arrow_left" id="info_class_63">
+     <span id="info_txt_63"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_63"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_64">
+    <div class="green_box arrow_left" id="info_class_64">
+     <span id="info_txt_64"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_64"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_65">
+    <div class="green_box arrow_left" id="info_class_65">
+     <span id="info_txt_65"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_65"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_66">
+    <div class="green_box arrow_left" id="info_class_66">
+     <span id="info_txt_66"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_66"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_67">
+    <div class="green_box arrow_left" id="info_class_67">
+     <span id="info_txt_67"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_67"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_68">
+    <div class="green_box arrow_left" id="info_class_68">
+     <span id="info_txt_68"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_68"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_69">
+    <div class="green_box arrow_left" id="info_class_69">
+     <span id="info_txt_69"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_69"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_70">
+    <div class="green_box arrow_left" id="info_class_70">
+     <span id="info_txt_70"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_70"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_71">
+    <div class="green_box arrow_left" id="info_class_71">
+     <span id="info_txt_71"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_71"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_72">
+    <div class="green_box arrow_left" id="info_class_72">
+     <span id="info_txt_72"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_72"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_73">
+    <div class="green_box arrow_left" id="info_class_73">
+     <span id="info_txt_73"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_73"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_74">
+    <div class="green_box arrow_left" id="info_class_74">
+     <span id="info_txt_74"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_74"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_75">
+    <div class="green_box arrow_left" id="info_class_75">
+     <span id="info_txt_75"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_75"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_76">
+    <div class="green_box arrow_left" id="info_class_76">
+     <span id="info_txt_76"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_76"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_77">
+    <div class="green_box arrow_left" id="info_class_77">
+     <span id="info_txt_77"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_77"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_78">
+    <div class="green_box arrow_left" id="info_class_78">
+     <span id="info_txt_78"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_78"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_79">
+    <div class="green_box arrow_left" id="info_class_79">
+     <span id="info_txt_79"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_79"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_80">
+    <div class="green_box arrow_left" id="info_class_80">
+     <span id="info_txt_80"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_80"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_81">
+    <div class="green_box arrow_left" id="info_class_81">
+     <span id="info_txt_81"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_81"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_82">
+    <div class="green_box arrow_left" id="info_class_82">
+     <span id="info_txt_82"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_82"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_83">
+    <div class="green_box arrow_left" id="info_class_83">
+     <span id="info_txt_83"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_83"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_84">
+    <div class="green_box arrow_left" id="info_class_84">
+     <span id="info_txt_84"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_84"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_85">
+    <div class="green_box arrow_left" id="info_class_85">
+     <span id="info_txt_85"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_85"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_86">
+    <div class="green_box arrow_left" id="info_class_86">
+     <span id="info_txt_86"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_86"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_87">
+    <div class="green_box arrow_left" id="info_class_87">
+     <span id="info_txt_87"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_87"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_88">
+    <div class="green_box arrow_left" id="info_class_88">
+     <span id="info_txt_88"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_88"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_89">
+    <div class="green_box arrow_left" id="info_class_89">
+     <span id="info_txt_89"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_89"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_90">
+    <div class="green_box arrow_left" id="info_class_90">
+     <span id="info_txt_90"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_90"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_91">
+    <div class="green_box arrow_left" id="info_class_91">
+     <span id="info_txt_91"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_91"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_92">
+    <div class="green_box arrow_left" id="info_class_92">
+     <span id="info_txt_92"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_92"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_93">
+    <div class="green_box arrow_left" id="info_class_93">
+     <span id="info_txt_93"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_93"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_94">
+    <div class="green_box arrow_left" id="info_class_94">
+     <span id="info_txt_94"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_94"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_95">
+    <div class="green_box arrow_left" id="info_class_95">
+     <span id="info_txt_95"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_95"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_96">
+    <div class="green_box arrow_left" id="info_class_96">
+     <span id="info_txt_96"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_96"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_97">
+    <div class="green_box arrow_left" id="info_class_97">
+     <span id="info_txt_97"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_97"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_98">
+    <div class="green_box arrow_left" id="info_class_98">
+     <span id="info_txt_98"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_98"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+   <div class="info_text info_99">
+    <div class="green_box arrow_left" id="info_class_99">
+     <span id="info_txt_99"></span>
+    </div>
+    <div class="time_left_box_class" id="info_time_99"></div>
+    <div class="padding_Info_text">
+     <hr/>
+    </div>
+   </div>
+  </div>
+  <div id="fotter">Copyright © 2014 VSCP Single Floor Layout</div>
+ </body>
+</html>

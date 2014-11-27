@@ -208,8 +208,58 @@ vscpws_variableButton.prototype.setReceiveEvent = function(vscpclass,
 
 
     // Set filter
-    //this.setFilter();
+    this.setFilter();
 }
+
+
+
+//-----------------------------------------------------------------------------
+// setFilter
+//-----------------------------------------------------------------------------
+vscpws_variableButton.prototype.setFilter = function()
+{
+    var cmd;
+
+    var filter_class = this.receive_vscpclass;
+    var filter_type = this.receive_vscptype;
+    var filter_guid = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+
+    // Zero for a mask is don't care
+    var mask_class = -1 != this.receive_vscpclass ? 0xff : 0x00;
+    var mask_type = -1 != this.receive_vscptype ? 0xff : 0x00;
+    var mask_guid = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+
+    if ( ("" != this.receive_guid) ) {
+        guid = this.receive_guid.split(":");
+        for ( i=0; i<16; i++ ) {
+            mask_guid[i] = 0xff;
+            filter_guid[i] = guid[i];
+        }
+    }
+
+    // Send setfilter command. Format is
+    // “C;SETFILTER;filter-priority,filter-class,filter-type,
+    //    filter-GUID;mask-priority,mask-class,mask-type,mask-GUID\E2\80?
+    cmd = "C;SETFILTER;0x00,";
+    cmd += "0x"+filter_class.toString(16) + ",";
+    cmd += "0x"+filter_type.toString(16) + ",";
+    for (i=0;i<16;i++) {
+        cmd += "0x"+(filter_guid[i] & 255).toString(16);
+        if (i<15) cmd += ":";   // No colon on last
+    }
+    cmd += ";0x00,";
+    cmd += "0x" + (mask_class & 255).toString(16) + ",";
+    cmd += "0x" + (mask_type & 255).toString(16) + ",";
+    for (i=0;i<16;i++) {
+        cmd += "0x"+(mask_guid[i] & 255).toString(16);
+        if (i<15) cmd += ":";   // No colon on last
+    }
+
+    if (vscpws_debug) console.log("Set filter = "+ cmd);
+
+    // Set filter/mask on server
+    if (this.bConnected) this.socket_vscp.send(cmd);
+};
 
 //-----------------------------------------------------------------------------
 // setReceiveZone
@@ -318,7 +368,7 @@ vscpws_variableButton.prototype.setValue = function(value)
             this.tansmitt_data[0] = value;
 
             for (i=0;i<this.tansmitt_data.length;i++) {
-                    cmd += this.tansmitt_data[i].toString() + ",";
+                    cmd += this.tansmitt_data[i].toString() ; //+ ",";
                     if (i<this.tansmitt_data.length-1) cmd += ",";   // No comma for last
             }
 
@@ -438,6 +488,7 @@ vscpws_variableButton.prototype.onVSCPMessage = function(msg)
     }
     else if ("E" == msgitems[0]){   // Check for event
         var offset = 0; // used for Level I events over Level II
+
 
         //head;class;type;guid,data
         var vscpitems = msgitems[1].split(",");

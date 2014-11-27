@@ -131,7 +131,7 @@ var Single_Floor_Variable_Slider_Device_Array = [
 var Single_Floor_Variable_Switch_Device_Array = [
   { floorName: 'First', roomName: 'Bedroom', deviceName: 'Bulb Steppable', 
     url: 'ws://192.168.65.153:8089', canvasIncName: 'OneFirstBedroomBulbSteppable_Inc_Image_ID', canvasDecName: 'OneFirstBedroomBulbSteppable_Dec_Image_ID', canvasLocalTxtName: 'OneFirstBedroomBulbSteppable_Local_Txt_ID', canvasRemoteTxtName: 'OneFirstBedroomBulbSteppable_Remote_Txt_ID', Max: 100 , Min: 0 , userName: 'admin', password: 'd50c3180375c27927c22e42a379c3f67', domain: 'mydomain.com', VariableName: 'OneFirstBedroomBulbSteppable_VAR', 
-    TxEventvscpclass: 30 , TxEventvscptype: 20 , TxEventdata: undefined , TxEventguid: undefined , TxEventzone: undefined , TxEventsubzone: undefined , 
+    TxEventvscpclass: 30 , TxEventvscptype: 20 , TxEventdata: undefined , TxEventguid: undefined , TxEventzone: 0 , TxEventsubzone: 10 , 
     RxEventvscpclass: 20 , RxEventvscptype: 40 , RxEventdata: undefined , RxEventguid: undefined , RxEventzone: 0 , RxEventsubzone: 10
   }
 ];
@@ -143,20 +143,20 @@ var Single_Floor_Variable_Switch_Device_Array = [
 
 var Single_Floor_Sensor_Device_Array = [
   { floorName: 'First', roomName: 'Bedroom', deviceName: 'Temerature Indicator', 
-    url: 'ws://192.168.65.153:8089', id: 'OneFirstBedroomTemeratureIndicator_Remote_Txt_ID', vscpclass: 10 , vscptype: 6 , codingIndex: 0 , 
-    sensorIndex: 0 , sensorZone: undefined , sensorSubzone: undefined , 
+    url: 'ws://192.168.65.153:8089', id: 'OneFirstBedroomTemeratureIndicator_Remote_Txt_ID', graphId: 'OneFirstBedroomTemeratureIndicator_chart_div', graphUnitId: 'OneFirstBedroomTemeratureIndicator_chart_unit_div', graphType: 'line', vscpclass: 10 , vscptype: 6 , codingIndex: 0 , 
+    sensorIndex: undefined , sensorZone: undefined , sensorSubzone: undefined , 
     decimals: 1 , formatstr: '{0} Degrees {1}' , guid: '00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:01' , fncallback: undefined , userName: 'admin', password: 'd50c3180375c27927c22e42a379c3f67', domain: 'mydomain.com', VariableName: 'OneFirstBedroomTemeratureIndicator_VAR'
   },
 
   { floorName: 'First', roomName: 'DrawingRoom', deviceName: 'Temperature Sensor', 
-    url: 'ws://192.168.65.153:8089', id: 'OneFirstDrawingRoomTemperatureSensor_Remote_Txt_ID', vscpclass: 10 , vscptype: 6 , codingIndex: 0 , 
-    sensorIndex: 0 , sensorZone: undefined , sensorSubzone: undefined , 
+    url: 'ws://192.168.65.153:8089', id: 'OneFirstDrawingRoomTemperatureSensor_Remote_Txt_ID', graphId: 'OneFirstDrawingRoomTemperatureSensor_chart_div', graphUnitId: 'OneFirstDrawingRoomTemperatureSensor_chart_unit_div', graphType: 'area', vscpclass: 10 , vscptype: 6 , codingIndex: 0 , 
+    sensorIndex: undefined , sensorZone: undefined , sensorSubzone: undefined , 
     decimals: 1 , formatstr: '{0} Degrees {1}' , guid: '00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:02' , fncallback: undefined , userName: 'admin', password: 'd50c3180375c27927c22e42a379c3f67', domain: 'mydomain.com', VariableName: 'OneFirstDrawingRoomTemperatureSensor_VAR'
   },
 
   { floorName: 'First', roomName: 'DrawingRoom', deviceName: 'Heater', 
-    url: 'ws://192.168.65.153:8089', id: 'OneFirstDrawingRoomHeater_Remote_Txt_ID', vscpclass: 10 , vscptype: 6 , codingIndex: 0 , 
-    sensorIndex: 0 , sensorZone: undefined , sensorSubzone: undefined , 
+    url: 'ws://192.168.65.153:8089', id: 'OneFirstDrawingRoomHeater_Remote_Txt_ID', graphId: 'OneFirstDrawingRoomHeater_chart_div', graphUnitId: 'OneFirstDrawingRoomHeater_chart_unit_div', graphType: 'bar', vscpclass: 10 , vscptype: 6 , codingIndex: 0 , 
+    sensorIndex: undefined , sensorZone: undefined , sensorSubzone: undefined , 
     decimals: 1 , formatstr: '{0} Degrees {1}' , guid: '00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:03' , fncallback: undefined , userName: 'admin', password: 'd50c3180375c27927c22e42a379c3f67', domain: 'mydomain.com', VariableName: 'OneFirstDrawingRoomHeater_VAR'
   }
 ];

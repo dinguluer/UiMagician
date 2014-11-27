@@ -226,8 +226,58 @@ vscpws_slider.prototype.setReceiveEvent = function(vscpclass,
 
 
     // Set filter
-    //this.setFilter();
+    this.setFilter();
 }
+
+
+
+//-----------------------------------------------------------------------------
+// setFilter
+//-----------------------------------------------------------------------------
+vscpws_slider.prototype.setFilter = function()
+{
+    var cmd;
+
+    var filter_class = this.receive_vscpclass;
+    var filter_type = this.receive_vscptype;
+    var filter_guid = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+
+    // Zero for a mask is don't care
+    var mask_class = -1 != this.receive_vscpclass ? 0xff : 0x00;
+    var mask_type = -1 != this.receive_vscptype ? 0xff : 0x00;
+    var mask_guid = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+
+    if ( ("" != this.receive_guid) ) {
+        guid = this.receive_guid.split(":");
+        for ( i=0; i<16; i++ ) {
+            mask_guid[i] = 0xff;
+            filter_guid[i] = guid[i];
+        }
+    }
+
+    // Send setfilter command. Format is
+    // “C;SETFILTER;filter-priority,filter-class,filter-type,
+    //    filter-GUID;mask-priority,mask-class,mask-type,mask-GUID\E2\80?
+    cmd = "C;SETFILTER;0x00,";
+    cmd += "0x"+filter_class.toString(16) + ",";
+    cmd += "0x"+filter_type.toString(16) + ",";
+    for (i=0;i<16;i++) {
+        cmd += "0x"+(filter_guid[i] & 255).toString(16);
+        if (i<15) cmd += ":";   // No colon on last
+    }
+    cmd += ";0x00,";
+    cmd += "0x" + (mask_class & 255).toString(16) + ",";
+    cmd += "0x" + (mask_type & 255).toString(16) + ",";
+    for (i=0;i<16;i++) {
+        cmd += "0x"+(mask_guid[i] & 255).toString(16);
+        if (i<15) cmd += ":";   // No colon on last
+    }
+
+    if (vscpws_debug) console.log("Set filter = "+ cmd);
+
+    // Set filter/mask on server
+    if (this.bConnected) this.socket_vscp.send(cmd);
+};
 
 //-----------------------------------------------------------------------------
 // setReceiveZone
@@ -369,6 +419,7 @@ vscpws_slider.prototype.setValue = function(value)
             cmd += ",";
             if (this.tansmitt_vscptype ==VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL)
             {
+                //alert("send big - control");
                 this.processTxData(value)
                 // index = dont care, zone=0, subzone=0 , data , data, data, data, data
                 //dataArray = new Array(-1,0,0,0,0,0,0,0);
@@ -385,6 +436,7 @@ vscpws_slider.prototype.setValue = function(value)
             for (i=0;i<this.tansmitt_data.length;i++) {
                     //cmd += this.tansmitt_data[i].toString() + ",";
                     cmd += this.tansmitt_data[i].toString();
+                //alert(this.tansmitt_data[i].toString());
                     if (i<this.tansmitt_data.length-1) cmd += ",";   // No comma for last
             }
                //console.log('********');   

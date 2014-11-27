@@ -40,7 +40,7 @@
   <allowed_to>2099-01-01 00:00:00</allowed_to>
   <allowed_weekdays>mtwtfss</allowed_weekdays>
   <allowed_time>*-*-* *:*:*</allowed_time>
-  <index bmeasurement="true">0</index>
+  <index bmeasurement="true">*-*-* *:*:*</index>
  </row>
  <row enable="true" groupid="6">
   <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
@@ -276,7 +276,7 @@
   <allowed_to>2099-01-01 00:00:00</allowed_to>
   <allowed_weekdays>mtwtfss</allowed_weekdays>
   <allowed_time>*-*-* *:*:*</allowed_time>
-  <index bmeasurement="true">0</index>
+  <index bmeasurement="true">*-*-* *:*:*</index>
  </row>
  <row enable="true" groupid="sensors">
   <mask class="65535" priority="0" GUID="FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF" type="65535"></mask>
@@ -289,7 +289,7 @@
   <allowed_to>2099-01-01 00:00:00</allowed_to>
   <allowed_weekdays>mtwtfss</allowed_weekdays>
   <allowed_time>*-*-* *:*:*</allowed_time>
-  <index bmeasurement="true">0</index>
+  <index bmeasurement="true">*-*-* *:*:*</index>
  </row>
  <row enable="true" groupid="switches">
   <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>

@@ -25,7 +25,7 @@
    <DeviceImage>7</DeviceImage>
    <DeviceInfo>Sensor</DeviceInfo>
    <SensorPacket>
-    <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" class="10" codingIndex="0" domain="mydomain.com" userName="admin" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:01" url="ws://192.168.65.153:8089" FormatString="{0} Degrees {1}" type="6" Decimals="1" id="OneFirstBedroomTemeratureIndicator_Image_ID" idRemoteTxt="OneFirstBedroomTemeratureIndicator_Remote_Txt_ID" Callback=""/>
+    <WebsocketConfigure graphType="line" password="d50c3180375c27927c22e42a379c3f67" graphUnitId="OneFirstBedroomTemeratureIndicator_chart_unit_div" class="10" codingIndex="0" graphId="OneFirstBedroomTemeratureIndicator_chart_div" domain="mydomain.com" userName="admin" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:01" url="ws://192.168.65.153:8089" FormatString="{0} Degrees {1}" type="6" Decimals="1" id="OneFirstBedroomTemeratureIndicator_Image_ID" idRemoteTxt="OneFirstBedroomTemeratureIndicator_Remote_Txt_ID" Callback=""/>
     <VariableConfigure ActionParameters="OneFirstBedroomTemeratureIndicator_VAR;9;true;%event.data" GroupID="Temperature" AllowedTo="" Priority="0" Action="0x00000050" Class="10" Subzone="" Control="0x80000000" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:01" AllowedTime="" Type="6" AllowedFrom="" Comments="temperature of the home" Name="OneFirstBedroomTemeratureIndicator_VAR" Zone="" AllowedDays="mtwtfss" Index=""/>
    </SensorPacket>
   </Device>
@@ -80,7 +80,7 @@
    <DeviceInfo>Light</DeviceInfo>
    <VariableSwitchPacket>
     <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" IncId="OneFirstBedroomBulbSteppable_Inc_Image_ID" domain="mydomain.com" userName="admin" DecId="OneFirstBedroomBulbSteppable_Dec_Image_ID" url="ws://192.168.65.153:8089" idRemoteTxt="OneFirstBedroomBulbSteppable_Remote_Txt_ID" Min="0" Max="100" idLocalTxt="OneFirstBedroomBulbSteppable_Local_Txt_ID"/>
-    <TxEvent Class="30" Subzone="" Guid="" Type="20" Data="" Zone="" Obid="" Head="" Timestamp=""/>
+    <TxEvent Class="30" Subzone="10" Guid="" Type="20" Data="" Zone="0" Obid="" Head="" Timestamp=""/>
     <RxEvent Class="20" Subzone="10" Guid="" Type="40" Data="" Zone="0" Obid="" Head="" Timestamp=""/>
     <VariableConfigure ActionParameters="OneFirstBedroomBulbSteppable_VAR;3;true;%event.data[0]" GroupID="" AllowedTo="" Priority="0" Action="0x00000050" Class="20" Subzone="10" Control="0x80000018" Guid="" AllowedTime="" Type="40" AllowedFrom="" Comments="Steppable" Name="OneFirstBedroomBulbSteppable_VAR" Zone="0" AllowedDays="mtwtfss" Index=""/>
    </VariableSwitchPacket>
@@ -185,7 +185,7 @@
    <DeviceImage>9</DeviceImage>
    <DeviceInfo>Sensor</DeviceInfo>
    <SensorPacket>
-    <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" class="10" codingIndex="0" domain="mydomain.com" userName="admin" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:02" url="ws://192.168.65.153:8089" FormatString="{0} Degrees {1}" type="6" Decimals="1" id="OneTwoDrawingRoomTemperatureSensor_Image_ID" idRemoteTxt="OneTwoDrawingRoomTemperatureSensor_Remote_Txt_ID" Callback=""/>
+    <WebsocketConfigure graphType="area" password="d50c3180375c27927c22e42a379c3f67" graphUnitId="OneTwoDrawingRoomTemperatureSensor_chart_unit_div" class="10" codingIndex="0" graphId="OneTwoDrawingRoomTemperatureSensor_chart_div" domain="mydomain.com" userName="admin" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:02" url="ws://192.168.65.153:8089" FormatString="{0} Degrees {1}" type="6" Decimals="1" id="OneTwoDrawingRoomTemperatureSensor_Image_ID" idRemoteTxt="OneTwoDrawingRoomTemperatureSensor_Remote_Txt_ID" Callback=""/>
     <VariableConfigure ActionParameters="OneTwoDrawingRoomTemperatureSensor_VAR;9;true;%event.data" GroupID="ooone" AllowedTo="" Priority="0" Action="0x00000050" Class="10" Subzone="" Control="0x80000000" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:02" AllowedTime="" Type="6" AllowedFrom="" Comments="" Name="OneTwoDrawingRoomTemperatureSensor_VAR" Zone="" AllowedDays="mtwtfss" Index=""/>
    </SensorPacket>
   </Device>
@@ -196,7 +196,7 @@
    <DeviceImage>1</DeviceImage>
    <DeviceInfo>Sensor</DeviceInfo>
    <SensorPacket>
-    <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" class="10" codingIndex="0" domain="mydomain.com" userName="admin" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:03" url="ws://192.168.65.153:8089" FormatString="{0} Degrees {1}" type="6" Decimals="1" id="OneTwoDrawingRoomHeater_Image_ID" idRemoteTxt="OneTwoDrawingRoomHeater_Remote_Txt_ID" Callback=""/>
+    <WebsocketConfigure graphType="bar" password="d50c3180375c27927c22e42a379c3f67" graphUnitId="OneTwoDrawingRoomHeater_chart_unit_div" class="10" codingIndex="0" graphId="OneTwoDrawingRoomHeater_chart_div" domain="mydomain.com" userName="admin" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:03" url="ws://192.168.65.153:8089" FormatString="{0} Degrees {1}" type="6" Decimals="1" id="OneTwoDrawingRoomHeater_Image_ID" idRemoteTxt="OneTwoDrawingRoomHeater_Remote_Txt_ID" Callback=""/>
     <VariableConfigure ActionParameters="OneTwoDrawingRoomHeater_VAR;9;true;%event.data" GroupID="" AllowedTo="" Priority="0" Action="0x00000050" Class="10" Subzone="" Control="0x80000000" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:03" AllowedTime="" Type="6" AllowedFrom="" Comments="" Name="OneTwoDrawingRoomHeater_VAR" Zone="" AllowedDays="mtwtfss" Index=""/>
    </SensorPacket>
   </Device>

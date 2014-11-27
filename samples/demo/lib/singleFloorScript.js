@@ -37,10 +37,19 @@ function doc_onload(page_type)
   //create_measurement_device_socket(Single_Floor_Sensor_Device_Array);
 }
 
+
+function pausecomp(ms)
+{
+    ms += new Date().getTime();
+    while (new Date() < ms){}
+}
+
+
 function create_measurement_device_socket( Device_Array )
 {
     var bOnce = true;
 
+    //for (var i = 0; i < 1; i++)
     for (var i = 0; i < Device_Array.length; i++)
     {
         var btn = new vscpws_simpleTextEvent_mod( Device_Array[i].userName,
@@ -53,11 +62,19 @@ function create_measurement_device_socket( Device_Array )
                                              Device_Array[i].decimals,        // Number of decimals
                                              Device_Array[i].formatstr,       // A value format string
                                              Device_Array[i].guid,            // GUID we are interested in
-                                             Device_Array[i].fncallback );     // If set function to call
-                                                                               // when data arraives
+                                             Device_Array[i].fncallback ,      // If set function to call                                                                                // when data arraives
+                                             Device_Array[i].graphId,
+                                             Device_Array[i].graphUnitId,
+                                             Device_Array[i].graphType
+                                                     );
+
           btn.setExtraParameters(Device_Array[i].sensorIndex, Device_Array[i].sensorZone, Device_Array[i].sensorSubzone);
 
+        //delay ms
+        pausecomp(20);
+
          btn.setMonitorVariable(Device_Array[i].VariableName,1000,bOnce);
+
     }
 
 }
@@ -91,6 +108,9 @@ function create_device_socket( Device_Array )
         btn.setOffReceiveEvent(Device_Array[i].offRxEventvscpclass,Device_Array[i].offRxEventvscptype,Device_Array[i].offRxEventdata,Device_Array[i].offRxEventguid);
         btn.setOffReceiveZone(Device_Array[i].offRxEventindex,Device_Array[i].offRxEventzone, Device_Array[i].offRxEventsubzone);
 
+        //delay ms
+        pausecomp(20);
+
         btn.setMonitorVariable(Device_Array[i].VariableName,1000,bOnce);
 
     }
@@ -119,6 +139,9 @@ function create_slider_socket( Slider_Array )
 
         btn.setReceiveEvent(Slider_Array[i].RxEventvscpclass,Slider_Array[i].RxEventvscptype,Slider_Array[i].RxEventdata,Slider_Array[i].RxEventguid);
         btn.setReceiveZone(Slider_Array[i].RxEventindex,Slider_Array[i].RxEventzone, Slider_Array[i].RxEventsubzone);
+
+        //delay ms
+        pausecomp(20);
 
         btn.setMonitorVariable(Slider_Array[i].VariableName,1000,bOnce);
 
@@ -152,6 +175,9 @@ function create_Variable_Button_socket( Variable_Button_Array )
 
         btn.setReceiveEvent(Variable_Button_Array[i].RxEventvscpclass,Variable_Button_Array[i].onRxEventvscptype,Variable_Button_Array[i].RxEventdata,Variable_Button_Array[i].RxEventguid);
         btn.setReceiveZone(Variable_Button_Array[i].RxEventzone, Variable_Button_Array[i].RxEventsubzone);
+
+        //delay ms
+        pausecomp(20);
 
         btn.setMonitorVariable(Variable_Button_Array[i].VariableName,1000,bOnce);
 
@@ -535,6 +561,7 @@ function show_Central_widget_single(parameter)
         else
         {
           $("." + element).show();
+            //alert(parameter);
         }
 
     });

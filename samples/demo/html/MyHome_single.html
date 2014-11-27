@@ -4,8 +4,10 @@
   <title>VSCP My House Ui ..</title>
   <link rel="stylesheet" type="text/css" href="../css/singleFloorStyle.css"/>
   <link rel="stylesheet" type="text/css" href="../css/info.css"/>
-  <script type="text/javascript" src="settings.js"></script>
-  <script type="text/javascript" src="../lib/jquery.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/epoch.min.css"/>
+  <script type="text/javascript" src="../lib/jquery.min.js"></script>
+  <script type="text/javascript" src="../lib/d3.min.js"></script>
+  <script type="text/javascript" src="../lib/epoch.min.js"></script>
   <script type="text/javascript" src="../lib/wz_jsgraphics.js"></script>
   <script type="text/javascript" src="../lib/md5.js"></script>
   <script type="text/javascript" src="../lib/infoInit.js"></script>
@@ -75,6 +77,11 @@
     <p class="imgtxt" id="group_Sensors_Txt_Id">Sensors</p>
     <input class="hr_scrollable" id="group_Sensors_Hr"/>
    </div>
+   <div class="input" id="sensors_Graph">
+    <input class="image_scrollable" type="image" id="sensor_graph_Image" onclick="show_area_single(div_class_scrollable_Image,'sensor_graph_Image',div_class_scrollable_Hr,'sensor_graph_Hr','group_sensor_graph')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="sensors_Graph_txt">sensors_Graph</p>
+    <input class="hr_scrollable" id="sensor_graph_Hr"/>
+   </div>
    <div class="input" id="Info">
     <input class="image_scrollable" type="image" id="Info_Image" onclick="show_info(div_class_scrollable_Image,div_class_scrollable_Hr,'Info_Hr','info_text')" src="../lib/widgets/info/info.jpg"/>
     <p class="imgtxt" id="Info_txt">info</p>
@@ -93,6 +100,12 @@
     <p class="imgtxt_center">
      <span class="spantxt_center group_Sensors_Txt" type="text">Bedroom : </span>Temerature Indicator : <span class="spantxt_center" type="text" id="OneFirstBedroomTemeratureIndicator_Remote_Txt_ID">No Data From Sensor</span>
     </p>
+    <hr/>
+   </div>
+   <div class="group_sensor_graph">
+    <h3 class="imgtxt_Heading_graph">Bedroom : Temerature Indicator : <span type="text" id="OneFirstBedroomTemeratureIndicator_chart_unit_div"> Disconnected</span>
+    </h3>
+    <div class="graph_sensor epoch category10" id="OneFirstBedroomTemeratureIndicator_chart_div"></div>
     <hr/>
    </div>
    <div class="First_Floor_Area_Bedroom group_Lights">
@@ -165,11 +178,23 @@
     </p>
     <hr/>
    </div>
+   <div class="group_sensor_graph">
+    <h3 class="imgtxt_Heading_graph">DrawingRoom : Temperature Sensor : <span type="text" id="OneFirstDrawingRoomTemperatureSensor_chart_unit_div"> Disconnected</span>
+    </h3>
+    <div class="graph_sensor epoch category10" id="OneFirstDrawingRoomTemperatureSensor_chart_div"></div>
+    <hr/>
+   </div>
    <div class="First_Floor_Area_DrawingRoom group_Sensors">
     <input class="image_menu_center_second" type="image" id="OneFirstDrawingRoomHeater_Image_ID" src="../lib/widgets/measurement/length.jpg"/>
     <p class="imgtxt_center">
      <span class="spantxt_center group_Sensors_Txt" type="text">DrawingRoom : </span>Heater : <span class="spantxt_center" type="text" id="OneFirstDrawingRoomHeater_Remote_Txt_ID">No Data From Sensor</span>
     </p>
+    <hr/>
+   </div>
+   <div class="group_sensor_graph">
+    <h3 class="imgtxt_Heading_graph">DrawingRoom : Heater : <span type="text" id="OneFirstDrawingRoomHeater_chart_unit_div"> Disconnected</span>
+    </h3>
+    <div class="graph_sensor epoch category10" id="OneFirstDrawingRoomHeater_chart_div"></div>
     <hr/>
    </div>
    <div class="First_Floor_Area_DrawingRoom group_Lights">
