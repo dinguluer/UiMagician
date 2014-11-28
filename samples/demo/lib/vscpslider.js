@@ -544,15 +544,20 @@ vscpws_slider.prototype.onVSCPMessage = function(msg)
                         vscpdata[i] = parseInt(msgitems_comma[i]);
                     }
 
+                    //alert("2222")
                      // Check zone & subzone & index
                     //for (i=0;i<this.receive_data.length;i++) {
+
+                    /*
                     for (i=0;i<3;i++) {
                         //alert(vscpdata[i] );
                         //alert(this.receive_data[i] );
                         // Skip a don't care
                         if (( -1 == this.receive_data[i] )||(this.receive_data[i] == undefined)) continue;
                         if ((vscpdata[i] != this.receive_data[i])||(vscpdata[i] == undefined))  return;
-                    }
+                    }*/
+
+
                     //alert('four');
 
                     var vscpdata_temp = new Array();
@@ -577,9 +582,11 @@ vscpws_slider.prototype.onVSCPMessage = function(msg)
                       this.remoteReadFlag = 1;
                     }
 
+                    //alert("1")
                     if ( this.bOnce && ( typeof this.monitorInterval !== 'undefined' ) ) {
                         clearInterval( this.variableTimer );
                         this.bOnce = false;
+                        //alert("2")
                     }
                     // Stop the variable read
                     //clearInterval(this.setInterval_Id);
