@@ -106,6 +106,9 @@ public:
     // save existing file
     void saveExistingFile();
 
+    // open already existing file
+    void openExistingFile(QString &xmlFileName, QFile &xmlFile, QDomDocument &xmlDomDocument, QDomDocument &xmlDomDocumentOrg, bool createFile);
+
     // if no xml file is open
     void openFile(QString &xmlFileName, QFile &xmlFile, QDomDocument &xmlDomDocument, QDomDocument &xmlDomDocumentOrg, bool createFile);
 

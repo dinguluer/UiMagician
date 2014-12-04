@@ -42,6 +42,8 @@ GenerateApp::GenerateApp(QString xmlFileName, QDomElement &xmlRoot, QWidget *par
     // Set the xml file name
     xmlFileNameRef = xmlFileName;
 
+    //QMessageBox::information(this, "name", xmlFileNameRef);
+
     //Load root nodes
     list = xmlRootRef.childNodes();
 
@@ -4714,6 +4716,7 @@ void GenerateApp::getTotalGroups()
 
 void GenerateApp::on_okPushButton_clicked()
 {
+
     // Create the HTML App - by default
     createHtmlApp();
 

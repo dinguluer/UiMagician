@@ -142,6 +142,66 @@ void MainWindow::saveExistingFile()
 
 }
 
+// open already existing file
+void MainWindow::openExistingFile(QString &xmlFileName, QFile &xmlFile, QDomDocument &xmlDomDocument, QDomDocument &xmlDomDocumentOrg, bool createFile)
+{
+
+    QString filename = xmlFileName;
+
+    // Check if cancel button is pressed in the QFileDialog
+    if(filename != "")
+    {
+        //copy file name to globalobject
+        xmlFileName = filename;
+        // create new xml file & text stream
+        //xmlOpenFile();
+        // Add a delay
+        xmlLibObject.xmlOpenFile( xmlFileName, xmlFile, xmlStream);
+
+        if(createFile == OPEN_EXISTING_FILE){
+
+            //Load the XML file
+            //xmlLoadFile();
+            xmlLibObject.xmlLoadFile(xmlDomDocument, xmlFile);
+
+            //close file
+            //xmlCloseFile();
+            //xmlLibObject.xmlCloseFile(xmlStream, xmlDomDocument, xmlFile);
+
+            //Now again open & truncate the file
+            //xmlOpenFileTruncate();
+            //xmlLibObject.xmlOpenFileTruncate( xmlFileName, xmlFile, xmlStream);
+
+            //Get the root element
+            //xmlGetRoot();
+            xmlLibObject.xmlGetRoot(xmlRoot, xmlDomDocument);
+            // copy data to the tree view
+            // copy data to the text view
+            loadXmltoTreeAndTextView();
+
+            //Its not new file
+            b_newFileCreationSignal = FALSE;
+
+            //create backup for original xml.
+            xmlDomDocumentOrg.clear();
+            xmlDomDocumentOrg = xmlDomDocument.cloneNode(true).toDocument();
+        }
+        else{
+
+            //Do nothing
+        }
+
+        // xml file is already open
+        b_xmlFileAlreadyOpen = TRUE;
+
+    }
+    else {
+        // Do nothing cancel presses
+    }
+
+
+}
+
 // if no file is open
 void MainWindow::openFile(QString &xmlFileName, QFile &xmlFile, QDomDocument &xmlDomDocument, QDomDocument &xmlDomDocumentOrg, bool createFile)
 {

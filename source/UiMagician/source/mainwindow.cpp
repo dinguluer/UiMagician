@@ -968,6 +968,14 @@ void MainWindow::on_appGeneratePushButton_clicked()
     // check if test report is already open or not
     if (b_xmlFileAlreadyOpen)
     {
+        //close file to sort
+        closeExistingFile(xmlFileName, xmlFile, xmlDomDocument);
+        //Re-initialise all the variables
+        initialiseVariables();
+        // open same file
+        openExistingFile(xmlFileName, xmlFile, xmlDomDocument, xmlDomDocumentOrg, OPEN_EXISTING_FILE);
+
+        // Generate App
         GenerateApp GenerateAppWidget(xmlFileName,xmlRoot);
         GenerateAppWidget.exec();
         // Report generated Message
