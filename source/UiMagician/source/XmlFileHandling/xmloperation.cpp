@@ -820,7 +820,7 @@ void MainWindow::xmlCreateVscpPacketNode(QDomElement &xmlNode, uint8_t row, T_pa
             xmlLibObject.xmlAppendNode(xmlNode,xmlTempTxOnEventNode);
 
             /************* create Tx Off Event node ***************/
-            xmlLibObject.xmlCreateNode(xmlDomDocument, xmlTempTxOffEventNode, TX_ON_EVENT);
+            xmlLibObject.xmlCreateNode(xmlDomDocument, xmlTempTxOffEventNode, TX_OFF_EVENT);
 
             // create Tx OFF Event variable class attribute
             string = testCaseStepCanMessage.vscpPacketSwitch.txOffEvent.class_value;
@@ -857,7 +857,7 @@ void MainWindow::xmlCreateVscpPacketNode(QDomElement &xmlNode, uint8_t row, T_pa
             xmlLibObject.xmlAppendNode(xmlNode,xmlTempTxOffEventNode);
 
             /************* create Rx ON Event node ***************/
-            xmlLibObject.xmlCreateNode(xmlDomDocument, xmlTempRxOnEventNode, TX_ON_EVENT);
+            xmlLibObject.xmlCreateNode(xmlDomDocument, xmlTempRxOnEventNode, RX_ON_EVENT);
 
             // create Rx ON Event variable class attribute
             string = testCaseStepCanMessage.vscpPacketSwitch.rxOnEvent.class_value;
@@ -894,7 +894,7 @@ void MainWindow::xmlCreateVscpPacketNode(QDomElement &xmlNode, uint8_t row, T_pa
             xmlLibObject.xmlAppendNode(xmlNode,xmlTempRxOnEventNode);
 
             /************* create Rx Off Event node ***************/
-            xmlLibObject.xmlCreateNode(xmlDomDocument, xmlTempRxOffEventNode, TX_ON_EVENT);
+            xmlLibObject.xmlCreateNode(xmlDomDocument, xmlTempRxOffEventNode, RX_OFF_EVENT);
 
             // create Rx OFF Event variable class attribute
             string = testCaseStepCanMessage.vscpPacketSwitch.rxOffEvent.class_value;

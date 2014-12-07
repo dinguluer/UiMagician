@@ -12,9 +12,9 @@
    <SwitchPacket>
     <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="OneFirstBedroombulb_Image_ID"/>
     <TxOnEvent Class="30" Subzone="0" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="30" Subzone="0" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="0" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="0" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <TxOffEvent Class="30" Subzone="0" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOnEvent Class="20" Subzone="0" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOffEvent Class="20" Subzone="0" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneFirstBedroombulb_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneFirstBedroombulb_VAR;2;true;false" Control="0x80000038" Subzone="0" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="giiioo" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneFirstBedroombulb_VAR" ClassOn="20" Index="0" Comments=""/>
    </SwitchPacket>
   </Device>
@@ -38,9 +38,9 @@
    <SwitchPacket>
     <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="OneFirstBedroomTubeLight_Image_ID"/>
     <TxOnEvent Class="30" Subzone="1" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="30" Subzone="1" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="1" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="1" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <TxOffEvent Class="30" Subzone="1" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOnEvent Class="20" Subzone="1" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOffEvent Class="20" Subzone="1" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneFirstBedroomTubeLight_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneFirstBedroomTubeLight_VAR;2;true;false" Control="0x80000038" Subzone="1" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="6" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneFirstBedroomTubeLight_VAR" ClassOn="20" Index="0" Comments="light"/>
    </SwitchPacket>
   </Device>
@@ -53,9 +53,9 @@
    <SwitchPacket>
     <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="OneFirstBedroomTempleLight_Image_ID"/>
     <TxOnEvent Class="30" Subzone="2" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="30" Subzone="2" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="2" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="2" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <TxOffEvent Class="30" Subzone="2" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOnEvent Class="20" Subzone="2" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOffEvent Class="20" Subzone="2" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneFirstBedroomTempleLight_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneFirstBedroomTempleLight_VAR;2;true;false" Control="0x80000038" Subzone="2" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneFirstBedroomTempleLight_VAR" ClassOn="20" Index="0" Comments=""/>
    </SwitchPacket>
   </Device>
@@ -112,9 +112,9 @@
    <SwitchPacket>
     <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="OneFirstBalconyBulb_Image_ID"/>
     <TxOnEvent Class="30" Subzone="3" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="30" Subzone="3" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="3" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="3" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <TxOffEvent Class="30" Subzone="3" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOnEvent Class="20" Subzone="3" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOffEvent Class="20" Subzone="3" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneFirstBalconyBulb_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneFirstBalconyBulb_VAR;2;true;false" Control="0x80000038" Subzone="3" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneFirstBalconyBulb_VAR" ClassOn="20" Index="0" Comments=""/>
    </SwitchPacket>
   </Device>
@@ -132,9 +132,9 @@
    <SwitchPacket>
     <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="OneFirstBedroom1Bulb_Image_ID"/>
     <TxOnEvent Class="30" Subzone="4" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="30" Subzone="4" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="4" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="4" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <TxOffEvent Class="30" Subzone="4" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOnEvent Class="20" Subzone="4" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOffEvent Class="20" Subzone="4" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneFirstBedroom1Bulb_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneFirstBedroom1Bulb_VAR;2;true;false" Control="0x80000038" Subzone="4" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneFirstBedroom1Bulb_VAR" ClassOn="20" Index="0" Comments=""/>
    </SwitchPacket>
   </Device>
@@ -152,9 +152,9 @@
    <SwitchPacket>
     <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="OneFirstKitchenFan_Image_ID"/>
     <TxOnEvent Class="30" Subzone="5" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="30" Subzone="5" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="5" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="5" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <TxOffEvent Class="30" Subzone="5" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOnEvent Class="20" Subzone="5" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOffEvent Class="20" Subzone="5" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneFirstKitchenFan_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneFirstKitchenFan_VAR;2;true;false" Control="0x80000038" Subzone="5" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneFirstKitchenFan_VAR" ClassOn="20" Index="0" Comments=""/>
    </SwitchPacket>
   </Device>
@@ -172,9 +172,9 @@
    <SwitchPacket>
     <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="OneFirstDrawingRoomFan_Image_ID"/>
     <TxOnEvent Class="30" Subzone="6" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="30" Subzone="6" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="6" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="6" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <TxOffEvent Class="30" Subzone="6" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOnEvent Class="20" Subzone="6" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOffEvent Class="20" Subzone="6" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneFirstDrawingRoomFan_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneFirstDrawingRoomFan_VAR;2;true;false" Control="0x80000038" Subzone="6" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="yyy" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneFirstDrawingRoomFan_VAR" ClassOn="20" Index="0" Comments="Orient Fan cealing top."/>
    </SwitchPacket>
   </Device>
@@ -209,9 +209,9 @@
    <SwitchPacket>
     <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="OneFirstDrawingRoomled_Image_ID"/>
     <TxOnEvent Class="30" Subzone="7" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="30" Subzone="7" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="7" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="7" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <TxOffEvent Class="30" Subzone="7" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOnEvent Class="20" Subzone="7" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOffEvent Class="20" Subzone="7" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneFirstDrawingRoomled_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneFirstDrawingRoomled_VAR;2;true;false" Control="0x80000038" Subzone="7" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneFirstDrawingRoomled_VAR" ClassOn="20" Index="0" Comments=""/>
    </SwitchPacket>
   </Device>
@@ -224,9 +224,9 @@
    <SwitchPacket>
     <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="OneFirstDrawingRoomtap_Image_ID"/>
     <TxOnEvent Class="30" Subzone="8" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="30" Subzone="8" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="8" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="8" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <TxOffEvent Class="30" Subzone="8" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOnEvent Class="20" Subzone="8" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOffEvent Class="20" Subzone="8" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneFirstDrawingRoomtap_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneFirstDrawingRoomtap_VAR;2;true;false" Control="0x80000038" Subzone="8" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneFirstDrawingRoomtap_VAR" ClassOn="20" Index="0" Comments=""/>
    </SwitchPacket>
   </Device>
@@ -239,9 +239,9 @@
    <SwitchPacket>
     <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="0" id="OneFirstDrawingRoomPress_Image_ID"/>
     <TxOnEvent Class="30" Subzone="9" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="30" Subzone="9" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="9" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="9" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <TxOffEvent Class="30" Subzone="9" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOnEvent Class="20" Subzone="9" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOffEvent Class="20" Subzone="9" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneFirstDrawingRoomPress_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneFirstDrawingRoomPress_VAR;2;true;false" Control="0x80000038" Subzone="9" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneFirstDrawingRoomPress_VAR" ClassOn="20" Index="0" Comments=""/>
    </SwitchPacket>
   </Device>
@@ -259,9 +259,9 @@
    <SwitchPacket>
     <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="OneFirstToiletBulb_Image_ID"/>
     <TxOnEvent Class="30" Subzone="10" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="30" Subzone="10" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="10" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="10" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <TxOffEvent Class="30" Subzone="10" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOnEvent Class="20" Subzone="10" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOffEvent Class="20" Subzone="10" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneFirstToiletBulb_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneFirstToiletBulb_VAR;2;true;false" Control="0x80000038" Subzone="10" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneFirstToiletBulb_VAR" ClassOn="20" Index="0" Comments="14"/>
    </SwitchPacket>
   </Device>
@@ -279,9 +279,9 @@
    <SwitchPacket>
     <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="OneFirstBalcony1Press_Image_ID"/>
     <TxOnEvent Class="30" Subzone="11" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="30" Subzone="11" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="11" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="11" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <TxOffEvent Class="30" Subzone="11" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOnEvent Class="20" Subzone="11" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOffEvent Class="20" Subzone="11" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneFirstBalcony1Press_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneFirstBalcony1Press_VAR;2;true;false" Control="0x80000038" Subzone="11" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneFirstBalcony1Press_VAR" ClassOn="20" Index="0" Comments="15"/>
    </SwitchPacket>
   </Device>
@@ -299,9 +299,9 @@
    <SwitchPacket>
     <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="OneFirstLobyOven_Image_ID"/>
     <TxOnEvent Class="30" Subzone="12" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="30" Subzone="12" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="12" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <TxOnEvent Class="20" Subzone="12" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <TxOffEvent Class="30" Subzone="12" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOnEvent Class="20" Subzone="12" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOffEvent Class="20" Subzone="12" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneFirstLobyOven_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneFirstLobyOven_VAR;2;true;false" Control="0x80000038" Subzone="12" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneFirstLobyOven_VAR" ClassOn="20" Index="0" Comments="last"/>
    </SwitchPacket>
   </Device>
