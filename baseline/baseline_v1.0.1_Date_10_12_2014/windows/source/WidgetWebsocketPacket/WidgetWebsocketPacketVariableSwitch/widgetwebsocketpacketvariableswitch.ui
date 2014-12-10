@@ -1,0 +1,1490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WidgetWebsocketPacketVariableSwitch</class>
+ <widget class="QDialog" name="WidgetWebsocketPacketVariableSwitch">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>916</width>
+    <height>675</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../AutosResourceFile.qrc">
+    <normaloff>:/Images/Images/fatbee_v2.ico</normaloff>:/Images/Images/fatbee_v2.ico</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="WidgetWebsocketPacketVariableSwitchTabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="WebSocketConf">
+      <attribute name="title">
+       <string>Websocket Configure</string>
+      </attribute>
+      <widget class="QLineEdit" name="variableSwitchUrlLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>280</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchIncIdValueLabel">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>31</y>
+         <width>491</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchUrlLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>280</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>URL</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchIncIdLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Inc ID</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchMinLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>360</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchMaxLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>360</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Min Value</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchMaxLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>440</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchMinLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>440</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Max Value</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchDecIdValueLabel">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>90</y>
+         <width>491</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchDecIdLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>89</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Dec ID</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchLocalTxtIdLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>150</y>
+         <width>111</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Local Txt ID</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchLocalTxtIdValueLabel">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>151</y>
+         <width>601</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchRemoteTxtIdLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>210</y>
+         <width>131</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Remote Txt ID</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchRemoteTxtIdValueLabel">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>210</y>
+         <width>601</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchDomainLabel">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>440</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Domain</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchPasswordLabel">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>360</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Password</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchUsernameLabel">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>280</y>
+         <width>101</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>User Name</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchPasswordLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>620</x>
+         <y>360</y>
+         <width>241</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchUsernameLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>620</x>
+         <y>280</y>
+         <width>241</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchDomainLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>620</x>
+         <y>440</y>
+         <width>241</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="txEvent">
+      <attribute name="title">
+       <string>Tx Event</string>
+      </attribute>
+      <widget class="QLabel" name="variableSwitchTxHeadLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>421</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Head</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchTxZoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>320</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchTxDataLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>542</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Data</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchTxClassLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Class</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="variableSwitchTxClassListWidget">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>20</y>
+         <width>221</width>
+         <height>131</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchTxSubZoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>370</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Sub Zone</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchTxGuidLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>220</y>
+         <width>401</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchTxObidLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>470</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchTxGuidLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>221</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>GUID</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchTxZoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>320</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Zone</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchTxDataLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>541</y>
+         <width>401</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchTxObidLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>471</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Obid</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchTxSubZoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>370</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="variableSwitchTxTypeListWidget">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>20</y>
+         <width>221</width>
+         <height>131</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchTxHeadLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>420</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchTxTimeStampLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>471</y>
+         <width>231</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchTxTypeLabel">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Type</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchTxTimeStampLabel">
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>472</y>
+         <width>111</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Time Stamp</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="rxEvent">
+      <attribute name="title">
+       <string>Rx Event</string>
+      </attribute>
+      <widget class="QLabel" name="variableSwitchRxZoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>320</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Zone</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchRxClassLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Class</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchRxObidLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>471</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Obid</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchRxHeadLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>421</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Head</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchRxGuidLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>221</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>GUID</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchRxSubZoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>370</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Sub Zone</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchRxGuidLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>220</y>
+         <width>401</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchRxDataLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>541</y>
+         <width>401</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="variableSwitchRxClassListWidget">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>20</y>
+         <width>221</width>
+         <height>131</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="variableSwitchRxTypeListWidget">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>20</y>
+         <width>221</width>
+         <height>131</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchRxDataLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>542</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Data</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchRxTimeStampLabel">
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>472</y>
+         <width>111</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Time Stamp</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchRxSubZoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>370</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchRxTimeStampLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>471</y>
+         <width>231</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchRxHeadLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>420</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchRxObidLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>470</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchRxZoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>320</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchRxTypeLabel">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>30</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Type</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="VariableConfigure">
+      <attribute name="title">
+       <string>Variable Configure</string>
+      </attribute>
+      <widget class="QLineEdit" name="variableSwitchVariableGuidLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>220</y>
+         <width>291</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchVariableSubzoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>500</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>SubZone</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableSwitchVariableAllowedDaysThursdaycheckBox">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>220</y>
+         <width>41</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Thur</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchVariableNameLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Name</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchVariableGroupIdLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>70</y>
+         <width>201</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchVariableControlLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>460</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Control</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchVariableZoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>450</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Zone</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchVariableCommentsLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>550</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Comments</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="variableSwitchVariableActionListWidget">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>290</y>
+         <width>221</width>
+         <height>91</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="variableSwitchVariablePriorityListWidget">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>290</y>
+         <width>221</width>
+         <height>91</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchVariableActionParametersLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>400</y>
+         <width>341</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchVariableAllowedDaysLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>220</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Allowed Days</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableSwitchVariableControlCheckSubzonecheckBox">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>520</y>
+         <width>101</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Check Subzone</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchVariableGroupIdLabel">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>70</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Group ID</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchVariableAllowedTimeLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>170</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchVariableNameValueLabel">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>20</y>
+         <width>341</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchVariableCommentsLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>550</y>
+         <width>631</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchVariableSubzoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>500</y>
+         <width>211</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableSwitchVariableAllowedDaysMondaycheckBox">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>220</y>
+         <width>41</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Mon</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchVariableAllowedTimeLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>170</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Allowed Time</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchVariableActionLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>290</y>
+         <width>161</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Action</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableSwitchVariableAllowedDaysSaturdaycheckBox">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>250</y>
+         <width>41</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Sat</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchVariableAllowedFromLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>70</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchVariableAllowedToLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>120</y>
+         <width>101</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Allowed To</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableSwitchVariableAllowedDaysSundaycheckBox">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>250</y>
+         <width>41</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Sun</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableSwitchVariableAllowedDaysTuesdaycheckBox">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>220</y>
+         <width>41</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Tue</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchVariableActionParametersLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>400</y>
+         <width>161</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Action Parameters</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchVariableGuidLabel">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>220</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>GUID</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchVariableZoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>450</y>
+         <width>211</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchVariablePriorityLabel">
+       <property name="geometry">
+        <rect>
+         <x>460</x>
+         <y>290</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Priority</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSwitchVariableAllowedToLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>120</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableSwitchVariableControlEnableRowcheckBox">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>460</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Enable Row</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableSwitchVariableAllowedDaysFridaycheckBox">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>250</y>
+         <width>41</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Fri</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableSwitchVariableAllowedDaysWednesdaycheckBox">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>220</y>
+         <width>41</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Wed</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSwitchVariableAllowedFromLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>71</y>
+         <width>131</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Allowed From</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableSwitchVariableControlCheckZonecheckBox">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>460</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Check Zone</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableSwitchVariableControlEndScancheckBox">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>520</y>
+         <width>141</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>End Scan on this Row</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="OkvariableSwitchPushButton">
+       <property name="text">
+        <string>Ok</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="CancelvariableSwitchPushButton">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>WidgetWebsocketPacketVariableSwitchTabWidget</tabstop>
+  <tabstop>variableSwitchUrlLineEdit</tabstop>
+  <tabstop>variableSwitchMinLineEdit</tabstop>
+  <tabstop>variableSwitchMaxLineEdit</tabstop>
+  <tabstop>variableSwitchUsernameLineEdit</tabstop>
+  <tabstop>variableSwitchPasswordLineEdit</tabstop>
+  <tabstop>variableSwitchDomainLineEdit</tabstop>
+  <tabstop>variableSwitchTxClassListWidget</tabstop>
+  <tabstop>variableSwitchTxTypeListWidget</tabstop>
+  <tabstop>variableSwitchTxGuidLineEdit</tabstop>
+  <tabstop>variableSwitchTxZoneLineEdit</tabstop>
+  <tabstop>variableSwitchTxSubZoneLineEdit</tabstop>
+  <tabstop>variableSwitchTxHeadLineEdit</tabstop>
+  <tabstop>variableSwitchTxObidLineEdit</tabstop>
+  <tabstop>variableSwitchTxTimeStampLineEdit</tabstop>
+  <tabstop>variableSwitchTxDataLineEdit</tabstop>
+  <tabstop>variableSwitchRxClassListWidget</tabstop>
+  <tabstop>variableSwitchRxTypeListWidget</tabstop>
+  <tabstop>variableSwitchRxGuidLineEdit</tabstop>
+  <tabstop>variableSwitchRxZoneLineEdit</tabstop>
+  <tabstop>variableSwitchRxSubZoneLineEdit</tabstop>
+  <tabstop>variableSwitchRxHeadLineEdit</tabstop>
+  <tabstop>variableSwitchRxObidLineEdit</tabstop>
+  <tabstop>variableSwitchRxTimeStampLineEdit</tabstop>
+  <tabstop>variableSwitchRxDataLineEdit</tabstop>
+  <tabstop>variableSwitchVariableAllowedFromLineEdit</tabstop>
+  <tabstop>variableSwitchVariableAllowedToLineEdit</tabstop>
+  <tabstop>variableSwitchVariableAllowedTimeLineEdit</tabstop>
+  <tabstop>variableSwitchVariableAllowedDaysMondaycheckBox</tabstop>
+  <tabstop>variableSwitchVariableAllowedDaysTuesdaycheckBox</tabstop>
+  <tabstop>variableSwitchVariableAllowedDaysWednesdaycheckBox</tabstop>
+  <tabstop>variableSwitchVariableAllowedDaysThursdaycheckBox</tabstop>
+  <tabstop>variableSwitchVariableAllowedDaysFridaycheckBox</tabstop>
+  <tabstop>variableSwitchVariableAllowedDaysSaturdaycheckBox</tabstop>
+  <tabstop>variableSwitchVariableAllowedDaysSundaycheckBox</tabstop>
+  <tabstop>variableSwitchVariableActionListWidget</tabstop>
+  <tabstop>variableSwitchVariableActionParametersLineEdit</tabstop>
+  <tabstop>variableSwitchVariableControlEnableRowcheckBox</tabstop>
+  <tabstop>variableSwitchVariableControlCheckZonecheckBox</tabstop>
+  <tabstop>variableSwitchVariableControlEndScancheckBox</tabstop>
+  <tabstop>variableSwitchVariableControlCheckSubzonecheckBox</tabstop>
+  <tabstop>variableSwitchVariableGroupIdLineEdit</tabstop>
+  <tabstop>variableSwitchVariableGuidLineEdit</tabstop>
+  <tabstop>variableSwitchVariablePriorityListWidget</tabstop>
+  <tabstop>variableSwitchVariableZoneLineEdit</tabstop>
+  <tabstop>variableSwitchVariableSubzoneLineEdit</tabstop>
+  <tabstop>variableSwitchVariableCommentsLineEdit</tabstop>
+  <tabstop>OkvariableSwitchPushButton</tabstop>
+  <tabstop>CancelvariableSwitchPushButton</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../AutosResourceFile.qrc"/>
+ </resources>
+ <connections/>
+</ui>
