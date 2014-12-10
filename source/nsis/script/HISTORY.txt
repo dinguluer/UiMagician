@@ -1,4 +1,16 @@
-readme for release 1.0.0
+readme for release 1.0.1
+========================
+
+- This release use to add Graph for sensor in Html app.
+- Target system: QT - 4.8.1
+- Plan for next release :--
+  1> Multiple houses control
+  2> Integration of phonegap cloud service to generate mobile aps.
+
+
+Dinesh Guleria. India 2014-12-25
+
+release 1.0.0
 ========================
 
 - This release use to generate Html app.
