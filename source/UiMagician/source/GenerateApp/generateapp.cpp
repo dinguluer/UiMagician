@@ -3750,7 +3750,7 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
 
                         if(houseFloor == MULTI_FLOOR_HOUSE)
                         {
-                            textArea = textArea_main + " group_Lights";
+                            textArea = textArea_main + " group_Lights_" + houseName;
                             textArea += " group_Lights_" + houseName + "_Floor_" + floorName;
                         }
                         else
@@ -3762,7 +3762,7 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
                     {                        
                         if(houseFloor == MULTI_FLOOR_HOUSE)
                         {
-                            textArea = textArea_main + " group_Accessories";
+                            textArea = textArea_main + " group_Accessories_" + houseName;
                             textArea += " group_Accessories_" + houseName + "_Floor_" + floorName;
                         }
                         else
@@ -3774,7 +3774,7 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
                     {                        
                         if(houseFloor == MULTI_FLOOR_HOUSE)
                         {
-                            textArea = textArea_main + " group_Blinds_Windows";
+                            textArea = textArea_main + " group_Blinds_Windows_" + houseName;
                             textArea += " group_Blinds_Windows_" + houseName + "_Floor_" + floorName;
                         }
                         else
@@ -3786,7 +3786,7 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
                     {                        
                         if(houseFloor == MULTI_FLOOR_HOUSE)
                         {
-                            textArea = textArea_main + " group_Sensors";
+                            textArea = textArea_main + " group_Sensors_" + houseName;
                             textArea += " group_Sensors_" + houseName + "_Floor_" + floorName;
                         }
                         else
@@ -3798,7 +3798,7 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
                     {                        
                         if(houseFloor == MULTI_FLOOR_HOUSE)
                         {
-                            textArea = textArea_main + " group_Temperature_control";
+                            textArea = textArea_main + " group_Temperature_control_" + houseName;
                             textArea += " group_Temperature_control_" + houseName + "_Floor_" + floorName;
                         }
                         else

@@ -1195,7 +1195,7 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
 
             if(flagLightsGroup == 1)
             {
-                groupClass = "group_Lights";
+                groupClass = "group_Lights_" + houseName;
                 groupImageId = "group_Lights_Image";
                 groupTxtId = "group_Lights_Txt_Id";
                 groupImageTxt = "Lights";
@@ -1205,7 +1205,7 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
             }
             else if(flagAccessoriesGroup == 1)
             {
-                groupClass = "group_Accessories";
+                groupClass = "group_Accessories_" + houseName;
                 groupImageId = "group_Accessories_Image";
                 groupTxtId = "group_Accessories_Txt_Id";
                 groupImageTxt = "Accessories";
@@ -1215,7 +1215,7 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
             }
             else if(flagBlindDoorWindowGroup == 1)
             {
-                groupClass = "group_Blinds_Windows";
+                groupClass = "group_Blinds_Windows_" + houseName;
                 groupImageId = "group_Blinds_Windows_Image";
                 groupTxtId = "group_Blinds_Windows_Txt_Id";
                 groupImageTxt = "Door Window";
@@ -1225,7 +1225,7 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
             }
             else if(flagsensorGroup == 1)
             {
-                groupClass = "group_Sensors";
+                groupClass = "group_Sensors_" + houseName;
                 groupImageId = "group_Sensors_Image";
                 groupTxtId = "group_Sensors_Txt_Id";
                 groupImageTxt = "Sensors";
@@ -1235,7 +1235,7 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
             }
             else if(flagTemperatureControllerGroup == 1)
             {
-                groupClass = "group_Temperature_control";
+                groupClass = "group_Temperature_control_" + houseName;
                 groupImageId = "group_Temperature_control_Image";
                 groupTxtId = "group_Temperature_control_Txt_Id";
                 groupImageTxt = "Temperature control";
@@ -1320,7 +1320,7 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
 
         if(flagSensorGraphFloor == 1)
         {
-            groupClass = "group_sensor_graph";
+            groupClass = "group_sensor_graph_" + houseName;
             groupImageId = "group_Sensors_Graph_Image";
             groupTxtId = "group_Sensors_Graph_Txt_Id";
             groupImageTxt = "Sensors Graph";
