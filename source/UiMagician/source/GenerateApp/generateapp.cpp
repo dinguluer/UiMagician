@@ -49,6 +49,7 @@ GenerateApp::GenerateApp(QString xmlFileName, QDomElement &xmlRoot, QWidget *par
 
     // house floors
     houseFloor = SINGLE_FLOOR_HOUSE;
+    xmlType = SINGLE_HOUSE;
 
     sensorCount = 0u;
     switchCount = 0u;
@@ -89,6 +90,40 @@ GenerateApp::GenerateApp(QString xmlFileName, QDomElement &xmlRoot, QWidget *par
     // Progress bar set value
     ui->appGenerationProgressBar->setValue(25);
 
+}
+
+//reInitialise global variables
+void GenerateApp::reInitializeGlobalVariables()
+{
+
+    sensorCount = 0u;
+    switchCount = 0u;
+    variableSwitchCount = 0u;
+    variableSliderCount = 0u;
+
+    sensorTotal = 0u;
+    switchTotal = 0u;
+    variableSwitchTotal = 0u;
+    variableSliderTotal = 0u;
+
+    flagLightsGroup = 0;
+    flagAccessoriesGroup = 0;
+    flagBlindDoorWindowGroup = 0;
+    flagsensorGroup = 0;
+    flagTemperatureControllerGroup = 0;
+
+    codingIndexSensor = "";
+
+    sensorFlag = 0u;
+    switchFlag = 0u;
+    variableSwitchFlag = 0u;
+    variableSliderFlag = 0u;
+
+    firstLoopFlag = 0u;
+
+    sensorIndex = "";
+    sensorZone = "";
+    sensorSubzone = "";
 }
 
 //get sensor Image URL
@@ -2122,7 +2157,7 @@ void GenerateApp::prepareVariablesDmXmlFile(QDomNode &tempNodeChild , QString Pa
 }
 
 //prepare the Packet format for each device socket
-void GenerateApp::prepareSocketConf(QDomNode &tempNodeDevicePacket, QString DeviceId, QString DeviceLocalTxtId, QString VariableButtonOneId, QString VariableButtonTwoId, QString deviceImage)
+void GenerateApp::prepareSocketConf(QDomNode &tempNodeDevicePacket, QString DeviceId, QString DeviceLocalTxtId, QString VariableButtonOneId, QString VariableButtonTwoId, QString deviceImage, QString houseName)
 {
     QDomNodeList listPacketDetails;
     QDomNode tempNodeChild;
@@ -2130,6 +2165,12 @@ void GenerateApp::prepareSocketConf(QDomNode &tempNodeDevicePacket, QString Devi
     QString tempString;
     QString bLocal;
     QString bNoState;
+
+    //array name
+    QString FloorsSwitchSocketCfgFileStringName;
+    QString FloorsSensorSocketCfgFileStringName;
+    QString FloorsVariableSliderSocketCfgFileStringName;
+    QString FloorsVariableSwitchSocketCfgFileStringName;
 
     // Create list nodes of - Every DEVICE
     listPacketDetails = tempNodeDevicePacket.childNodes();
@@ -2139,42 +2180,59 @@ void GenerateApp::prepareSocketConf(QDomNode &tempNodeDevicePacket, QString Devi
 
     if(firstLoopFlag == 0)
     {
+        FloorsSwitchSocketCfgFileString.clear();
         //Create switch array head
         if((houseFloor == MULTI_FLOOR_HOUSE) && (switchCount == 0))
         {
-            FloorsSwitchSocketCfgFileString = "var Multi_Floor_Device_Array = [";
+            FloorsSwitchSocketCfgFileStringName = houseName + "_" + "Multi_Floor_Device_Array";
+            FloorsSwitchSocketCfgFileString = "var " + FloorsSwitchSocketCfgFileStringName + " = [";
+            houseFloorsSwitchSocketCfgFileString += FloorsSwitchSocketCfgFileStringName;
         }
         else if((houseFloor == SINGLE_FLOOR_HOUSE) && (switchCount == 0))
         {
-            FloorsSwitchSocketCfgFileString = "var Single_Floor_Device_Array = [";
+            FloorsSwitchSocketCfgFileStringName = houseName + "_" + "Single_Floor_Device_Array";
+            FloorsSwitchSocketCfgFileString = "var " + FloorsSwitchSocketCfgFileStringName + " = [";
+            houseFloorsSwitchSocketCfgFileString += FloorsSwitchSocketCfgFileStringName;
         }
         else
         {
             //Do nothing
         }
 
+        // --> could be an error
+        FloorsSensorSocketCfgFileString.clear();
         //Create sensor array head
         if((houseFloor == MULTI_FLOOR_HOUSE) && (sensorCount == 0))
         {
-            FloorsSensorSocketCfgFileString = "var Multi_Floor_Sensor_Device_Array = [";
+            FloorsSensorSocketCfgFileStringName = houseName + "_" + "Multi_Floor_Sensor_Device_Array";
+            FloorsSensorSocketCfgFileString = "var " + FloorsSensorSocketCfgFileStringName + " = [";
+            houseFloorsSensorSocketCfgFileString += FloorsSensorSocketCfgFileStringName;
         }
         else if((houseFloor == SINGLE_FLOOR_HOUSE) && (sensorCount == 0))
         {
-            FloorsSensorSocketCfgFileString = "var Single_Floor_Sensor_Device_Array = [";
+            FloorsSensorSocketCfgFileStringName = houseName + "_" + "Single_Floor_Sensor_Device_Array";
+            FloorsSensorSocketCfgFileString = "var " + FloorsSensorSocketCfgFileStringName + " = [";
+            houseFloorsSensorSocketCfgFileString += FloorsSensorSocketCfgFileStringName;
         }
         else
         {
             //Do nothing
         }
 
+        // --> could be an error
+        FloorsVariableSliderSocketCfgFileString.clear();
         //Create variable slider array head
         if((houseFloor == MULTI_FLOOR_HOUSE) && (variableSliderCount == 0))
         {
-            FloorsVariableSliderSocketCfgFileString = "var Multi_Floor_Variable_Slider_Device_Array = [";
+            FloorsVariableSliderSocketCfgFileStringName = houseName + "_" + "Multi_Floor_Variable_Slider_Device_Array";
+            FloorsVariableSliderSocketCfgFileString = "var " + FloorsVariableSliderSocketCfgFileStringName + " = [";
+            houseFloorsVariableSliderSocketCfgFileString += FloorsVariableSliderSocketCfgFileStringName;
         }
         else if((houseFloor == SINGLE_FLOOR_HOUSE) && (variableSliderCount == 0))
         {
-            FloorsVariableSliderSocketCfgFileString = "var Single_Floor_Variable_Slider_Device_Array = [";
+            FloorsVariableSliderSocketCfgFileStringName = houseName + "_" + "Single_Floor_Variable_Slider_Device_Array";
+            FloorsVariableSliderSocketCfgFileString = "var " + FloorsVariableSliderSocketCfgFileStringName + " = [";
+            houseFloorsVariableSliderSocketCfgFileString += FloorsVariableSliderSocketCfgFileStringName;
         }
         else
         {
@@ -2182,14 +2240,20 @@ void GenerateApp::prepareSocketConf(QDomNode &tempNodeDevicePacket, QString Devi
         }
 
 
+        // --> could be an error
+        FloorsVariableSwitchSocketCfgFileString.clear();
         //Create variable Switch array head
         if((houseFloor == MULTI_FLOOR_HOUSE) && (variableSwitchCount == 0))
         {
-            FloorsVariableSwitchSocketCfgFileString = "var Multi_Floor_Variable_Switch_Device_Array = [";
+            FloorsVariableSwitchSocketCfgFileStringName = houseName + "_" + "Multi_Floor_Variable_Switch_Device_Array";
+            FloorsVariableSwitchSocketCfgFileString = "var " + FloorsVariableSwitchSocketCfgFileStringName + " = [";
+            houseFloorsVariableSwitchSocketCfgFileString += FloorsVariableSwitchSocketCfgFileStringName;
         }
         else if((houseFloor == SINGLE_FLOOR_HOUSE) && (variableSwitchCount == 0))
         {
-            FloorsVariableSwitchSocketCfgFileString = "var Single_Floor_Variable_Switch_Device_Array = [";
+            FloorsVariableSwitchSocketCfgFileStringName = houseName + "_" + "Single_Floor_Variable_Switch_Device_Array";
+            FloorsVariableSwitchSocketCfgFileString = "var " + FloorsVariableSwitchSocketCfgFileStringName + " = [";
+            houseFloorsVariableSwitchSocketCfgFileString += FloorsVariableSwitchSocketCfgFileStringName;
         }
         else
         {
@@ -3098,7 +3162,7 @@ void GenerateApp::createHtmlHead()
     if (!htmlFile.open(QIODevice::ReadWrite|QIODevice::Truncate|QIODevice::Text))
     {
         // Fail to open file Message
-        QMessageBox::information(this, "uiMagician", "Fail to Open file");
+        //QMessageBox::information(this, "uiMagician", "Fail to Open file");
         return;
         //return FAIL_TO_OPEN_FILE;
     }
@@ -3159,6 +3223,21 @@ void GenerateApp::createHtmlHead()
        stringAttributeTxt = "../css/epoch.min.css";
        NodeElementChild.setAttribute("href",stringAttributeTxt);
        NodeElement.appendChild(NodeElementChild);
+       if(xmlType == MULTI_HOUSE)
+       {
+           //Create link node
+           nodeChildName = "link";
+           NodeElementChild = htmlDomDocument.createElement(nodeChildName);
+           NodeElementChild.setAttribute("rel","stylesheet");
+           NodeElementChild.setAttribute("type","text/css");
+           stringAttributeTxt = "../css/side_menu.css";
+           NodeElementChild.setAttribute("href",stringAttributeTxt);
+           NodeElement.appendChild(NodeElementChild);
+       }
+       else
+       {
+           //Do nothing
+       }
        //Create setting jquery script node
        nodeChildName = "script";
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
@@ -3213,6 +3292,29 @@ void GenerateApp::createHtmlHead()
        textNode = htmlDomDocument.createTextNode(stringTxtNode);
        NodeElementChild.appendChild(textNode);
        NodeElement.appendChild(NodeElementChild);
+       if(xmlType == MULTI_HOUSE)
+       {
+           //Create vscpws script node
+           nodeChildName = "script";
+           NodeElementChild = htmlDomDocument.createElement(nodeChildName);
+           NodeElementChild.setAttribute("type","text/javascript");
+           if(houseFloor == SINGLE_FLOOR_HOUSE)
+           {
+               NodeElementChild.setAttribute("src","../lib/side_menu_house_single.js");
+           }
+           else
+           {
+               NodeElementChild.setAttribute("src","../lib/side_menu_house.js");
+           }
+           stringTxtNode = "";
+           textNode = htmlDomDocument.createTextNode(stringTxtNode);
+           NodeElementChild.appendChild(textNode);
+           NodeElement.appendChild(NodeElementChild);
+       }
+       else
+       {
+           //Do nothing
+       }
        //Create vscpws script node
        nodeChildName = "script";
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
@@ -3319,6 +3421,10 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
 {
     QString scrollableCenterAreaWidgetArray;
     //QString scrollableMenuTxtArray;
+    QString infoVariableArray;
+    QString infoVariableString;
+    QString infoClassArray;
+    //QString infoClassString;
 
     QDomElement NodeElementTemp;
     QDomElement NodeElementChildTemp;
@@ -3377,912 +3483,1150 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
 
     bool sensorGraphCreate = 0;
 
+    // house name
+    QString houseName;
+
+    //Central widget array of array
+    QString scrollableCenterAreaWidgetArrayName;
+    QString houseCenterAreaWidgetArray;
+
     nodeName = "div";
     NodeElementMultiFloorDivScrollableCenter  = htmlDomDocument.createElement(nodeName);
     NodeElementMultiFloorDivScrollableCenter.setAttribute("id","center");
     NodeElementMultiFloorDivScrollableCenter.setAttribute("class","scrollableCenter");
 
-    scrollableCenterAreaWidgetArray.clear();
-    scrollableCenterAreaWidgetArray = "var central_Area_widgets_id = [";
-    scrollableCenterAreaWidgetArray += "\n";
+    infoVariableArray.clear();
+    infoVariableArray =  "var infoVariableArray = [";
+    infoVariableArray += "\n";
 
-    //Get the Total number of switch & sensors
-    //get floor name in list
-    for (int i = 0; i < floorNodesList.size(); ++i)
+    infoVariableString.clear();
+
+
+    infoClassArray.clear();
+    infoClassArray =  "var infoClass = [";
+    infoClassArray += "\n";
+
+    //infoClassString.clear();
+
+    //Central widget array of array
+    houseCenterAreaWidgetArray.clear();
+    houseCenterAreaWidgetArray =  "var house_central_Area_widgets_id = [";
+    houseCenterAreaWidgetArray += "\n";
+
+    //Create switch array head
+    if(houseFloor == MULTI_FLOOR_HOUSE)
     {
-        floorNodes = floorNodesList.at(i);
+        houseFloorsSwitchSocketCfgFileString += "\n";
+        houseFloorsSwitchSocketCfgFileString = "var Multi_Floor_Device_Array = [";
+        houseFloorsSwitchSocketCfgFileString += "\n";
+        houseFloorsSensorSocketCfgFileString = "var Multi_Floor_Sensor_Device_Array = [";
+        houseFloorsSensorSocketCfgFileString += "\n";
+        houseFloorsVariableSliderSocketCfgFileString = "var Multi_Floor_Variable_Slider_Device_Array = [";
+        houseFloorsVariableSliderSocketCfgFileString += "\n";
+        houseFloorsVariableSwitchSocketCfgFileString = "var Multi_Floor_Variable_Switch_Device_Array = [";
+        houseFloorsVariableSwitchSocketCfgFileString += "\n";
+    }
+    else if(houseFloor == SINGLE_FLOOR_HOUSE)
+    {
+        houseFloorsSwitchSocketCfgFileString += "\n";
+        houseFloorsSwitchSocketCfgFileString = "var Single_Floor_Device_Array = [";
+        houseFloorsSwitchSocketCfgFileString += "\n";
+        houseFloorsSensorSocketCfgFileString = "var Single_Floor_Sensor_Device_Array = [";
+        houseFloorsSensorSocketCfgFileString += "\n";
+        houseFloorsVariableSliderSocketCfgFileString = "var Single_Floor_Variable_Slider_Device_Array = [";
+        houseFloorsVariableSliderSocketCfgFileString += "\n";
+        houseFloorsVariableSwitchSocketCfgFileString = "var Single_Floor_Variable_Switch_Device_Array = [";
+        houseFloorsVariableSwitchSocketCfgFileString += "\n";
 
-        //Load root nodes
-        listRooms = floorNodes.floorRooms.childNodes();
-
-        //get floor name in list
-        for (int j = 0; j < listRooms.size(); ++j)
-        {
-            //read the child node from room list
-            tempNodeChild = listRooms.at(j);
-
-            // Create list of child nodes of - Every room
-            listDevices = tempNodeChild.childNodes();
-
-            for (int k = DEVICE_INDEX; k < listDevices.size(); ++k)
-            {
-                //read the Device child node from device list
-                tempNodeChild = listDevices.at(k);
-                // Create list nodes of - Every DEVICE
-                listDeviceDetails = tempNodeChild.childNodes();
-
-                //Get device type node
-                tempNodeChild = listDeviceDetails.at(DEVICE_TYPE_INDEX);
-                if (!tempNodeChild.isNull())
-                {
-                    deviceType = tempNodeChild.toElement().text();
-                }
-                else
-                {
-                    deviceType = "";
-                }
-
-                //Get device sub type node
-                tempNodeChild = listDeviceDetails.at(DEVICE_SUB_TYPE_INDEX);
-                if (!tempNodeChild.isNull())
-                {
-                    deviceSubType = tempNodeChild.toElement().text();
-                }
-                else
-                {
-                    deviceSubType = "";
-                }
-
-                // If device type is sensor
-                if(deviceType == DEVICE_SENSOR)
-                {
-                    sensorTotal++;
-
-                    //create sensor graph
-                    sensorGraphCreate = 1;
-                }
-                else if (deviceSubType == SWITCH_SUB_TYPE_ONE)
-                {
-                    switchTotal++;
-                }
-                else if (deviceSubType == SWITCH_SUB_TYPE_TWO)
-                {
-                    variableSliderTotal++;
-                }
-                else if (deviceSubType == SWITCH_SUB_TYPE_THREE)
-                {
-                    variableSwitchTotal++;
-                }
-                else
-                {
-                    //Do nothing
-                }
-
-            }
-        }
+    }
+    else
+    {
+        //Do nothing
     }
 
-    //get floor name in list
-    for (int i = 0; i < floorNodesList.size(); ++i)
+    // Itterate through houses
+    for (int p = 0; p < houseNodesList.size(); ++p)
     {
+        houseName = houseNodesList.at(p).houseName;
 
-      floorNodes = floorNodesList.at(i);
+        //QMessageBox::information(this,"house name",houseName);
 
-      floorName = floorNodes.floorName;
-      floorName.replace(" ", "");
-      floorName.remove(QRegExp("[^a-zA-Z\\d\\s]"));
+        scrollableCenterAreaWidgetArray.clear();
+        scrollableCenterAreaWidgetArray = "var " + houseName + "_" + "central_Area_widgets_id = [";
+        scrollableCenterAreaWidgetArrayName = houseName + "_" + "central_Area_widgets_id";
+        scrollableCenterAreaWidgetArray += "\n";
 
-      floorNameArea = floorName + "_Floor_Area";
-
-      //prepare global floor name
-      floorNameDevice = floorName;
-
-      //Load root nodes
-      listRooms = floorNodes.floorRooms.childNodes();
-
-      //get floor name in list
-      for (int j = 0; j < listRooms.size(); ++j)
-      {
-          //read the child node from room list
-          tempNodeChild = listRooms.at(j);
-
-          // Create list of child nodes of - Every room
-          listDevices = tempNodeChild.childNodes();
-
-          //Read Room name from node
-          tempNodeChild = listDevices.at(ROOM_NAME_INDEX);
-          if (!tempNodeChild.isNull())
-          {
-              nodeDataTextRoom = tempNodeChild.toElement().text();
-          }
-          else
-          {
-              nodeDataTextRoom = "";
-          }
-
-          //Edit room name
-          nodeDataTextRoom.replace(" ", "");
-          nodeDataTextRoom.remove(QRegExp("[^a-zA-Z\\d\\s]"));
-
-          //prepare global room name
-          roomNameDevice = nodeDataTextRoom;
-
-          // Area name ID
-          textArea_main = floorNameArea + "_" + nodeDataTextRoom;
-
-          // k = 0 : RoomName
-          // k = 1 : FloorName
-          // k = 2 : HouseName
-          // k = 3 : Devices starts from here
-          // itterate every device
-          for (int k = DEVICE_INDEX; k < listDevices.size(); ++k)
-          {
-
-              //read the Device child node from device list
-              tempNodeChild = listDevices.at(k);
-              // Create list nodes of - Every DEVICE
-              listDeviceDetails = tempNodeChild.childNodes();
-
-              //Get device name node
-              tempNodeChild = listDeviceDetails.at(DEVICE_INFO_INDEX);
-              if (!tempNodeChild.isNull())
-              {
-                  deviceInfo = tempNodeChild.toElement().text();
-              }
-              else
-              {
-                  deviceInfo = "";
-              }
-
-              // Area name ID
-              //textArea = floorNameArea + "_" + nodeDataTextRoom;
-              if(deviceInfo == DEVICE_INFO_TYPE_ONE)
-              {
-                  textArea = textArea_main + " group_Lights";
-                  if(houseFloor == MULTI_FLOOR_HOUSE)
-                  {
-                      textArea += " group_Lights_Floor_" + floorName;
-                  }
-              }
-              else if (deviceInfo == DEVICE_INFO_TYPE_TWO)
-              {
-                  textArea = textArea_main + " group_Accessories";
-                  if(houseFloor == MULTI_FLOOR_HOUSE)
-                  {
-                      textArea += " group_Accessories_Floor_" + floorName;
-                  }
-              }
-              else if (deviceInfo == DEVICE_INFO_TYPE_THREE)
-              {
-                  textArea = textArea_main + " group_Blinds_Windows";
-                  if(houseFloor == MULTI_FLOOR_HOUSE)
-                  {
-                      textArea += " group_Blinds_Windows_Floor_" + floorName;
-                  }
-              }
-              else if (deviceInfo == DEVICE_INFO_TYPE_FOUR)
-              {
-                  textArea = textArea_main + " group_Sensors";
-                  if(houseFloor == MULTI_FLOOR_HOUSE)
-                  {
-                      textArea += " group_Sensors_Floor_" + floorName;
-                  }
-              }
-              else if (deviceInfo == DEVICE_INFO_TYPE_FIVE)
-              {
-                  textArea = textArea_main + " group_Temperature_control";
-                  if(houseFloor == MULTI_FLOOR_HOUSE)
-                  {
-                      textArea += " group_Temperature_control_Floor_" + floorName;
-                  }
-              }
-              else
-              {
-
-              }
-              // create Device node
-              nodeNameTemp = "div";
-              NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
-              NodeElementTemp.setAttribute("class",textArea);
-
-              //Get device name node
-              tempNodeChild = listDeviceDetails.at(DEVICE_NAME_INDEX);
-              if (!tempNodeChild.isNull())
-              {
-                  deviceName = tempNodeChild.toElement().text();
-              }
-              else
-              {
-                  deviceName = "";
-              }
-
-              //prepare global device name
-              deviceNameDevice = deviceName;
-
-              deviceNameNonFormatted = deviceName;
-              //Edit device name
-              deviceName.replace(" ", "");
-              deviceName.remove(QRegExp("[^a-zA-Z\\d\\s]"));
-
-              //Get device type node
-              tempNodeChild = listDeviceDetails.at(DEVICE_TYPE_INDEX);
-              if (!tempNodeChild.isNull())
-              {
-                  deviceType = tempNodeChild.toElement().text();
-              }
-              else
-              {
-                  deviceType = "";
-              }
-
-              //Get device type node
-              tempNodeChild = listDeviceDetails.at(DEVICE_SUB_TYPE_INDEX);
-              if (!tempNodeChild.isNull())
-              {
-                  deviceSubType = tempNodeChild.toElement().text();
-              }
-              else
-              {
-                  deviceSubType = "";
-              }
-
-              if(deviceSubType == SWITCH_SUB_TYPE_TWO)
-              {
-                  // get the slider Websocket node
-                  tempNodeChild = listDeviceDetails.at(DEVICE_PACKET_INDEX).childNodes().at(VSCP_PACKET_SLIDER_WEBSOCKET_CONFIGURE);
-                  // get the slider min
-                  sliderMinValue =tempNodeChild.toElement().attribute(SLIDER_MIN);
-                  if(sliderMinValue == "")
-                  {
-                      sliderMinValue ="0";
-                  }
-                  // get the slider max
-                  sliderMaxValue =tempNodeChild.toElement().attribute(SLIDER_MAX);
-                  if(sliderMaxValue == "")
-                  {
-                      sliderMaxValue ="100";
-                  }
-              }
-              else if(deviceSubType == SWITCH_SUB_TYPE_THREE)
-              {
-                  // get the slider Websocket node
-                  tempNodeChild = listDeviceDetails.at(DEVICE_PACKET_INDEX).childNodes().at(VSCP_PACKET_SLIDER_WEBSOCKET_CONFIGURE);
-                  // get the slider min
-                  sliderMinValue =tempNodeChild.toElement().attribute(VARIABLE_SWITCH_MIN);
-                  if(sliderMinValue == "")
-                  {
-                      sliderMinValue ="0";
-                  }
-                  // get the slider max
-                  sliderMaxValue =tempNodeChild.toElement().attribute(VARIABLE_SWITCH_MAX);
-                  if(sliderMaxValue == "")
-                  {
-                      sliderMaxValue ="100";
-                  }
-              }
-              else
-              {
-
-              }
-
-              // If device type is sensor
-              if(deviceType == DEVICE_SENSOR)
-              {
-                  //deviceNameNonFormatted = "No Data From Sensor";
-                  //deviceNameNonFormattedRemote = "No Data From Sensor";
-                  deviceNameNonFormattedRemote = deviceNameNonFormatted;
-              }
-              else if(deviceSubType == SWITCH_SUB_TYPE_ONE) // If device type is switch
-              {
-                  deviceNameNonFormattedRemote = deviceNameNonFormatted;
-              }
-              else if(deviceSubType == SWITCH_SUB_TYPE_TWO)
-              {
-                  deviceNameNonFormattedRemote = deviceNameNonFormatted;
-              }
-              else if(deviceSubType == SWITCH_SUB_TYPE_THREE)
-              {
-                  deviceNameNonFormattedRemote = deviceNameNonFormatted;
-              }
-              else
-              {
-                  //Do nothing
-              }
-
-              //Device image ID
-              //TextDeviceImageId = textArea + "_Image_" + deviceName;
-              //Device text ID
-              //TextDevicetxtId = textArea + "_" + deviceName + "_Txt";
-
-              //Get device Image node
-              tempNodeChild = listDeviceDetails.at(DEVICE_IMAGE_INDEX);
-              if (!tempNodeChild.isNull())
-              {
-                  deviceImage = tempNodeChild.toElement().text();
-              }
-              else
-              {
-                  deviceImage = "";
-              }
-
-              //convert into number
-              deviceImageNumber = deviceImage.toUInt();
-
-              // Get the image URL
-              if(deviceType == DEVICE_SENSOR)
-              {
-                  getSensorDeviceImage(deviceImageNumber ,sensorImageSrc);
-                  deviceImageSrc = sensorImageSrc;
-              }
-              else
-              {
-                  if(deviceSubType == SWITCH_SUB_TYPE_ONE)
-                  {
-                      getSwitchDeviceImage(deviceImageNumber ,switchOnImageSrc,switchOffImageSrc);
-                      deviceImageSrc = switchOffImageSrc;
-                  }
-                  else if (deviceSubType == SWITCH_SUB_TYPE_TWO)
-                  {
-                      getSliderDeviceImage(deviceImageNumber,sliderImageSrc);
-                  }
-                  else if (deviceSubType == SWITCH_SUB_TYPE_THREE)
-                  {
-                      getSwitchVariableButtonDeviceImage(deviceImageNumber ,switchButtonIncImageSrc,switchButtonDownImageSrc);
-
-                  }
-                  else
-                  {
-                      // Do nothing
-                  }
-              }
-
-              tempNodeChild = listDeviceDetails.at(DEVICE_PACKET_INDEX);
-              // If device type is sensor
-              if(deviceType == DEVICE_SENSOR)
-              {
-                  // get the sensor Websocket node
-                  tempNodeSubChild = listDeviceDetails.at(DEVICE_PACKET_INDEX).childNodes().at(VSCP_PACKET_SENSOR_WEBSOCKET_CONFIGURE);
-                  // get the switch image ID
-                  TextDeviceImageId =tempNodeSubChild.toElement().attribute(SENSOR_ID);
-                  // get the sensor Remote Txt ID
-                  TextDevicetxtId = tempNodeSubChild.toElement().attribute(SENSOR_REMOTE_TXT_ID);
-                  // get graph ID
-                  TextImageOneId = tempNodeSubChild.toElement().attribute(SENSOR_GRAPH_ID);
-                  //get graph unit ID
-                  TextImageTwoId = tempNodeSubChild.toElement().attribute(SENSOR_GRAPH_UNIT_ID);
-                  // get graph type
-                  TextDeviceLocalTxtId = tempNodeSubChild.toElement().attribute(SENSOR_GRAPH_TYPE);
-                  //prepare the Packet format for each sensor device socket
-                  //  --> both are dummy parameter here to satisfy function call
-                  prepareSocketConf(tempNodeChild,TextDevicetxtId,TextDeviceLocalTxtId,TextImageOneId,TextImageTwoId,deviceImage);
-              }
-              else
-              {                  
-                  if(deviceSubType == SWITCH_SUB_TYPE_ONE)
-                  {
-                      // get the switch Websocket node
-                      tempNodeSubChild = listDeviceDetails.at(DEVICE_PACKET_INDEX).childNodes().at(VSCP_PACKET_SWITCH_WEBSOCKET_CONFIGURE);
-                      // get the switch image ID
-                      TextDeviceImageId =tempNodeSubChild.toElement().attribute(SWITCH_ID);
-                      //prepare the Packet format for each switch device socket
-                      // TextDeviceLocalTxtId & TextImageOneID & TextImageTwoId --> both are dummy parameter here to satisfy function call
-                      prepareSocketConf(tempNodeChild,TextDeviceImageId,TextDeviceLocalTxtId,TextImageOneId,TextImageTwoId,deviceImage);
-                  }
-                  else if (deviceSubType == SWITCH_SUB_TYPE_TWO)  // slider
-                  {
-                      // get the slider Websocket node
-                      tempNodeSubChild = listDeviceDetails.at(DEVICE_PACKET_INDEX).childNodes().at(VSCP_PACKET_SWITCH_WEBSOCKET_CONFIGURE);
-                      // get the Slider image ID
-                      TextDeviceImageId =tempNodeSubChild.toElement().attribute(SLIDER_ID);
-                      // get the Slider Local Txt ID
-                      TextDeviceLocalTxtId = tempNodeSubChild.toElement().attribute(SLIDER_LOCAL_TXT_ID);
-                      // get the Slider Remote Txt ID
-                      TextDevicetxtId = tempNodeSubChild.toElement().attribute(SLIDER_REMOTE_TXT_ID);
-                      //prepare the Packet format for each switch device socket
-                      // TextImageTwo  -->  are dummy parameter here to satisfy function call
-                      prepareSocketConf(tempNodeChild,TextDevicetxtId,TextDeviceLocalTxtId,TextDeviceImageId,TextImageTwoId,deviceImage);
-                  }
-                  else if (deviceSubType == SWITCH_SUB_TYPE_THREE)  // variable button
-                  {
-                      // get the variable button Websocket node
-                      tempNodeSubChild = listDeviceDetails.at(DEVICE_PACKET_INDEX).childNodes().at(VSCP_PACKET_SLIDER_WEBSOCKET_CONFIGURE);
-                      // get the variable button Inc ID
-                      TextImageOneId =tempNodeSubChild.toElement().attribute(VARIABLE_SWITCH_INC_ID);
-                      // get the variable button Dec ID
-                      TextImageTwoId =tempNodeSubChild.toElement().attribute(VARIABLE_SWITCH_DEC_ID);
-                      // get the variable button Local Txt ID
-                      TextDeviceLocalTxtId = tempNodeSubChild.toElement().attribute(VARIABLE_SWITCH_LOCAL_TXT_ID);
-                      // get the variable button Remote Txt ID
-                      TextDevicetxtId = tempNodeSubChild.toElement().attribute(VARIABLE_SWITCH_REMOTE_TXT_ID);
-
-                      //prepare the Packet format for each sensor device socket
-                      prepareSocketConf(tempNodeChild,TextDevicetxtId,TextDeviceLocalTxtId,TextImageOneId,TextImageTwoId,deviceImage);
-                  }
-                  else
-                  {
-                      // Do nothing
-                  }
-              }
-
-              //Create input node
-              nodeChildNameTemp = "input";
-              NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);              
-              if(k == DEVICE_INDEX)
-              {
-                  NodeElementChildTemp.setAttribute("class","image_menu_center_first");
-              }
-              else
-              {
-                  NodeElementChildTemp.setAttribute("class","image_menu_center_second");
-              }
-
-              if(deviceType == DEVICE_SENSOR)
-              {
-                  NodeElementChildTemp.setAttribute("id",TextDeviceImageId);
-                  NodeElementChildTemp.setAttribute("type","image");
-                  NodeElementChildTemp.setAttribute("src",deviceImageSrc);
-              }
-              else if(deviceSubType == SWITCH_SUB_TYPE_ONE)
-              {
-                  NodeElementChildTemp.setAttribute("id",TextDeviceImageId);
-                  NodeElementChildTemp.setAttribute("type","image");
-                  NodeElementChildTemp.setAttribute("src",deviceImageSrc);
-              }
-              else if(deviceSubType == SWITCH_SUB_TYPE_TWO)
-              {
-                  NodeElementChildTemp.setAttribute("id",TextDeviceImageId);
-                  NodeElementChildTemp.setAttribute("type","range");
-                  NodeElementChildTemp.setAttribute("min",sliderMinValue);
-                  NodeElementChildTemp.setAttribute("max",sliderMaxValue);
-                  NodeElementChildTemp.setAttribute("step","1");
-                  NodeElementChildTemp.setAttribute("value","0");
-                  //NodeElementChildTemp.setAttribute("src",sliderImageSrc);
-              }
-              else if (deviceSubType == SWITCH_SUB_TYPE_THREE)
-              {
-                  NodeElementChildTemp.setAttribute("id",TextImageOneId);
-                  NodeElementChildTemp.setAttribute("type","image");
-                  NodeElementChildTemp.setAttribute("src",switchButtonIncImageSrc);
-
-              }
-              //NodeElementChildTemp.setAttribute("alt",TextDeviceImageId);
-              //Append image div to room div
-              NodeElementTemp.appendChild(NodeElementChildTemp);
-
-              if(deviceSubType == SWITCH_SUB_TYPE_TWO)
-              {
-                  //Create span node
-                  nodeChildNameTemp = "span";
-                  NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-                  NodeElementChildTemp.setAttribute("type","text");
-                  NodeElementChildTemp.setAttribute("class","spantxt_center");
-                  NodeElementChildTemp.setAttribute("id",TextDeviceLocalTxtId + "_Fix");
-                  stringTxtNode = deviceNameNonFormatted + " Value : ";
-                  textNode = htmlDomDocument.createTextNode(stringTxtNode);
-                  //Append txt node
-                  NodeElementChildTemp.appendChild(textNode);
-
-                  //Append paragraph div to room div
-                  NodeElementTemp.appendChild(NodeElementChildTemp);
-
-                  //Create span node
-                  nodeChildNameTemp = "span";
-                  NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-                  NodeElementChildTemp.setAttribute("type","text");
-                  NodeElementChildTemp.setAttribute("class","spantxt_center");
-                  NodeElementChildTemp.setAttribute("id",TextDeviceLocalTxtId);
-                  stringTxtNode = "0";
-                  textNode = htmlDomDocument.createTextNode(stringTxtNode);
-                  //Append txt node
-                  NodeElementChildTemp.appendChild(textNode);
-
-                  //Append paragraph div to room div
-                  NodeElementTemp.appendChild(NodeElementChildTemp);
-
-              }
-              else if(deviceSubType == SWITCH_SUB_TYPE_THREE)
-              {
-                  //Create span node
-                  nodeChildNameTemp = "span";
-                  NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-                  NodeElementChildTemp.setAttribute("type","text");
-                  NodeElementChildTemp.setAttribute("class","spantxt_button_center");
-                  NodeElementChildTemp.setAttribute("id",TextDeviceLocalTxtId);
-                  stringTxtNode = "0";
-                  textNode = htmlDomDocument.createTextNode(stringTxtNode);
-                  //Append txt node
-                  NodeElementChildTemp.appendChild(textNode);
-
-                  //Append paragraph div to room div
-                  NodeElementTemp.appendChild(NodeElementChildTemp);
+        houseCenterAreaWidgetArray += scrollableCenterAreaWidgetArrayName;
 
 
-                  //Create input node
-                  nodeChildNameTemp = "input";
-                  NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-                  NodeElementChildTemp.setAttribute("id",TextImageTwoId);
-                  if(k == DEVICE_INDEX)
-                  {
-                      NodeElementChildTemp.setAttribute("class","image_menu_center_first_sec");
-                  }
-                  else
-                  {
-                      NodeElementChildTemp.setAttribute("class","image_menu_center_second_sec");
-                  }
-                  NodeElementChildTemp.setAttribute("type","image");
-                  NodeElementChildTemp.setAttribute("src",switchButtonDownImageSrc);
+        FloorsSwitchSocketCfgFileString.clear();
+        FloorsVariableSliderSocketCfgFileString.clear();
+        FloorsVariableSwitchSocketCfgFileString.clear();
+        FloorsSensorSocketCfgFileString.clear();
+
+        if((p+1) <  houseNodesList.size())
+        {
+            houseCenterAreaWidgetArray += ",";
+            //scrollableHrArray += ",";
+        }
 
 
-                  //Append image div to room div
-                  NodeElementTemp.appendChild(NodeElementChildTemp);
+        /*QMessageBox::information(this, "uiMagician", QString::number(sensorTotal) +
+                                 QString::number(switchTotal)+
+                                 QString::number(variableSliderTotal)+
+                                 QString::number(variableSwitchTotal)
+                                 );*/
+
+        //reInitialise global variables
+        reInitializeGlobalVariables();
+
+        //Get the Total number of switch & sensors
+        //get floor name in list
+        //for (int i = 0; i < floorNodesList.size(); ++i)
+        for (int i = 0; i < houseNodesList.at(p).floorNodeList.size(); ++i)
+        {
+            //floorNodes = floorNodesList.at(i);
+            floorNodes = houseNodesList.at(p).floorNodeList.at(i);
+
+            //Load root nodes
+            listRooms = floorNodes.floorRooms.childNodes();
+
+            //get floor name in list
+            // calculate device total
+            for (int j = 0; j < listRooms.size(); ++j)
+            {
+                //read the child node from room list
+                tempNodeChild = listRooms.at(j);
+
+                // Create list of child nodes of - Every room
+                listDevices = tempNodeChild.childNodes();
+
+                for (int k = DEVICE_INDEX; k < listDevices.size(); ++k)
+                {
+                    //read the Device child node from device list
+                    tempNodeChild = listDevices.at(k);
+                    // Create list nodes of - Every DEVICE
+                    listDeviceDetails = tempNodeChild.childNodes();
+
+                    //Get device type node
+                    tempNodeChild = listDeviceDetails.at(DEVICE_TYPE_INDEX);
+                    if (!tempNodeChild.isNull())
+                    {
+                        deviceType = tempNodeChild.toElement().text();
+                    }
+                    else
+                    {
+                        deviceType = "";
+                    }
+
+                    //Get device sub type node
+                    tempNodeChild = listDeviceDetails.at(DEVICE_SUB_TYPE_INDEX);
+                    if (!tempNodeChild.isNull())
+                    {
+                        deviceSubType = tempNodeChild.toElement().text();
+                    }
+                    else
+                    {
+                        deviceSubType = "";
+                    }
+
+                    // If device type is sensor
+                    if(deviceType == DEVICE_SENSOR)
+                    {
+                        sensorTotal++;
+
+                        //create sensor graph
+                        sensorGraphCreate = 1;
+                    }
+                    else if (deviceSubType == SWITCH_SUB_TYPE_ONE)
+                    {
+                        switchTotal++;
+                    }
+                    else if (deviceSubType == SWITCH_SUB_TYPE_TWO)
+                    {
+                        variableSliderTotal++;
+                    }
+                    else if (deviceSubType == SWITCH_SUB_TYPE_THREE)
+                    {
+                        variableSwitchTotal++;
+                    }
+                    else
+                    {
+                        //Do nothing
+                    }
+
+                }
+            }
+        }
+
+        /*QMessageBox::information(this, "uiMagician", QString::number(sensorTotal) +
+                                 QString::number(switchTotal)+
+                                 QString::number(variableSliderTotal)+
+                                 QString::number(variableSwitchTotal)
+                                 );*/
+
+        /*QMessageBox::information(this, "size", QString::number(houseNodesList.at(p).floorNodeList.size())
+                                 );*/
+
+        //get floor name in list
+        //for (int i = 0; i < floorNodesList.size(); ++i)
+        for (int i = 0; i < houseNodesList.at(p).floorNodeList.size(); ++i)
+        {
+
+            //floorNodes = floorNodesList.at(i);
+            floorNodes = houseNodesList.at(p).floorNodeList.at(i);;
+
+            floorName = floorNodes.floorName;
+            floorName.replace(" ", "");
+            floorName.remove(QRegExp("[^a-zA-Z\\d\\s]"));
+
+            //QMessageBox::information(this, "size", floorName );
+            floorNameArea = houseName + "_" + floorName + "_Floor_Area";
+
+            //prepare global floor name
+            floorNameDevice = floorName;
+
+            //Load root nodes
+            listRooms = floorNodes.floorRooms.childNodes();
+
+            //get floor name in list
+            for (int j = 0; j < listRooms.size(); ++j)
+            {
+                //read the child node from room list
+                tempNodeChild = listRooms.at(j);
+
+                // Create list of child nodes of - Every room
+                listDevices = tempNodeChild.childNodes();
+
+                //Read Room name from node
+                tempNodeChild = listDevices.at(ROOM_NAME_INDEX);
+                if (!tempNodeChild.isNull())
+                {
+                    nodeDataTextRoom = tempNodeChild.toElement().text();
+                }
+                else
+                {
+                    nodeDataTextRoom = "";
+                }
+
+                //Edit room name
+                nodeDataTextRoom.replace(" ", "");
+                nodeDataTextRoom.remove(QRegExp("[^a-zA-Z\\d\\s]"));
+
+                //prepare global room name
+                roomNameDevice = nodeDataTextRoom;
+
+                // Area name ID
+                textArea_main = floorNameArea + "_" + nodeDataTextRoom;
+
+                // k = 0 : RoomName
+                // k = 1 : FloorName
+                // k = 2 : HouseName
+                // k = 3 : Devices starts from here
+                // itterate every device
+                for (int k = DEVICE_INDEX; k < listDevices.size(); ++k)
+                {
+
+                    //read the Device child node from device list
+                    tempNodeChild = listDevices.at(k);
+                    // Create list nodes of - Every DEVICE
+                    listDeviceDetails = tempNodeChild.childNodes();
+
+                    //Get device name node
+                    tempNodeChild = listDeviceDetails.at(DEVICE_INFO_INDEX);
+                    if (!tempNodeChild.isNull())
+                    {
+                        deviceInfo = tempNodeChild.toElement().text();
+                    }
+                    else
+                    {
+                        deviceInfo = "";
+                    }
+
+                    // Area name ID
+                    //textArea = floorNameArea + "_" + nodeDataTextRoom;
+                    if(deviceInfo == DEVICE_INFO_TYPE_ONE)
+                    {
+
+                        if(houseFloor == MULTI_FLOOR_HOUSE)
+                        {
+                            textArea = textArea_main + " group_Lights";
+                            textArea += " group_Lights_" + houseName + "_Floor_" + floorName;
+                        }
+                        else
+                        {
+                            textArea = textArea_main + " group_Lights_" + houseName;
+                        }
+                    }
+                    else if (deviceInfo == DEVICE_INFO_TYPE_TWO)
+                    {                        
+                        if(houseFloor == MULTI_FLOOR_HOUSE)
+                        {
+                            textArea = textArea_main + " group_Accessories";
+                            textArea += " group_Accessories_" + houseName + "_Floor_" + floorName;
+                        }
+                        else
+                        {
+                            textArea = textArea_main + " group_Accessories_" + houseName;
+                        }
+                    }
+                    else if (deviceInfo == DEVICE_INFO_TYPE_THREE)
+                    {                        
+                        if(houseFloor == MULTI_FLOOR_HOUSE)
+                        {
+                            textArea = textArea_main + " group_Blinds_Windows";
+                            textArea += " group_Blinds_Windows_" + houseName + "_Floor_" + floorName;
+                        }
+                        else
+                        {
+                            textArea = textArea_main + " group_Blinds_Windows_" + houseName;
+                        }
+                    }
+                    else if (deviceInfo == DEVICE_INFO_TYPE_FOUR)
+                    {                        
+                        if(houseFloor == MULTI_FLOOR_HOUSE)
+                        {
+                            textArea = textArea_main + " group_Sensors";
+                            textArea += " group_Sensors_" + houseName + "_Floor_" + floorName;
+                        }
+                        else
+                        {
+                            textArea = textArea_main + " group_Sensors_" + houseName;
+                        }
+                    }
+                    else if (deviceInfo == DEVICE_INFO_TYPE_FIVE)
+                    {                        
+                        if(houseFloor == MULTI_FLOOR_HOUSE)
+                        {
+                            textArea = textArea_main + " group_Temperature_control";
+                            textArea += " group_Temperature_control_" + houseName + "_Floor_" + floorName;
+                        }
+                        else
+                        {
+                            textArea = textArea_main + " group_Temperature_control_" + houseName;
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                    // create Device node
+                    nodeNameTemp = "div";
+                    NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
+                    textArea = houseName + "_group_class " + textArea;
+                    NodeElementTemp.setAttribute("class",textArea);
+
+                    //Get device name node
+                    tempNodeChild = listDeviceDetails.at(DEVICE_NAME_INDEX);
+                    if (!tempNodeChild.isNull())
+                    {
+                        deviceName = tempNodeChild.toElement().text();
+                    }
+                    else
+                    {
+                        deviceName = "";
+                    }
+
+                    //prepare global device name
+                    deviceNameDevice = deviceName;
+
+                    deviceNameNonFormatted = deviceName;
+                    //Edit device name
+                    deviceName.replace(" ", "");
+                    deviceName.remove(QRegExp("[^a-zA-Z\\d\\s]"));
+
+                    //Get device type node
+                    tempNodeChild = listDeviceDetails.at(DEVICE_TYPE_INDEX);
+                    if (!tempNodeChild.isNull())
+                    {
+                        deviceType = tempNodeChild.toElement().text();
+                    }
+                    else
+                    {
+                        deviceType = "";
+                    }
+
+                    //Get device type node
+                    tempNodeChild = listDeviceDetails.at(DEVICE_SUB_TYPE_INDEX);
+                    if (!tempNodeChild.isNull())
+                    {
+                        deviceSubType = tempNodeChild.toElement().text();
+                    }
+                    else
+                    {
+                        deviceSubType = "";
+                    }
+
+                    if(deviceSubType == SWITCH_SUB_TYPE_TWO)
+                    {
+                        // get the slider Websocket node
+                        tempNodeChild = listDeviceDetails.at(DEVICE_PACKET_INDEX).childNodes().at(VSCP_PACKET_SLIDER_WEBSOCKET_CONFIGURE);
+                        // get the slider min
+                        sliderMinValue =tempNodeChild.toElement().attribute(SLIDER_MIN);
+                        if(sliderMinValue == "")
+                        {
+                            sliderMinValue ="0";
+                        }
+                        // get the slider max
+                        sliderMaxValue =tempNodeChild.toElement().attribute(SLIDER_MAX);
+                        if(sliderMaxValue == "")
+                        {
+                            sliderMaxValue ="100";
+                        }
+                    }
+                    else if(deviceSubType == SWITCH_SUB_TYPE_THREE)
+                    {
+                        // get the slider Websocket node
+                        tempNodeChild = listDeviceDetails.at(DEVICE_PACKET_INDEX).childNodes().at(VSCP_PACKET_SLIDER_WEBSOCKET_CONFIGURE);
+                        // get the slider min
+                        sliderMinValue =tempNodeChild.toElement().attribute(VARIABLE_SWITCH_MIN);
+                        if(sliderMinValue == "")
+                        {
+                            sliderMinValue ="0";
+                        }
+                        // get the slider max
+                        sliderMaxValue =tempNodeChild.toElement().attribute(VARIABLE_SWITCH_MAX);
+                        if(sliderMaxValue == "")
+                        {
+                            sliderMaxValue ="100";
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                    // If device type is sensor
+                    if(deviceType == DEVICE_SENSOR)
+                    {
+                        //deviceNameNonFormatted = "No Data From Sensor";
+                        //deviceNameNonFormattedRemote = "No Data From Sensor";
+                        deviceNameNonFormattedRemote = deviceNameNonFormatted;
+                    }
+                    else if(deviceSubType == SWITCH_SUB_TYPE_ONE) // If device type is switch
+                    {
+                        deviceNameNonFormattedRemote = deviceNameNonFormatted;
+                    }
+                    else if(deviceSubType == SWITCH_SUB_TYPE_TWO)
+                    {
+                        deviceNameNonFormattedRemote = deviceNameNonFormatted;
+                    }
+                    else if(deviceSubType == SWITCH_SUB_TYPE_THREE)
+                    {
+                        deviceNameNonFormattedRemote = deviceNameNonFormatted;
+                    }
+                    else
+                    {
+                        //Do nothing
+                    }
+
+                    //Device image ID
+                    //TextDeviceImageId = textArea + "_Image_" + deviceName;
+                    //Device text ID
+                    //TextDevicetxtId = textArea + "_" + deviceName + "_Txt";
+
+                    //Get device Image node
+                    tempNodeChild = listDeviceDetails.at(DEVICE_IMAGE_INDEX);
+                    if (!tempNodeChild.isNull())
+                    {
+                        deviceImage = tempNodeChild.toElement().text();
+                    }
+                    else
+                    {
+                        deviceImage = "";
+                    }
+
+                    //convert into number
+                    deviceImageNumber = deviceImage.toUInt();
+
+                    // Get the image URL
+                    if(deviceType == DEVICE_SENSOR)
+                    {
+                        getSensorDeviceImage(deviceImageNumber ,sensorImageSrc);
+                        deviceImageSrc = sensorImageSrc;
+                    }
+                    else
+                    {
+                        if(deviceSubType == SWITCH_SUB_TYPE_ONE)
+                        {
+                            getSwitchDeviceImage(deviceImageNumber ,switchOnImageSrc,switchOffImageSrc);
+                            deviceImageSrc = switchOffImageSrc;
+                        }
+                        else if (deviceSubType == SWITCH_SUB_TYPE_TWO)
+                        {
+                            getSliderDeviceImage(deviceImageNumber,sliderImageSrc);
+                        }
+                        else if (deviceSubType == SWITCH_SUB_TYPE_THREE)
+                        {
+                            getSwitchVariableButtonDeviceImage(deviceImageNumber ,switchButtonIncImageSrc,switchButtonDownImageSrc);
+
+                        }
+                        else
+                        {
+                            // Do nothing
+                        }
+                    }
+
+                    tempNodeChild = listDeviceDetails.at(DEVICE_PACKET_INDEX);
+                    // If device type is sensor
+                    if(deviceType == DEVICE_SENSOR)
+                    {
+                        // get the sensor Websocket node
+                        tempNodeSubChild = listDeviceDetails.at(DEVICE_PACKET_INDEX).childNodes().at(VSCP_PACKET_SENSOR_WEBSOCKET_CONFIGURE);
+                        // get the switch image ID
+                        TextDeviceImageId =tempNodeSubChild.toElement().attribute(SENSOR_ID);
+                        // get the sensor Remote Txt ID
+                        TextDevicetxtId = tempNodeSubChild.toElement().attribute(SENSOR_REMOTE_TXT_ID);
+                        // get graph ID
+                        TextImageOneId = tempNodeSubChild.toElement().attribute(SENSOR_GRAPH_ID);
+                        //get graph unit ID
+                        TextImageTwoId = tempNodeSubChild.toElement().attribute(SENSOR_GRAPH_UNIT_ID);
+                        // get graph type
+                        TextDeviceLocalTxtId = tempNodeSubChild.toElement().attribute(SENSOR_GRAPH_TYPE);
+                        //prepare the Packet format for each sensor device socket
+                        //  --> both are dummy parameter here to satisfy function call
+                        prepareSocketConf(tempNodeChild,TextDevicetxtId,TextDeviceLocalTxtId,TextImageOneId,TextImageTwoId,deviceImage, houseName);
+                    }
+                    else
+                    {
+                        if(deviceSubType == SWITCH_SUB_TYPE_ONE)
+                        {
+                            // get the switch Websocket node
+                            tempNodeSubChild = listDeviceDetails.at(DEVICE_PACKET_INDEX).childNodes().at(VSCP_PACKET_SWITCH_WEBSOCKET_CONFIGURE);
+                            // get the switch image ID
+                            TextDeviceImageId =tempNodeSubChild.toElement().attribute(SWITCH_ID);
+                            //prepare the Packet format for each switch device socket
+                            // TextDeviceLocalTxtId & TextImageOneID & TextImageTwoId --> both are dummy parameter here to satisfy function call
+                            prepareSocketConf(tempNodeChild,TextDeviceImageId,TextDeviceLocalTxtId,TextImageOneId,TextImageTwoId,deviceImage, houseName);
+                        }
+                        else if (deviceSubType == SWITCH_SUB_TYPE_TWO)  // slider
+                        {
+                            // get the slider Websocket node
+                            tempNodeSubChild = listDeviceDetails.at(DEVICE_PACKET_INDEX).childNodes().at(VSCP_PACKET_SWITCH_WEBSOCKET_CONFIGURE);
+                            // get the Slider image ID
+                            TextDeviceImageId =tempNodeSubChild.toElement().attribute(SLIDER_ID);
+                            // get the Slider Local Txt ID
+                            TextDeviceLocalTxtId = tempNodeSubChild.toElement().attribute(SLIDER_LOCAL_TXT_ID);
+                            // get the Slider Remote Txt ID
+                            TextDevicetxtId = tempNodeSubChild.toElement().attribute(SLIDER_REMOTE_TXT_ID);
+                            //prepare the Packet format for each switch device socket
+                            // TextImageTwo  -->  are dummy parameter here to satisfy function call
+                            prepareSocketConf(tempNodeChild,TextDevicetxtId,TextDeviceLocalTxtId,TextDeviceImageId,TextImageTwoId,deviceImage, houseName);
+                        }
+                        else if (deviceSubType == SWITCH_SUB_TYPE_THREE)  // variable button
+                        {
+                            // get the variable button Websocket node
+                            tempNodeSubChild = listDeviceDetails.at(DEVICE_PACKET_INDEX).childNodes().at(VSCP_PACKET_SLIDER_WEBSOCKET_CONFIGURE);
+                            // get the variable button Inc ID
+                            TextImageOneId =tempNodeSubChild.toElement().attribute(VARIABLE_SWITCH_INC_ID);
+                            // get the variable button Dec ID
+                            TextImageTwoId =tempNodeSubChild.toElement().attribute(VARIABLE_SWITCH_DEC_ID);
+                            // get the variable button Local Txt ID
+                            TextDeviceLocalTxtId = tempNodeSubChild.toElement().attribute(VARIABLE_SWITCH_LOCAL_TXT_ID);
+                            // get the variable button Remote Txt ID
+                            TextDevicetxtId = tempNodeSubChild.toElement().attribute(VARIABLE_SWITCH_REMOTE_TXT_ID);
+
+                            //prepare the Packet format for each sensor device socket
+                            prepareSocketConf(tempNodeChild,TextDevicetxtId,TextDeviceLocalTxtId,TextImageOneId,TextImageTwoId,deviceImage, houseName);
+                        }
+                        else
+                        {
+                            // Do nothing
+                        }
+                    }
+
+                    //Create input node
+                    nodeChildNameTemp = "input";
+                    NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                    if(k == DEVICE_INDEX)
+                    {
+                        NodeElementChildTemp.setAttribute("class","image_menu_center_first");
+                    }
+                    else
+                    {
+                        NodeElementChildTemp.setAttribute("class","image_menu_center_second");
+                    }
+
+                    if(deviceType == DEVICE_SENSOR)
+                    {
+                        NodeElementChildTemp.setAttribute("id",TextDeviceImageId);
+                        NodeElementChildTemp.setAttribute("type","image");
+                        NodeElementChildTemp.setAttribute("src",deviceImageSrc);
+                    }
+                    else if(deviceSubType == SWITCH_SUB_TYPE_ONE)
+                    {
+                        NodeElementChildTemp.setAttribute("id",TextDeviceImageId);
+                        NodeElementChildTemp.setAttribute("type","image");
+                        NodeElementChildTemp.setAttribute("src",deviceImageSrc);
+                    }
+                    else if(deviceSubType == SWITCH_SUB_TYPE_TWO)
+                    {
+                        NodeElementChildTemp.setAttribute("id",TextDeviceImageId);
+                        NodeElementChildTemp.setAttribute("type","range");
+                        NodeElementChildTemp.setAttribute("min",sliderMinValue);
+                        NodeElementChildTemp.setAttribute("max",sliderMaxValue);
+                        NodeElementChildTemp.setAttribute("step","1");
+                        NodeElementChildTemp.setAttribute("value","0");
+                        //NodeElementChildTemp.setAttribute("src",sliderImageSrc);
+                    }
+                    else if (deviceSubType == SWITCH_SUB_TYPE_THREE)
+                    {
+                        NodeElementChildTemp.setAttribute("id",TextImageOneId);
+                        NodeElementChildTemp.setAttribute("type","image");
+                        NodeElementChildTemp.setAttribute("src",switchButtonIncImageSrc);
+
+                    }
+                    //NodeElementChildTemp.setAttribute("alt",TextDeviceImageId);
+                    //Append image div to room div
+                    NodeElementTemp.appendChild(NodeElementChildTemp);
+
+                    if(deviceSubType == SWITCH_SUB_TYPE_TWO)
+                    {
+                        //Create span node
+                        nodeChildNameTemp = "span";
+                        NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                        NodeElementChildTemp.setAttribute("type","text");
+                        NodeElementChildTemp.setAttribute("class","spantxt_center");
+                        NodeElementChildTemp.setAttribute("id",TextDeviceLocalTxtId + "_Fix");
+                        stringTxtNode = deviceNameNonFormatted + " Value : ";
+                        textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                        //Append txt node
+                        NodeElementChildTemp.appendChild(textNode);
+
+                        //Append paragraph div to room div
+                        NodeElementTemp.appendChild(NodeElementChildTemp);
+
+                        //Create span node
+                        nodeChildNameTemp = "span";
+                        NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                        NodeElementChildTemp.setAttribute("type","text");
+                        NodeElementChildTemp.setAttribute("class","spantxt_center");
+                        NodeElementChildTemp.setAttribute("id",TextDeviceLocalTxtId);
+                        stringTxtNode = "0";
+                        textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                        //Append txt node
+                        NodeElementChildTemp.appendChild(textNode);
+
+                        //Append paragraph div to room div
+                        NodeElementTemp.appendChild(NodeElementChildTemp);
+
+                    }
+                    else if(deviceSubType == SWITCH_SUB_TYPE_THREE)
+                    {
+                        //Create span node
+                        nodeChildNameTemp = "span";
+                        NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                        NodeElementChildTemp.setAttribute("type","text");
+                        NodeElementChildTemp.setAttribute("class","spantxt_button_center");
+                        NodeElementChildTemp.setAttribute("id",TextDeviceLocalTxtId);
+                        stringTxtNode = "0";
+                        textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                        //Append txt node
+                        NodeElementChildTemp.appendChild(textNode);
+
+                        //Append paragraph div to room div
+                        NodeElementTemp.appendChild(NodeElementChildTemp);
 
 
-              }
-
-              //Create paragraph node
-              nodeChildNameTemp = "p";
-              NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-              NodeElementChildTemp.setAttribute("class","imgtxt_center");
-
-              stringTxtClass = "spantxt_center";
-              if(houseFloor == MULTI_FLOOR_HOUSE)
-              {
-                  stringTxtNode = floorName + " :" ;
-                  stringTxtClass += " group_Txt";
-
-                  //Create span node : for floor name
-                  nodeChildNameTemp = "span";
-                  NodeElementSpan = htmlDomDocument.createElement(nodeChildNameTemp);
-                  NodeElementSpan.setAttribute("type","text");
-                  NodeElementSpan.setAttribute("class",stringTxtClass);
-                  //stringTxtNode = " Disconnected";
-                  textNode = htmlDomDocument.createTextNode(stringTxtNode);
-                  //Append txt node
-                  NodeElementSpan.appendChild(textNode);
-                  NodeElementChildTemp.appendChild(NodeElementSpan);
-
-              }
+                        //Create input node
+                        nodeChildNameTemp = "input";
+                        NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                        NodeElementChildTemp.setAttribute("id",TextImageTwoId);
+                        if(k == DEVICE_INDEX)
+                        {
+                            NodeElementChildTemp.setAttribute("class","image_menu_center_first_sec");
+                        }
+                        else
+                        {
+                            NodeElementChildTemp.setAttribute("class","image_menu_center_second_sec");
+                        }
+                        NodeElementChildTemp.setAttribute("type","image");
+                        NodeElementChildTemp.setAttribute("src",switchButtonDownImageSrc);
 
 
-              stringTxtNode =  nodeDataTextRoom + " : " ;
-              stringTxtClass = "spantxt_center";
-              if(deviceInfo == DEVICE_INFO_TYPE_ONE)
-              {
-                  if(houseFloor == SINGLE_FLOOR_HOUSE)
-                  {
-                      stringTxtClass = stringTxtClass + " group_Light_Txt";
-                  }
-                  else
-                  {
-                      stringTxtClass += " group_Floor_Txt";
-                  }
-              }
-              else if (deviceInfo == DEVICE_INFO_TYPE_TWO)
-              {                  
-                  if(houseFloor == SINGLE_FLOOR_HOUSE)
-                  {
-                      stringTxtClass = stringTxtClass + " group_Accessories_Txt";
-                  }
-                  else
-                  {
-                      stringTxtClass += " group_Floor_Txt";
-                  }
+                        //Append image div to room div
+                        NodeElementTemp.appendChild(NodeElementChildTemp);
 
-              }
-              else if (deviceInfo == DEVICE_INFO_TYPE_THREE)
-              {                  
-                  if(houseFloor == SINGLE_FLOOR_HOUSE)
-                  {
-                      stringTxtClass = stringTxtClass + " group_Blinds_Windows_Txt";
-                  }
-                  else
-                  {
-                      stringTxtClass += " group_Floor_Txt";
-                  }
-              }
-              else if (deviceInfo == DEVICE_INFO_TYPE_FOUR)
-              {                  
-                  if(houseFloor == SINGLE_FLOOR_HOUSE)
-                  {
-                      stringTxtClass = stringTxtClass + " group_Sensors_Txt";
-                  }
-                  else
-                  {
-                      stringTxtClass += " group_Floor_Txt";
-                  }
-              }
-              else if (deviceInfo == DEVICE_INFO_TYPE_FIVE)
-              {                  
-                  if(houseFloor == SINGLE_FLOOR_HOUSE)
-                  {
-                      stringTxtClass = stringTxtClass + " group_Temperature_control_Txt";
-                  }
-                  else
-                  {
-                      stringTxtClass += " group_Floor_Txt";
-                  }
-              }
-              else
-              {
 
-              }
-              //Create span node
-              nodeChildNameTemp = "span";
-              NodeElementSpan = htmlDomDocument.createElement(nodeChildNameTemp);
-              NodeElementSpan.setAttribute("type","text");
-              NodeElementSpan.setAttribute("class",stringTxtClass);
-              //stringTxtNode = " Disconnected";
-              textNode = htmlDomDocument.createTextNode(stringTxtNode);
-              //Append txt node
-              NodeElementSpan.appendChild(textNode);
-              NodeElementChildTemp.appendChild(NodeElementSpan);
+                    }
 
-              //roomTxtId = floorNameArea  + "_" + nodeDataTextRoom + "_txt";
-              //if(deviceSubType == SWITCH_SUB_TYPE_TWO)
-              //{
-                  //NodeElementChildTemp.setAttribute("id",TextDevicetxtId);
-              //}
+                    //Create paragraph node
+                    nodeChildNameTemp = "p";
+                    NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                    NodeElementChildTemp.setAttribute("class","imgtxt_center");
 
-              if(deviceSubType == SWITCH_SUB_TYPE_ONE)
-              {
-                  stringTxtNode = deviceNameNonFormattedRemote;
-              }
-              else if((deviceType == DEVICE_SENSOR))
-              {
-                  //stringTxtNode = deviceNameNonFormattedRemote;
-                  deviceNameNonFormattedRemote += " : ";
-                  stringTxtNode = deviceNameNonFormattedRemote;
-              }
-              else if ((deviceSubType == SWITCH_SUB_TYPE_TWO) || (deviceSubType == SWITCH_SUB_TYPE_THREE))
-              {
-                  deviceNameNonFormattedRemote += " : "; //<span id=\"" + TextDevicetxtId + "\">" " Disconnected" "</span>";
-                  stringTxtNode = deviceNameNonFormattedRemote;
-              }
-              else
-              {
-                  // Do nothing
-              }
-              // Enter device text ID
-              /*if(deviceType == DEVICE_SENSOR)
+                    stringTxtClass = "spantxt_center";
+                    if(houseFloor == MULTI_FLOOR_HOUSE)
+                    {
+                        stringTxtNode = floorName + " :" ;
+                        stringTxtClass += " group_Txt_" + houseName;
+
+                        //Create span node : for floor name
+                        nodeChildNameTemp = "span";
+                        NodeElementSpan = htmlDomDocument.createElement(nodeChildNameTemp);
+                        NodeElementSpan.setAttribute("type","text");
+                        NodeElementSpan.setAttribute("class",stringTxtClass);
+                        //stringTxtNode = " Disconnected";
+                        textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                        //Append txt node
+                        NodeElementSpan.appendChild(textNode);
+                        NodeElementChildTemp.appendChild(NodeElementSpan);
+
+                    }
+
+
+                    stringTxtNode =  nodeDataTextRoom + " : " ;
+                    stringTxtClass = "spantxt_center";
+                    if(deviceInfo == DEVICE_INFO_TYPE_ONE)
+                    {
+                        if(houseFloor == SINGLE_FLOOR_HOUSE)
+                        {
+                            stringTxtClass = stringTxtClass + " group_Light_Txt_" + houseName;
+                        }
+                        else
+                        {
+                            stringTxtClass += " group_Floor_Txt_" + houseName;
+                        }
+                    }
+                    else if (deviceInfo == DEVICE_INFO_TYPE_TWO)
+                    {
+                        if(houseFloor == SINGLE_FLOOR_HOUSE)
+                        {
+                            stringTxtClass = stringTxtClass + " group_Accessories_Txt_" + houseName;
+                        }
+                        else
+                        {
+                            stringTxtClass += " group_Floor_Txt_" + houseName;
+                        }
+
+                    }
+                    else if (deviceInfo == DEVICE_INFO_TYPE_THREE)
+                    {
+                        if(houseFloor == SINGLE_FLOOR_HOUSE)
+                        {
+                            stringTxtClass = stringTxtClass + " group_Blinds_Windows_Txt_" + houseName;
+                        }
+                        else
+                        {
+                            stringTxtClass += " group_Floor_Txt_" + houseName;
+                        }
+                    }
+                    else if (deviceInfo == DEVICE_INFO_TYPE_FOUR)
+                    {
+                        if(houseFloor == SINGLE_FLOOR_HOUSE)
+                        {
+                            stringTxtClass = stringTxtClass + " group_Sensors_Txt_" + houseName;
+                        }
+                        else
+                        {
+                            stringTxtClass += " group_Floor_Txt_" + houseName;
+                        }
+                    }
+                    else if (deviceInfo == DEVICE_INFO_TYPE_FIVE)
+                    {
+                        if(houseFloor == SINGLE_FLOOR_HOUSE)
+                        {
+                            stringTxtClass = stringTxtClass + " group_Temperature_control_Txt_" + houseName;
+                        }
+                        else
+                        {
+                            stringTxtClass += " group_Floor_Txt_" + houseName;
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                    //Create span node
+                    nodeChildNameTemp = "span";
+                    NodeElementSpan = htmlDomDocument.createElement(nodeChildNameTemp);
+                    NodeElementSpan.setAttribute("type","text");
+                    NodeElementSpan.setAttribute("class",stringTxtClass);
+                    //stringTxtNode = " Disconnected";
+                    textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                    //Append txt node
+                    NodeElementSpan.appendChild(textNode);
+                    NodeElementChildTemp.appendChild(NodeElementSpan);
+
+                    //roomTxtId = floorNameArea  + "_" + nodeDataTextRoom + "_txt";
+                    //if(deviceSubType == SWITCH_SUB_TYPE_TWO)
+                    //{
+                    //NodeElementChildTemp.setAttribute("id",TextDevicetxtId);
+                    //}
+
+                    if(deviceSubType == SWITCH_SUB_TYPE_ONE)
+                    {
+                        stringTxtNode = deviceNameNonFormattedRemote;
+                    }
+                    else if((deviceType == DEVICE_SENSOR))
+                    {
+                        //stringTxtNode = deviceNameNonFormattedRemote;
+                        deviceNameNonFormattedRemote += " : ";
+                        stringTxtNode = deviceNameNonFormattedRemote;
+                    }
+                    else if ((deviceSubType == SWITCH_SUB_TYPE_TWO) || (deviceSubType == SWITCH_SUB_TYPE_THREE))
+                    {
+                        deviceNameNonFormattedRemote += " : "; //<span id=\"" + TextDevicetxtId + "\">" " Disconnected" "</span>";
+                        stringTxtNode = deviceNameNonFormattedRemote;
+                    }
+                    else
+                    {
+                        // Do nothing
+                    }
+                    // Enter device text ID
+                    /*if(deviceType == DEVICE_SENSOR)
               {
                   NodeElementChildTemp.setAttribute("id",TextDevicetxtId);
               }*/
 
-              //sensorRemoteText = stringTxtNode;
+                    //sensorRemoteText = stringTxtNode;
 
-              textNode = htmlDomDocument.createTextNode(stringTxtNode);
-              //Append txt node
-              NodeElementChildTemp.appendChild(textNode);
-              if ((deviceSubType == SWITCH_SUB_TYPE_TWO) || (deviceSubType == SWITCH_SUB_TYPE_THREE) || (deviceType == DEVICE_SENSOR))
-              {
-                  //Create span node
-                  nodeChildNameTemp = "span";
-                  NodeElementSpan = htmlDomDocument.createElement(nodeChildNameTemp);
-                  NodeElementSpan.setAttribute("type","text");
-                  NodeElementSpan.setAttribute("class","spantxt_center");
-                  NodeElementSpan.setAttribute("id",TextDevicetxtId);
-                  if(deviceType == DEVICE_SENSOR)
-                  {
-                      stringTxtNode = "No Data From Sensor";
-                  }
-                  else
-                  {
-                      stringTxtNode = " Disconnected";
-                  }
-                  textNode = htmlDomDocument.createTextNode(stringTxtNode);
-                  //Append txt node
-                  NodeElementSpan.appendChild(textNode);
-                  NodeElementChildTemp.appendChild(NodeElementSpan);
+                    textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                    //Append txt node
+                    NodeElementChildTemp.appendChild(textNode);
+                    if ((deviceSubType == SWITCH_SUB_TYPE_TWO) || (deviceSubType == SWITCH_SUB_TYPE_THREE) || (deviceType == DEVICE_SENSOR))
+                    {
+                        //Create span node
+                        nodeChildNameTemp = "span";
+                        NodeElementSpan = htmlDomDocument.createElement(nodeChildNameTemp);
+                        NodeElementSpan.setAttribute("type","text");
+                        NodeElementSpan.setAttribute("class","spantxt_center");
+                        NodeElementSpan.setAttribute("id",TextDevicetxtId);
+                        if(deviceType == DEVICE_SENSOR)
+                        {
+                            stringTxtNode = "No Data From Sensor";
+                        }
+                        else
+                        {
+                            stringTxtNode = " Disconnected";
+                        }
+                        textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                        //Append txt node
+                        NodeElementSpan.appendChild(textNode);
+                        NodeElementChildTemp.appendChild(NodeElementSpan);
 
-              }
-              //Append paragraph div to room div
-              NodeElementTemp.appendChild(NodeElementChildTemp);
+                    }
+                    //Append paragraph div to room div
+                    NodeElementTemp.appendChild(NodeElementChildTemp);
 
-              //Create hr node
-              nodeChildNameTemp = "hr";
-              NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-              //Append horizontal line div to room div
-              NodeElementTemp.appendChild(NodeElementChildTemp);
+                    //Create hr node
+                    nodeChildNameTemp = "hr";
+                    NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                    //Append horizontal line div to room div
+                    NodeElementTemp.appendChild(NodeElementChildTemp);
 
-              // Append floor div to div scrollable
-              NodeElementMultiFloorDivScrollableCenter.appendChild(NodeElementTemp);
+                    // Append floor div to div scrollable
+                    NodeElementMultiFloorDivScrollableCenter.appendChild(NodeElementTemp);
 
-              // If device type is sensor
-              if(deviceType == DEVICE_SENSOR)
-              {
-                  // create Device node
-                  nodeNameTemp = "div";
-                  NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
-                  if(houseFloor == MULTI_FLOOR_HOUSE)
-                  {
-                      textArea = "group_sensor_graph group_Sensors_Graph_Floor_" + floorName;
-                  }
-                  else
-                  {
-                      textArea = "group_sensor_graph";
-                  }
-                  NodeElementTemp.setAttribute("class",textArea);
+                    // If device type is sensor
+                    if(deviceType == DEVICE_SENSOR)
+                    {
+                        // create Device node
+                        nodeNameTemp = "div";
+                        NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
+                        if(houseFloor == MULTI_FLOOR_HOUSE)
+                        {
+                            textArea = houseName + "_group_class " + "group_sensor_graph " "group_sensor_graph_" + houseName + " group_Sensors_Graph_" + houseName + "_Floor_" + floorName;
+                        }
+                        else
+                        {
+                            textArea = houseName + "_group_class " + "group_sensor_graph " "group_sensor_graph_" + houseName;
+                        }
+                        NodeElementTemp.setAttribute("class",textArea);
 
-                      //Create Header node
-                      nodeChildNameTemp = "h3";
-                      NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-                      NodeElementChildTemp.setAttribute("class","imgtxt_Heading_graph");
+                        //Create Header node
+                        nodeChildNameTemp = "h3";
+                        NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                        NodeElementChildTemp.setAttribute("class","imgtxt_Heading_graph");
 
-                      if(houseFloor == MULTI_FLOOR_HOUSE)
-                      {
-                          //Create span node : for floor name
-                          nodeChildNameTemp = "span";
-                          NodeElementSpan = htmlDomDocument.createElement(nodeChildNameTemp);
-                          NodeElementSpan.setAttribute("type","text");
-                          NodeElementSpan.setAttribute("class","group_Txt");
-                          stringTxtNode = floorName + " : ";
-                          textNode = htmlDomDocument.createTextNode(stringTxtNode);
-                          //Append txt node
-                          NodeElementSpan.appendChild(textNode);
-                          NodeElementChildTemp.appendChild(NodeElementSpan);
-                      }
+                        if(houseFloor == MULTI_FLOOR_HOUSE)
+                        {
+                            //Create span node : for floor name
+                            nodeChildNameTemp = "span";
+                            NodeElementSpan = htmlDomDocument.createElement(nodeChildNameTemp);
+                            NodeElementSpan.setAttribute("type","text");
+                            NodeElementSpan.setAttribute("class","group_" + houseName + "_Txt");
+                            stringTxtNode = floorName + " : ";
+                            textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                            //Append txt node
+                            NodeElementSpan.appendChild(textNode);
+                            NodeElementChildTemp.appendChild(NodeElementSpan);
+                        }
 
-                      stringTxtNode = roomNameDevice + " : " + deviceNameDevice + " : ";
-                      textNode = htmlDomDocument.createTextNode(stringTxtNode);
-                     //Append txt node
-                      NodeElementChildTemp.appendChild(textNode);
+                        stringTxtNode = roomNameDevice + " : " + deviceNameDevice + " : ";
+                        textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                        //Append txt node
+                        NodeElementChildTemp.appendChild(textNode);
 
-                      stringTxtNode = " Disconnected" ;
+                        stringTxtNode = " Disconnected" ;
 
-                      //Create span node : for room name
-                      nodeChildNameTemp = "span";
-                      NodeElementSpan = htmlDomDocument.createElement(nodeChildNameTemp);
-                      NodeElementSpan.setAttribute("type","text");
-                      NodeElementSpan.setAttribute("id",TextImageTwoId);
-                      //stringTxtNode = " Disconnected";
-                      textNode = htmlDomDocument.createTextNode(stringTxtNode);
-                      //Append txt node
-                      NodeElementSpan.appendChild(textNode);
-                      NodeElementChildTemp.appendChild(NodeElementSpan);
-
-
-                  NodeElementTemp.appendChild(NodeElementChildTemp);
-
-                  //Create div node
-                  nodeChildNameTemp = "div";
-                  NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-                  NodeElementChildTemp.setAttribute("class","graph_sensor epoch category10");
-                  NodeElementChildTemp.setAttribute("id",TextImageOneId);
-                  stringTxtNode = "";
-                  textNode = htmlDomDocument.createTextNode(stringTxtNode);
-                  //Append txt node
-                  NodeElementChildTemp.appendChild(textNode);
-                  //Append horizontal line div to room div
-                  NodeElementTemp.appendChild(NodeElementChildTemp);
+                        //Create span node : for room name
+                        nodeChildNameTemp = "span";
+                        NodeElementSpan = htmlDomDocument.createElement(nodeChildNameTemp);
+                        NodeElementSpan.setAttribute("type","text");
+                        NodeElementSpan.setAttribute("id",TextImageTwoId);
+                        //stringTxtNode = " Disconnected";
+                        textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                        //Append txt node
+                        NodeElementSpan.appendChild(textNode);
+                        NodeElementChildTemp.appendChild(NodeElementSpan);
 
 
-                  //Create hr node
-                  nodeChildNameTemp = "hr";
-                  NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-                  //Append horizontal line div to room div
-                  NodeElementTemp.appendChild(NodeElementChildTemp);
+                        NodeElementTemp.appendChild(NodeElementChildTemp);
 
-                  // Append floor div to div scrollable
-                  NodeElementMultiFloorDivScrollableCenter.appendChild(NodeElementTemp);
+                        //Create div node
+                        nodeChildNameTemp = "div";
+                        NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                        NodeElementChildTemp.setAttribute("class","graph_sensor epoch category10");
+                        NodeElementChildTemp.setAttribute("id",TextImageOneId);
+                        stringTxtNode = "";
+                        textNode = htmlDomDocument.createTextNode(stringTxtNode);
+                        //Append txt node
+                        NodeElementChildTemp.appendChild(textNode);
+                        //Append horizontal line div to room div
+                        NodeElementTemp.appendChild(NodeElementChildTemp);
 
-              }
 
-          }
+                        //Create hr node
+                        nodeChildNameTemp = "hr";
+                        NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+                        //Append horizontal line div to room div
+                        NodeElementTemp.appendChild(NodeElementChildTemp);
 
-          scrollableCenterAreaWidgetArray += "\"" + textArea_main + "\"";
+                        // Append floor div to div scrollable
+                        NodeElementMultiFloorDivScrollableCenter.appendChild(NodeElementTemp);
 
-          //create sensor graph
-          if(sensorGraphCreate == 1)
-          {
-              textArea_main = "group_sensor_graph";
-              scrollableCenterAreaWidgetArray += ",";
-              scrollableCenterAreaWidgetArray += "\"" + textArea_main + "\"";
-              sensorGraphCreate = 0;
-          }
+                    }
 
-          // check if it is last element to put in the array
-          /*if(((j+1) == listRooms.size()) && ((i+1) == floorNodesList.size()))
+                }
+
+                scrollableCenterAreaWidgetArray += "\"" + textArea_main + "\"";
+
+                //create sensor graph
+                if(sensorGraphCreate == 1)
+                {
+                    textArea_main = "group_sensor_graph_" + houseName;
+                    scrollableCenterAreaWidgetArray += ",";
+                    scrollableCenterAreaWidgetArray += "\"" + textArea_main + "\"";
+                    sensorGraphCreate = 0;
+                }
+
+                // check if it is last element to put in the array
+                /*if(((j+1) == listRooms.size()) && ((i+1) == floorNodesList.size()))
           {
               //Append nothing - as last node
 
           }
           else
           {*/
-              scrollableCenterAreaWidgetArray += ",";
-          //}
+                scrollableCenterAreaWidgetArray += ",";
+                //}
 
-          index++;
-          if(index == 5u)
-          {
-              scrollableCenterAreaWidgetArray += "\n";
-              index = 0u;
-          }
-      }
+                index++;
+                if(index == 5u)
+                {
+                    scrollableCenterAreaWidgetArray += "\n";
+                    index = 0u;
+                }
+            }
+
+        }
+
+        // Append Info div
+        for (int k = 0; k < INFO_NODES_COUNT; ++k)
+        {
+
+            QString classTemp;
+            QString idTemp;
+
+            classTemp = "info_" + houseName + "_" + QString::number(k);
+
+            textArea = "info_text_" + houseName + " " + classTemp;
+            // create Info node
+            nodeNameTemp = "div";
+            NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
+            NodeElementTemp.setAttribute("class",textArea);
+
+            nodeChildNameTemp = "div";
+            NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+            NodeElementChildTemp.setAttribute("class","green_box arrow_left");
+            idTemp = "info_class_" + houseName + "_" + QString::number(k);
+            NodeElementChildTemp.setAttribute("id",idTemp);
+            //Create span node : for message
+            stringTxtNode = "" ;
+            nodeChildNameTemp = "span";
+            idTemp = "info_txt_" + houseName + "_" + QString::number(k);
+            NodeElementSpan = htmlDomDocument.createElement(nodeChildNameTemp);
+            NodeElementSpan.setAttribute("id",idTemp);
+            //create text node
+            textNode = htmlDomDocument.createTextNode(stringTxtNode);
+            //Append txt node
+            NodeElementSpan.appendChild(textNode);
+            NodeElementChildTemp.appendChild(NodeElementSpan);
+            NodeElementTemp.appendChild(NodeElementChildTemp);
+
+            nodeChildNameTemp = "div";
+            NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+            NodeElementChildTemp.setAttribute("class","time_left_box_class");
+            idTemp = "info_time_" + houseName + "_" + QString::number(k);
+            NodeElementChildTemp.setAttribute("id",idTemp);
+            //create text node
+            textNode = htmlDomDocument.createTextNode(stringTxtNode);
+            //Append txt node
+            NodeElementChildTemp.appendChild(textNode);
+            NodeElementTemp.appendChild(NodeElementChildTemp);
+
+
+            nodeChildNameTemp = "div";
+            NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+            NodeElementChildTemp.setAttribute("class","padding_Info_text");
+            //Create hr node
+            nodeChildNameTemp = "hr";
+            NodeElementHr = htmlDomDocument.createElement(nodeChildNameTemp);
+            //Append horizontal line div to room div
+            NodeElementChildTemp.appendChild(NodeElementHr);
+            NodeElementTemp.appendChild(NodeElementChildTemp);
+
+
+            // Append floor div to div scrollable
+            NodeElementMultiFloorDivScrollableCenter.appendChild(NodeElementTemp);
+
+        }
+
+        QString info_var_name = "infoVariable" + houseName + "_VAR";
+        QString info_var = "var " + info_var_name + ";";
+        //Info variable string -- (variable creation)
+        infoVariableString += "\n";
+        infoVariableString += "\n";
+        infoVariableString += info_var;
+        infoVariableString += "\n";
+        // info variable array
+        infoVariableArray += info_var_name;
+
+        if((p+1) <  houseNodesList.size())
+        {
+            infoVariableArray += ",";
+            //scrollableHrArray += ",";
+            houseFloorsSwitchSocketCfgFileString += ",";
+            houseFloorsSensorSocketCfgFileString += ",";
+            houseFloorsVariableSliderSocketCfgFileString += ",";
+            houseFloorsVariableSwitchSocketCfgFileString += ",";
+        }
+
+        //Add Info Text class
+        QString classInfo = "info_text_" + houseName;
+
+        infoClassArray += "\"" + classInfo + "\"";
+        if((p+1) <  houseNodesList.size())
+        {
+            infoClassArray += ",";
+        }
+
+        scrollableCenterAreaWidgetArray += "\"" + classInfo + "\"";
+
+        //Append new line
+        scrollableCenterAreaWidgetArray += "\n";
+        //Terminate the array
+        scrollableCenterAreaWidgetArray += "];";
+        //Append new line
+        scrollableCenterAreaWidgetArray += "\n";
+        //Append new line
+        scrollableCenterAreaWidgetArray += "\n";
+
+        // append scrollableCenterAreaWidgetArray
+        floorCfgFileString += scrollableCenterAreaWidgetArray;
+
+        FloorsSocketCfgFileString += FloorsSwitchSocketCfgFileString ;
+        FloorsSocketCfgFileString +=  "\n\n\n\n\n\n";
+        FloorsSocketCfgFileString += FloorsVariableSliderSocketCfgFileString ;
+        FloorsSocketCfgFileString +=  "\n\n\n\n\n\n";
+        FloorsSocketCfgFileString += FloorsVariableSwitchSocketCfgFileString ;
+        FloorsSocketCfgFileString +=  "\n\n\n\n\n\n";
+        FloorsSocketCfgFileString += FloorsSensorSocketCfgFileString;
+
+        // --> could be an error
+        //floorCfgFileString += SingleFloorGroupImageClass;
+        //floorCfgFileString += SingleFloorGroupTxtClass;
+        //htmlRoot.appendChild(NodeElement);
 
     }
 
-    // Append Info div
-    for (int k = 0; k < INFO_NODES_COUNT; ++k)
-    {
-
-                  QString classTemp;
-                  QString idTemp;
-
-                  classTemp = "info_" + QString::number(k);
-
-                  textArea = "info_text " + classTemp;
-                  // create Info node
-                  nodeNameTemp = "div";
-                  NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
-                  NodeElementTemp.setAttribute("class",textArea);
-
-                      nodeChildNameTemp = "div";
-                      NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-                      NodeElementChildTemp.setAttribute("class","green_box arrow_left");
-                      idTemp = "info_class_" + QString::number(k);
-                      NodeElementChildTemp.setAttribute("id",idTemp);
-                      //Create span node : for message
-                      stringTxtNode = "" ;
-                      nodeChildNameTemp = "span";
-                      idTemp = "info_txt_" + QString::number(k);
-                      NodeElementSpan = htmlDomDocument.createElement(nodeChildNameTemp);
-                      NodeElementSpan.setAttribute("id",idTemp);
-                      //create text node
-                      textNode = htmlDomDocument.createTextNode(stringTxtNode);
-                      //Append txt node
-                      NodeElementSpan.appendChild(textNode);
-                      NodeElementChildTemp.appendChild(NodeElementSpan);
-                      NodeElementTemp.appendChild(NodeElementChildTemp);
-
-                      nodeChildNameTemp = "div";
-                      NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-                      NodeElementChildTemp.setAttribute("class","time_left_box_class");
-                      idTemp = "info_time_" + QString::number(k);
-                      NodeElementChildTemp.setAttribute("id",idTemp);
-                      //create text node
-                      textNode = htmlDomDocument.createTextNode(stringTxtNode);
-                      //Append txt node
-                      NodeElementChildTemp.appendChild(textNode);
-                      NodeElementTemp.appendChild(NodeElementChildTemp);
-
-
-                      nodeChildNameTemp = "div";
-                      NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-                      NodeElementChildTemp.setAttribute("class","padding_Info_text");
-                      //Create hr node
-                      nodeChildNameTemp = "hr";
-                      NodeElementHr = htmlDomDocument.createElement(nodeChildNameTemp);
-                      //Append horizontal line div to room div
-                      NodeElementChildTemp.appendChild(NodeElementHr);
-                      NodeElementTemp.appendChild(NodeElementChildTemp);
-
-
-                  // Append floor div to div scrollable
-                  NodeElementMultiFloorDivScrollableCenter.appendChild(NodeElementTemp);
-
-    }
-
-
-    //Add Info Text class
-    QString classInfo = "info_text";
-    scrollableCenterAreaWidgetArray += "\"" + classInfo + "\"";
 
     //Append new line
-    scrollableCenterAreaWidgetArray += "\n";
+    infoVariableArray += "\n";
     //Terminate the array
-    scrollableCenterAreaWidgetArray += "];";
+    infoVariableArray += "];";
     //Append new line
-    scrollableCenterAreaWidgetArray += "\n";
+    infoVariableArray += "\n";
     //Append new line
-    scrollableCenterAreaWidgetArray += "\n";
+    infoVariableArray += "\n";
 
-    // append scrollableCenterAreaWidgetArray
-    floorCfgFileString += scrollableCenterAreaWidgetArray;
+    //Append new line
+    infoVariableString += "\n";
 
-    floorCfgFileString += SingleFloorGroupImageClass;
+    //Append new line
+    infoClassArray += "\n";
+    //Terminate the array
+    infoClassArray += "];";
+    //Append new line
+    infoClassArray += "\n";
+    //Append new line
+    infoClassArray += "\n";
 
-    floorCfgFileString += SingleFloorGroupTxtClass;
-    //htmlRoot.appendChild(NodeElement);
+    //Append new line
+    houseCenterAreaWidgetArray += "\n";
+    //Terminate the array
+    houseCenterAreaWidgetArray += "];";
+    //Append new line
+    houseCenterAreaWidgetArray += "\n";
+    //Append new line
+    houseCenterAreaWidgetArray += "\n";
+
+    //Append new line
+    houseFloorsSwitchSocketCfgFileString += "\n";
+    //Terminate the array
+    houseFloorsSwitchSocketCfgFileString += "];";
+    //Append new line
+    houseFloorsSwitchSocketCfgFileString += "\n";
+    //Append new line
+    houseFloorsSwitchSocketCfgFileString += "\n";
+
+    //Append new line
+    houseFloorsSensorSocketCfgFileString += "\n";
+    //Terminate the array
+    houseFloorsSensorSocketCfgFileString += "];";
+    //Append new line
+    houseFloorsSensorSocketCfgFileString += "\n";
+    //Append new line
+    houseFloorsSensorSocketCfgFileString += "\n";
+
+    //Append new line
+    houseFloorsVariableSliderSocketCfgFileString += "\n";
+    //Terminate the array
+    houseFloorsVariableSliderSocketCfgFileString += "];";
+    //Append new line
+    houseFloorsVariableSliderSocketCfgFileString += "\n";
+    //Append new line
+    houseFloorsVariableSliderSocketCfgFileString += "\n";
+
+    //Append new line
+    houseFloorsVariableSwitchSocketCfgFileString += "\n";
+    //Terminate the array
+    houseFloorsVariableSwitchSocketCfgFileString += "];";
+    //Append new line
+    houseFloorsVariableSwitchSocketCfgFileString += "\n";
+    //Append new line
+    houseFloorsVariableSwitchSocketCfgFileString += "\n";
+
+    // Add Central widget array of array
+    floorCfgFileString += houseCenterAreaWidgetArray;
+    // Add info variables
+    floorCfgFileString += infoVariableString;
+    // Add info variables array
+    floorCfgFileString += infoVariableArray;
+    // Add info variables array
+    floorCfgFileString += infoClassArray;
+
 }
 
 
@@ -4295,13 +4639,13 @@ void GenerateApp::closeCfgfiles()
     floorCfgFile.flush();
     floorCfgFile.close();
 
-    FloorsSocketCfgFileString = FloorsSwitchSocketCfgFileString ;
+    FloorsSocketCfgFileString += houseFloorsSwitchSocketCfgFileString ;
     FloorsSocketCfgFileString +=  "\n\n\n\n\n\n";
-    FloorsSocketCfgFileString += FloorsVariableSliderSocketCfgFileString ;
+    FloorsSocketCfgFileString += houseFloorsVariableSliderSocketCfgFileString ;
     FloorsSocketCfgFileString +=  "\n\n\n\n\n\n";
-    FloorsSocketCfgFileString += FloorsVariableSwitchSocketCfgFileString ;
+    FloorsSocketCfgFileString += houseFloorsVariableSwitchSocketCfgFileString ;
     FloorsSocketCfgFileString +=  "\n\n\n\n\n\n";
-    FloorsSocketCfgFileString += FloorsSensorSocketCfgFileString;
+    FloorsSocketCfgFileString += houseFloorsSensorSocketCfgFileString;
     // Write FloorsSocketCfg content to the file
     (FloorsSocketCfgFileStream) << FloorsSocketCfgFileString ;
     // close the file
@@ -4332,6 +4676,7 @@ void GenerateApp::closeHtmlFile()
     htmlFile.close();
 }
 
+/*
 //verify the xml is single floor or multiple floor
 void GenerateApp::verifyHouseFloor()
 {
@@ -4412,6 +4757,350 @@ void GenerateApp::verifyHouseFloor()
         }
     }
 
+}*/
+
+
+//verify the xml is single floor or multiple floor
+void GenerateApp::verifyHouseFloor(QList<T_packetHouse> &housePacketList,QDomNodeList &list )
+{
+    QString nodeDataTextHouse;
+    QString nodeDataTextFloor;
+
+    QDomNodeList listChild;
+    //
+    QDomNode tempNodeChild;
+    bool found = false;
+
+    QList<QString> listHouses;
+    QList<QString> floorList;
+
+    T_packetFloor floorPacketNode;
+    T_packetHouse housePacketNode;
+
+
+    // root have Test Case nodes
+    if(list.count() != 0)
+    {
+        /* **** Get the name of houses **** */
+        for(int i =0; i< list.count() ; i++)
+        {
+            //read the child node from list
+            tempNodeChild = list.at(i);
+
+            // Create list of child nodes of - test case
+            listChild = tempNodeChild.childNodes();
+
+            //Read floor name from node
+            tempNodeChild = listChild.at(HOUSE_NAME_INDEX);
+            if (!tempNodeChild.isNull())
+            {
+                nodeDataTextHouse = tempNodeChild.toElement().text();
+            }
+            else
+            {
+                nodeDataTextHouse = "";
+            }
+
+            // append house name to list
+            if(listHouses.isEmpty())
+            {
+                listHouses.append(nodeDataTextHouse);
+            }
+            else
+            {
+                found = false;
+                for (int j = 0; j < listHouses.size(); ++j)
+                {
+                    if (listHouses.at(j) == nodeDataTextHouse)
+                    {
+                        found = true;
+                    }
+
+                }
+
+                if(found == false)
+                {
+                    listHouses.append(nodeDataTextHouse);
+                }
+            }
+
+        }/* **** Get the name of houses **** */
+
+        /* **** Get floor for every house **** */
+        for(int i =0; i< listHouses.count() ; i++)
+        {
+            QString houseNamestr = listHouses.at(i);
+            housePacketNode.houseName = houseNamestr;
+
+            //Get the floor of houses
+            for(int j =0; j< list.count() ; j++)
+            {
+                //read the child node from list
+                tempNodeChild = list.at(j);
+
+                // Create list of child nodes of - test case
+                listChild = tempNodeChild.childNodes();
+
+                //Read house name from node
+                tempNodeChild = listChild.at(HOUSE_NAME_INDEX);
+                if (!tempNodeChild.isNull())
+                {
+                    nodeDataTextHouse = tempNodeChild.toElement().text();
+                }
+                else
+                {
+                    nodeDataTextHouse = "";
+                }
+
+                // Check if the house name matches
+                if(nodeDataTextHouse == houseNamestr)
+                {
+                    //Read floor name from node
+                    tempNodeChild = listChild.at(FLOOR_NAME_INDEX);
+                    if (!tempNodeChild.isNull())
+                    {
+                        nodeDataTextFloor = tempNodeChild.toElement().text();
+                    }
+                    else
+                    {
+                        nodeDataTextFloor = "";
+                    }
+
+                    // Append floor name to the floor list
+                    if(floorList.isEmpty())
+                    {
+                        floorList.append(nodeDataTextFloor);
+                    }
+                    else
+                    {
+                        found = false;
+                        for (int k = 0; k < floorList.size(); ++k)
+                        {
+                            if (floorList.at(k) == nodeDataTextFloor)
+                            {
+                                found = true;
+                            }
+
+                        }
+
+                        if(found == false)
+                        {
+                            floorList.append(nodeDataTextFloor);
+                        }
+                    }
+
+                }
+                else
+                {
+                    //Do nothing
+                }
+            }
+
+            /* **** prepare list of floor for each house  **** */
+            for (int i = 0; i < floorList.size(); ++i)
+            {
+                QString floorNamestr;
+                floorPacketNode.floorName = floorList.at(i);
+                floorNamestr = floorPacketNode.floorName;
+
+                // Get the floor name node & prepare index list for every floor
+                for(uint16_t j =0; j< list.count() ; j++)
+                {
+                    //read the child node from list
+                    tempNodeChild = list.at(j);
+
+                    // Create list of child nodes of - test case
+                    listChild = tempNodeChild.childNodes();
+
+                    //Read house name from node
+                    tempNodeChild = listChild.at(FLOOR_NAME_INDEX);
+                    if (!tempNodeChild.isNull())
+                    {
+                        nodeDataTextFloor = tempNodeChild.toElement().text();
+                    }
+                    else
+                    {
+                        nodeDataTextFloor = "";
+                    }
+
+                    //Read house name from node
+                    tempNodeChild = listChild.at(HOUSE_NAME_INDEX);
+                    if (!tempNodeChild.isNull())
+                    {
+                        nodeDataTextHouse = tempNodeChild.toElement().text();
+                    }
+                    else
+                    {
+                        nodeDataTextHouse = "";
+                    }
+                    // Check if the floor name matches
+                    if((nodeDataTextFloor == floorNamestr) && (nodeDataTextHouse==houseNamestr) )
+                    {
+                        floorPacketNode.floorIndexList.append(j);
+                    }
+
+                    // append index to floor packet node
+                    //floorPacketNode.floorIndexList.append();
+                }
+
+                //append the floorpacketnode
+                housePacketNode.houseFloorList.append(floorPacketNode);
+
+                floorPacketNode.floorName = "";
+                floorPacketNode.floorIndexList.clear();
+            }/* **** prepare list of floor for each house  **** */
+
+            // Append the T_packetHouse to the housePacketList
+            housePacketList.append(housePacketNode);
+
+            //clear all temp list
+            floorList.clear();
+            housePacketNode.houseName = "";
+            housePacketNode.houseFloorList.clear();
+            floorPacketNode.floorName = "";
+            floorPacketNode.floorIndexList.clear();
+        }/* **** Get floor for every house **** */
+    }
+
+    // check house type
+    if(housePacketList.size() > 1)
+    {
+        xmlType = MULTI_HOUSE;
+    }
+    else
+    {
+        xmlType = SINGLE_HOUSE;
+    }
+
+    //check GUI type to be built -- i.e -- floor type
+    for (int i = 0; i < housePacketList.size(); ++i)
+    {
+        if(housePacketList.at(i).houseFloorList.size() > 1)
+        {
+            houseFloor = MULTI_FLOOR_HOUSE;
+        }
+        //QMessageBox::information(this, "kk -> size", QString::number(housePacketList.at(i).houseFloorList.size()));
+        //QMessageBox::information(this, "kk -> size", QString::number(housePacketList.at(i).houseFloorList.at(0).floorIndexList.size()));
+
+    }
+}
+
+// Create div to select house
+void GenerateApp::createHouseSelectDiv(QDomElement &NodeElementDivHouseSelect)
+{
+    QDomElement NodeElementTemp;
+    QDomElement NodeElementChildTemp;
+    QString nodeNameTemp;
+    QString nodeChildNameTemp;
+
+    QString OnClickText;
+
+    QString houseNameImageId;
+    QString houseName;
+
+    QString houseImageIdArray;
+    QString houseNameArray;
+    QString houseGroupClassArray;
+
+
+    nodeName = "div";
+    NodeElementDivHouseSelect  = htmlDomDocument.createElement(nodeName);
+    NodeElementDivHouseSelect.setAttribute("class","div_layer");
+
+    //clear strings
+    houseImageIdArray.clear();
+    houseNameArray.clear();
+    houseGroupClassArray.clear();
+    // create array name
+    houseImageIdArray     = "var house_image_id = [";
+    houseNameArray        = "var house_name = [";
+    houseGroupClassArray  = "var house_group_class = [";
+    //Append new line
+    houseImageIdArray += "\n";
+    houseNameArray += "\n";
+    houseGroupClassArray += "\n";
+
+
+    //create ul node
+    nodeNameTemp = "ul";
+    NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
+
+    //create li node
+    for (int j = 0; j < houseNodesList.size(); ++j)
+    {
+        houseName = houseNodesList.at(j).houseName;
+
+
+        //add floor image ID
+        houseImageIdArray += "\"" + houseName + "_ID" "\""  ;
+        // add HR line ID
+        houseNameArray += "\"" + houseName + "\""  ;
+        // add HR line ID
+        houseGroupClassArray += "\"" + houseName + "_group_class" "\""  ;
+
+        // check if it is last element to put in the array
+        if((j+1) < houseNodesList.size())
+        {
+            houseImageIdArray += ",";
+            houseNameArray += ",";
+            houseGroupClassArray += ",";
+        }
+
+        //Create input node
+        nodeChildNameTemp = "li";
+        NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+        houseNameImageId = houseName + "_ID";
+        NodeElementChildTemp.setAttribute("id",houseNameImageId);
+        //NodeElementChildTemp.setAttribute("alt",floorNameId);
+        OnClickText = "selectId(" "this.id," +
+                QString::number(j) + ","  +
+                "'" + houseName + "',"
+                "'" + houseName + "_group_class" "')"
+                ;
+        NodeElementChildTemp.setAttribute("onclick",OnClickText);
+        stringTxtNode = houseName;
+        textNode = htmlDomDocument.createTextNode(stringTxtNode);
+        //Append txt node
+        NodeElementChildTemp.appendChild(textNode);
+        //Append house div to house select div layer
+        NodeElementTemp.appendChild(NodeElementChildTemp);
+
+    }
+
+    //Append new line
+    houseImageIdArray += "\n";
+    //Terminate the array
+    houseImageIdArray += "];";
+    //Append new line
+    houseImageIdArray += "\n";
+    //Append new line
+    houseImageIdArray += "\n";
+
+    //Append new line
+    houseNameArray += "\n";
+    //Terminate the array
+    houseNameArray += "];";
+    //Append new line
+    houseNameArray += "\n";
+    //Append new line
+    houseNameArray += "\n";
+
+
+    //Append new line
+    houseGroupClassArray += "\n";
+    //Terminate the array
+    houseGroupClassArray += "];";
+    //Append new line
+    houseGroupClassArray += "\n";
+    //Append new line
+    houseGroupClassArray += "\n";
+
+    // append array to global string -- of cfg file
+    floorCfgFileString = houseImageIdArray + houseNameArray + houseGroupClassArray;
+
+
+    //append ul list
+    NodeElementDivHouseSelect.appendChild(NodeElementTemp);
 }
 
 // Create the Html Body
@@ -4422,9 +5111,9 @@ void GenerateApp::createHtmlBody()
 
     nodeName = "body";
     NodeElement  = htmlDomDocument.createElement(nodeName);
-    if(houseFloor == MULTI_FLOOR_HOUSE)
+    if(xmlType == MULTI_HOUSE)
     {
-        onLoadCallback = "doc_onload()";
+        onLoadCallback = "doc_onload(1)";
     }
     else
     {
@@ -4432,6 +5121,14 @@ void GenerateApp::createHtmlBody()
     }
     NodeElement.setAttribute("onload",onLoadCallback);
 
+       // create multi house select div
+       if(xmlType == MULTI_HOUSE)
+       {
+          createHouseSelectDiv(NodeElementChildTemp);
+          NodeElement.appendChild(NodeElementChildTemp);
+       }
+
+    //QMessageBox::information(this, "uiMagician", "One");
        // Create the DIV scrollable
        if(houseFloor == MULTI_FLOOR_HOUSE)
        {
@@ -4442,18 +5139,21 @@ void GenerateApp::createHtmlBody()
            createSingleFloorDivScrollable(NodeElementChildTemp);
        }
        NodeElement.appendChild(NodeElementChildTemp);
+
+     //QMessageBox::information(this, "uiMagician", "two__");
        // Create the DIV scrollableMenu
-       //clear the node
-       NodeElementChildTemp.clear();
        if(houseFloor == MULTI_FLOOR_HOUSE)
        {
+           //clear the node
+           NodeElementChildTemp.clear();
            createMultiFloorDivScrollableMenu(NodeElementChildTemp);
+           NodeElement.appendChild(NodeElementChildTemp);  // --> could be error todo
        }
        else
        {
            // Do nothing
        }
-       NodeElement.appendChild(NodeElementChildTemp);
+       //NodeElement.appendChild(NodeElementChildTemp); // --> could be error todo
        // Create the DIV scrollableCenter
        //clear the node
        NodeElementChildTemp.clear();
@@ -4469,7 +5169,6 @@ void GenerateApp::createHtmlBody()
        NodeElement.appendChild(NodeElementChildTemp);
 
     htmlRoot.appendChild(NodeElement);
-
 
 }
 
@@ -4491,7 +5190,7 @@ void GenerateApp::createFloorCfgFiles()
     if (!floorCfgFile.open(QIODevice::ReadWrite|QIODevice::Truncate|QIODevice::Text))
     {
         // Fail to open file Message
-        QMessageBox::information(this, "uiMagician", "Fail to Open file");
+        //QMessageBox::information(this, "uiMagician", "Fail to Open file");
         return;
         //return FAIL_TO_OPEN_FILE;
     }
@@ -4516,7 +5215,7 @@ void GenerateApp::createFloorCfgFiles()
     if (!FloorsSocketCfgFile.open(QIODevice::ReadWrite|QIODevice::Truncate|QIODevice::Text))
     {
         // Fail to open file Message
-        QMessageBox::information(this, "uiMagician", "Fail to Open file");
+        //QMessageBox::information(this, "uiMagician", "Fail to Open file");
         return;
         //return FAIL_TO_OPEN_FILE;
     }
@@ -4530,7 +5229,7 @@ void GenerateApp::createFloorCfgFiles()
     if(!xmlVariablesFile.open(QIODevice::ReadWrite|QIODevice::Truncate|QIODevice::Text))
     {
         // Fail to open file Message
-        QMessageBox::information(this, "uiMagician", "Fail to Open file - variables.xml");
+        //QMessageBox::information(this, "uiMagician", "Fail to Open file - variables.xml");
         return;
         //return FAIL_TO_OPEN_FILE;
     }
@@ -4550,7 +5249,7 @@ void GenerateApp::createFloorCfgFiles()
     if(!xmlDmFile.open(QIODevice::ReadWrite|QIODevice::Truncate|QIODevice::Text))
     {
         // Fail to open file Message
-        QMessageBox::information(this, "uiMagician", "Fail to Open file - dm.xml");
+        //QMessageBox::information(this, "uiMagician", "Fail to Open file - dm.xml");
         return;
         //return FAIL_TO_OPEN_FILE;
     }
@@ -4588,18 +5287,19 @@ void GenerateApp::createDivFotter(QDomElement &NodeElementChildTemp)
 // Create the HTML App
 void GenerateApp::createHtmlApp()
 {
+
     //check if single floor home
-    verifyHouseFloor();
+    verifyHouseFloor(housePacketList, list);
 
     //Create floor room list
-    createFloorRoomList();
+    createFloorRoomList(housePacketList,xmlRootRef);
 
     // Create the General header for HTML
     createHtmlHead();
     // Create fllor configure file
     createFloorCfgFiles();
     // Create Html Body
-    createHtmlBody();
+    createHtmlBody();                     // --> todo
     // close java script configure files
     closeCfgfiles();
     //Close the HTML app
@@ -4607,7 +5307,8 @@ void GenerateApp::createHtmlApp()
 }
 
 //get total groups
-void GenerateApp::getTotalGroups()
+//void GenerateApp::getTotalGroups(const QList<T_packetFloorNodes> &floorNodesList)
+void GenerateApp::getTotalGroups(int index)
 {
     QString deviceInfo;
     QDomNodeList listDevices;
@@ -4616,13 +5317,23 @@ void GenerateApp::getTotalGroups()
     QDomNodeList listRooms;
     QDomNode tempNodeChild;
 
+    // Initialise all the group total values
+    houseNodesList[index].groupsTotal = 0;
+    houseNodesList[index].lightsGroupTotal = 0;
+    houseNodesList[index].accessoriesGroupTotal = 0;
+    houseNodesList[index].blindDoorWindowGroupTotal = 0;
+    houseNodesList[index].sensorGroupTotal = 0;
+    houseNodesList[index].temperatureControllerGroupTotal = 0;
+
     //Get the Total number of groups
-    for (int i = 0; i < floorNodesList.size(); ++i)
+    for (int i = 0; i < houseNodesList.at(index).floorNodeList.size(); ++i)
     {
-        floorNodes = floorNodesList.at(i);
+        floorNodes = houseNodesList.at(index).floorNodeList.at(i);
 
         //Load root nodes
         listRooms = floorNodes.floorRooms.childNodes();
+
+        //QMessageBox::information(this, "uiMagician", QString::number(houseNodesList[index].blindDoorWindowGroupTotal));
 
         //get device group name in list
         for (int j = 0; j < listRooms.size(); ++j)
@@ -4651,63 +5362,69 @@ void GenerateApp::getTotalGroups()
                     deviceInfo = "";
                 }
 
+                //QMessageBox::information(this, "uiMagician", "2");
+
                 // If device type is light
                 if(deviceInfo == DEVICE_INFO_TYPE_ONE)
                 {
-                    lightsGroupTotal++;
+                    houseNodesList[index].lightsGroupTotal++;
                 }
                 else if (deviceInfo == DEVICE_INFO_TYPE_TWO)
                 {
-                    accessoriesGroupTotal++;
+                    houseNodesList[index].accessoriesGroupTotal++;
                 }
                 else if (deviceInfo == DEVICE_INFO_TYPE_THREE)
                 {
-                    blindDoorWindowGroupTotal++;
+                    houseNodesList[index].blindDoorWindowGroupTotal++;
                 }
                 else if (deviceInfo == DEVICE_INFO_TYPE_FOUR)
                 {
-                    sensorGroupTotal++;
+                    houseNodesList[index].sensorGroupTotal++;
                 }
                 else if (deviceInfo == DEVICE_INFO_TYPE_FIVE)
                 {
-                    temperatureControllerGroupTotal++;
+                    houseNodesList[index].temperatureControllerGroupTotal++;
                 }
                 else
                 {
                     //Do nothing
                 }
 
+                //QMessageBox::information(this, "uiMagician", "3");
+
 
             }
         }
     }
 
+    //QMessageBox::information(this, "uiMagician", QString::number(houseNodesList[index].blindDoorWindowGroupTotal));
 
+//QMessageBox::information(this, "uiMagician", "4");
 
     // Check which group to create
-    if(lightsGroupTotal>0)
+    if(houseNodesList[index].lightsGroupTotal>0)
     {
-        groupsTotal++;
+        houseNodesList[index].groupsTotal++;
         flagLightsGroup = 1;
     }
-    if(accessoriesGroupTotal>0)
+    if(houseNodesList[index].accessoriesGroupTotal>0)
     {
-        groupsTotal++;
+        houseNodesList[index].groupsTotal++;
         flagAccessoriesGroup = 1;
     }
-    if(blindDoorWindowGroupTotal>0)
+    if(houseNodesList[index].blindDoorWindowGroupTotal>0)
     {
-        groupsTotal++;
+        houseNodesList[index].groupsTotal++;
         flagBlindDoorWindowGroup = 1;
     }
-    if(sensorGroupTotal>0)
+    if(houseNodesList[index].sensorGroupTotal>0)
     {
-        groupsTotal++;
+        houseNodesList[index].groupsTotal++;
         flagsensorGroup = 1;
     }
-    if(temperatureControllerGroupTotal>0)
+    if(houseNodesList[index].temperatureControllerGroupTotal>0)
     {
-        groupsTotal++;
+        houseNodesList[index].groupsTotal++;
         flagTemperatureControllerGroup = 1;
     }
 

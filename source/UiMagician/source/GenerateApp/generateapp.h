@@ -35,6 +35,10 @@
 #define SINGLE_FLOOR_HOUSE   "One"
 #define MULTI_FLOOR_HOUSE    "Multi"
 
+#define SINGLE_HOUSE   "One"
+#define MULTI_HOUSE    "Multi"
+
+
 #define VARIABLES_FILE_NAME  "/variables.xml"
 #define VARIABLES_ROOT_NAME  "persistent"
 #define DM_FILE_NAME         "/dm.xml"
@@ -42,6 +46,7 @@
 
 #define ROOM_NAME_INDEX            0
 #define FLOOR_NAME_INDEX           1
+#define HOUSE_NAME_INDEX           2
 #define DEVICE_INDEX               3
 
 #define DEVICE_NAME_INDEX          0
@@ -67,6 +72,20 @@ typedef struct {
     QDomElement  floorRooms;
 }T_packetFloorNodes;
 
+/*
+** Typedef for house node list
+*/
+typedef struct {
+    QString houseName;
+    QList<T_packetFloorNodes> floorNodeList;
+    uint16_t groupsTotal;
+    uint16_t lightsGroupTotal;
+    uint16_t accessoriesGroupTotal;
+    uint16_t blindDoorWindowGroupTotal;
+    uint16_t sensorGroupTotal;
+    uint16_t temperatureControllerGroupTotal;
+}T_packetHouseNodes;
+
 namespace Ui {
 class GenerateApp;
 }
@@ -86,16 +105,19 @@ public:
     void createHtmlHead();
 
     //verify the xml is single floor or multiple floor
-    void verifyHouseFloor();
+    void verifyHouseFloor(QList<T_packetHouse> &housePacketList, QDomNodeList &list);
 
     //Create floor room list
-    void createFloorRoomList();
+    void createFloorRoomList(QList<T_packetHouse> &housePacketList, QDomElement &xmlRoot );
 
     // Create the Html Body
     void createHtmlBody();
 
     // create the floor configure javascript files
     void createFloorCfgFiles();
+
+    // Create div to select house
+    void createHouseSelectDiv(QDomElement &NodeElementDivHouseSelect);
 
     // Create the multi floor DIV scrollable
     void createMultiFloorDivScrollable(QDomElement &NodeElementMultiFloorDivScrollable);
@@ -118,6 +140,10 @@ public:
     // close java script configure files
     void closeCfgfiles();
 
+
+    //reInitialise global variables
+    void reInitializeGlobalVariables();
+
     //get sensor Image URL
     void getSensorDeviceImage(uint16_t deviceImageNumber , QString &sensorImageSrc);
 
@@ -131,13 +157,13 @@ public:
     void getSwitchVariableButtonDeviceImage(uint16_t deviceImageNumber ,QString &switchButtonUpImageSrc, QString &switchButtonDownImageSrc);
 
     //prepare the Packet format for each device socket
-    void prepareSocketConf(QDomNode &tempNodeDevicePacket, QString DeviceId, QString DeviceLocalTxtId, QString VariableButtonOneId, QString VariableButtonTwoId, QString deviceImage);
+    void prepareSocketConf(QDomNode &tempNodeDevicePacket, QString DeviceId, QString DeviceLocalTxtId, QString VariableButtonOneId, QString VariableButtonTwoId, QString deviceImage, QString houseName);
 
     //Append value to variables & dm xml files
     void prepareVariablesDmXmlFile(QDomNode &tempNodeChild, QString PacketType);
 
     //get total groups
-    void getTotalGroups();
+    void getTotalGroups(int index);
 
     // Public variables
     QString xmlFileNameRef;
@@ -162,6 +188,13 @@ public:
     QString SingleFloorGroupTxtClass;
     QFile FloorsSocketCfgFile;
     QTextStream FloorsSocketCfgFileStream;
+    //
+    //array of array
+    QString houseFloorsSwitchSocketCfgFileString;
+    QString houseFloorsSensorSocketCfgFileString;
+    QString houseFloorsVariableSliderSocketCfgFileString;
+    QString houseFloorsVariableSwitchSocketCfgFileString;
+    //
     uint16_t sensorCount;
     uint16_t switchCount;
     uint16_t variableSwitchCount;
@@ -171,6 +204,7 @@ public:
     uint16_t variableSwitchTotal;
     uint16_t variableSliderTotal;
 
+    // ----> comment this
     uint16_t groupsTotal;
     uint16_t lightsGroupTotal;
     uint16_t accessoriesGroupTotal;
@@ -224,6 +258,9 @@ public:
     //house floors
     QString houseFloor;
 
+    // Is it multi house XML
+    QString xmlType;
+
     // coding index sensor
     QString codingIndexSensor;
 
@@ -231,7 +268,13 @@ public:
     QList<QString> floorList;
 
     // list floor nodes
-    QList<T_packetFloorNodes> floorNodesList;
+    QList<T_packetFloorNodes> floorNodesList;  // ---------------> comment this
+
+    // list house nodes
+    QList<T_packetHouseNodes> houseNodesList;
+
+    // List of house
+    QList<T_packetHouse> housePacketList;
 
     QString floorNameDevice;
     QString roomNameDevice;

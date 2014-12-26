@@ -239,7 +239,8 @@ void MainWindow::createDefaultTableView()
     ui->roomLineEdit->setText("");
     ui->floorLineEdit->setText("");
     //ui->houseLineEdit->setText("");
-    ui->houseLineEdit->setText(DEFAULT_HOUSE_NAME);  // -- todo single floor house
+    //ui->houseLineEdit->setText(DEFAULT_HOUSE_NAME);  // -- todo single floor house
+    ui->houseLineEdit->setText("");
 
     // Increase height of the first row
     row = 0;

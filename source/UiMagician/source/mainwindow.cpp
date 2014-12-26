@@ -111,7 +111,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     //Make this field as non editable
-    ui->houseLineEdit->setEnabled(false);
+    //ui->houseLineEdit->setEnabled(false);
 
     //ui->leftTreeDockWidget->set
     //Connect signals & slots for test report

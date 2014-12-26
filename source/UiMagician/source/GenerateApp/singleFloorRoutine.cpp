@@ -30,7 +30,6 @@
 #include "../common/timer/SleepTimerDelay.h"
 
 
-
 // Create the single floor DIV scrollable
 void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleFloorDivScrollable)
 {
@@ -48,7 +47,12 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
     QString scrollableImageArray;
     QString scrollableHrArray;
 
+    QString houseScrollableImageArray;
+    QString houseScrollableHrArray;
+
     QString floorName;
+
+    QString houseName;
 
     T_packetFloorNodes floorNodes;
 
@@ -69,252 +73,53 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
     QString groupTxtId;
     QString groupImageTxt;
 
+    QString homeGroupClass;
+
+    QString HouseCentralAreaGroupImageClass;
+    QString HouseCentralAreaGroupTxtClass;
+
+    QString SingleFloorGroupImageClassName;
+    QString SingleFloorGroupTxtClassName;
+
     bool sensorGraphGroup = 0;
 
+    uint16_t houseIndex = 0;
 
     nodeName = "div";
     NodeElementSingleFloorDivScrollable  = htmlDomDocument.createElement(nodeName);
     NodeElementSingleFloorDivScrollable.setAttribute("id","images");
     NodeElementSingleFloorDivScrollable.setAttribute("class","scrollable");
 
+/*
     scrollableImageArray     = "var div_class_scrollable_Image = [";
     scrollableHrArray        = "var div_class_scrollable_Hr = [";
     //Append new line
     scrollableImageArray += "\n";
     scrollableHrArray += "\n";
+*/
 
-    //This loop will run 1 time as floorlist.size() is --> 1
-    for (int i = 0; i < floorList.size(); ++i)
+
+    HouseCentralAreaGroupImageClass.clear();  // ----> error can be here
+    HouseCentralAreaGroupTxtClass.clear();  // ----> error can be here
+
+    // create multi house select Menu Button
+    if(xmlType == MULTI_HOUSE)
     {
-
-        floorName = floorList.at(i);
-
-        floorNodes = floorNodesList.at(0);
-        //Load root nodes
-        listRooms = floorNodes.floorRooms.childNodes();
-
-        //get room name in list
-        for (int t = 0; t < listRooms.size(); ++t)
-        {
-
-            //read the child node from list
-            tempNodeChild = listRooms.at(t);
-
-            // Create list of child nodes of - test case
-            listChild = tempNodeChild.childNodes();
-            //Read Room name from node
-            tempNodeChild = listChild.at(ROOM_NAME_INDEX);
-            if (!tempNodeChild.isNull())
-            {
-                nodeDataTextRoom = tempNodeChild.toElement().text();
-            }
-            else
-            {
-                nodeDataTextRoom = "";
-            }
-
-            //Edit room name
-            nodeDataTextRoom.replace(" ", "");
-            nodeDataTextRoom.remove(QRegExp("[^a-zA-Z\\d\\s]"));
-
-            nodeNameTemp = "div";
-            NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
-            NodeElementTemp.setAttribute("id",nodeDataTextRoom);
-            NodeElementTemp.setAttribute("class","input");
-
-            //Create input node
-            nodeChildNameTemp = "input";
-            NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-            roomNameImageId = nodeDataTextRoom + "_Image";
-            NodeElementChildTemp.setAttribute("id",roomNameImageId);
-            NodeElementChildTemp.setAttribute("type","image");
-            NodeElementChildTemp.setAttribute("class","image_scrollable");
-            NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
-            //NodeElementChildTemp.setAttribute("alt",floorNameId);
-            OnClickText = "show_area_single(" "div_class_scrollable_Image,"
-                                              "'" + roomNameImageId + "',"
-                                              "div_class_scrollable_Hr,"
-                                              "'" + nodeDataTextRoom + "_Hr" "'," +
-                                              "'" + floorName + "_Floor"  "_Area_" + nodeDataTextRoom + "')"
-                                              ;
-            NodeElementChildTemp.setAttribute("onclick",OnClickText);
-            //Append image div to floor div
-            NodeElementTemp.appendChild(NodeElementChildTemp);
-
-            //Create paragraph node
-            nodeChildNameTemp = "p";
-            NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-            roomTxtId = nodeDataTextRoom + "_txt";
-            NodeElementChildTemp.setAttribute("id",roomTxtId);
-            NodeElementChildTemp.setAttribute("class","imgtxt");
-            stringTxtNode = nodeDataTextRoom;
-            textNode = htmlDomDocument.createTextNode(stringTxtNode);
-            //Append txt node
-            NodeElementChildTemp.appendChild(textNode);
-            //Append paragraph div to floor div
-            NodeElementTemp.appendChild(NodeElementChildTemp);
-
-            //Create hr node
-            nodeChildNameTemp = "input";
-            NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-            roomHrId = nodeDataTextRoom + "_Hr";
-            NodeElementChildTemp.setAttribute("id",roomHrId);
-            NodeElementChildTemp.setAttribute("class","hr_scrollable");
-            //Append hr div to floor div
-            NodeElementTemp.appendChild(NodeElementChildTemp);
-
-            // Append floor div to div scrollable
-            NodeElementSingleFloorDivScrollable.appendChild(NodeElementTemp);
-
-            //add floor image ID
-            scrollableImageArray += "\"" + roomNameImageId + "\""  ;
-            // add HR line ID
-            scrollableHrArray += "\"" + roomHrId + "\""  ;
-
-            // check if it is last element to put in the array
-            //if((t+1) < listRooms.size())
-            //{
-                scrollableImageArray += ",";
-                scrollableHrArray += ",";
-            //}
-
-        }
-
-    }
-
-    //Get the Total number of groups
-    getTotalGroups();
-
-    //Create group config array
-    SingleFloorGroupImageClass = "\n";
-    SingleFloorGroupImageClass += "\n";
-    SingleFloorGroupImageClass += "var central_Area_Group_Image_class = [";
-    SingleFloorGroupImageClass += "\n" ;
-
-    SingleFloorGroupTxtClass = "\n";
-    SingleFloorGroupTxtClass += "\n";
-    SingleFloorGroupTxtClass += "var central_Area_Group_txt_class = [";
-    SingleFloorGroupTxtClass += "\n" ;
-
-    if(flagsensorGroup == 1)
-    {
-        sensorGraphGroup = 1;
-    }
-
-    //create Group nodes
-    for (int i = 0; i < groupsTotal; ++i)
-    {
-
-        if(flagLightsGroup == 1)
-        {
-            groupDivId = "group_Light_Button";
-            groupImageId = "group_Light_Image";
-            groupHrId = "group_Light_Hr";
-            groupClassName = "group_Lights";
-            groupTxtClassName = "group_Light_Txt";
-            groupTxtId = "group_Light_Txt_Id";
-            groupImageTxt = "Lights";
-
-            flagLightsGroup = 0;
-
-        }
-        else if(flagAccessoriesGroup == 1)
-        {
-            groupDivId = "group_Accessories_Button";
-            groupImageId = "group_Accessories_Image";
-            groupHrId = "group_Accessories_Hr";
-            groupClassName = "group_Accessories";
-            groupTxtClassName = "group_Accessories_Txt";
-            groupTxtId = "group_Accessories_Txt_Id";
-            groupImageTxt = "Accessories";
-
-            flagAccessoriesGroup = 0;
-
-        }
-        else if(flagBlindDoorWindowGroup == 1)
-        {
-            groupDivId = "group_Blinds_Windows_Button";
-            groupImageId = "group_Blinds_Windows_Image";
-            groupHrId = "group_Blinds_Windows_Hr";
-            groupClassName = "group_Blinds_Windows";
-            groupTxtClassName = "group_Blinds_Windows_Txt";
-            groupTxtId = "group_Blinds_Windows_Txt_Id";
-            groupImageTxt = "Door Window";
-
-            flagBlindDoorWindowGroup = 0;
-
-        }
-        else if(flagsensorGroup == 1)
-        {
-            groupDivId = "group_Sensors_Button";
-            groupImageId = "group_Sensors_Image";
-            groupHrId = "group_Sensors_Hr";
-            groupClassName = "group_Sensors";
-            groupTxtClassName = "group_Sensors_Txt";
-            groupTxtId = "group_Sensors_Txt_Id";
-            groupImageTxt = "Sensors";
-
-            flagsensorGroup = 0;
-
-        }
-        else if(flagTemperatureControllerGroup == 1)
-        {
-            groupDivId = "group_Temperature_control_Button";
-            groupImageId = "group_Temperature_control_Image";
-            groupHrId = "group_Temperature_control_Hr";
-            groupClassName = "group_Temperature_control";
-            groupTxtClassName = "group_Temperature_control_Txt";
-            groupTxtId = "group_Temperature_control_Txt_Id";
-            groupImageTxt = "Temperature control";
-
-            flagTemperatureControllerGroup = 0;
-
-        }
-        else
-        {
-            // Do nothing
-        }
-
-        SingleFloorGroupImageClass += "\"" + groupClassName + "\"" ;
-        SingleFloorGroupTxtClass   += "\"" + groupTxtClassName + "\"" ;
-        if((i+1) == groupsTotal)
-        {
-            //Do not append -- ","
-            SingleFloorGroupImageClass += "\n" ;
-            SingleFloorGroupImageClass += "];" ;
-
-            //Do not append -- ","
-            SingleFloorGroupTxtClass += "\n" ;
-            SingleFloorGroupTxtClass += "];" ;
-        }
-        else
-        {
-            SingleFloorGroupImageClass += "," ;
-            SingleFloorGroupTxtClass += "," ;
-
-        }
-
         nodeNameTemp = "div";
         NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
-        NodeElementTemp.setAttribute("id",groupDivId);
+        NodeElementTemp.setAttribute("id","house_menu");
         NodeElementTemp.setAttribute("class","input");
 
         //Create input node
         nodeChildNameTemp = "input";
         NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-        //roomNameImageId = nodeDataTextRoom + "_Image";
-        NodeElementChildTemp.setAttribute("id",groupImageId);
+        NodeElementChildTemp.setAttribute("id","house_menu_Image");
         NodeElementChildTemp.setAttribute("type","image");
         NodeElementChildTemp.setAttribute("class","image_scrollable");
-        NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+        NodeElementChildTemp.setAttribute("src","../lib/widgets/menu/show-menu-icon.png");
         //NodeElementChildTemp.setAttribute("alt",floorNameId);
-        OnClickText = "show_area_group(" "div_class_scrollable_Image,"
-                                          "'" + groupImageId + "',"
-                                          "div_class_scrollable_Hr,"
-                                          "'" + groupHrId + "'," +
-                                          "'" + groupClassName + "'," +
-                                          "'" + groupTxtClassName + "')"
-                                          ;
+        OnClickText = "house_onclick()"
+                ;
         NodeElementChildTemp.setAttribute("onclick",OnClickText);
         //Append image div to floor div
         NodeElementTemp.appendChild(NodeElementChildTemp);
@@ -322,10 +127,9 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
         //Create paragraph node
         nodeChildNameTemp = "p";
         NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-        //roomTxtId = nodeDataTextRoom + "_txt";
-        NodeElementChildTemp.setAttribute("id",groupTxtId);
+        NodeElementChildTemp.setAttribute("id","house_menu_txt");
         NodeElementChildTemp.setAttribute("class","imgtxt");
-        stringTxtNode = groupImageTxt;
+        stringTxtNode = "Houses";
         textNode = htmlDomDocument.createTextNode(stringTxtNode);
         //Append txt node
         NodeElementChildTemp.appendChild(textNode);
@@ -335,8 +139,8 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
         //Create hr node
         nodeChildNameTemp = "input";
         NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-        //roomHrId = nodeDataTextRoom + "_Hr";
-        NodeElementChildTemp.setAttribute("id",groupHrId);
+        //roomHrId = houseName + "_" + nodeDataTextRoom + "_Hr";
+        NodeElementChildTemp.setAttribute("id","house_menu_Hr");
         NodeElementChildTemp.setAttribute("class","hr_scrollable");
         //Append hr div to floor div
         NodeElementTemp.appendChild(NodeElementChildTemp);
@@ -344,61 +148,120 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
         // Append floor div to div scrollable
         NodeElementSingleFloorDivScrollable.appendChild(NodeElementTemp);
 
-        //add floor image ID
-        scrollableImageArray += "\"" + groupImageId + "\""  ;
-        // add HR line ID
-        scrollableHrArray += "\"" + groupHrId + "\""  ;
-
-        // check if it is last element to put in the array
-        if((i+1) < groupsTotal)
-        {
-            scrollableImageArray += ",";
-            //scrollableHrArray += ",";
-        }
-        else
-        {
-            // put comma if graph have to be added
-            if(sensorGraphGroup == 1)
-            {
-               scrollableImageArray += ",";
-            }
-        }
-
-        scrollableHrArray += ",";
-
     }
 
-    if(sensorGraphGroup == 1)
+    //clear the house scrollable error
+    houseScrollableImageArray.clear();
+    houseScrollableHrArray.clear();
+
+    houseScrollableImageArray     = "var house_div_class_scrollable_Image = [";
+    houseScrollableHrArray        = "var house_div_class_scrollable_Hr = [";
+    //Append new line
+    houseScrollableImageArray += "\n";
+    houseScrollableHrArray += "\n";
+
+    HouseCentralAreaGroupImageClass = "var house_central_Area_Group_Image_class = [";
+    HouseCentralAreaGroupTxtClass = "var house_central_Area_Group_txt_class = [";
+    //Append new line
+    HouseCentralAreaGroupImageClass += "\n";
+    HouseCentralAreaGroupTxtClass += "\n";
+
+
+    // Create house zones icon
+    for (int j = 0; j < houseNodesList.size(); ++j)
     {
-        groupDivId = "sensors_Graph";
-        groupImageId = "sensor_graph_Image";
+        houseName = houseNodesList.at(j).houseName;
 
-        groupImageTxt = "sensors_Graph";
-        groupHrId = "sensor_graph_Hr";
+        //save home index
+        houseIndex = j;
 
-        groupClassName = "group_sensor_graph";
-        groupTxtId = "sensors_Graph_txt";
+        scrollableImageArray.clear();
+        scrollableHrArray.clear();
+        scrollableImageArray     = "var " + houseName + "_div_class_scrollable_Image = [";
+        scrollableHrArray        = "var " + houseName + "_div_class_scrollable_Hr = [";
+        //Append new line
+        scrollableImageArray += "\n";
+        scrollableHrArray += "\n";
+
+        // add HR line ID
+        houseScrollableImageArray +=  houseName + "_div_class_scrollable_Image";
+        houseScrollableHrArray +=  houseName + "_div_class_scrollable_Hr";
+
+        // check if it is last element to put in the array
+        if((j+1) < houseNodesList.size())
+        {
+            houseScrollableImageArray += ",";
+            houseScrollableHrArray += ",";
+        }
+
+
+        //This loop will run 1 time as floorlist.size() is --> 1
+        //for (int i = 0; i < floorList.size(); ++i)
+        for (int i = 0; i < houseNodesList.at(j).floorNodeList.size(); ++i)
+        {
+
+            //--->>> todo
+            //floorName = floorList.at(i);
+            floorName = houseNodesList.at(j).floorNodeList.at(i).floorName;
+
+            //floorNodes = floorNodesList.at(0);
+            floorNodes = houseNodesList.at(j).floorNodeList.at(i);
+
+            //Load root nodes
+            listRooms = floorNodes.floorRooms.childNodes();
+
+
+            //reInitialise global variables
+            reInitializeGlobalVariables();
+            //Reinitialise for new house
+            sensorGraphGroup = 0;
+
+            //--->>> todo
+            //get room name in list
+            for (int t = 0; t < listRooms.size(); ++t)
+            {
+
+                //read the child node from list
+                tempNodeChild = listRooms.at(t);
+
+                // Create list of child nodes of - test case
+                listChild = tempNodeChild.childNodes();
+                //Read Room name from node
+                tempNodeChild = listChild.at(ROOM_NAME_INDEX);
+                if (!tempNodeChild.isNull())
+                {
+                    nodeDataTextRoom = tempNodeChild.toElement().text();
+                }
+                else
+                {
+                    nodeDataTextRoom = "";
+                }
+
+                //Edit room name
+                nodeDataTextRoom.replace(" ", "");
+                nodeDataTextRoom.remove(QRegExp("[^a-zA-Z\\d\\s]"));
 
                 nodeNameTemp = "div";
                 NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
-                NodeElementTemp.setAttribute("id",groupDivId);
-                NodeElementTemp.setAttribute("class","input");
+                NodeElementTemp.setAttribute("id",nodeDataTextRoom);
+                homeGroupClass = houseName + "_group_class " "input";
+                NodeElementTemp.setAttribute("class",homeGroupClass);
 
                 //Create input node
                 nodeChildNameTemp = "input";
                 NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-                //roomNameImageId = nodeDataTextRoom + "_Image";
-                NodeElementChildTemp.setAttribute("id",groupImageId);
+                roomNameImageId = houseName + "_" + nodeDataTextRoom + "_Image";
+                NodeElementChildTemp.setAttribute("id",roomNameImageId);
                 NodeElementChildTemp.setAttribute("type","image");
                 NodeElementChildTemp.setAttribute("class","image_scrollable");
                 NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
                 //NodeElementChildTemp.setAttribute("alt",floorNameId);
                 OnClickText = "show_area_single(" "div_class_scrollable_Image,"
-                                                  "'" + groupImageId + "',"
-                                                  "div_class_scrollable_Hr,"
-                                                  "'" + groupHrId + "'," +
-                                                  "'" + groupClassName + "')"
-                                                  ;
+                        "'" + roomNameImageId + "',"
+                        "div_class_scrollable_Hr,"
+                        "'" + houseName + "_" + nodeDataTextRoom + "_Hr" "'," +
+                        "'" + houseName + "_" + floorName + "_Floor"  "_Area_" + nodeDataTextRoom + "')"
+                        ;
                 NodeElementChildTemp.setAttribute("onclick",OnClickText);
                 //Append image div to floor div
                 NodeElementTemp.appendChild(NodeElementChildTemp);
@@ -406,10 +269,10 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
                 //Create paragraph node
                 nodeChildNameTemp = "p";
                 NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-                //roomTxtId = nodeDataTextRoom + "_txt";
-                NodeElementChildTemp.setAttribute("id",groupTxtId);
+                roomTxtId = houseName + "_" + nodeDataTextRoom + "_txt";
+                NodeElementChildTemp.setAttribute("id",roomTxtId);
                 NodeElementChildTemp.setAttribute("class","imgtxt");
-                stringTxtNode = groupImageTxt;
+                stringTxtNode = nodeDataTextRoom;
                 textNode = htmlDomDocument.createTextNode(stringTxtNode);
                 //Append txt node
                 NodeElementChildTemp.appendChild(textNode);
@@ -419,8 +282,8 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
                 //Create hr node
                 nodeChildNameTemp = "input";
                 NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-                //roomHrId = nodeDataTextRoom + "_Hr";
-                NodeElementChildTemp.setAttribute("id",groupHrId);
+                roomHrId = houseName + "_" + nodeDataTextRoom + "_Hr";
+                NodeElementChildTemp.setAttribute("id",roomHrId);
                 NodeElementChildTemp.setAttribute("class","hr_scrollable");
                 //Append hr div to floor div
                 NodeElementTemp.appendChild(NodeElementChildTemp);
@@ -428,90 +291,435 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
                 // Append floor div to div scrollable
                 NodeElementSingleFloorDivScrollable.appendChild(NodeElementTemp);
 
-
                 //add floor image ID
-                scrollableImageArray += "\"" + groupImageId + "\""  ;
+                scrollableImageArray += "\"" + roomNameImageId + "\""  ;
                 // add HR line ID
-                scrollableHrArray += "\"" + groupHrId + "\""  ;
+                scrollableHrArray += "\"" + roomHrId + "\""  ;
+
+                // check if it is last element to put in the array
+                //if((t+1) < listRooms.size())
+                //{
+                scrollableImageArray += ",";
+                scrollableHrArray += ",";
+                //}
+
+            }
+
+        }
 
 
-        scrollableHrArray += ",";
+        //QMessageBox::information(this, "uiMagician", "two");
+
+        //Get the Total number of groups
+        //getTotalGroups(houseNodesList.at(j).floorNodeList);
+        // Pss the index of the house list
+        getTotalGroups(j);
+
+        //QMessageBox::information(this, "uiMagician", "three___");
+        //Create group config array
+        SingleFloorGroupImageClass.clear(); // ----> error can be here
+        SingleFloorGroupImageClass = "\n";
+        SingleFloorGroupImageClass += "\n";
+        SingleFloorGroupImageClass += "var " + houseName + "_" + "central_Area_Group_Image_class = [";
+        SingleFloorGroupImageClassName = houseName + "_" + "central_Area_Group_Image_class";
+        SingleFloorGroupImageClass += "\n" ;
+
+        SingleFloorGroupTxtClass.clear();  // ----> error can be here
+        SingleFloorGroupTxtClass = "\n";
+        SingleFloorGroupTxtClass += "\n";
+        SingleFloorGroupTxtClass += "var " + houseName + "_" + "central_Area_Group_txt_class = [";
+        SingleFloorGroupTxtClassName = houseName + "_" + "central_Area_Group_txt_class";
+        SingleFloorGroupTxtClass += "\n" ;
+
+        //HouseCentralAreaGroupImageClass.clear();  // ----> error can be here
+        //HouseCentralAreaGroupImageClass += "\n";
+        //HouseCentralAreaGroupTxtClass.clear();  // ----> error can be here
+        //HouseCentralAreaGroupTxtClass += "\n";
+
+        if(flagsensorGroup == 1)
+        {
+            sensorGraphGroup = 1;
+        }
+
+        //create Group nodes
+        for (int i = 0; i < houseNodesList.at(j).groupsTotal; ++i)
+        {
+
+            if(flagLightsGroup == 1)
+            {
+                groupDivId = "group_Light_Button_" + houseName;
+                groupImageId = "group_Light_Image_" + houseName;
+                groupHrId = "group_Light_Hr_" + houseName;
+                groupClassName = "group_Lights_" + houseName;
+                groupTxtClassName = "group_Light_Txt_" + houseName;
+                groupTxtId = "group_Light_Txt_Id_" + houseName;
+                groupImageTxt = "Lights";
+
+                flagLightsGroup = 0;
+
+            }
+            else if(flagAccessoriesGroup == 1)
+            {
+                groupDivId = "group_Accessories_Button_" + houseName;
+                groupImageId = "group_Accessories_Image_" + houseName;
+                groupHrId = "group_Accessories_Hr_" + houseName;
+                groupClassName = "group_Accessories_" + houseName;
+                groupTxtClassName = "group_Accessories_Txt_" + houseName;
+                groupTxtId = "group_Accessories_Txt_Id_" + houseName;
+                groupImageTxt = "Accessories";
+
+                flagAccessoriesGroup = 0;
+
+            }
+            else if(flagBlindDoorWindowGroup == 1)
+            {
+                groupDivId = "group_Blinds_Windows_Button_" + houseName;
+                groupImageId = "group_Blinds_Windows_Image_" + houseName;
+                groupHrId = "group_Blinds_Windows_Hr_" + houseName;
+                groupClassName = "group_Blinds_Windows_" + houseName;
+                groupTxtClassName = "group_Blinds_Windows_Txt_" + houseName;
+                groupTxtId = "group_Blinds_Windows_Txt_Id_" + houseName;
+                groupImageTxt = "Door Window";
+
+                flagBlindDoorWindowGroup = 0;
+
+            }
+            else if(flagsensorGroup == 1)
+            {
+                groupDivId = "group_Sensors_Button_" + houseName;
+                groupImageId = "group_Sensors_Image_" + houseName;
+                groupHrId = "group_Sensors_Hr_" + houseName;
+                groupClassName = "group_Sensors_" + houseName;
+                groupTxtClassName = "group_Sensors_Txt_" + houseName;
+                groupTxtId = "group_Sensors_Txt_Id_" + houseName;
+                groupImageTxt = "Sensors";
+
+                flagsensorGroup = 0;
+
+            }
+            else if(flagTemperatureControllerGroup == 1)
+            {
+                groupDivId = "group_Temperature_control_Button_" + houseName;
+                groupImageId = "group_Temperature_control_Image_" + houseName;
+                groupHrId = "group_Temperature_control_Hr_" + houseName;
+                groupClassName = "group_Temperature_control_" + houseName;
+                groupTxtClassName = "group_Temperature_control_Txt_" + houseName;
+                groupTxtId = "group_Temperature_control_Txt_Id_" + houseName;
+                groupImageTxt = "Temperature control";
+
+                flagTemperatureControllerGroup = 0;
+
+            }
+            else
+            {
+                // Do nothing
+            }
+
+            SingleFloorGroupImageClass += "\"" + groupClassName + "\"" ;
+            SingleFloorGroupTxtClass   += "\"" + groupTxtClassName + "\"" ;
+            if((i+1) == houseNodesList.at(j).groupsTotal)
+            {
+                //Do not append -- ","
+                SingleFloorGroupImageClass += "\n" ;
+                SingleFloorGroupImageClass += "];" ;
+                SingleFloorGroupImageClass += "\n" ;
+                SingleFloorGroupImageClass += "\n" ;
+
+                //Do not append -- ","
+                SingleFloorGroupTxtClass += "\n" ;
+                SingleFloorGroupTxtClass += "];" ;
+                SingleFloorGroupTxtClass += "\n" ;
+                SingleFloorGroupTxtClass += "\n" ;
+            }
+            else
+            {
+                SingleFloorGroupImageClass += "," ;
+                SingleFloorGroupTxtClass += "," ;
+
+            }
+
+            nodeNameTemp = "div";
+            NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
+            NodeElementTemp.setAttribute("id",groupDivId);
+            homeGroupClass = houseName + "_group_class " "input";
+            NodeElementTemp.setAttribute("class",homeGroupClass);
+
+            //Create input node
+            nodeChildNameTemp = "input";
+            NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+            //roomNameImageId = nodeDataTextRoom + "_Image";
+            NodeElementChildTemp.setAttribute("id",groupImageId);
+            NodeElementChildTemp.setAttribute("type","image");
+            NodeElementChildTemp.setAttribute("class","image_scrollable");
+            NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            //NodeElementChildTemp.setAttribute("alt",floorNameId);
+            OnClickText = "show_area_group(" "div_class_scrollable_Image,"
+                    "'" + groupImageId + "',"
+                    "div_class_scrollable_Hr,"
+                    "'" + groupHrId + "'," +
+                    "'" + groupClassName + "'," +
+                    "'" + groupTxtClassName + "')"
+                    ;
+            NodeElementChildTemp.setAttribute("onclick",OnClickText);
+            //Append image div to floor div
+            NodeElementTemp.appendChild(NodeElementChildTemp);
+
+            //Create paragraph node
+            nodeChildNameTemp = "p";
+            NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+            //roomTxtId = nodeDataTextRoom + "_txt";
+            NodeElementChildTemp.setAttribute("id",groupTxtId);
+            NodeElementChildTemp.setAttribute("class","imgtxt");
+            stringTxtNode = groupImageTxt;
+            textNode = htmlDomDocument.createTextNode(stringTxtNode);
+            //Append txt node
+            NodeElementChildTemp.appendChild(textNode);
+            //Append paragraph div to floor div
+            NodeElementTemp.appendChild(NodeElementChildTemp);
+
+            //Create hr node
+            nodeChildNameTemp = "input";
+            NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+            //roomHrId = nodeDataTextRoom + "_Hr";
+            NodeElementChildTemp.setAttribute("id",groupHrId);
+            NodeElementChildTemp.setAttribute("class","hr_scrollable");
+            //Append hr div to floor div
+            NodeElementTemp.appendChild(NodeElementChildTemp);
+
+            // Append floor div to div scrollable
+            NodeElementSingleFloorDivScrollable.appendChild(NodeElementTemp);
+
+            //add floor image ID
+            scrollableImageArray += "\"" + groupImageId + "\""  ;
+            // add HR line ID
+            scrollableHrArray += "\"" + groupHrId + "\""  ;
+
+            // check if it is last element to put in the array
+            if((i+1) < houseNodesList.at(j).groupsTotal)
+            {
+                scrollableImageArray += ",";
+                //scrollableHrArray += ",";
+            }
+            else
+            {
+                // put comma if graph have to be added
+                if(sensorGraphGroup == 1)
+                {
+                    scrollableImageArray += ",";
+                }
+            }
+
+            scrollableHrArray += ",";
+
+        }
+
+        if(sensorGraphGroup == 1)
+        {
+            groupDivId = "group_sensors_Graph_" + houseName;
+            groupImageId = "group_sensor_graph_Image_" + houseName;
+
+            groupImageTxt = "Sensors Graph";
+            groupHrId = "group_sensor_graph_Hr_" + houseName;
+
+            groupClassName = "group_sensor_graph_" + houseName;
+            groupTxtId = "group_sensors_Graph_txt_" + houseName;
+
+            nodeNameTemp = "div";
+            NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
+            NodeElementTemp.setAttribute("id",groupDivId);
+            homeGroupClass = houseName + "_group_class " "input";
+            NodeElementTemp.setAttribute("class",homeGroupClass);
+
+            //Create input node
+            nodeChildNameTemp = "input";
+            NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+            //roomNameImageId = nodeDataTextRoom + "_Image";
+            NodeElementChildTemp.setAttribute("id",groupImageId);
+            NodeElementChildTemp.setAttribute("type","image");
+            NodeElementChildTemp.setAttribute("class","image_scrollable");
+            NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            //NodeElementChildTemp.setAttribute("alt",floorNameId);
+            OnClickText = "show_area_single(" "div_class_scrollable_Image,"
+                    "'" + groupImageId + "',"
+                    "div_class_scrollable_Hr,"
+                    "'" + groupHrId + "'," +
+                    "'" + groupClassName + "')"
+                    ;
+            NodeElementChildTemp.setAttribute("onclick",OnClickText);
+            //Append image div to floor div
+            NodeElementTemp.appendChild(NodeElementChildTemp);
+
+            //Create paragraph node
+            nodeChildNameTemp = "p";
+            NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+            //roomTxtId = nodeDataTextRoom + "_txt";
+            NodeElementChildTemp.setAttribute("id",groupTxtId);
+            NodeElementChildTemp.setAttribute("class","imgtxt");
+            stringTxtNode = groupImageTxt;
+            textNode = htmlDomDocument.createTextNode(stringTxtNode);
+            //Append txt node
+            NodeElementChildTemp.appendChild(textNode);
+            //Append paragraph div to floor div
+            NodeElementTemp.appendChild(NodeElementChildTemp);
+
+            //Create hr node
+            nodeChildNameTemp = "input";
+            NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+            //roomHrId = nodeDataTextRoom + "_Hr";
+            NodeElementChildTemp.setAttribute("id",groupHrId);
+            NodeElementChildTemp.setAttribute("class","hr_scrollable");
+            //Append hr div to floor div
+            NodeElementTemp.appendChild(NodeElementChildTemp);
+
+            // Append floor div to div scrollable
+            NodeElementSingleFloorDivScrollable.appendChild(NodeElementTemp);
+
+
+            //add floor image ID
+            scrollableImageArray += "\"" + groupImageId + "\""  ;
+            // add HR line ID
+            scrollableHrArray += "\"" + groupHrId + "\""  ;
+
+
+            scrollableHrArray += ",";
+        }
+
+        //create info node
+        infoNodeName = "Info_" + houseName;
+        nodeNameTemp = "div";
+        NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
+        NodeElementTemp.setAttribute("id",infoNodeName);
+        homeGroupClass = houseName + "_group_class " "input";
+        NodeElementTemp.setAttribute("class",homeGroupClass);
+
+        //Create input node
+        nodeChildNameTemp = "input";
+        NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+        roomNameImageId = infoNodeName + "_Image";
+        NodeElementChildTemp.setAttribute("id",roomNameImageId);
+        NodeElementChildTemp.setAttribute("type","image");
+        NodeElementChildTemp.setAttribute("class","image_scrollable");
+        NodeElementChildTemp.setAttribute("src","../lib/widgets/info/info.jpg");
+        //NodeElementChildTemp.setAttribute("alt",floorNameId);
+        //OnClickText = "alert('Info clicked')";
+        OnClickText = "show_info(" "div_class_scrollable_Image,"
+                "div_class_scrollable_Hr,"
+                "'"  "Info_" + houseName + "_Hr" + "',"   "'"  "info_text_" + houseName + "',"
+                "'"  + houseName + "'," +  QString::number(houseIndex) + ")"
+                ;
+        //show_info(div_class_scrollable_Image,div_class_scrollable_Hr,'Info_Hr','info_text')
+        NodeElementChildTemp.setAttribute("onclick",OnClickText);
+        //Append image div to floor div
+        NodeElementTemp.appendChild(NodeElementChildTemp);
+
+        //Create paragraph node
+        nodeChildNameTemp = "p";
+        NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+        roomTxtId = infoNodeName + "_txt";
+        NodeElementChildTemp.setAttribute("id",roomTxtId);
+        NodeElementChildTemp.setAttribute("class","imgtxt");
+        stringTxtNode = "info";
+        textNode = htmlDomDocument.createTextNode(stringTxtNode);
+        //Append txt node
+        NodeElementChildTemp.appendChild(textNode);
+        //Append paragraph div to floor div
+        NodeElementTemp.appendChild(NodeElementChildTemp);
+
+        //Create hr node
+        nodeChildNameTemp = "input";
+        NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
+        roomHrId = infoNodeName + "_Hr";
+        NodeElementChildTemp.setAttribute("id",roomHrId);
+        NodeElementChildTemp.setAttribute("class","hr_scrollable");
+        //Append hr div to floor div
+        NodeElementTemp.appendChild(NodeElementChildTemp);
+
+        // Append info div to div scrollable
+        NodeElementSingleFloorDivScrollable.appendChild(NodeElementTemp);
+
+        //Add Info HR array
+        scrollableHrArray += "\"" + roomHrId + "\""  ;
+
+        //htmlRoot.appendChild(NodeElement);
+
+        //Append new line
+        scrollableImageArray += "\n";
+        //Terminate the array
+        scrollableImageArray += "];";
+        //Append new line
+        scrollableImageArray += "\n";
+        //Append new line
+        scrollableImageArray += "\n";
+
+        //Append new line
+        scrollableHrArray += "\n";
+        //Terminate the array
+        scrollableHrArray += "];";
+        //Append new line
+        scrollableHrArray += "\n";
+        //Append new line
+        scrollableHrArray += "\n";
+
+        // Append scrollable Image & HR array
+        floorCfgFileString += scrollableImageArray + scrollableHrArray ;
+
+
+        // --> could be an error
+        // Append house group image & txt class
+        floorCfgFileString += SingleFloorGroupImageClass;
+        floorCfgFileString += SingleFloorGroupTxtClass;
+
+        HouseCentralAreaGroupImageClass += SingleFloorGroupImageClassName;
+        HouseCentralAreaGroupTxtClass += SingleFloorGroupTxtClassName;
+
+        // check if it is last element to put in the array
+        if((j+1) == houseNodesList.size())
+        {
+            //Do not append -- ","
+            HouseCentralAreaGroupImageClass += "\n" ;
+            HouseCentralAreaGroupImageClass += "];" ;
+            HouseCentralAreaGroupImageClass += "\n" ;
+            HouseCentralAreaGroupImageClass += "\n" ;
+
+            //Do not append -- ","
+            HouseCentralAreaGroupTxtClass += "\n" ;
+            HouseCentralAreaGroupTxtClass += "];" ;
+            HouseCentralAreaGroupTxtClass += "\n" ;
+            HouseCentralAreaGroupTxtClass += "\n" ;
+        }
+        else
+        {
+            HouseCentralAreaGroupImageClass += ",";
+            HouseCentralAreaGroupTxtClass += ",";
+        }
+
     }
 
-    //create info node
-    infoNodeName = "Info";
-    nodeNameTemp = "div";
-    NodeElementTemp  = htmlDomDocument.createElement(nodeNameTemp);
-    NodeElementTemp.setAttribute("id",infoNodeName);
-    NodeElementTemp.setAttribute("class","input");
 
-       //Create input node
-       nodeChildNameTemp = "input";
-       NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-       roomNameImageId = infoNodeName + "_Image";
-       NodeElementChildTemp.setAttribute("id",roomNameImageId);
-       NodeElementChildTemp.setAttribute("type","image");
-       NodeElementChildTemp.setAttribute("class","image_scrollable");
-       NodeElementChildTemp.setAttribute("src","../lib/widgets/info/info.jpg");
-       //NodeElementChildTemp.setAttribute("alt",floorNameId);
-       //OnClickText = "alert('Info clicked')";
-       OnClickText = "show_info(" "div_class_scrollable_Image,"
-                                             "div_class_scrollable_Hr,"
-                                             "'"  "Info_Hr" "',"   "'"  "info_text"  "')"
-                                             ;
-           //show_info(div_class_scrollable_Image,div_class_scrollable_Hr,'Info_Hr','info_text')
-       NodeElementChildTemp.setAttribute("onclick",OnClickText);
-       //Append image div to floor div
-       NodeElementTemp.appendChild(NodeElementChildTemp);
+    //QMessageBox::information(this, "uiMagician", HouseCentralAreaGroupImageClass);
+    floorCfgFileString += HouseCentralAreaGroupImageClass;
+    floorCfgFileString += HouseCentralAreaGroupTxtClass;
 
-       //Create paragraph node
-       nodeChildNameTemp = "p";
-       NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-       roomTxtId = infoNodeName + "_txt";
-       NodeElementChildTemp.setAttribute("id",roomTxtId);
-       NodeElementChildTemp.setAttribute("class","imgtxt");
-       stringTxtNode = "info";
-                textNode = htmlDomDocument.createTextNode(stringTxtNode);
-                //Append txt node
-                NodeElementChildTemp.appendChild(textNode);
-       //Append paragraph div to floor div
-       NodeElementTemp.appendChild(NodeElementChildTemp);
-
-       //Create hr node
-       nodeChildNameTemp = "input";
-       NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
-       roomHrId = infoNodeName + "_Hr";
-       NodeElementChildTemp.setAttribute("id",roomHrId);
-       NodeElementChildTemp.setAttribute("class","hr_scrollable");
-       //Append hr div to floor div
-       NodeElementTemp.appendChild(NodeElementChildTemp);
-
-    // Append info div to div scrollable
-    NodeElementSingleFloorDivScrollable.appendChild(NodeElementTemp);
-
-    //Add Info HR array
-    scrollableHrArray += "\"" + roomHrId + "\""  ;
-
-    //htmlRoot.appendChild(NodeElement);
 
     //Append new line
-    scrollableImageArray += "\n";
+    houseScrollableImageArray += "\n";
     //Terminate the array
-    scrollableImageArray += "];";
+    houseScrollableImageArray += "];";
     //Append new line
-    scrollableImageArray += "\n";
+    houseScrollableImageArray += "\n";
     //Append new line
-    scrollableImageArray += "\n";
+    houseScrollableImageArray += "\n";
 
     //Append new line
-    scrollableHrArray += "\n";
+    houseScrollableHrArray += "\n";
     //Terminate the array
-    scrollableHrArray += "];";
+    houseScrollableHrArray += "];";
     //Append new line
-    scrollableHrArray += "\n";
+    houseScrollableHrArray += "\n";
     //Append new line
-    scrollableHrArray += "\n";
+    houseScrollableHrArray += "\n";
 
-    floorCfgFileString = scrollableImageArray + scrollableHrArray ;
+    // append array of array
+    floorCfgFileString += houseScrollableImageArray + houseScrollableHrArray ;
+
 }
-
