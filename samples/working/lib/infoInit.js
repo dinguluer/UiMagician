@@ -1,22 +1,38 @@
-var Info_details = {
-    mutex: 0,
-    start: 0,
-    end: 0,
-    length: 0,
-    info_text : []
-};
 
-var Info_len = 100;
-var startInfoProcessing = 0;
-
-function info_init()
+// hide group images
+function hide_info_class()
 {
-    Info_details.start = 0;
-    Info_details.end   = 0;
-    Info_details.length = 0;
 
-    for (var i = 0; i < Info_len ; i++) {
-        Info_details.info_text.push({
+
+  // hide elements in group area
+  $(infoClass).each(function(index, element) {
+          $("." + element).hide();
+    });
+
+
+}
+
+
+function info_module()
+{
+
+    this.Info_details = {
+        mutex: 0,
+        start: 0,
+        end: 0,
+        length: 0,
+        info_text : []
+    };
+
+    this.Info_len = 100;
+    this.startInfoProcessing = 0;
+
+    this.Info_details.start = 0;
+    this.Info_details.end   = 0;
+    this.Info_details.length = 0;
+
+    for (var i = 0; i < this.Info_len ; i++) {
+        this.Info_details.info_text.push({
             direction: "",
             time  : "",
             message  : ""
@@ -31,10 +47,13 @@ function info_init()
 
 
 
-function setInfoData(eventSend, infoMessage)
+info_module.prototype.setInfoData = function(eventSend, infoMessage)
 {
 
-//alert('enter --> ' + Info_details.length);
+//alert('enter --> ' + this.Info_details.length);
+
+            //delay ms
+            pausecomp(20);
 
     var d = new Date();
 
@@ -47,34 +66,34 @@ function setInfoData(eventSend, infoMessage)
     var timeDetail = curr_date + "-" + curr_month + "-" + curr_year + "  " + curr_hour + ":" + curr_minute + ":" +  curr_sec ;
     //var timeDetail = curr_date + "-" + curr_month + "-" + curr_year + "  " + curr_hour + ":" + curr_minute  ;
 
-    if(startInfoProcessing != 0)
+    if(this.startInfoProcessing != 0)
     {
-        if(Info_details.length < Info_len)
+        if(this.Info_details.length < this.Info_len)
         {
             //Info_details.length++;
         }
 
-        if(Info_details.length < Info_len)  //i.e < (100 -1 ) --> < 99
+        if(this.Info_details.length < this.Info_len)  //i.e < (100 -1 ) --> < 99
         {
             //Info_details.end++;
-            Info_details.length++;
+            this.Info_details.length++;
         }
         else
         {
             // process starting pointer
-            if(Info_details.start == Info_len)
+            if(this.Info_details.start == this.Info_len)
             {
-                Info_details.start = 0;
+                this.Info_details.start = 0;
 
             }
             else
             {
-                Info_details.start++;
+                this.Info_details.start++;
             }
 
             /*
             // process end pointer
-            if(Info_details.end == Info_len)
+            if(Info_details.end == this.Info_len)
             {
                 Info_details.end = 0;
 
@@ -89,48 +108,48 @@ function setInfoData(eventSend, infoMessage)
         }
 
         // process end pointer
-        if(Info_details.end == Info_len)
+        if(this.Info_details.end == this.Info_len)
         {
-            Info_details.end = 0;
+            this.Info_details.end = 0;
 
         }
 
         if(eventSend == 1)
         {
-           Info_details.info_text[Info_details.end].direction = "out";
+           this.Info_details.info_text[this.Info_details.end].direction = "out";
         }
         else
         {
-            Info_details.info_text[Info_details.end].direction = "in";
+            this.Info_details.info_text[this.Info_details.end].direction = "in";
         }
 
-        Info_details.info_text[Info_details.end].message   = infoMessage;
-        Info_details.info_text[Info_details.end].time     = timeDetail;
+        this.Info_details.info_text[this.Info_details.end].message   = infoMessage;
+        this.Info_details.info_text[this.Info_details.end].time     = timeDetail;
 
         //increment the end point
-        Info_details.end++;
+        this.Info_details.end++;
     }
     else
     {
-        Info_details.start = 0;
-        Info_details.end   = 0;
-        Info_details.length = 1;
+        this.Info_details.start = 0;
+        this.Info_details.end   = 0;
+        this.Info_details.length = 1;
 
         if(eventSend == 1)
         {
-           Info_details.info_text[0].direction = "out";
+           this.Info_details.info_text[0].direction = "out";
         }
         else
         {
-            Info_details.info_text[0].direction = "in";
+            this.Info_details.info_text[0].direction = "in";
         }
 
-        Info_details.info_text[0].message   = infoMessage;
-        Info_details.info_text[0].time     = timeDetail;
+        this.Info_details.info_text[0].message   = infoMessage;
+        this.Info_details.info_text[0].time     = timeDetail;
 
-        Info_details.end++;
+        this.Info_details.end++;
 
-        startInfoProcessing = 1;
+        this.startInfoProcessing = 1;
     }
 
 //alert(Info_details.length);
@@ -141,7 +160,8 @@ function setInfoData(eventSend, infoMessage)
 
 }
 
-function infoDisplay(parameter_info)
+//function infoDisplay(parameter_info)
+info_module.prototype.infoDisplay = function(parameter_info, home_name)
 {
     var divIndex = 0;
     var divIndexString = divIndex.toString();
@@ -151,55 +171,55 @@ function infoDisplay(parameter_info)
     var messageTime;
 
     // start updating only if single message is received
-    if(startInfoProcessing == 1)
+    if(this.startInfoProcessing == 1)
     {        
 
         //check if buffer is full
-        if(Info_details.length == Info_len)
+        if(this.Info_details.length == this.Info_len)
         {
             // update div value & class
-            for (var j = Info_details.start; j < Info_len; j++)
+            for (var j = this.Info_details.start; j < this.Info_len; j++)
             {
                 divIndexString = divIndex.toString();
 
                 //update message text class
-                divId = "info_class_" + divIndexString;
+                divId = "info_class_" + home_name + "_" +  divIndexString;
 
     //alert(divId);
                 messageTxt = document.getElementById(divId);
-                if(Info_details.info_text[j].direction == "out")
+                if(this.Info_details.info_text[j].direction == "out")
                 {
-                    messageTxt.className="info_text blue_box arrow_right";
+                    messageTxt.className="info_text_" + home_name + " blue_box arrow_right";
 
                 }
                 else
                 {
 //alert(j);
-                    messageTxt.className="info_text green_box arrow_left";
+                    messageTxt.className="info_text_" + home_name + " green_box arrow_left";
                 }
                 //update message text
                 divId = "info_txt_" + divIndexString;
                 messageTxt = document.getElementById(divId);
-                messageTxt.innerHTML =  Info_details.info_text[j].message ;
+                messageTxt.innerHTML =  this.Info_details.info_text[j].message ;
 
                 //update message & time text class
                 divId = "info_time_" + divIndexString;
                 messageTxt = document.getElementById(divId);
-                if(Info_details.info_text[j].direction == "out")
+                if(this.Info_details.info_text[j].direction == "out")
                 {
     //alert(1);
-                    messageTxt.className="info_text time_right_box_class";
+                    messageTxt.className="info_text_" + home_name + " time_right_box_class";
 
                 }
                 else
                 {
-                    messageTxt.className="info_text time_left_box_class";
+                    messageTxt.className="info_text_" + home_name + " time_left_box_class";
                 }
 
                 //update message text
-                divId = "info_time_" + divIndexString;
+                divId = "info_time_" + home_name + "_" + divIndexString;
                 messageTxt = document.getElementById(divId);
-                messageTxt.innerHTML =  Info_details.info_text[j].time ;
+                messageTxt.innerHTML =  this.Info_details.info_text[j].time ;
 
 
                 divIndex++;
@@ -209,10 +229,10 @@ function infoDisplay(parameter_info)
 
             //alert("+++" + Info_details.end);
 
-         if(Info_details.end < Info_len)
+         if(this.Info_details.end < this.Info_len)
          {
             // update div value & class
-            for (var j = 0; j < Info_details.end; j++)
+            for (var j = 0; j < this.Info_details.end; j++)
             {
                 divIndexString = divIndex.toString();
 
@@ -222,37 +242,37 @@ function infoDisplay(parameter_info)
     //alert("-->" + divId);
 
                 messageTxt = document.getElementById(divId);
-                if(Info_details.info_text[j].direction == "out")
+                if(this.Info_details.info_text[j].direction == "out")
                 {
-                    messageTxt.className="info_text blue_box arrow_right";
+                    messageTxt.className="info_text_" + home_name + " blue_box arrow_right";
 
                 }
                 else
                 {
-                    messageTxt.className="info_text green_box arrow_left";
+                    messageTxt.className="info_text_" + home_name + " green_box arrow_left";
                 }
                 //update message text
-                divId = "info_txt_" + divIndexString;
+                divId = "info_txt_" + home_name + "_" + divIndexString;
                 messageTxt = document.getElementById(divId);
-                messageTxt.innerHTML =  Info_details.info_text[j].message ;
+                messageTxt.innerHTML =  this.Info_details.info_text[j].message ;
 
                 //update message & time text class
-                divId = "info_time_" + divIndexString;
+                divId = "info_time_" + home_name + "_"  + divIndexString;
                 messageTxt = document.getElementById(divId);
-                if(Info_details.info_text[j].direction == "out")
+                if(this.Info_details.info_text[j].direction == "out")
                 {
-                    messageTxt.className="info_text time_right_box_class";
+                    messageTxt.className="info_text_" + home_name + " time_right_box_class";
 
                 }
                 else
                 {
-                    messageTxt.className="info_text time_left_box_class";
+                    messageTxt.className="info_text_" + home_name + " time_left_box_class";
                 }
 
                 //update message text
-                divId = "info_time_" + divIndexString;
+                divId = "info_time_" + home_name + "_" + divIndexString;
                 messageTxt = document.getElementById(divId);
-                messageTxt.innerHTML =  Info_details.info_text[j].time ;
+                messageTxt.innerHTML =  this.Info_details.info_text[j].time ;
 
 
                 divIndex++;
@@ -264,47 +284,47 @@ function infoDisplay(parameter_info)
         else
         {
             // update div value & class
-            for (var j = Info_details.start; j < Info_details.length; j++)
+            for (var j = this.Info_details.start; j < this.Info_details.length; j++)
             {
                 divIndexString = divIndex.toString();
 
                 //update message text class
-                divId = "info_class_" + divIndexString;
+                divId = "info_class_" + home_name + "_"  + divIndexString;
 
     //alert(divId);
                 messageTxt = document.getElementById(divId);
-                if(Info_details.info_text[j].direction == "out")
+                if(this.Info_details.info_text[j].direction == "out")
                 {
-                    messageTxt.className="info_text blue_box arrow_right";
+                    messageTxt.className="info_text_" + home_name + " blue_box arrow_right";
 
                 }
                 else
                 {
-                    messageTxt.className="info_text green_box arrow_left";
+                    messageTxt.className="info_text_" + home_name + " green_box arrow_left";
                 }
                 //update message text
-                divId = "info_txt_" + divIndexString;
+                divId = "info_txt_" + home_name + "_"   + divIndexString;
                 messageTxt = document.getElementById(divId);
-                messageTxt.innerHTML =  Info_details.info_text[j].message ;
+                messageTxt.innerHTML =  this.Info_details.info_text[j].message ;
 
                 //update message & time text class
-                divId = "info_time_" + divIndexString;
+                divId = "info_time_" + home_name + "_"   + divIndexString;
                 messageTxt = document.getElementById(divId);
-                if(Info_details.info_text[j].direction == "out")
+                if(this.Info_details.info_text[j].direction == "out")
                 {
     //alert(1);
-                    messageTxt.className="info_text time_right_box_class";
+                    messageTxt.className="info_text_" + home_name + " time_right_box_class";
 
                 }
                 else
                 {
-                    messageTxt.className="info_text time_left_box_class";
+                    messageTxt.className="info_text_" + home_name + " time_left_box_class";
                 }
 
                 //update message text
-                divId = "info_time_" + divIndexString;
+                divId = "info_time_" + home_name + "_"   + divIndexString;
                 messageTxt = document.getElementById(divId);
-                messageTxt.innerHTML =  Info_details.info_text[j].time ;
+                messageTxt.innerHTML =  this.Info_details.info_text[j].time ;
 
 
                 divIndex++;
@@ -322,7 +342,7 @@ function infoDisplay(parameter_info)
 }
 
 
-function infoShow()
+info_module.prototype.infoShow = function(home_name)
 {
     var divIndex = 0;
     var divIndexString = divIndex.toString();
@@ -335,9 +355,10 @@ function infoShow()
 //alert("***" + Info_details.length);
     // update div value & class
     //for (var j = 0; j < 5; j++)
-    for (var j = 0; j < Info_len; j++)
+    for (var j = 0; j < this.Info_len; j++)
     {
-        divIndexString = "info_" + j.toString();
+        //divIndexString = "info_" + j.toString();
+        divIndexString = "info_" + home_name + "_" + j.toString();
 
 
         //var id = "info_3";
@@ -347,7 +368,7 @@ function infoShow()
 
 
        
-        if( j < Info_details.length )
+        if( j < this.Info_details.length )
         {
            $("." + divIndexString).show();
         }
@@ -357,6 +378,8 @@ function infoShow()
         }
 
     }
+
+    //alert(this.Info_details.length)
 
 }
 

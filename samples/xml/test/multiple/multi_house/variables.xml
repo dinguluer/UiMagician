@@ -1,0 +1,107 @@
+<persistent>
+ <variable type="bool">
+  <name>HomeFirstBedroombulb_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="data">
+  <name>HomeFirstBedroomTemeratureIndicator_VAR</name>
+  <value>0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00</value>
+  <note>This is an sensor Measurement Data variable</note>
+ </variable>
+ <variable type="bool">
+  <name>HomeFirstBedroomTubeLight_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>HomeFirstBedroomTempleLight_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="integer">
+  <name>HomeFirstBedroomDimmer_VAR</name>
+  <value>0x00</value>
+  <note>This is an slider variable</note>
+ </variable>
+ <variable type="integer">
+  <name>HomeFirstBedroomBulbSteppable_VAR</name>
+  <value>0x00</value>
+  <note>This is an slider/variable button variable</note>
+ </variable>
+ <variable type="data">
+  <name>HomeFirstBedroomDimmerTube_VAR</name>
+  <value>0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00</value>
+  <note>This is an slider variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneFirstBalconyBulb_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneFirstBedroom1Bulb_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneFirstKitchenFan_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneTwoDrawingRoomFan_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="data">
+  <name>OneTwoDrawingRoomTemperatureSensor_VAR</name>
+  <value>0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00</value>
+  <note>This is an sensor Measurement Data variable</note>
+ </variable>
+ <variable type="data">
+  <name>OneTwoDrawingRoomHeater_VAR</name>
+  <value>0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00</value>
+  <note>This is an sensor Measurement Data variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneTwoDrawingRoomled_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneTwoDrawingRoomtap_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneTwoDrawingRoomPress_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneTwoToiletBulb_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneTwoBalcony1Press_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneTwoLobyOven_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>FactoryGroundPackingZoneGenerator_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="data">
+  <name>FactoryGroundProductionZoneBoilerTemperature_VAR</name>
+  <value>0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00</value>
+  <note>This is an sensor Measurement Data variable</note>
+ </variable>
+</persistent>

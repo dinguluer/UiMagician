@@ -4,8 +4,77 @@
   Date : 27-3-2014
 */
 
-function doc_onload()
+
+
+var central_Area_widgets_id = '';
+var central_Area_Group_Image_class = '';
+var div_class_scrollable_Image = '';
+var div_class_scrollable_Hr = '';
+var floor_area_id = '';
+var central_Area_widgets_id = '';
+var central_Area_Group_Floor_txt_class = '';
+var scrollmenu_image_id = '';
+var div_floor_room_Image = '';
+
+
+
+function doc_onload(houseType)
 {
+
+
+    //if there are multiple houses to be controlled by this html app
+    if(houseType == 1)
+    {
+
+        /*
+        var test = array_of_Arrays[0];
+        //view names
+        $(test).each(function(index, element) {
+              alert(element);
+          });*/
+        //alert(test[0]);
+
+        //show first house
+        $(house_group_class).each(function(index, element) {
+
+              if(index == 0 )
+              {
+                $("." + element).show();
+              }
+              else
+              {
+                $("." + element).hide();
+              }
+          });
+
+        //change the color
+        $(house_image_id).each(function(index, element) {
+
+              var div = document.getElementById(element);
+
+              if(element == house_image_id[0] )
+              {
+                div.style.backgroundColor = 'red';
+
+              }
+              else
+              {
+                div.style.backgroundColor = '#3e4046';
+              }
+          });
+
+    }
+
+
+    central_Area_widgets_id = house_central_Area_widgets_id[0];
+    central_Area_Group_Image_class = house_central_Area_Group_Image_class[0];
+    div_class_scrollable_Image = house_div_class_scrollable_Image[0];
+    div_class_scrollable_Hr = house_div_class_scrollable_Hr[0];
+    floor_area_id = house_floor_area_id[0];
+    central_Area_widgets_id = house_central_Area_widgets_id[0];
+    central_Area_Group_Floor_txt_class = house_central_Area_Group_Floor_txt_class[0];
+    scrollmenu_image_id = house_scrollmenu_image_id[0];
+    div_floor_room_Image = house_First_Floor_Area_Images[0];
 
     //hide central area
     hide_central_area();
@@ -17,13 +86,44 @@ function doc_onload()
    Central_widget_visible_onload();
    // hide group & floor text
    hide_group_floor_txt_class();
+   //select floor Image
+   select_floor_room_image();
+
+
+    // hide info class
+    hide_info_class();
 
     // Initialise the info data structure
-    info_init();
+    //info_init();
+    for (var i = 0; i < infoVariableArray.length; i++)
+    {
+        infoVariableArray[i] = new info_module();
+    }
+
+
+    if(houseType == 1)
+    {
+        this.width = $('.div_layer').width();
+        $('.div_layer').css('left',-this.width);
+        this.rig = $('.div_layer').position().left;
+    }
+
+    //if there are multiple houses to be controlled by this html app
+    if(houseType == 1)
+    {
+        //change house name in Menu
+        var elementHouseName = 'house_menu_txt';
+        document.getElementById(elementHouseName).innerHTML = house_name[0];
+
+        var element = 'house_menu_Hr';
+        $("#" +element).css('background-color', '#00FF00');
+
+    }
 
     //alert(Info_details.info_text[50].direction);
     //alert(Info_details.info_text[99].direction);
 
+    /*
    //  the Socket for I/O devices
    create_device_socket(Multi_Floor_Device_Array);
    // Create the Socket for Measurement  devices
@@ -32,6 +132,29 @@ function doc_onload()
    create_slider_socket(Multi_Floor_Variable_Slider_Device_Array);
    //create socket for variable button
    create_Variable_Button_socket(Multi_Floor_Variable_Switch_Device_Array);
+   */
+
+    // Create the Socket for switch
+     for (var i = 0; i < Multi_Floor_Device_Array.length; i++)
+     {
+         create_device_socket(Multi_Floor_Device_Array[i],infoVariableArray[i]);
+     }
+    //create socket for slider
+     for (var i = 0; i < Multi_Floor_Variable_Slider_Device_Array.length; i++)
+     {
+         create_slider_socket(Multi_Floor_Variable_Slider_Device_Array[i],infoVariableArray[i]);
+     }
+    //create socket for variable button
+     for (var i = 0; i < Multi_Floor_Variable_Switch_Device_Array.length; i++)
+     {
+         create_Variable_Button_socket(Multi_Floor_Variable_Switch_Device_Array[i],infoVariableArray[i]);
+     }
+    // Create the Socket for Measurement  devices
+     for (var i = 0; i < Multi_Floor_Sensor_Device_Array.length; i++)
+     {
+         create_measurement_device_socket(Multi_Floor_Sensor_Device_Array[i]);
+     }
+
 }
 
 
@@ -75,10 +198,12 @@ function create_measurement_device_socket( Device_Array )
 
 }
 
-function create_device_socket( Device_Array )
+
+function create_device_socket( Device_Array, infoVariable )
 {
     var bOnce = true;
 
+    //for (var i = 0; i < 3; i++)
     for (var i = 0; i < Device_Array.length; i++)
     {
         var btn = new vscpws_stateButton_mod( Device_Array[i].userName,
@@ -87,11 +212,12 @@ function create_device_socket( Device_Array )
                                       Device_Array[i].canvasName,    // canvas for button
                                       Device_Array[i].bLocal,            // No local state change
                                       Device_Array[i].btnType,            // Button type
-                                      Device_Array[i].bNoState);
+                                      Device_Array[i].bNoState,
+                                      infoVariable);    // info variable name
 
         //set device details
-        btn.setDeviceDetails(Device_Array[i].deviceName,Device_Array[i].roomName,Device_Array[i].floorName);
-        //btn.setDeviceDetails(Device_Array[i].deviceName,Device_Array[i].roomName);
+        //btn.setDeviceDetails(Device_Array[i].deviceName,Device_Array[i].roomName,Device_Array[i].floorName);
+        btn.setDeviceDetails(Device_Array[i].deviceName,Device_Array[i].roomName);
 
         btn.setOnTransmittEvent(Device_Array[i].onTxEventvscpclass,Device_Array[i].onTxEventvscptype,Device_Array[i].onTxEventdata,Device_Array[i].onTxEventguid);
         btn.setOnTransmittZone(Device_Array[i].onTxEventindex,Device_Array[i].onTxEventzone, Device_Array[i].onTxEventsubzone);
@@ -112,8 +238,7 @@ function create_device_socket( Device_Array )
 
 }
 
-
-function create_slider_socket( Slider_Array )
+function create_slider_socket( Slider_Array, infoVariable )
 {
     var bOnce = true;
 
@@ -124,11 +249,12 @@ function create_slider_socket( Slider_Array )
                                 Slider_Array[i].url,               // url
                                       Slider_Array[i].canvasName,            // canvas for slider
                                       Slider_Array[i].canvasLocalTxtName,    // Slider value
-                                      Slider_Array[i].canvasRemoteTxtName);  // Remote device value
+                                      Slider_Array[i].canvasRemoteTxtName,  // Remote device value
+                                    infoVariable);     // info variable name
 
         //set device details
-        btn.setDeviceDetails(Slider_Array[i].deviceName,Slider_Array[i].roomName,Slider_Array[i].floorName);
-        //btn.setDeviceDetails(Slider_Array[i].deviceName,Slider_Array[i].roomName);
+        //btn.setDeviceDetails(Slider_Array[i].deviceName,Slider_Array[i].roomName,Slider_Array[i].floorName);
+        btn.setDeviceDetails(Slider_Array[i].deviceName,Slider_Array[i].roomName);
 
         btn.setTransmittEvent(Slider_Array[i].TxEventvscpclass,Slider_Array[i].TxEventvscptype,Slider_Array[i].TxEventdata,Slider_Array[i].TxEventguid);
         btn.setTransmittZone(Slider_Array[i].TxEventindex,Slider_Array[i].TxEventzone, Slider_Array[i].TxEventsubzone);
@@ -143,25 +269,29 @@ function create_slider_socket( Slider_Array )
 
     }
 
+
+
 }
 
 //create socket for variable button
-function create_Variable_Button_socket( Variable_Button_Array )
+function create_Variable_Button_socket( Variable_Button_Array, infoVariable )
 {
     var bOnce = true;
+
     for (var i = 0; i < Variable_Button_Array.length; i++)
     {
-        var btn = new vscpws_variableButton( Variable_Button_Array[i].userName,
+        var btn = new vscpws_variableButton(  Variable_Button_Array[i].userName,
                                             Variable_Button_Array[i].password,
                                        Variable_Button_Array[i].url,               // url
                                       Variable_Button_Array[i].canvasIncName,            // Inc buton ID
                                       Variable_Button_Array[i].canvasDecName,            // Dec buton ID
                                       Variable_Button_Array[i].canvasLocalTxtName,       // local value ID
-                                      Variable_Button_Array[i].canvasRemoteTxtName);     // Remote device value
+                                      Variable_Button_Array[i].canvasRemoteTxtName,     // Remote device value
+                                      infoVariable);     // info variable name
 
         //set device details
-        btn.setDeviceDetails(Variable_Button_Array[i].deviceName,Variable_Button_Array[i].roomName,Variable_Button_Array[i].floorName);
-        //btn.setDeviceDetails(Variable_Button_Array[i].deviceName,Variable_Button_Array[i].roomName);
+        //btn.setDeviceDetails(Variable_Button_Array[i].deviceName,Variable_Button_Array[i].roomName,Variable_Button_Array[i].floorName);
+        btn.setDeviceDetails(Variable_Button_Array[i].deviceName,Variable_Button_Array[i].roomName);
 
         btn.setTransmittEvent(Variable_Button_Array[i].TxEventvscpclass,Variable_Button_Array[i].TxEventvscptype,Variable_Button_Array[i].TxEventdata,Variable_Button_Array[i].TxEventguid);
         btn.setTransmittZone(Variable_Button_Array[i].TxEventzone, Variable_Button_Array[i].TxEventsubzone);
@@ -195,6 +325,27 @@ function floor_area_visible_onload()
     });
 
 
+
+}
+
+//select floor Image
+function select_floor_room_image()
+{
+    // set img src
+    $(div_floor_room_Image).each(function(index, element) {
+          if(element != div_floor_room_Image[0] )
+          {
+            //alert("hellooooo");
+            $("#" +element).attr('src', '../lib/widgets/room/room_unselected.png');
+
+          }
+          else
+          {
+            //alert("he");
+            $("#" + element).attr('src', '../lib/widgets/room/room_selected.jpg');
+          }
+
+      });
 
 }
 
@@ -488,9 +639,10 @@ function show_area(parameter, parameter_image_array, parameter_image, parameter_
 
 }
 
-function show_info(parameter_central,parameter_image_array,parameter_Hr_array,parameter_Hr)
+function show_info(parameter_image_array, parameter_Hr_array, parameter_Hr, parameter_central, parameter_home_name, parameter_home_index)
 {
 
+    //alert(parameter_Hr_array);
     //hide central area
     hide_central_area();
 
@@ -522,6 +674,7 @@ function show_info(parameter_central,parameter_image_array,parameter_Hr_array,pa
           $("." + element).hide();
     });
 
+
     // Show elements in central area
     $(central_Area_widgets_id).each(function(index, element) {
           if(element != parameter_central )
@@ -536,16 +689,18 @@ function show_info(parameter_central,parameter_image_array,parameter_Hr_array,pa
 
       });
 
+    //alert(parameter_central);
    // hide group & floor text
    hide_group_floor_txt_class();
 
 
     // change info div content
-    infoDisplay(parameter_central);  //------------->
+    infoVariableArray[parameter_home_index].infoDisplay(parameter_central, parameter_home_name);  //------------->
 
+    //alert(1);
     //hide unused info
-    infoShow();
-   
+    infoVariableArray[parameter_home_index].infoShow(parameter_home_name);
+
 }
 
 function show_Central_widget(parameter,parameter_image_array, parameter_image)

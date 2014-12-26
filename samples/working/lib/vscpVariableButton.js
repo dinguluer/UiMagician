@@ -16,6 +16,7 @@ function vscpws_variableButton( username,           // Username for websocket se
                             decVariableButtonCanvasName,    // Inc Button ID
                             variableButtonTxtname,          // button Input value ID
                             variableButtonRemoteTxtname,     // Remote device value ID
+                            infoVariable,  // info variable name
                             variableName,        // Variable name to be monitored
                             interval             // Variable monitoring interval
                                   )
@@ -24,6 +25,9 @@ function vscpws_variableButton( username,           // Username for websocket se
 
     // Websocket for VSCP daemon communication
     this.socket_vscp = null;
+
+
+    this.infoVar = infoVariable;
 
     // Flag for connected or unconnected state.
     this.bConnected = false;
@@ -543,7 +547,8 @@ vscpws_variableButton.prototype.onVSCPMessage = function(msg)
             var remoteValue = this.sliderRemoteValue.toString();
             var message = this.infoMessage + remoteValue.toString();
             // set global data structure
-            setInfoData(this.eventSend,message);
+
+            this.infoVar.setInfoData(this.eventSend,message);
             this.eventSend = 0;
 
             if (vscpws_debug) console.log("****** Data received Correctly ******");

@@ -4,8 +4,70 @@
   Date : 27-3-2014
 */
 
-function doc_onload(page_type)
+
+// create global variables
+var div_class_scrollable_Image = '';
+var div_class_scrollable_Hr = '';
+var central_Area_widgets_id = '';
+var central_Area_Group_Image_class = '';
+var central_Area_Group_txt_class = '';
+
+//function doc_onload(page_type)
+function doc_onload(houseType)
 {
+
+    // houseType = 0, Single Floor House
+    // houseType = 1, Multi Floor House
+    //if there are multiple houses to be controlled by this html app
+    if(houseType == 1)
+    {
+
+        /*
+        var test = array_of_Arrays[0];
+        //view names
+        $(test).each(function(index, element) {
+              alert(element);
+          });*/
+        //alert(test[0]);
+
+        //show first house
+        $(house_group_class).each(function(index, element) {
+
+              if(index == 0 )
+              {
+                $("." + element).show();
+              }
+              else
+              {
+                $("." + element).hide();
+              }
+          });
+
+        //change the color
+        $(house_image_id).each(function(index, element) {
+
+              var div = document.getElementById(element);
+
+              if(element == house_image_id[0] )
+              {
+                div.style.backgroundColor = 'red';
+
+              }
+              else
+              {
+                div.style.backgroundColor = '#3e4046';
+              }
+          });
+
+    }
+
+
+    // Initialise global variables
+    div_class_scrollable_Image = house_div_class_scrollable_Image[0];
+    div_class_scrollable_Hr = house_div_class_scrollable_Hr[0];
+    central_Area_widgets_id = house_central_Area_widgets_id[0];
+    central_Area_Group_Image_class = house_central_Area_Group_Image_class[0];
+    central_Area_Group_txt_class = house_central_Area_Group_txt_class[0];
 
    // select Scroll area images on load
    select_scroll_area_image();
@@ -13,28 +75,70 @@ function doc_onload(page_type)
    // Show floor area on load
    // page_type = 0  ; Single floor
    // page_type = 1  ; multiple floor
-   if(page_type)
+   /*if(page_type)
    {
       floor_area_visible_onload();
-   }
+   }*/
 
    // Show widget on load
    Central_widget_visible_onload();
 
+    // hide info class
+    hide_info_class();
+
+    //alert('one');
    // Initialise the info data structure
-   info_init();
+   //info_init();
+    for (var i = 0; i < infoVariableArray.length; i++)
+    {
+        infoVariableArray[i] = new info_module();
+    }
+
+    //if there are multiple houses to be controlled by this html app
+    if(houseType == 1)
+    {
+        this.width = $('.div_layer').width();
+        $('.div_layer').css('left',-this.width);
+        this.rig = $('.div_layer').position().left;
+    }
+
+    //if there are multiple houses to be controlled by this html app
+    if(houseType == 1)
+    {
+        //change house name in Menu
+        var elementHouseName = 'house_menu_txt';
+        document.getElementById(elementHouseName).innerHTML = house_name[0];
+
+        var element = 'house_menu_Hr';
+        $("#" +element).css('background-color', '#00FF00');
+
+    }
+
+    //return;
 
    //alert(Info_details.info_text[50].direction);
    //alert(Info_details.info_text[99].direction);
 
-   // Create the Socket
-  create_device_socket(Single_Floor_Device_Array);
+   // Create the Socket for switch
+    for (var i = 0; i < Single_Floor_Device_Array.length; i++)
+    {
+        create_device_socket(Single_Floor_Device_Array[i],infoVariableArray[i]);
+    }
    //create socket for slider
-  create_slider_socket(Single_Floor_Variable_Slider_Device_Array);
+    for (var i = 0; i < Single_Floor_Variable_Slider_Device_Array.length; i++)
+    {
+        create_slider_socket(Single_Floor_Variable_Slider_Device_Array[i],infoVariableArray[i]);
+    }
    //create socket for variable button
-  create_Variable_Button_socket(Single_Floor_Variable_Switch_Device_Array);
+    for (var i = 0; i < Single_Floor_Variable_Switch_Device_Array.length; i++)
+    {
+        create_Variable_Button_socket(Single_Floor_Variable_Switch_Device_Array[i],infoVariableArray[i]);
+    }
    // Create the Socket for Measurement  devices
-  create_measurement_device_socket(Single_Floor_Sensor_Device_Array);
+    for (var i = 0; i < Single_Floor_Sensor_Device_Array.length; i++)
+    {
+        create_measurement_device_socket(Single_Floor_Sensor_Device_Array[i]);
+    }
 }
 
 
@@ -79,7 +183,7 @@ function create_measurement_device_socket( Device_Array )
 
 }
 
-function create_device_socket( Device_Array )
+function create_device_socket( Device_Array, infoVariable )
 {
     var bOnce = true;
 
@@ -92,7 +196,8 @@ function create_device_socket( Device_Array )
                                       Device_Array[i].canvasName,    // canvas for button
                                       Device_Array[i].bLocal,            // No local state change
                                       Device_Array[i].btnType,            // Button type
-                                      Device_Array[i].bNoState);
+                                      Device_Array[i].bNoState,
+                                      infoVariable);    // info variable name
 
         //set device details
         //btn.setDeviceDetails(Device_Array[i].deviceName,Device_Array[i].roomName,Device_Array[i].floorName);
@@ -117,7 +222,7 @@ function create_device_socket( Device_Array )
 
 }
 
-function create_slider_socket( Slider_Array )
+function create_slider_socket( Slider_Array, infoVariable )
 {
     var bOnce = true;
 
@@ -128,7 +233,8 @@ function create_slider_socket( Slider_Array )
                                 Slider_Array[i].url,               // url
                                       Slider_Array[i].canvasName,            // canvas for slider
                                       Slider_Array[i].canvasLocalTxtName,    // Slider value
-                                      Slider_Array[i].canvasRemoteTxtName);  // Remote device value
+                                      Slider_Array[i].canvasRemoteTxtName,  // Remote device value
+                                    infoVariable);     // info variable name
 
         //set device details
         //btn.setDeviceDetails(Slider_Array[i].deviceName,Slider_Array[i].roomName,Slider_Array[i].floorName);
@@ -152,7 +258,7 @@ function create_slider_socket( Slider_Array )
 }
 
 //create socket for variable button
-function create_Variable_Button_socket( Variable_Button_Array )
+function create_Variable_Button_socket( Variable_Button_Array, infoVariable )
 {
     var bOnce = true;
 
@@ -164,7 +270,8 @@ function create_Variable_Button_socket( Variable_Button_Array )
                                       Variable_Button_Array[i].canvasIncName,            // Inc buton ID
                                       Variable_Button_Array[i].canvasDecName,            // Dec buton ID
                                       Variable_Button_Array[i].canvasLocalTxtName,       // local value ID
-                                      Variable_Button_Array[i].canvasRemoteTxtName);     // Remote device value
+                                      Variable_Button_Array[i].canvasRemoteTxtName,     // Remote device value
+                                      infoVariable);     // info variable name
 
         //set device details
         //btn.setDeviceDetails(Variable_Button_Array[i].deviceName,Variable_Button_Array[i].roomName,Variable_Button_Array[i].floorName);
@@ -317,7 +424,7 @@ function show_area_single(parameter_image_array, parameter_image, parameter_Hr_a
 }
 
 
-function show_info(parameter_image_array, parameter_Hr_array, parameter_Hr, parameter_central)
+function show_info(parameter_image_array, parameter_Hr_array, parameter_Hr, parameter_central, parameter_home_name, parameter_home_index)
 {
 
     // set img src
@@ -344,20 +451,29 @@ function show_info(parameter_image_array, parameter_Hr_array, parameter_Hr, para
 
       });
 
+    //alert(1);
     // hide group images
     hide_Central_widget_group_images();
+    //alert(2);
     // hide group txt
     hide_Central_widget_group_txt();
+    //alert(3);
 
     // Show area on the central div
     show_Central_widget_single(parameter_central);
 
+    //alert(infoVariableArray[0]);
+    //alert("result");
+    //infoVariableArray[parameter_home_index].setInfoData(1,"light_on");
+    //infoVariableArray[parameter_home_index].setInfoData(0,"bulb_on");
 
+//    alert(parameter_home_index);
     // change info div content
-    infoDisplay(parameter_central);  //------------->
+    infoVariableArray[parameter_home_index].infoDisplay(parameter_central, parameter_home_name);  //------------->
 
+    //alert(parameter_home_index);
     //hide unused info
-    infoShow();
+    infoVariableArray[parameter_home_index].infoShow(parameter_home_name);
 }
 
 function show_area_group(parameter_image_array, parameter_image, parameter_Hr_array, parameter_Hr , group_image_class, group_txt_class)

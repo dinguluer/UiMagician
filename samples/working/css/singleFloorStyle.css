@@ -142,6 +142,9 @@ div.scrollable {
     padding-left: 4px;
     padding-top: 20px;
     box-sizing:border-box;
+    right :0;
+    left : 0;
+    position:absolute;
 }
 
 div.scrollableCenter {
@@ -186,5 +189,5 @@ div.scrollableCenter {
     position:absolute;
     left:0;
     bottom:0;
-    width:100%;
+    right:0;
 }

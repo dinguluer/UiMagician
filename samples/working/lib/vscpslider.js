@@ -15,6 +15,7 @@ function vscpws_slider( username,           // Username for websocket serever
                             sliderCanvasName,    // Slider ID
                             slideTxtname,        // Slider Input value ID
                             txtCanvasName,       // Remote device value ID
+                            infoVariable,        // info variable name
                             variableName,        // Variable name to be monitored
                             interval             // Variable monitoring interval
                                )
@@ -23,6 +24,8 @@ function vscpws_slider( username,           // Username for websocket serever
 
     // Websocket for VSCP daemon communication
     this.socket_vscp = null;
+
+    this.infoVar = infoVariable;
 
     // Flag for connected or unconnected state.
     this.bConnected = false;
@@ -715,7 +718,7 @@ vscpws_slider.prototype.onVSCPMessage = function(msg)
             var remoteValue = this.sliderRemoteValue.toString();
             var message = this.infoMessage + remoteValue.toString();
             // set global data structure
-            setInfoData(this.eventSend,message);
+            this.infoVar.setInfoData(this.eventSend,message);
             this.eventSend = 0;
 
             if (vscpws_debug) console.log("****** Data received Correctly ******");

@@ -1,8 +1,3 @@
-﻿/*
-** Author : Dinesh Guleria
-** Date : 17/10/2014
-** Note : This library is designed taking into refrence Ake Hedman, vscpws.js lib
-*/
 
 ///////////////////////////////////////////////////////////////////////////////
 // vscpws_simpleTextEvent

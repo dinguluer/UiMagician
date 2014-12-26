@@ -1,0 +1,517 @@
+<dm>
+ <row enable="true" groupid="giiioo">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="3"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneFirstBedroombulb_VAR;2;true;true</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>0</subzone>
+ </row>
+ <row enable="true" groupid="giiioo">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="4"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneFirstBedroombulb_VAR;2;true;false</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>0</subzone>
+ </row>
+ <row enable="true" groupid="Temperature">
+  <mask class="65535" priority="0" GUID="FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF" type="65535"></mask>
+  <filter class="10" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:01" type="6"></filter>
+  <control>0x80000000</control>
+  <action>0x00000050</action>
+  <param>OneFirstBedroomTemeratureIndicator_VAR;9;true;%event.data</param>
+  <comment>temperature of the home</comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index bmeasurement="true">*-*-* *:*:*</index>
+ </row>
+ <row enable="true" groupid="6">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="3"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneFirstBedroomTubeLight_VAR;2;true;true</param>
+  <comment>light</comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>1</subzone>
+ </row>
+ <row enable="true" groupid="6">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="4"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneFirstBedroomTubeLight_VAR;2;true;false</param>
+  <comment>light</comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>1</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="3"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneFirstBedroomTempleLight_VAR;2;true;true</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>2</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="4"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneFirstBedroomTempleLight_VAR;2;true;false</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>2</subzone>
+ </row>
+ <row enable="true" groupid="slider">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="40"></filter>
+  <control>0x80000018</control>
+  <action>0x00000050</action>
+  <param>OneFirstBedroomDimmer_VAR;3;true;%event.data[0]</param>
+  <comment>Dimmer</comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <zone>0</zone>
+  <subzone>0</subzone>
+ </row>
+ <row enable="true" groupid="variableSwitch">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="40"></filter>
+  <control>0x80000018</control>
+  <action>0x00000050</action>
+  <param>OneFirstBedroomBulbSteppable_VAR;3;true;%event.data[0]</param>
+  <comment>Steppable</comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <zone>0</zone>
+  <subzone>10</subzone>
+ </row>
+ <row enable="true" groupid="slider">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="51"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneFirstBedroomDimmerTube_VAR;9;true;%event.data</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>0</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="3"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneFirstBalconyBulb_VAR;2;true;true</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>3</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="4"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneFirstBalconyBulb_VAR;2;true;false</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>3</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="3"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneFirstBedroom1Bulb_VAR;2;true;true</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>4</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="4"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneFirstBedroom1Bulb_VAR;2;true;false</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>4</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="3"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneFirstKitchenFan_VAR;2;true;true</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>5</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="4"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneFirstKitchenFan_VAR;2;true;false</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>5</subzone>
+ </row>
+ <row enable="true" groupid="yyy">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="3"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneTwoDrawingRoomFan_VAR;2;true;true</param>
+  <comment>Orient Fan cealing top.</comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>6</subzone>
+ </row>
+ <row enable="true" groupid="yyy">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="4"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneTwoDrawingRoomFan_VAR;2;true;false</param>
+  <comment>Orient Fan cealing top.</comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>6</subzone>
+ </row>
+ <row enable="true" groupid="ooone">
+  <mask class="65535" priority="0" GUID="FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF" type="65535"></mask>
+  <filter class="10" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:02" type="6"></filter>
+  <control>0x80000000</control>
+  <action>0x00000050</action>
+  <param>OneTwoDrawingRoomTemperatureSensor_VAR;9;true;%event.data</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index bmeasurement="true">*-*-* *:*:*</index>
+ </row>
+ <row enable="true" groupid="sensors">
+  <mask class="65535" priority="0" GUID="FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF" type="65535"></mask>
+  <filter class="10" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:03" type="6"></filter>
+  <control>0x80000000</control>
+  <action>0x00000050</action>
+  <param>OneTwoDrawingRoomHeater_VAR;9;true;%event.data</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index bmeasurement="true">*-*-* *:*:*</index>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="3"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneTwoDrawingRoomled_VAR;2;true;true</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>7</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="4"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneTwoDrawingRoomled_VAR;2;true;false</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>7</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="3"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneTwoDrawingRoomtap_VAR;2;true;true</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>8</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="4"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneTwoDrawingRoomtap_VAR;2;true;false</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>8</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="3"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneTwoDrawingRoomPress_VAR;2;true;true</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>9</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="4"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneTwoDrawingRoomPress_VAR;2;true;false</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>9</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="3"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneTwoToiletBulb_VAR;2;true;true</param>
+  <comment>14</comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>10</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="4"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneTwoToiletBulb_VAR;2;true;false</param>
+  <comment>14</comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>10</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="3"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneTwoBalcony1Press_VAR;2;true;true</param>
+  <comment>15</comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>11</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="4"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneTwoBalcony1Press_VAR;2;true;false</param>
+  <comment>15</comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>11</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="3"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneTwoLobyOven_VAR;2;true;true</param>
+  <comment>last</comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>12</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="4"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>OneTwoLobyOven_VAR;2;true;false</param>
+  <comment>last</comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>12</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="3"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>FactoryGroundPackingZoneGenerator_VAR;2;true;true</param>
+  <comment>last</comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>40</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="4"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>FactoryGroundPackingZoneGenerator_VAR;2;true;false</param>
+  <comment>last</comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>0</index>
+  <zone>0</zone>
+  <subzone>40</subzone>
+ </row>
+ <row enable="true" groupid="Temperature">
+  <mask class="65535" priority="0" GUID="FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF" type="65535"></mask>
+  <filter class="10" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:01" type="6"></filter>
+  <control>0x80000000</control>
+  <action>0x00000050</action>
+  <param>FactoryGroundProductionZoneBoilerTemperature_VAR;9;true;%event.data</param>
+  <comment>temperature of the Boiler</comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index bmeasurement="true">*-*-* *:*:*</index>
+ </row>
+</dm>
