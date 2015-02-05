@@ -1,9 +1,3 @@
-﻿/*
-** Author : Dinesh Guleria
-** Date : 17/10/2014
-** Note : This library is designed taking into refrence Ake Hedman, vscpws.js lib
-*/
-
 ///////////////////////////////////////////////////////////////////////////////
 // vscpws_stateButton_mod
 //
@@ -15,6 +9,7 @@ function vscpws_stateButton_mod( username,           // Username for websocket s
                                bLocal,        // Local visual indication
                                btnType,       // Button type   
                                bNoState,      // True for nonstate button 
+                               infoVariable,  // info variable name
                                bDisabled,     // True to disable mouse clicks
                                customupsrc,   // Custom up image
                                customdownsrc, // Custom down image
@@ -39,7 +34,11 @@ function vscpws_stateButton_mod( username,           // Username for websocket s
 
     // Websocket for VSCP daemon communication
     this.socket_vscp = null;
-    
+
+    this.infoVar = infoVariable;
+
+    //alert(this.infoVar);
+    //alert(infoVariable);
     // Flag for connected or unconnected state.
     this.bConnected = false;
     
@@ -1511,7 +1510,7 @@ vscpws_stateButton_mod.prototype.onVSCPMessage = function(msg)
             this.canvas.src = this.image_down.src;
 
             // set global data structure
-            setInfoData(this.eventSend,this.infoMessageOn);
+            this.infoVar.setInfoData(this.eventSend,this.infoMessageOn);
             this.eventSend = 0;
             
             if (vscpws_debug) console.log("****** Turned ON ******");
@@ -1543,7 +1542,7 @@ vscpws_stateButton_mod.prototype.onVSCPMessage = function(msg)
             this.canvas.src = this.image_up.src;
 
             // set global data structure
-            setInfoData(this.eventSend,this.infoMessageOff);
+            this.infoVar.setInfoData(this.eventSend,this.infoMessageOff);
             this.eventSend = 0;
 
             if (vscpws_debug) console.log("****** Turned OFF ******");

@@ -23,15 +23,15 @@ var Home_floor_area_id = [
 ];
 
 var Factory_div_class_scrollable_Image = [
-"Factory_Ground_Floor_Image","Factory_All_Devices_Image"
+"Factory_Ground_Floor_Image","Factory_First_Floor_Image","Factory_All_Devices_Image"
 ];
 
 var Factory_div_class_scrollable_Hr = [
-"Factory_Ground_Floor_Hr","Factory_All_Devices_Hr","Info_Factory_Hr"
+"Factory_Ground_Floor_Hr","Factory_First_Floor_Hr","Factory_All_Devices_Hr","Info_Factory_Hr"
 ];
 
 var Factory_floor_area_id = [
-"Factory_Ground_Floor_Area","Factory_All_Devices_group"
+"Factory_Ground_Floor_Area","Factory_First_Floor_Area","Factory_All_Devices_group"
 ];
 
 var house_div_class_scrollable_Image = [
@@ -82,12 +82,20 @@ var div_class_Factory_Ground_Floor_Area_Txt = [
 "Factory_Ground_Floor_Area_PackingZone_txt","Factory_Ground_Floor_Area_ProductionZone_txt","Factory_Ground_Floor_Area_Accessories_Group_txt","Factory_Ground_Floor_Area_Sensors_Group_txt","Factory_Ground_Floor_Area_Sensors_Group_Graph_txt"
 ];
 
+var div_class_Factory_First_Floor_Area_Images = [
+"Factory_First_Floor_Area_MeetingRoom_Image","Factory_First_Floor_Area_ControlRoom_Image","Factory_First_Floor_Area_Lights_Group_Image","Factory_First_Floor_Area_Accessories_Group_Image"
+];
+
+var div_class_Factory_First_Floor_Area_Txt = [
+"Factory_First_Floor_Area_MeetingRoom_txt","Factory_First_Floor_Area_ControlRoom_txt","Factory_First_Floor_Area_Lights_Group_txt","Factory_First_Floor_Area_Accessories_Group_txt"
+];
+
 var Factory_scrollmenu_image_id = [
-"group_Accessories_Image","group_Sensors_Image","group_Sensors_Graph_Image"
+"group_Lights_Image","group_Accessories_Image","group_Sensors_Image","group_Sensors_Graph_Image"
 ];
 
 var Factory_central_Area_Group_Image_class = [
-"group_Accessories_Factory","group_Sensors_Factory","group_sensor_graph_Factory"
+"group_Lights_Factory","group_Accessories_Factory","group_Sensors_Factory","group_sensor_graph_Factory"
 ];
 
 var Factory_central_Area_Group_Floor_txt_class = [
@@ -117,7 +125,7 @@ var Home_central_Area_widgets_id = [
 
 var Factory_central_Area_widgets_id = [
 "Factory_Ground_Floor_Area_PackingZone","group_sensor_graph_Factory","Factory_Ground_Floor_Area_ProductionZone",
-"info_text_Factory"
+"Factory_First_Floor_Area_MeetingRoom","Factory_First_Floor_Area_ControlRoom","info_text_Factory"
 ];
 
 var house_central_Area_widgets_id = [

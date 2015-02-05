@@ -5,23 +5,19 @@
 */
 
 
-
-var central_Area_widgets_id = '';
-var central_Area_Group_Image_class = '';
+// create global variables
 var div_class_scrollable_Image = '';
 var div_class_scrollable_Hr = '';
-var floor_area_id = '';
 var central_Area_widgets_id = '';
-var central_Area_Group_Floor_txt_class = '';
-var scrollmenu_image_id = '';
-var div_floor_room_Image = '';
+var central_Area_Group_Image_class = '';
+var central_Area_Group_txt_class = '';
 
-
-
+//function doc_onload(page_type)
 function doc_onload(houseType)
 {
 
-
+    // houseType = 0, Single Floor House
+    // houseType = 1, Multi Floor House
     //if there are multiple houses to be controlled by this html app
     if(houseType == 1)
     {
@@ -66,41 +62,39 @@ function doc_onload(houseType)
     }
 
 
-    central_Area_widgets_id = house_central_Area_widgets_id[0];
-    central_Area_Group_Image_class = house_central_Area_Group_Image_class[0];
+    // Initialise global variables
     div_class_scrollable_Image = house_div_class_scrollable_Image[0];
     div_class_scrollable_Hr = house_div_class_scrollable_Hr[0];
-    floor_area_id = house_floor_area_id[0];
     central_Area_widgets_id = house_central_Area_widgets_id[0];
-    central_Area_Group_Floor_txt_class = house_central_Area_Group_Floor_txt_class[0];
-    scrollmenu_image_id = house_scrollmenu_image_id[0];
-    div_floor_room_Image = house_First_Floor_Area_Images[0];
+    central_Area_Group_Image_class = house_central_Area_Group_Image_class[0];
+    central_Area_Group_txt_class = house_central_Area_Group_txt_class[0];
 
-    //hide central area
-    hide_central_area();
    // select Scroll area images on load
    select_scroll_area_image();
+
    // Show floor area on load
-   floor_area_visible_onload();
+   // page_type = 0  ; Single floor
+   // page_type = 1  ; multiple floor
+   /*if(page_type)
+   {
+      floor_area_visible_onload();
+   }*/
+
    // Show widget on load
    Central_widget_visible_onload();
-   // hide group & floor text
-   hide_group_floor_txt_class();
-   //select floor Image
-   select_floor_room_image();
-
 
     // hide info class
     hide_info_class();
 
-    // Initialise the info data structure
-    //info_init();
+    //alert('one');
+   // Initialise the info data structure
+   //info_init();
     for (var i = 0; i < infoVariableArray.length; i++)
     {
         infoVariableArray[i] = new info_module();
     }
 
-
+    //if there are multiple houses to be controlled by this html app
     if(houseType == 1)
     {
         this.width = $('.div_layer').width();
@@ -120,41 +114,31 @@ function doc_onload(houseType)
 
     }
 
-    //alert(Info_details.info_text[50].direction);
-    //alert(Info_details.info_text[99].direction);
+    //return;
 
-    /*
-   //  the Socket for I/O devices
-   create_device_socket(Multi_Floor_Device_Array);
-   // Create the Socket for Measurement  devices
-   create_measurement_device_socket(Multi_Floor_Sensor_Device_Array);
+   //alert(Info_details.info_text[50].direction);
+   //alert(Info_details.info_text[99].direction);
+
+   // Create the Socket for switch
+    for (var i = 0; i < Single_Floor_Device_Array.length; i++)
+    {
+        create_device_socket(Single_Floor_Device_Array[i],infoVariableArray[i]);
+    }
    //create socket for slider
-   create_slider_socket(Multi_Floor_Variable_Slider_Device_Array);
+    for (var i = 0; i < Single_Floor_Variable_Slider_Device_Array.length; i++)
+    {
+        create_slider_socket(Single_Floor_Variable_Slider_Device_Array[i],infoVariableArray[i]);
+    }
    //create socket for variable button
-   create_Variable_Button_socket(Multi_Floor_Variable_Switch_Device_Array);
-   */
-
-    // Create the Socket for switch
-     for (var i = 0; i < Multi_Floor_Device_Array.length; i++)
-     {
-         create_device_socket(Multi_Floor_Device_Array[i],infoVariableArray[i]);
-     }
-    //create socket for slider
-     for (var i = 0; i < Multi_Floor_Variable_Slider_Device_Array.length; i++)
-     {
-         create_slider_socket(Multi_Floor_Variable_Slider_Device_Array[i],infoVariableArray[i]);
-     }
-    //create socket for variable button
-     for (var i = 0; i < Multi_Floor_Variable_Switch_Device_Array.length; i++)
-     {
-         create_Variable_Button_socket(Multi_Floor_Variable_Switch_Device_Array[i],infoVariableArray[i]);
-     }
-    // Create the Socket for Measurement  devices
-     for (var i = 0; i < Multi_Floor_Sensor_Device_Array.length; i++)
-     {
-         create_measurement_device_socket(Multi_Floor_Sensor_Device_Array[i]);
-     }
-
+    for (var i = 0; i < Single_Floor_Variable_Switch_Device_Array.length; i++)
+    {
+        create_Variable_Button_socket(Single_Floor_Variable_Switch_Device_Array[i],infoVariableArray[i]);
+    }
+   // Create the Socket for Measurement  devices
+    for (var i = 0; i < Single_Floor_Sensor_Device_Array.length; i++)
+    {
+        create_measurement_device_socket(Single_Floor_Sensor_Device_Array[i]);
+    }
 }
 
 
@@ -169,6 +153,7 @@ function create_measurement_device_socket( Device_Array )
 {
     var bOnce = true;
 
+    //for (var i = 0; i < 1; i++)
     for (var i = 0; i < Device_Array.length; i++)
     {
         var btn = new vscpws_simpleTextEvent_mod( Device_Array[i].userName,
@@ -187,17 +172,16 @@ function create_measurement_device_socket( Device_Array )
                                              Device_Array[i].graphType
                                                      );
 
-                  btn.setExtraParameters(Device_Array[i].sensorIndex, Device_Array[i].sensorZone, Device_Array[i].sensorSubzone);
+          btn.setExtraParameters(Device_Array[i].sensorIndex, Device_Array[i].sensorZone, Device_Array[i].sensorSubzone);
 
-                  //delay ms
-                  pausecomp(20);
+        //delay ms
+        pausecomp(20);
 
-                  btn.setMonitorVariable(Device_Array[i].VariableName,1000,bOnce);
+         btn.setMonitorVariable(Device_Array[i].VariableName,1000,bOnce);
 
     }
 
 }
-
 
 function create_device_socket( Device_Array, infoVariable )
 {
@@ -328,27 +312,6 @@ function floor_area_visible_onload()
 
 }
 
-//select floor Image
-function select_floor_room_image()
-{
-    // set img src
-    $(div_floor_room_Image).each(function(index, element) {
-          if(element != div_floor_room_Image[0] )
-          {
-            //alert("hellooooo");
-            $("#" +element).attr('src', '../lib/widgets/room/room_unselected.png');
-
-          }
-          else
-          {
-            //alert("he");
-            $("#" + element).attr('src', '../lib/widgets/room/room_selected.jpg');
-          }
-
-      });
-
-}
-
 function select_scroll_area_image()
 {
   //Show area on the scrollable div
@@ -365,7 +328,7 @@ function select_scroll_area_image()
           //alert("he");
           $("#" + element).attr('src', '../lib/widgets/room/room_selected.jpg');
         }
-       
+
     });
 
   // Change the color of horizontal line
@@ -381,13 +344,18 @@ function select_scroll_area_image()
           //alert("he");
           $("#" + element).css('background-color', '#00FF00');
         }
-       
-    });  
+
+    });
 
 }
 
 function Central_widget_visible_onload()
 {
+
+  // hide group images
+  hide_Central_widget_group_images();
+  // hide group txt
+  hide_Central_widget_group_txt();
 
   $(central_Area_widgets_id).each(function(index, element) {
         if(element != central_Area_widgets_id[0] )
@@ -397,191 +365,19 @@ function Central_widget_visible_onload()
         }
         else
         {
-          $("." + element).show();
+            $("." + element).show();
         }
     });
 
+    //element = 'kkk';
+    //$("." + element).show();
+
+    //element = 'group_Txt_ID';
+    //$("." + element).hide();
 }
 
-
-
-// hide central widget area
-function hide_central_area()
+function show_area_single(parameter_image_array, parameter_image, parameter_Hr_array, parameter_Hr, parameter_central)
 {
-    // hide central widget area
-    $(central_Area_widgets_id).each(function(index, element) {
-
-            $("." + element).hide();
-      });
-
-    // hide central widget area
-    $(central_Area_Group_Image_class).each(function(index, element) {
-
-            $("." + element).hide();
-      });
-
-}
-
-// hide scrollableMenu area
-function hide_scrollableMenu_area()
-{
-    // hide scrollableMenu area
-    $(floor_area_id).each(function(index, element) {
-
-            $("." + element).hide();
-      });
-}
-
-function show_group(All_Devices_group,All_Devices_Image,All_Devices_Hr)
-{
-
-    //hide central area
-    hide_central_area();
-
-    // set img src
-    $(div_class_scrollable_Image).each(function(index, element) {
-          if(element != All_Devices_Image )
-          {
-            //alert("hellooooo");
-            $("#" +element).attr('src', '../lib/widgets/room/room_unselected.png');
-
-          }
-          else
-          {
-            //alert("he");
-            $("#" + element).attr('src', '../lib/widgets/room/room_selected.jpg');
-          }
-
-      });
-
-    // Change the color of horizontal line
-    $(div_class_scrollable_Hr).each(function(index, element) {
-          if(element != All_Devices_Hr )
-          {
-            //alert("hellooooo");
-            $("#" +element).css('background-color', '#DDDFED');
-
-          }
-          else
-          {
-            //alert("he");
-            $("#" + element).css('background-color', '#00FF00');
-          }
-
-      });
-
-    //hide central & scroll menu area
-    hide_central_area();
-    hide_scrollableMenu_area();
-    // show device groups on scrollable menu
-    $("." + All_Devices_group).show();
-    // select first group in selectable menu
-    $(scrollmenu_image_id).each(function(index, element) {
-          if(element != scrollmenu_image_id[0] )
-          {
-            //alert("hellooooo");
-            $("#" +element).attr('src', '../lib/widgets/room/room_unselected.png');
-
-          }
-          else
-          {
-            //alert("he");
-            $("#" + element).attr('src', '../lib/widgets/room/room_selected.jpg');
-          }
-
-      });
-    //show central menu
-    show_area_group_on_groups_clicked();
-    //$("." + group_Txt).show();
-    //$("." + group_Floor_Txt).show();
-
-}
-
-function show_area_group(group_device,group_image)
-{
-    // set img src
-    //$(div_class_All_Devices_group_Images).each(function(index, element) {
-    $(scrollmenu_image_id).each(function(index, element) {
-          if(element != group_image )
-          {
-            //alert("hellooooo");
-            $("#" +element).attr('src', '../lib/widgets/room/room_unselected.png');
-
-          }
-          else
-          {
-            //alert("he");
-            $("#" + element).attr('src', '../lib/widgets/room/room_selected.jpg');
-          }
-
-      });
-
-    //hide central & scroll menu area
-    hide_central_area();
-    //show group devices
-    $("." + group_device).show();
-    // show group txt
-    $("." + central_Area_Group_Floor_txt_class[0]).show();
-    // show floor txt
-    $("." + central_Area_Group_Floor_txt_class[1]).show();
-
-}
-
-//function show_area_group_on_groups_clicked(All_Devices_group,group_Txt,group_Floor_Txt)
-function show_area_group_on_groups_clicked()
-{
-    //Show group images
-    $("." + central_Area_Group_Image_class[0]).show();
-
-    $("." + central_Area_Group_Floor_txt_class[0]).show();  // show floor names  -- i.e group_txt
-    $("." + central_Area_Group_Floor_txt_class[1]).show();  // show room  names  -- i.e group_Floor_Txt
-    //show room names
-    /*$(central_Area_Floor_txt_class).each(function(index, element) {
-            $("." + element).show();
-      });*/
-}
-
-function show_Floor_Group(group_Floor_class, array_floor_images_id, floor_group_Image_id)
-{
-    // set img src
-    $(array_floor_images_id).each(function(index, element) {
-          if(element != floor_group_Image_id )
-          {
-            //alert("hellooooo");
-            $("#" +element).attr('src', '../lib/widgets/room/room_unselected.png');
-
-          }
-          else
-          {
-            //alert("he");
-            $("#" + element).attr('src', '../lib/widgets/room/room_selected.jpg');
-          }
-
-      });
-
-    //hide all central elements
-    hide_central_area();
-    //alert("hello");
-    $("." + group_Floor_class).show();  // show floor names
-    // hide group txt class
-    $("." + central_Area_Group_Floor_txt_class[0]).hide();
-    // show floor txt class
-    $("." + central_Area_Group_Floor_txt_class[1]).show();
-}
-
-function hide_group_floor_txt_class()
-{
-    $("." + central_Area_Group_Floor_txt_class[0]).hide();
-    $("." + central_Area_Group_Floor_txt_class[1]).hide();
-
-}
-
-function show_area(parameter, parameter_image_array, parameter_image, parameter_Hr_array, parameter_Hr, parameter_central, parameter_Menu_array, parmeter_menu_image)
-{
-
-
-  //hide central area
-  hide_central_area();
 
   //Show area on the scrollable div
   // set img src
@@ -597,7 +393,108 @@ function show_area(parameter, parameter_image_array, parameter_image, parameter_
           //alert("he");
           $("#" + element).attr('src', '../lib/widgets/room/room_selected.jpg');
         }
-       
+
+    });
+
+  // Change the color of horizontal line
+  $(parameter_Hr_array).each(function(index, element) {
+        if(element != parameter_Hr )
+        {
+          //alert("hellooooo");
+          //alert(parameter_Hr);
+          $("#" +element).css('background-color', '#DDDFED');
+
+        }
+        else
+        {
+          //alert("he");
+          $("#" + element).css('background-color', '#00FF00');
+        }
+
+    });
+
+    // hide group images
+    hide_Central_widget_group_images();
+    // hide group txt
+    hide_Central_widget_group_txt();
+   // Show area on the central div
+   show_Central_widget_single(parameter_central);
+
+
+}
+
+
+function show_info(parameter_image_array, parameter_Hr_array, parameter_Hr, parameter_central, parameter_home_name, parameter_home_index)
+{
+
+    // set img src
+    $(parameter_image_array).each(function(index, element) {
+            //alert("hellooooo");
+            $("#" +element).attr('src', '../lib/widgets/room/room_unselected.png');
+
+      });
+
+    // Change the color of horizontal line
+    $(parameter_Hr_array).each(function(index, element) {
+          if(element != parameter_Hr )
+          {
+            //alert("hellooooo");
+            //alert(parameter_Hr);
+            $("#" +element).css('background-color', '#DDDFED');
+
+          }
+          else
+          {
+            //alert("he");
+            $("#" + element).css('background-color', '#00FF00');
+          }
+
+      });
+
+    //alert(1);
+    // hide group images
+    hide_Central_widget_group_images();
+    //alert(2);
+    // hide group txt
+    hide_Central_widget_group_txt();
+    //alert(3);
+
+    // Show area on the central div
+    show_Central_widget_single(parameter_central);
+
+    //alert(infoVariableArray[0]);
+    //alert("result");
+    //infoVariableArray[parameter_home_index].setInfoData(1,"light_on");
+    //infoVariableArray[parameter_home_index].setInfoData(0,"bulb_on");
+
+//    alert(parameter_home_index);
+    // change info div content
+    infoVariableArray[parameter_home_index].infoDisplay(parameter_central, parameter_home_name);  //------------->
+
+    //alert(parameter_home_index);
+    //hide unused info
+    infoVariableArray[parameter_home_index].infoShow(parameter_home_name);
+}
+
+function show_area_group(parameter_image_array, parameter_image, parameter_Hr_array, parameter_Hr , group_image_class, group_txt_class)
+{
+
+    //alert("++");
+  //Show area on the scrollable div
+  // set img src
+  $(parameter_image_array).each(function(index, element) {
+        if(element != parameter_image )
+        {
+          //alert("hellooooo");
+          $("#" +element).attr('src', '../lib/widgets/room/room_unselected.png');
+
+        }
+        else
+        {
+          //alert("he");
+          $("#" + element).attr('src', '../lib/widgets/room/room_selected.jpg');
+        }
+
     });
 
   // Change the color of horizontal line
@@ -613,8 +510,137 @@ function show_area(parameter, parameter_image_array, parameter_image, parameter_
           //alert("he");
           $("#" + element).css('background-color', '#00FF00');
         }
-       
-    });  
+
+    });
+
+    // hide central widget area
+    hide_central_area();
+
+    // show group image
+    show_Central_widget_group_images(group_image_class);
+
+    // show group txt
+    show_Central_widget_group_txt(group_txt_class);
+
+   // Show area on the central div
+   //show_Central_widget_single(parameter_central);
+
+
+}
+
+// hide central widget area
+function hide_central_area()
+{
+    // hide central widget area
+    $(central_Area_widgets_id).each(function(index, element) {
+
+            $("." + element).hide();
+      });
+}
+
+// show group images
+function show_Central_widget_group_images(parameter)
+{
+
+
+  // Show elements in central area
+  $(central_Area_Group_Image_class).each(function(index, element) {
+        if(element != parameter )
+        {
+          $("." + element).hide();
+
+        }
+        else
+        {
+          $("." + element).show();
+        }
+
+    });
+
+
+}
+
+// show group txt
+function show_Central_widget_group_txt(parameter)
+{
+
+
+  // Show elements in central area
+  $(central_Area_Group_txt_class).each(function(index, element) {
+        if(element != parameter )
+        {
+          $("." + element).hide();
+
+        }
+        else
+        {
+          $("." + element).show();
+        }
+
+    });
+
+}
+
+// hide group images
+function hide_Central_widget_group_images()
+{
+
+
+  // hide elements in group area
+  $(central_Area_Group_Image_class).each(function(index, element) {
+          $("." + element).hide();
+    });
+
+
+}
+
+// hide group txt
+function hide_Central_widget_group_txt()
+{
+
+
+  // hide elements in group area
+  $(central_Area_Group_txt_class).each(function(index, element) {
+          $("." + element).hide();
+    });
+
+}
+
+function show_area(parameter, parameter_image_array, parameter_image, parameter_Hr_array, parameter_Hr, parameter_central, parameter_Menu_array, parmeter_menu_image)
+{
+
+  //Show area on the scrollable div
+  // set img src
+  $(parameter_image_array).each(function(index, element) {
+        if(element != parameter_image )
+        {
+          //alert("hellooooo");
+          $("#" +element).attr('src', '../lib/widgets/room/room_unselected.png');
+
+        }
+        else
+        {
+          //alert("he");
+          $("#" + element).attr('src', '../lib/widgets/room/room_selected.jpg');
+        }
+
+    });
+
+  // Change the color of horizontal line
+  $(parameter_Hr_array).each(function(index, element) {
+        if(element != parameter_Hr )
+        {
+          //alert("hellooooo");
+          $("#" +element).css('background-color', '#DDDFED');
+
+        }
+        else
+        {
+          //alert("he");
+          $("#" + element).css('background-color', '#00FF00');
+        }
+
+    });
 
 
   //Show area on the menu div
@@ -634,72 +660,28 @@ function show_area(parameter, parameter_image_array, parameter_image, parameter_
    // Show area on the central div
    show_Central_widget(parameter_central, parameter_Menu_array, parmeter_menu_image);
 
-   // hide group & floor text
-   hide_group_floor_txt_class();
 
 }
 
-function show_info(parameter_image_array, parameter_Hr_array, parameter_Hr, parameter_central, parameter_home_name, parameter_home_index)
+function show_Central_widget_single(parameter)
 {
 
-    //alert(parameter_Hr_array);
-    //hide central area
-    hide_central_area();
 
-    //Show area on the scrollable div
-    // set img src
-    $(parameter_image_array).each(function(index, element) {
-            $("#" +element).attr('src', '../lib/widgets/room/room_unselected.png');
-      });
-
-    // Change the color of horizontal line
-    $(parameter_Hr_array).each(function(index, element) {
-          if(element != parameter_Hr )
-          {
-            //alert("hellooooo");
-            $("#" +element).css('background-color', '#DDDFED');
-
-          }
-          else
-          {
-            //alert("he");
-            $("#" + element).css('background-color', '#00FF00');
-          }
-
-      });
-
-
-  //Hide area on the menu div
-  $(floor_area_id).each(function(index, element) {
+  // Show elements in central area
+  $(central_Area_widgets_id).each(function(index, element) {
+        if(element != parameter )
+        {
           $("." + element).hide();
+
+        }
+        else
+        {
+          $("." + element).show();
+            //alert(parameter);
+        }
+
     });
 
-
-    // Show elements in central area
-    $(central_Area_widgets_id).each(function(index, element) {
-          if(element != parameter_central )
-          {
-            $("." + element).hide();
-
-          }
-          else
-          {
-            $("." + element).show();
-          }
-
-      });
-
-    //alert(parameter_central);
-   // hide group & floor text
-   hide_group_floor_txt_class();
-
-
-    // change info div content
-    infoVariableArray[parameter_home_index].infoDisplay(parameter_central, parameter_home_name);  //------------->
-
-    //alert(1);
-    //hide unused info
-    infoVariableArray[parameter_home_index].infoShow(parameter_home_name);
 
 }
 
@@ -719,9 +701,9 @@ function show_Central_widget(parameter,parameter_image_array, parameter_image)
           //alert("he");
           $("#" + element).attr('src', '../lib/widgets/room/room_selected.jpg');
         }
-       
+
     });
-  
+
 
   // Show elements in central area
   $(central_Area_widgets_id).each(function(index, element) {
@@ -736,7 +718,6 @@ function show_Central_widget(parameter,parameter_image_array, parameter_image)
         }
 
     });
-
 
 
 }

@@ -370,6 +370,22 @@ var Factory_Multi_Floor_Device_Array = [
     offTxEventvscpclass: 30 , offTxEventvscptype: 6 , offTxEventdata: undefined , offTxEventguid: undefined , offTxEventindex: 0 , offTxEventzone: 0 , offTxEventsubzone: 40 ,
     onRxEventvscpclass: 20 , onRxEventvscptype: 3 , onRxEventdata: undefined , onRxEventguid: undefined , onRxEventindex: 0 , onRxEventzone: 0 , onRxEventsubzone: 40 ,
     offRxEventvscpclass: 20 , offRxEventvscptype: 4 , offRxEventdata: undefined , offRxEventguid: undefined , offRxEventindex: 0 , offRxEventzone: 0 , offRxEventsubzone: 40
+  },
+
+  { floorName: 'First', roomName: 'MeetingRoom', deviceName: 'Fan',
+    url: 'ws://127.0.0.1:8080', canvasName: 'FactoryFirstMeetingRoomFan_Image_ID', bLocal: 'false', btnType: 94 , bNoState: 'true', userName: 'admin', password: 'd50c3180375c27927c22e42a379c3f67', domain: 'mydomain.com', VariableName: 'FactoryFirstMeetingRoomFan_VAR' ,
+    onTxEventvscpclass: 30 , onTxEventvscptype: 5 , onTxEventdata: undefined , onTxEventguid: undefined , onTxEventindex: 0 , onTxEventzone: 0 , onTxEventsubzone: 41 ,
+    offTxEventvscpclass: 30 , offTxEventvscptype: 6 , offTxEventdata: undefined , offTxEventguid: undefined , offTxEventindex: 0 , offTxEventzone: 0 , offTxEventsubzone: 41 ,
+    onRxEventvscpclass: 20 , onRxEventvscptype: 3 , onRxEventdata: undefined , onRxEventguid: undefined , onRxEventindex: 0 , onRxEventzone: 0 , onRxEventsubzone: 41 ,
+    offRxEventvscpclass: 20 , offRxEventvscptype: 4 , offRxEventdata: undefined , offRxEventguid: undefined , offRxEventindex: 0 , offRxEventzone: 0 , offRxEventsubzone: 41
+  },
+
+  { floorName: 'First', roomName: 'ControlRoom', deviceName: 'Light',
+    url: 'ws://127.0.0.1:8080', canvasName: 'FactoryFirstControlRoomLight_Image_ID', bLocal: 'false', btnType: 94 , bNoState: 'true', userName: 'admin', password: 'd50c3180375c27927c22e42a379c3f67', domain: 'mydomain.com', VariableName: 'FactoryFirstControlRoomLight_VAR' ,
+    onTxEventvscpclass: 30 , onTxEventvscptype: 5 , onTxEventdata: undefined , onTxEventguid: undefined , onTxEventindex: 0 , onTxEventzone: 0 , onTxEventsubzone: 42 ,
+    offTxEventvscpclass: 30 , offTxEventvscptype: 6 , offTxEventdata: undefined , offTxEventguid: undefined , offTxEventindex: 0 , offTxEventzone: 0 , offTxEventsubzone: 42 ,
+    onRxEventvscpclass: 20 , onRxEventvscptype: 3 , onRxEventdata: undefined , onRxEventguid: undefined , onRxEventindex: 0 , onRxEventzone: 0 , onRxEventsubzone: 42 ,
+    offRxEventvscpclass: 20 , offRxEventvscptype: 4 , offRxEventdata: undefined , offRxEventguid: undefined , offRxEventindex: 0 , offRxEventzone: 0 , offRxEventsubzone: 42
   }
 ];
 

@@ -34,6 +34,7 @@ eval(fs.readFileSync('dummy_Device_SocketCfg.js')+'');
 
 var tt = new create_dummy_device();
 */
+
 function doc_onload(page_type)
 {
 
@@ -56,6 +57,8 @@ function doc_onload(page_type)
    // Initialise the info data structure
    //info_init();
 
+    //Single floor house
+
    // Create the Socket
    create_device_socket(Single_Floor_Device_Array);
    //create socket for slider
@@ -66,8 +69,27 @@ function doc_onload(page_type)
   create_measurement_device_socket(Single_Floor_Sensor_Device_Array);
 
 
+    // Multi floor house
+
+    //  the Socket for I/O devices
+    create_device_socket(Multi_Floor_Device_Array);
+    // Create the Socket for Measurement  devices
+    //create_measurement_device_socket(Multi_Floor_Sensor_Device_Array);
+    //create socket for slider
+    create_slider_socket(Multi_Floor_Variable_Slider_Device_Array);
+    //create socket for variable button
+    create_Variable_Button_socket(Multi_Floor_Variable_Switch_Device_Array);
+
    //call dummy function
    setInterval(function(){}, 10000);
+}
+
+
+
+function pausecomp(ms)
+{
+    ms += new Date().getTime();
+    while (new Date() < ms){}
 }
 
 function create_measurement_device_socket( Device_Array )
@@ -90,6 +112,8 @@ function create_measurement_device_socket( Device_Array )
 
           device_btn.setExtraParameters(Device_Array[i].sensorIndex, Device_Array[i].sensorZone, Device_Array[i].sensorSubzone);
 
+        //delay ms
+        pausecomp(20);
     }
 
 }
@@ -121,6 +145,8 @@ function create_device_socket( Device_Array )
         device_btn.setOffTransmittZone(Device_Array[i].offRxEventindex,Device_Array[i].offRxEventzone, Device_Array[i].offRxEventsubzone);
 
 
+        //delay ms
+        pausecomp(20);
     }
 
 }
@@ -144,6 +170,8 @@ function create_slider_socket( Slider_Array )
         device_btn.setTransmittEvent(Slider_Array[i].RxEventvscpclass,Slider_Array[i].RxEventvscptype,Slider_Array[i].RxEventdata,Slider_Array[i].RxEventguid);
         device_btn.setTransmittZone(Slider_Array[i].RxEventindex,Slider_Array[i].RxEventzone, Slider_Array[i].RxEventsubzone);
 
+        //delay ms
+        pausecomp(20);
     }
 
 
@@ -172,6 +200,8 @@ function create_Variable_Button_socket( Variable_Button_Array )
         device_btn.setTransmittZone(Variable_Button_Array[i].RxEventzone, Variable_Button_Array[i].RxEventsubzone);
 
 
+        //delay ms
+        pausecomp(20);
     }
 
 }

@@ -47,6 +47,8 @@ function create_dummy_device()
    // Initialise the info data structure
    //info_init();
 
+    //Single floor house
+/*
    // Create the Socket
    create_device_socket(Single_Floor_Device_Array);
    //create socket for slider
@@ -55,6 +57,69 @@ function create_dummy_device()
   create_Variable_Button_socket(Single_Floor_Variable_Switch_Device_Array);
    // Create the Socket for Measurement  devices
   create_measurement_device_socket(Single_Floor_Sensor_Device_Array);
+*/
+
+/*
+
+    // Create the Socket for switch
+     for (var i = 0; i < Single_Floor_Device_Array.length; i++)
+     {
+         create_device_socket(Single_Floor_Device_Array[i]);
+     }
+    //create socket for slider
+     for (var i = 0; i < Single_Floor_Variable_Slider_Device_Array.length; i++)
+     {
+         create_slider_socket(Single_Floor_Variable_Slider_Device_Array[i]);
+     }
+    //create socket for variable button
+     for (var i = 0; i < Single_Floor_Variable_Switch_Device_Array.length; i++)
+     {
+         create_Variable_Button_socket(Single_Floor_Variable_Switch_Device_Array[i]);
+     }
+    // Create the Socket for Measurement  devices
+     for (var i = 0; i < Single_Floor_Sensor_Device_Array.length; i++)
+     {
+         create_measurement_device_socket(Single_Floor_Sensor_Device_Array[i]);
+     }
+
+  */
+
+
+    // Multi floor house
+
+ /*
+    //  the Socket for I/O devices
+    create_device_socket(Multi_Floor_Device_Array);
+    // Create the Socket for Measurement  devices
+    //create_measurement_device_socket(Multi_Floor_Sensor_Device_Array);
+    //create socket for slider
+    create_slider_socket(Multi_Floor_Variable_Slider_Device_Array);
+    //create socket for variable button
+    create_Variable_Button_socket(Multi_Floor_Variable_Switch_Device_Array);
+*/
+
+
+    // Create the Socket for switch
+     for (var i = 0; i < Multi_Floor_Device_Array.length; i++)
+     {
+         create_device_socket(Multi_Floor_Device_Array[i]);
+     }
+    //create socket for slider
+     for (var i = 0; i < Multi_Floor_Variable_Slider_Device_Array.length; i++)
+     {
+         create_slider_socket(Multi_Floor_Variable_Slider_Device_Array[i]);
+     }
+    //create socket for variable button
+     for (var i = 0; i < Multi_Floor_Variable_Switch_Device_Array.length; i++)
+     {
+         create_Variable_Button_socket(Multi_Floor_Variable_Switch_Device_Array[i]);
+     }
+    // Create the Socket for Measurement  devices
+     for (var i = 0; i < Multi_Floor_Sensor_Device_Array.length; i++)
+     {
+         create_measurement_device_socket(Multi_Floor_Sensor_Device_Array[i]);
+     }
+
 
 
    //call dummy function
