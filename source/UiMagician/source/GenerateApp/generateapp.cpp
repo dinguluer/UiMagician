@@ -4345,7 +4345,7 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
                             nodeChildNameTemp = "span";
                             NodeElementSpan = htmlDomDocument.createElement(nodeChildNameTemp);
                             NodeElementSpan.setAttribute("type","text");
-                            NodeElementSpan.setAttribute("class","group_" + houseName + "_Txt");
+                            NodeElementSpan.setAttribute("class","group_Txt_" + houseName);
                             stringTxtNode = floorName + " : ";
                             textNode = htmlDomDocument.createTextNode(stringTxtNode);
                             //Append txt node

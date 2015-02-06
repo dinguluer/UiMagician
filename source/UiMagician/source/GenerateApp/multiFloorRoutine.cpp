@@ -1175,7 +1175,7 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
             houseCentralAreaGroupFloorTxtClassArray += houseName + "_central_Area_Group_Floor_txt_class";
 
             //add group & floor text class
-            centralAreaGroupFloorTxtClass += "\"group_Txt\",\"group_Floor_Txt\"";
+            centralAreaGroupFloorTxtClass += "\"group_Txt_" + houseName + "\",\"group_Floor_Txt_" + houseName + "\"";
 
             //Append new line
             centralAreaGroupFloorTxtClass += "\n";
