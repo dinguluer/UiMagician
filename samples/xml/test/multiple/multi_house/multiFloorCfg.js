@@ -71,7 +71,7 @@ var Home_central_Area_Group_Image_class = [
 ];
 
 var Home_central_Area_Group_Floor_txt_class = [
-"group_Txt","group_Floor_Txt"
+"group_Txt_Home","group_Floor_Txt_Home"
 ];
 
 var div_class_Factory_Ground_Floor_Area_Images = [
@@ -91,7 +91,7 @@ var Factory_central_Area_Group_Image_class = [
 ];
 
 var Factory_central_Area_Group_Floor_txt_class = [
-"group_Txt","group_Floor_Txt"
+"group_Txt_Factory","group_Floor_Txt_Factory"
 ];
 
 var house_central_Area_Group_Image_class = [

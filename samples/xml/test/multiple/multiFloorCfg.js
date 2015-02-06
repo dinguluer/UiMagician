@@ -47,7 +47,7 @@ var Home_central_Area_Group_Image_class = [
 ];
 
 var Home_central_Area_Group_Floor_txt_class = [
-"group_Txt","group_Floor_Txt"
+"group_Txt_Home","group_Floor_Txt_Home"
 ];
 
 var house_central_Area_Group_Image_class = [
