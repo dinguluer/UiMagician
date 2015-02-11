@@ -1,0 +1,37 @@
+body {
+ margin:0px;
+}
+
+.div_wrapper {
+ left:0px;
+ z-index:100;
+}
+.div_layer {
+ background: none repeat scroll 0 0 #3e4046;
+ position: absolute;
+ width: 200px;
+ height: 100%;
+}
+.div_layer ul {
+ list-style-type: none;
+margin: 0;
+padding: 0;
+}
+.div_layer ul li {
+border-bottom: 1px solid #dfdfdf;
+overflow: hidden;
+padding: 5px;
+height: 33px;
+color:white;
+text-align:center;
+}
+.buttoncls {
+ background:#767676;
+ width:75px;
+ height:25px;
+ position:absolute;
+ float:left;
+ border:1px solid #000;
+ cursor:pointer;
+ color:#fff;
+}
