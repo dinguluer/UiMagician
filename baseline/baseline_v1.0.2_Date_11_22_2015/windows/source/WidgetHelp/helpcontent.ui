@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>helpContent</class>
+ <widget class="QDialog" name="helpContent">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1010</width>
+    <height>553</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Help Content</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../AutosResourceFile.qrc">
+    <normaloff>:/Images/Images/fatbee_v2.ico</normaloff>:/Images/Images/fatbee_v2.ico</iconset>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QSplitter" name="splitter">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <widget class="QTreeWidget" name="helpTreeWidget">
+      <column>
+       <property name="text">
+        <string notr="true">1</string>
+       </property>
+      </column>
+     </widget>
+     <widget class="QTextEdit" name="helpTextEdit"/>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../AutosResourceFile.qrc"/>
+ </resources>
+ <connections/>
+</ui>

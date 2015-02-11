@@ -1,0 +1,87 @@
+QAxObject * workbooks;
+QAxObject * worksheets;
+QAxObject * workbook ;
+QString xlsFileDirectoryPath;
+QString xlsFilePath ;
+
+QList<QVariant> lstParam;
+
+
+//Extract absolute file name form - xml file path
+QFileInfo fileInfo(xmlFileName);
+xlsFileDirectoryPath = fileInfo.absolutePath();
+xlsFilePath = xlsFileDirectoryPath + "/Gateway Grey Box Testscript.xls";
+
+// Create excel object
+QAxWidget excel("Excel.Application");
+
+//Turn off display alert
+excel.setProperty("DisplayAlerts", 0);
+excel.setProperty("Visible", false);
+
+workbooks = excel.querySubObject("WorkBooks");
+
+
+workbooks->dynamicCall("Add");
+workbook = excel.querySubObject("ActiveWorkBook");
+if (workbook)
+    worksheets = workbook->querySubObject("WorkSheets");
+else
+    QMessageBox::information(0, "", "QAxObject workbook fail!");
+
+//All sheets pointer
+QAxObject *sheets = workbook->querySubObject( "Worksheets" );
+
+//first sheet
+QAxObject* sheet = sheets->querySubObject( "Item( int )", 1);
+
+count = QString::number(sheets->dynamicCall("Count()").toInt()); // sheet count
+name = sheet->dynamicCall("Name()").toString();  // sheet name
+
+
+
+//Read cell
+QAxObject * range = sheet->querySubObject("Range(A1)");
+
+//set value of cell
+range->setProperty("Value", QVariant("abcdef"/*intVal+1*/));content_cell = range->property("Value").toString();
+
+//set colour RED
+QAxObject* Interior = range->querySubObject("Interior");
+Interior->setProperty("ColorIndex",3);
+
+   //merge cells
+   QAxObject *range_cells = sheet->querySubObject("Range(const QVariant&)", QVariant("A1:H1"));
+   range_cells->setProperty("HorizontalAlignment", -4108);  // allign text to the center
+   range_cells->setProperty("VerticalAlignment", -4108);  // allign text to the center
+   range_cells->setProperty("WrapText", true);
+   range_cells->setProperty("Orientation", 0);
+   range_cells->setProperty("AddIndent", false);
+   range_cells->setProperty("IndentLevel", 0);
+   range_cells->setProperty("ShrinkToFit", false);
+   range_cells->setProperty("ReadingOrder", 0xFFFFEC76);
+   range_cells->setProperty("MergeCells", true);
+
+
+
+//Set parameter for xls - MS-2003 format
+lstParam.append(xlsFilePath); // set file name
+lstParam.append(-4143);
+lstParam.append("");
+lstParam.append("");
+lstParam.append(false);
+lstParam.append(false);
+lstParam.append(1);
+lstParam.append(2);
+lstParam.append(false);
+lstParam.append(false);
+lstParam.append(false);
+lstParam.append(false);
+
+//Save new xls
+workbook->dynamicCall("SaveAs(QVariant, QVariant, QVariant, QVariant, QVariant, QVariant, QVariant, QVariant, QVariant, QVariant, QVariant, QVariant)", lstParam);	
+
+
+
+excel.setProperty("DisplayAlerts", 1);
+excel.dynamicCall("Quit (void)");
