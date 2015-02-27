@@ -19,12 +19,15 @@ body, html {
 .input input {
     display: block;
 }
+
+/*---*/
 .imgtxt {
     margin: 0;
     font-family:arial;
     color:#DDDFED;
     font-size:15px;
 }
+/*---*/
 .imgtxt_center {
     margin: 0;
     font-family:arial;
@@ -35,6 +38,7 @@ body, html {
     float:right;
 }
 
+/*---*/
 .imgtxt_scrollmenu {
     margin: 0;
     font-family:arial;
@@ -45,6 +49,7 @@ body, html {
     float:right;
 }
 
+/*---*/
 .hr_scrollable {
     border-color:#DDDFED;
     background-color:#DDDFED;
@@ -54,6 +59,7 @@ body, html {
     height: 2px;
 }
 
+/*---*/
 .image_scrollable {
     width:80px;
     height:48px;
@@ -73,12 +79,13 @@ body, html {
 }
 */
 
+/*---*/
 .graph_sensor {
     width:800px;
     height:200px;
 }
 
-
+/*---*/
 .imgtxt_Heading_graph {
     padding-left: 25px;
 }
@@ -92,15 +99,19 @@ body, html {
   background-color:#DDDFED;
 }
 
+/*---*/
 .spantxt_center {
     color:#DDDFED;
+    font-size:15px;
 }
 
+/*---*/
 .spantxt_button_center {
     color:#DDDFED;
     padding-left:20px;
 }
 
+/*---*/
 input.image_menu_center_first {
     width : 80px;
     height : 48px;
@@ -108,6 +119,7 @@ input.image_menu_center_first {
     padding-left: 10px;
 }
 
+/*---*/
 input.image_menu_center_first_sec {
     width : 80px;
     height : 48px;
@@ -115,6 +127,7 @@ input.image_menu_center_first_sec {
     padding-left: 20px;
 }
 
+/*---*/
 input.image_menu_center_second {
     width : 80px;
     height : 48px;
@@ -125,6 +138,7 @@ input.image_menu_center_second {
     padding-bottom: 6px;
 }
 
+/*---*/
 input.image_menu_center_second_sec {
     width : 80px;
     height : 48px;
@@ -141,6 +155,8 @@ input.image_menu_center_second_sec {
     background-color:#888686;
     white-space:nowrap;
 }
+
+/*---*/
 div.scrollable {
     margin: 0;
     padding: 0;

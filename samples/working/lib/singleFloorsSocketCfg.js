@@ -160,44 +160,8 @@ var Home_Single_Floor_Sensor_Device_Array = [
     decimals: 1 , formatstr: '{0} Degrees {1}' , guid: '00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:03' , fncallback: undefined , userName: 'admin', password: 'd50c3180375c27927c22e42a379c3f67', domain: 'mydomain.com', VariableName: 'HomeFirstDrawingRoomHeater_VAR'
   }
 ];
-var Factory_Single_Floor_Device_Array = [
-  { floorName: 'Ground', roomName: 'PackingZone', deviceName: 'Generator', 
-    url: 'ws://192.168.65.153:8089', canvasName: 'FactoryGroundPackingZoneGenerator_Image_ID', bLocal: 'false', btnType: 94 , bNoState: 'true', userName: 'admin', password: 'd50c3180375c27927c22e42a379c3f67', domain: 'mydomain.com', VariableName: 'FactoryGroundPackingZoneGenerator_VAR' , 
-    onTxEventvscpclass: 30 , onTxEventvscptype: 5 , onTxEventdata: undefined , onTxEventguid: undefined , onTxEventindex: 0 , onTxEventzone: 0 , onTxEventsubzone: 40 , 
-    offTxEventvscpclass: 30 , offTxEventvscptype: 6 , offTxEventdata: undefined , offTxEventguid: undefined , offTxEventindex: 0 , offTxEventzone: 0 , offTxEventsubzone: 40 , 
-    onRxEventvscpclass: 20 , onRxEventvscptype: 3 , onRxEventdata: undefined , onRxEventguid: undefined , onRxEventindex: 0 , onRxEventzone: 0 , onRxEventsubzone: 40 , 
-    offRxEventvscpclass: 20 , offRxEventvscptype: 4 , offRxEventdata: undefined , offRxEventguid: undefined , offRxEventindex: 0 , offRxEventzone: 0 , offRxEventsubzone: 40
-  }
-];
-
-
-
-
-
-
-var Factory_Single_Floor_Variable_Slider_Device_Array = [
-];
-
-
-
-
-
-var Factory_Single_Floor_Variable_Switch_Device_Array = [
-];
-
-
-
-
-
-var Factory_Single_Floor_Sensor_Device_Array = [
-  { floorName: 'Ground', roomName: 'ProductionZone', deviceName: 'Boiler Temperature', 
-    url: 'ws://192.168.65.153:8089', id: 'FactoryGroundProductionZoneBoilerTemperature_Remote_Txt_ID', graphId: 'FactoryGroundProductionZoneBoilerTemperature_chart_div', graphUnitId: 'FactoryGroundProductionZoneBoilerTemperature_chart_unit_div', graphType: 'line', vscpclass: 10 , vscptype: 6 , codingIndex: 0 , 
-    sensorIndex: undefined , sensorZone: undefined , sensorSubzone: undefined , 
-    decimals: 1 , formatstr: '{0} Degrees {1}' , guid: '00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:01' , fncallback: undefined , userName: 'admin', password: 'd50c3180375c27927c22e42a379c3f67', domain: 'mydomain.com', VariableName: 'FactoryGroundProductionZoneBoilerTemperature_VAR'
-  }
-];
 var Single_Floor_Device_Array = [
-Home_Single_Floor_Device_Array,Factory_Single_Floor_Device_Array
+Home_Single_Floor_Device_Array
 ];
 
 
@@ -207,7 +171,7 @@ Home_Single_Floor_Device_Array,Factory_Single_Floor_Device_Array
 
 
 var Single_Floor_Variable_Slider_Device_Array = [
-Home_Single_Floor_Variable_Slider_Device_Array,Factory_Single_Floor_Variable_Slider_Device_Array
+Home_Single_Floor_Variable_Slider_Device_Array
 ];
 
 
@@ -217,7 +181,7 @@ Home_Single_Floor_Variable_Slider_Device_Array,Factory_Single_Floor_Variable_Sli
 
 
 var Single_Floor_Variable_Switch_Device_Array = [
-Home_Single_Floor_Variable_Switch_Device_Array,Factory_Single_Floor_Variable_Switch_Device_Array
+Home_Single_Floor_Variable_Switch_Device_Array
 ];
 
 
@@ -227,6 +191,6 @@ Home_Single_Floor_Variable_Switch_Device_Array,Factory_Single_Floor_Variable_Swi
 
 
 var Single_Floor_Sensor_Device_Array = [
-Home_Single_Floor_Sensor_Device_Array,Factory_Single_Floor_Sensor_Device_Array
+Home_Single_Floor_Sensor_Device_Array
 ];
 

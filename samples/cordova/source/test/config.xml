@@ -15,11 +15,17 @@
        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
     </feature>
 
+
     <platform name="android">
-          <icon src="res/drawable-ldpi/screen.png" density="ldpi" />
-          <icon src="res/drawable-mdpi/screen.png" density="mdpi" />
-          <icon src="res/drawable-hdpi/screen.png" density="hdpi" />
-          <icon src="res/drawable-xhdpi/screen.png" density="xhdpi" />
+        <!-- you can use any density that exists in the Android project -->
+        <splash src="res/drawable-xhdpi/screen.png" density="land-hdpi"/>
+        <splash src="res/drawable-xhdpi/screen.png" density="land-ldpi"/>
+        <splash src="res/drawable-xhdpi/screen.png" density="land-mdpi"/>
+        <splash src="res/drawable-xhdpi/screen.png" density="land-xhdpi"/>
+        <splash src="res/drawable-xhdpi/screen.png" density="port-hdpi"/>
+        <splash src="res/drawable-xhdpi/screen.png" density="port-ldpi"/>
+        <splash src="res/drawable-xhdpi/screen.png" density="port-mdpi"/>
+        <splash src="res/drawable-xhdpi/screen.png" density="port-xhdpi"/>
     </platform>
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="10000" />

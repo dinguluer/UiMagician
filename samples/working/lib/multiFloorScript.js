@@ -739,6 +739,10 @@ function show_Central_widget(parameter,parameter_image_array, parameter_image)
 
 
 
+    // hide group & floor text
+    hide_group_floor_txt_class();
+
+
 }
 
 function GetElementInsideContainer(containerID, childID) {

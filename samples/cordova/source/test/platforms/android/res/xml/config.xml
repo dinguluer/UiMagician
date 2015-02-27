@@ -7,10 +7,14 @@
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
     </feature>
-    <icon density="ldpi" src="res/drawable-ldpi/screen.png" />
-    <icon density="mdpi" src="res/drawable-mdpi/screen.png" />
-    <icon density="hdpi" src="res/drawable-hdpi/screen.png" />
-    <icon density="xhdpi" src="res/drawable-xhdpi/screen.png" />
+    <splash density="land-hdpi" src="res/drawable-xhdpi/screen.png" />
+    <splash density="land-ldpi" src="res/drawable-xhdpi/screen.png" />
+    <splash density="land-mdpi" src="res/drawable-xhdpi/screen.png" />
+    <splash density="land-xhdpi" src="res/drawable-xhdpi/screen.png" />
+    <splash density="port-hdpi" src="res/drawable-xhdpi/screen.png" />
+    <splash density="port-ldpi" src="res/drawable-xhdpi/screen.png" />
+    <splash density="port-mdpi" src="res/drawable-xhdpi/screen.png" />
+    <splash density="port-xhdpi" src="res/drawable-xhdpi/screen.png" />
     <name>test</name>
     <description>
         A sample Demo UiMagician application that responds to the button pressed.

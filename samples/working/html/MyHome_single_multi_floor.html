@@ -1,35 +1,26 @@
 <html style="height: 100%;">
  <head>
- <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
- <meta charset="utf-8" />
- <meta name="format-detection" content="telephone=no" />
- <meta name="msapplication-tap-highlight" content="no" />
- <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
- <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"/>
   <title>VSCP My House Ui ..</title>
-  <link rel="stylesheet" type="text/css" href="css/multiFloorStyle.css"/>
-  <link rel="stylesheet" type="text/css" href="css/info.css"/>
-  <link rel="stylesheet" type="text/css" href="css/epoch.min.css"/>
-  <link rel="stylesheet" type="text/css" href="css/side_menu.css"/>
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/d3.min.js"></script>
-  <script type="text/javascript" src="js/epoch.min.js"></script>
-  <script type="text/javascript" src="js/wz_jsgraphics.js"></script>
-  <script type="text/javascript" src="js/md5.js"></script>
-  <script type="text/javascript" src="js/infoInit.js"></script>
-  <script type="text/javascript" src="js/side_menu_house.js"></script>
-  <script type="text/javascript" src="js/vscpwslib.js"></script>
-  <script type="text/javascript" src="js/vscpStateButton_mod.js"></script>
-  <script type="text/javascript" src="js/vscpSimpleText_mod.js"></script>
-  <script type="text/javascript" src="js/vscpslider.js"></script>
-  <script type="text/javascript" src="js/vscpVariableButton.js"></script>
-  <script type="text/javascript" src="js/multiFloorsSocketCfg.js"></script>
-  <script type="text/javascript" src="js/multiFloorCfg.js"></script>
-  <script type="text/javascript" src="js/multiFloorScript.js"></script>
-  <script type="text/javascript" src="js/fastclick.js"></script>
-
-  <script type="text/javascript" src="cordova.js"></script>
-
+  <link rel="stylesheet" type="text/css" href="../css/singleFloorStyle.css"/>
+  <link rel="stylesheet" type="text/css" href="../css/info.css"/>
+  <link rel="stylesheet" type="text/css" href="../css/epoch.min.css"/>
+  <link rel="stylesheet" type="text/css" href="../css/side_menu.css"/>
+  <script type="text/javascript" src="../lib/jquery.min.js"></script>
+  <script type="text/javascript" src="../lib/d3.min.js"></script>
+  <script type="text/javascript" src="../lib/epoch.min.js"></script>
+  <script type="text/javascript" src="../lib/wz_jsgraphics.js"></script>
+  <script type="text/javascript" src="../lib/md5.js"></script>
+  <script type="text/javascript" src="../lib/infoInit.js"></script>
+  <script type="text/javascript" src="../lib/side_menu_house_single.js"></script>
+  <script type="text/javascript" src="../lib/vscpwslib.js"></script>
+  <script type="text/javascript" src="../lib/vscpStateButton_mod.js"></script>
+  <script type="text/javascript" src="../lib/vscpSimpleText_mod.js"></script>
+  <script type="text/javascript" src="../lib/vscpslider.js"></script>
+  <script type="text/javascript" src="../lib/vscpVariableButton.js"></script>
+  <script type="text/javascript" src="../lib/singleFloorsSocketCfg.js"></script>
+  <script type="text/javascript" src="../lib/singleFloorCfg.js"></script>
+  <script type="text/javascript" src="../lib/singleFloorScript.js"></script>
  </head>
  <body onload="doc_onload(1)">
   <div class="div_layer">
@@ -40,383 +31,249 @@
   </div>
   <div class="scrollable" id="images">
    <div class="input" id="house_menu">
-    <input class="image_scrollable" type="image" id="house_menu_Image" onclick="house_onclick()" src="js/widgets/menu/show-menu-icon.png"/>
+    <input class="image_scrollable" type="image" id="house_menu_Image" onclick="house_onclick()" src="../lib/widgets/menu/show-menu-icon.png"/>
     <p class="imgtxt" id="house_menu_txt">Houses</p>
     <input class="hr_scrollable" id="house_menu_Hr"/>
    </div>
-   <div class="Home_group_class input" id="Home_First_Floor">
-    <input class="image_scrollable" type="image" id="Home_First_Floor_Image" onclick="show_area('Home_First_Floor_Area',div_class_scrollable_Image,'Home_First_Floor_Image',div_class_scrollable_Hr,'Home_First_Floor_Hr','Home_First_Floor_Area_Bedroom',div_class_Home_First_Floor_Area_Images,'Home_First_Floor_Area_Bedroom_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt" id="Home_First_Floor_txt">First</p>
-    <input class="hr_scrollable" id="Home_First_Floor_Hr"/>
+   <div class="Home_group_class input" id="Bedroom">
+    <input class="image_scrollable" type="image" id="Home_Bedroom_Image" onclick="show_area_single(div_class_scrollable_Image,'Home_Bedroom_Image',div_class_scrollable_Hr,'Home_Bedroom_Hr','Home_First_Floor_Area_Bedroom')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Home_Bedroom_txt">Bedroom</p>
+    <input class="hr_scrollable" id="Home_Bedroom_Hr"/>
    </div>
-   <div class="Home_group_class input" id="Home_Two_Floor">
-    <input class="image_scrollable" type="image" id="Home_Two_Floor_Image" onclick="show_area('Home_Two_Floor_Area',div_class_scrollable_Image,'Home_Two_Floor_Image',div_class_scrollable_Hr,'Home_Two_Floor_Hr','Home_Two_Floor_Area_DrawingRoom',div_class_Home_Two_Floor_Area_Images,'Home_Two_Floor_Area_DrawingRoom_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt" id="Home_Two_Floor_txt">Two</p>
-    <input class="hr_scrollable" id="Home_Two_Floor_Hr"/>
+   <div class="Home_group_class input" id="Balcony">
+    <input class="image_scrollable" type="image" id="Home_Balcony_Image" onclick="show_area_single(div_class_scrollable_Image,'Home_Balcony_Image',div_class_scrollable_Hr,'Home_Balcony_Hr','Home_First_Floor_Area_Balcony')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Home_Balcony_txt">Balcony</p>
+    <input class="hr_scrollable" id="Home_Balcony_Hr"/>
    </div>
-   <div class="Home_group_class input" id="Home_All_Devices">
-    <input class="image_scrollable" type="image" id="Home_All_Devices_Image" onclick="show_group('Home_All_Devices_group','Home_All_Devices_Image','Home_All_Devices_Hr')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt" id="Home_All_Devices_txt">Groups</p>
-    <input class="hr_scrollable" id="Home_All_Devices_Hr"/>
+   <div class="Home_group_class input" id="Bedroom1">
+    <input class="image_scrollable" type="image" id="Home_Bedroom1_Image" onclick="show_area_single(div_class_scrollable_Image,'Home_Bedroom1_Image',div_class_scrollable_Hr,'Home_Bedroom1_Hr','Home_First_Floor_Area_Bedroom1')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Home_Bedroom1_txt">Bedroom1</p>
+    <input class="hr_scrollable" id="Home_Bedroom1_Hr"/>
+   </div>
+   <div class="Home_group_class input" id="Kitchen">
+    <input class="image_scrollable" type="image" id="Home_Kitchen_Image" onclick="show_area_single(div_class_scrollable_Image,'Home_Kitchen_Image',div_class_scrollable_Hr,'Home_Kitchen_Hr','Home_First_Floor_Area_Kitchen')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Home_Kitchen_txt">Kitchen</p>
+    <input class="hr_scrollable" id="Home_Kitchen_Hr"/>
+   </div>
+   <div class="Home_group_class input" id="DrawingRoom">
+    <input class="image_scrollable" type="image" id="Home_DrawingRoom_Image" onclick="show_area_single(div_class_scrollable_Image,'Home_DrawingRoom_Image',div_class_scrollable_Hr,'Home_DrawingRoom_Hr','Home_First_Floor_Area_DrawingRoom')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Home_DrawingRoom_txt">DrawingRoom</p>
+    <input class="hr_scrollable" id="Home_DrawingRoom_Hr"/>
+   </div>
+   <div class="Home_group_class input" id="Toilet">
+    <input class="image_scrollable" type="image" id="Home_Toilet_Image" onclick="show_area_single(div_class_scrollable_Image,'Home_Toilet_Image',div_class_scrollable_Hr,'Home_Toilet_Hr','Home_First_Floor_Area_Toilet')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Home_Toilet_txt">Toilet</p>
+    <input class="hr_scrollable" id="Home_Toilet_Hr"/>
+   </div>
+   <div class="Home_group_class input" id="Balcony1">
+    <input class="image_scrollable" type="image" id="Home_Balcony1_Image" onclick="show_area_single(div_class_scrollable_Image,'Home_Balcony1_Image',div_class_scrollable_Hr,'Home_Balcony1_Hr','Home_First_Floor_Area_Balcony1')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Home_Balcony1_txt">Balcony1</p>
+    <input class="hr_scrollable" id="Home_Balcony1_Hr"/>
+   </div>
+   <div class="Home_group_class input" id="Loby">
+    <input class="image_scrollable" type="image" id="Home_Loby_Image" onclick="show_area_single(div_class_scrollable_Image,'Home_Loby_Image',div_class_scrollable_Hr,'Home_Loby_Hr','Home_First_Floor_Area_Loby')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Home_Loby_txt">Loby</p>
+    <input class="hr_scrollable" id="Home_Loby_Hr"/>
+   </div>
+   <div class="Home_group_class input" id="group_Light_Button_Home">
+    <input class="image_scrollable" type="image" id="group_Light_Image_Home" onclick="show_area_group(div_class_scrollable_Image,'group_Light_Image_Home',div_class_scrollable_Hr,'group_Light_Hr_Home','group_Lights_Home','group_Light_Txt_Home')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="group_Light_Txt_Id_Home">Lights</p>
+    <input class="hr_scrollable" id="group_Light_Hr_Home"/>
+   </div>
+   <div class="Home_group_class input" id="group_Accessories_Button_Home">
+    <input class="image_scrollable" type="image" id="group_Accessories_Image_Home" onclick="show_area_group(div_class_scrollable_Image,'group_Accessories_Image_Home',div_class_scrollable_Hr,'group_Accessories_Hr_Home','group_Accessories_Home','group_Accessories_Txt_Home')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="group_Accessories_Txt_Id_Home">Accessories</p>
+    <input class="hr_scrollable" id="group_Accessories_Hr_Home"/>
+   </div>
+   <div class="Home_group_class input" id="group_Sensors_Button_Home">
+    <input class="image_scrollable" type="image" id="group_Sensors_Image_Home" onclick="show_area_group(div_class_scrollable_Image,'group_Sensors_Image_Home',div_class_scrollable_Hr,'group_Sensors_Hr_Home','group_Sensors_Home','group_Sensors_Txt_Home')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="group_Sensors_Txt_Id_Home">Sensors</p>
+    <input class="hr_scrollable" id="group_Sensors_Hr_Home"/>
+   </div>
+   <div class="Home_group_class input" id="group_sensors_Graph_Home">
+    <input class="image_scrollable" type="image" id="group_sensor_graph_Image_Home" onclick="show_area_single(div_class_scrollable_Image,'group_sensor_graph_Image_Home',div_class_scrollable_Hr,'group_sensor_graph_Hr_Home','group_sensor_graph_Home')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="group_sensors_Graph_txt_Home">Sensors Graph</p>
+    <input class="hr_scrollable" id="group_sensor_graph_Hr_Home"/>
    </div>
    <div class="Home_group_class input" id="Info_Home">
-    <input class="image_scrollable" type="image" id="Info_Home_Image" onclick="show_info(div_class_scrollable_Image,div_class_scrollable_Hr,'Info_Home_Hr','info_text_Home','Home',0)" src="js/widgets/info/info.jpg"/>
+    <input class="image_scrollable" type="image" id="Info_Home_Image" onclick="show_info(div_class_scrollable_Image,div_class_scrollable_Hr,'Info_Home_Hr','info_text_Home','Home',0)" src="../lib/widgets/info/info.jpg"/>
     <p class="imgtxt" id="Info_Home_txt">info</p>
     <input class="hr_scrollable" id="Info_Home_Hr"/>
    </div>
-   <div class="Factory_group_class input" id="Factory_Ground_Floor">
-    <input class="image_scrollable" type="image" id="Factory_Ground_Floor_Image" onclick="show_area('Factory_Ground_Floor_Area',div_class_scrollable_Image,'Factory_Ground_Floor_Image',div_class_scrollable_Hr,'Factory_Ground_Floor_Hr','Factory_Ground_Floor_Area_PackingZone',div_class_Factory_Ground_Floor_Area_Images,'Factory_Ground_Floor_Area_PackingZone_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt" id="Factory_Ground_Floor_txt">Ground</p>
-    <input class="hr_scrollable" id="Factory_Ground_Floor_Hr"/>
+   <div class="Factory_group_class input" id="PackingZone">
+    <input class="image_scrollable" type="image" id="Factory_PackingZone_Image" onclick="show_area_single(div_class_scrollable_Image,'Factory_PackingZone_Image',div_class_scrollable_Hr,'Factory_PackingZone_Hr','Factory_Ground_Floor_Area_PackingZone')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Factory_PackingZone_txt">PackingZone</p>
+    <input class="hr_scrollable" id="Factory_PackingZone_Hr"/>
    </div>
-   <div class="Factory_group_class input" id="Factory_First_Floor">
-    <input class="image_scrollable" type="image" id="Factory_First_Floor_Image" onclick="show_area('Factory_First_Floor_Area',div_class_scrollable_Image,'Factory_First_Floor_Image',div_class_scrollable_Hr,'Factory_First_Floor_Hr','Factory_First_Floor_Area_MeetingRoom',div_class_Factory_First_Floor_Area_Images,'Factory_First_Floor_Area_MeetingRoom_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt" id="Factory_First_Floor_txt">First</p>
-    <input class="hr_scrollable" id="Factory_First_Floor_Hr"/>
+   <div class="Factory_group_class input" id="ProductionZone">
+    <input class="image_scrollable" type="image" id="Factory_ProductionZone_Image" onclick="show_area_single(div_class_scrollable_Image,'Factory_ProductionZone_Image',div_class_scrollable_Hr,'Factory_ProductionZone_Hr','Factory_Ground_Floor_Area_ProductionZone')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="Factory_ProductionZone_txt">ProductionZone</p>
+    <input class="hr_scrollable" id="Factory_ProductionZone_Hr"/>
    </div>
-   <div class="Factory_group_class input" id="Factory_All_Devices">
-    <input class="image_scrollable" type="image" id="Factory_All_Devices_Image" onclick="show_group('Factory_All_Devices_group','Factory_All_Devices_Image','Factory_All_Devices_Hr')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt" id="Factory_All_Devices_txt">Groups</p>
-    <input class="hr_scrollable" id="Factory_All_Devices_Hr"/>
+   <div class="Factory_group_class input" id="group_Accessories_Button_Factory">
+    <input class="image_scrollable" type="image" id="group_Accessories_Image_Factory" onclick="show_area_group(div_class_scrollable_Image,'group_Accessories_Image_Factory',div_class_scrollable_Hr,'group_Accessories_Hr_Factory','group_Accessories_Factory','group_Accessories_Txt_Factory')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="group_Accessories_Txt_Id_Factory">Accessories</p>
+    <input class="hr_scrollable" id="group_Accessories_Hr_Factory"/>
+   </div>
+   <div class="Factory_group_class input" id="group_Sensors_Button_Factory">
+    <input class="image_scrollable" type="image" id="group_Sensors_Image_Factory" onclick="show_area_group(div_class_scrollable_Image,'group_Sensors_Image_Factory',div_class_scrollable_Hr,'group_Sensors_Hr_Factory','group_Sensors_Factory','group_Sensors_Txt_Factory')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="group_Sensors_Txt_Id_Factory">Sensors</p>
+    <input class="hr_scrollable" id="group_Sensors_Hr_Factory"/>
+   </div>
+   <div class="Factory_group_class input" id="group_sensors_Graph_Factory">
+    <input class="image_scrollable" type="image" id="group_sensor_graph_Image_Factory" onclick="show_area_single(div_class_scrollable_Image,'group_sensor_graph_Image_Factory',div_class_scrollable_Hr,'group_sensor_graph_Hr_Factory','group_sensor_graph_Factory')" src="../lib/widgets/room/room_unselected.png"/>
+    <p class="imgtxt" id="group_sensors_Graph_txt_Factory">Sensors Graph</p>
+    <input class="hr_scrollable" id="group_sensor_graph_Hr_Factory"/>
    </div>
    <div class="Factory_group_class input" id="Info_Factory">
-    <input class="image_scrollable" type="image" id="Info_Factory_Image" onclick="show_info(div_class_scrollable_Image,div_class_scrollable_Hr,'Info_Factory_Hr','info_text_Factory','Factory',1)" src="js/widgets/info/info.jpg"/>
+    <input class="image_scrollable" type="image" id="Info_Factory_Image" onclick="show_info(div_class_scrollable_Image,div_class_scrollable_Hr,'Info_Factory_Hr','info_text_Factory','Factory',1)" src="../lib/widgets/info/info.jpg"/>
     <p class="imgtxt" id="Info_Factory_txt">info</p>
     <input class="hr_scrollable" id="Info_Factory_Hr"/>
    </div>
   </div>
-  <div class="scrollableMenu" id="Menu">
-   <div class="Home_group_class Home_First_Floor_Area">
-    <input class="image_menu_center_first" type="image" id="Home_First_Floor_Area_Bedroom_Image" onclick="show_Central_widget('Home_First_Floor_Area_Bedroom',div_class_Home_First_Floor_Area_Images,'Home_First_Floor_Area_Bedroom_Image')" src="js/widgets/room/room_selected.jpg"/>
-    <p class="imgtxt_scrollmenu" id="Home_First_Floor_Area_Bedroom_txt">Bedroom</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_First_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Home_First_Floor_Area_Balcony_Image" onclick="show_Central_widget('Home_First_Floor_Area_Balcony',div_class_Home_First_Floor_Area_Images,'Home_First_Floor_Area_Balcony_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Home_First_Floor_Area_Balcony_txt">Balcony</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_First_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Home_First_Floor_Area_Bedroom1_Image" onclick="show_Central_widget('Home_First_Floor_Area_Bedroom1',div_class_Home_First_Floor_Area_Images,'Home_First_Floor_Area_Bedroom1_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Home_First_Floor_Area_Bedroom1_txt">Bedroom1</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_First_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Home_First_Floor_Area_Kitchen_Image" onclick="show_Central_widget('Home_First_Floor_Area_Kitchen',div_class_Home_First_Floor_Area_Images,'Home_First_Floor_Area_Kitchen_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Home_First_Floor_Area_Kitchen_txt">Kitchen</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_First_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Home_First_Floor_Area_Lights_Group_Image" onclick="show_Floor_Group('group_Lights_Home_Floor_First',div_class_Home_First_Floor_Area_Images,'Home_First_Floor_Area_Lights_Group_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Home_First_Floor_Area_Lights_Group_txt">Lights</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_First_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Home_First_Floor_Area_Accessories_Group_Image" onclick="show_Floor_Group('group_Accessories_Home_Floor_First',div_class_Home_First_Floor_Area_Images,'Home_First_Floor_Area_Accessories_Group_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Home_First_Floor_Area_Accessories_Group_txt">Accessories</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_First_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Home_First_Floor_Area_Sensors_Group_Image" onclick="show_Floor_Group('group_Sensors_Home_Floor_First',div_class_Home_First_Floor_Area_Images,'Home_First_Floor_Area_Sensors_Group_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Home_First_Floor_Area_Sensors_Group_txt">Sensors</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_First_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Home_First_Floor_Area_Sensors_Group_Graph_Image" onclick="show_Floor_Group('group_Sensors_Graph_Home_Floor_First',div_class_Home_First_Floor_Area_Images,'Home_First_Floor_Area_Sensors_Group_Graph_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Home_First_Floor_Area_Sensors_Group_Graph_txt">Sensors Graph</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_Two_Floor_Area">
-    <input class="image_menu_center_first" type="image" id="Home_Two_Floor_Area_DrawingRoom_Image" onclick="show_Central_widget('Home_Two_Floor_Area_DrawingRoom',div_class_Home_Two_Floor_Area_Images,'Home_Two_Floor_Area_DrawingRoom_Image')" src="js/widgets/room/room_selected.jpg"/>
-    <p class="imgtxt_scrollmenu" id="Home_Two_Floor_Area_DrawingRoom_txt">DrawingRoom</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_Two_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Home_Two_Floor_Area_Toilet_Image" onclick="show_Central_widget('Home_Two_Floor_Area_Toilet',div_class_Home_Two_Floor_Area_Images,'Home_Two_Floor_Area_Toilet_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Home_Two_Floor_Area_Toilet_txt">Toilet</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_Two_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Home_Two_Floor_Area_Balcony1_Image" onclick="show_Central_widget('Home_Two_Floor_Area_Balcony1',div_class_Home_Two_Floor_Area_Images,'Home_Two_Floor_Area_Balcony1_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Home_Two_Floor_Area_Balcony1_txt">Balcony1</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_Two_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Home_Two_Floor_Area_Loby_Image" onclick="show_Central_widget('Home_Two_Floor_Area_Loby',div_class_Home_Two_Floor_Area_Images,'Home_Two_Floor_Area_Loby_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Home_Two_Floor_Area_Loby_txt">Loby</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_Two_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Home_Two_Floor_Area_Lights_Group_Image" onclick="show_Floor_Group('group_Lights_Home_Floor_Two',div_class_Home_Two_Floor_Area_Images,'Home_Two_Floor_Area_Lights_Group_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Home_Two_Floor_Area_Lights_Group_txt">Lights</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_Two_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Home_Two_Floor_Area_Accessories_Group_Image" onclick="show_Floor_Group('group_Accessories_Home_Floor_Two',div_class_Home_Two_Floor_Area_Images,'Home_Two_Floor_Area_Accessories_Group_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Home_Two_Floor_Area_Accessories_Group_txt">Accessories</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_Two_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Home_Two_Floor_Area_Sensors_Group_Image" onclick="show_Floor_Group('group_Sensors_Home_Floor_Two',div_class_Home_Two_Floor_Area_Images,'Home_Two_Floor_Area_Sensors_Group_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Home_Two_Floor_Area_Sensors_Group_txt">Sensors</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_Two_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Home_Two_Floor_Area_Sensors_Group_Graph_Image" onclick="show_Floor_Group('group_Sensors_Graph_Home_Floor_Two',div_class_Home_Two_Floor_Area_Images,'Home_Two_Floor_Area_Sensors_Group_Graph_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Home_Two_Floor_Area_Sensors_Group_Graph_txt">Sensors Graph</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_All_Devices_group">
-    <input class="image_menu_center_first" type="image" id="group_Lights_Image" onclick="show_area_group('group_Lights_Home','group_Lights_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="group_Lights_Txt_Id">Lights</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_All_Devices_group">
-    <input class="image_menu_center_second" type="image" id="group_Accessories_Image" onclick="show_area_group('group_Accessories_Home','group_Accessories_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="group_Accessories_Txt_Id">Accessories</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_All_Devices_group">
-    <input class="image_menu_center_second" type="image" id="group_Sensors_Image" onclick="show_area_group('group_Sensors_Home','group_Sensors_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="group_Sensors_Txt_Id">Sensors</p>
-    <hr/>
-   </div>
-   <div class="Home_group_class Home_All_Devices_group">
-    <input class="image_menu_center_second" type="image" id="group_Sensors_Graph_Image" onclick="show_area_group('group_sensor_graph_Home','group_Sensors_Graph_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="group_Sensors_Graph_Txt_Id">Sensors Graph</p>
-    <hr/>
-   </div>
-   <div class="Factory_group_class Factory_Ground_Floor_Area">
-    <input class="image_menu_center_first" type="image" id="Factory_Ground_Floor_Area_PackingZone_Image" onclick="show_Central_widget('Factory_Ground_Floor_Area_PackingZone',div_class_Factory_Ground_Floor_Area_Images,'Factory_Ground_Floor_Area_PackingZone_Image')" src="js/widgets/room/room_selected.jpg"/>
-    <p class="imgtxt_scrollmenu" id="Factory_Ground_Floor_Area_PackingZone_txt">PackingZone</p>
-    <hr/>
-   </div>
-   <div class="Factory_group_class Factory_Ground_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Factory_Ground_Floor_Area_ProductionZone_Image" onclick="show_Central_widget('Factory_Ground_Floor_Area_ProductionZone',div_class_Factory_Ground_Floor_Area_Images,'Factory_Ground_Floor_Area_ProductionZone_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Factory_Ground_Floor_Area_ProductionZone_txt">ProductionZone</p>
-    <hr/>
-   </div>
-   <div class="Factory_group_class Factory_Ground_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Factory_Ground_Floor_Area_Accessories_Group_Image" onclick="show_Floor_Group('group_Accessories_Factory_Floor_Ground',div_class_Factory_Ground_Floor_Area_Images,'Factory_Ground_Floor_Area_Accessories_Group_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Factory_Ground_Floor_Area_Accessories_Group_txt">Accessories</p>
-    <hr/>
-   </div>
-   <div class="Factory_group_class Factory_Ground_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Factory_Ground_Floor_Area_Sensors_Group_Image" onclick="show_Floor_Group('group_Sensors_Factory_Floor_Ground',div_class_Factory_Ground_Floor_Area_Images,'Factory_Ground_Floor_Area_Sensors_Group_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Factory_Ground_Floor_Area_Sensors_Group_txt">Sensors</p>
-    <hr/>
-   </div>
-   <div class="Factory_group_class Factory_Ground_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Factory_Ground_Floor_Area_Sensors_Group_Graph_Image" onclick="show_Floor_Group('group_Sensors_Graph_Factory_Floor_Ground',div_class_Factory_Ground_Floor_Area_Images,'Factory_Ground_Floor_Area_Sensors_Group_Graph_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Factory_Ground_Floor_Area_Sensors_Group_Graph_txt">Sensors Graph</p>
-    <hr/>
-   </div>
-   <div class="Factory_group_class Factory_First_Floor_Area">
-    <input class="image_menu_center_first" type="image" id="Factory_First_Floor_Area_MeetingRoom_Image" onclick="show_Central_widget('Factory_First_Floor_Area_MeetingRoom',div_class_Factory_First_Floor_Area_Images,'Factory_First_Floor_Area_MeetingRoom_Image')" src="js/widgets/room/room_selected.jpg"/>
-    <p class="imgtxt_scrollmenu" id="Factory_First_Floor_Area_MeetingRoom_txt">MeetingRoom</p>
-    <hr/>
-   </div>
-   <div class="Factory_group_class Factory_First_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Factory_First_Floor_Area_ControlRoom_Image" onclick="show_Central_widget('Factory_First_Floor_Area_ControlRoom',div_class_Factory_First_Floor_Area_Images,'Factory_First_Floor_Area_ControlRoom_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Factory_First_Floor_Area_ControlRoom_txt">ControlRoom</p>
-    <hr/>
-   </div>
-   <div class="Factory_group_class Factory_First_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Factory_First_Floor_Area_Lights_Group_Image" onclick="show_Floor_Group('group_Lights_Factory_Floor_First',div_class_Factory_First_Floor_Area_Images,'Factory_First_Floor_Area_Lights_Group_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Factory_First_Floor_Area_Lights_Group_txt">Lights</p>
-    <hr/>
-   </div>
-   <div class="Factory_group_class Factory_First_Floor_Area">
-    <input class="image_menu_center_second" type="image" id="Factory_First_Floor_Area_Accessories_Group_Image" onclick="show_Floor_Group('group_Accessories_Factory_Floor_First',div_class_Factory_First_Floor_Area_Images,'Factory_First_Floor_Area_Accessories_Group_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="Factory_First_Floor_Area_Accessories_Group_txt">Accessories</p>
-    <hr/>
-   </div>
-   <div class="Factory_group_class Factory_All_Devices_group">
-    <input class="image_menu_center_first" type="image" id="group_Lights_Image" onclick="show_area_group('group_Lights_Factory','group_Lights_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="group_Lights_Txt_Id">Lights</p>
-    <hr/>
-   </div>
-   <div class="Factory_group_class Factory_All_Devices_group">
-    <input class="image_menu_center_second" type="image" id="group_Accessories_Image" onclick="show_area_group('group_Accessories_Factory','group_Accessories_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="group_Accessories_Txt_Id">Accessories</p>
-    <hr/>
-   </div>
-   <div class="Factory_group_class Factory_All_Devices_group">
-    <input class="image_menu_center_second" type="image" id="group_Sensors_Image" onclick="show_area_group('group_Sensors_Factory','group_Sensors_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="group_Sensors_Txt_Id">Sensors</p>
-    <hr/>
-   </div>
-   <div class="Factory_group_class Factory_All_Devices_group">
-    <input class="image_menu_center_second" type="image" id="group_Sensors_Graph_Image" onclick="show_area_group('group_sensor_graph_Factory','group_Sensors_Graph_Image')" src="js/widgets/room/room_unselected.png"/>
-    <p class="imgtxt_scrollmenu" id="group_Sensors_Graph_Txt_Id">Sensors Graph</p>
-    <hr/>
-   </div>
-  </div>
   <div class="scrollableCenter" id="center">
-   <div class="Home_group_class Home_First_Floor_Area_Bedroom group_Lights_Home group_Lights_Home_Floor_First">
-    <input class="image_menu_center_first" type="image" id="HomeFirstBedroombulb_Image_ID" onclick="toggle_image(this.id)" src="js/widgets/lightbulb/light-bulb-icon.jpg"/>
+   <div class="Home_group_class Home_First_Floor_Area_Bedroom group_Lights_Home">
+    <input class="image_menu_center_first" type="image" id="HomeFirstBedroombulb_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">First :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">Bedroom : </span>bulb</p>
+     <span class="spantxt_center group_Light_Txt_Home" type="text">Bedroom : </span>bulb</p>
     <hr/>
    </div>
-   <div class="Home_group_class Home_First_Floor_Area_Bedroom group_Sensors_Home group_Sensors_Home_Floor_First">
-    <input class="image_menu_center_second" type="image" id="HomeFirstBedroomTemeratureIndicator_Image_ID" src="js/widgets/measurement/temprature.png"/>
+   <div class="Home_group_class Home_First_Floor_Area_Bedroom group_Sensors_Home">
+    <input class="image_menu_center_second" type="image" id="HomeFirstBedroomTemeratureIndicator_Image_ID" src="../lib/widgets/measurement/temprature.png"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">First :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">Bedroom : </span>Temerature Indicator : <span class="spantxt_center" type="text" id="HomeFirstBedroomTemeratureIndicator_Remote_Txt_ID">No Data From Sensor</span>
+     <span class="spantxt_center group_Sensors_Txt_Home" type="text">Bedroom : </span>Temerature Indicator : <span class="spantxt_center" type="text" id="HomeFirstBedroomTemeratureIndicator_Remote_Txt_ID">No Data From Sensor</span>
     </p>
     <hr/>
    </div>
-   <div class="Home_group_class group_sensor_graph group_sensor_graph_Home group_Sensors_Graph_Home_Floor_First">
-    <h3 class="imgtxt_Heading_graph">
-     <span class="group_Txt_Home" type="text">First : </span>Bedroom : Temerature Indicator : <span type="text" id="HomeFirstBedroomTemeratureIndicator_chart_unit_div"> Disconnected</span>
+   <div class="Home_group_class group_sensor_graph group_sensor_graph_Home">
+    <h3 class="imgtxt_Heading_graph">Bedroom : Temerature Indicator : <span type="text" id="HomeFirstBedroomTemeratureIndicator_chart_unit_div"> Disconnected</span>
     </h3>
     <div class="graph_sensor epoch category10" id="HomeFirstBedroomTemeratureIndicator_chart_div"></div>
     <hr/>
    </div>
-   <div class="Home_group_class Home_First_Floor_Area_Bedroom group_Lights_Home group_Lights_Home_Floor_First">
-    <input class="image_menu_center_second" type="image" id="HomeFirstBedroomTubeLight_Image_ID" onclick="toggle_image(this.id)" src="js/widgets/lightbulb/semi-matte-light-bulb-unlit-th.png"/>
+   <div class="Home_group_class Home_First_Floor_Area_Bedroom group_Lights_Home">
+    <input class="image_menu_center_second" type="image" id="HomeFirstBedroomTubeLight_Image_ID" src="../lib/widgets/lightbulb/semi-matte-light-bulb-unlit-th.png"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">First :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">Bedroom : </span>Tube Light.</p>
+     <span class="spantxt_center group_Light_Txt_Home" type="text">Bedroom : </span>Tube Light.</p>
     <hr/>
    </div>
-   <div class="Home_group_class Home_First_Floor_Area_Bedroom group_Lights_Home group_Lights_Home_Floor_First">
-    <input class="image_menu_center_second" type="image" id="HomeFirstBedroomTempleLight_Image_ID" onclick="toggle_image(this.id)" src="js/widgets/lightbulb/light-bulb-icon.jpg"/>
+   <div class="Home_group_class Home_First_Floor_Area_Bedroom group_Lights_Home">
+    <input class="image_menu_center_second" type="image" id="HomeFirstBedroomTempleLight_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">First :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">Bedroom : </span>Temple Light</p>
+     <span class="spantxt_center group_Light_Txt_Home" type="text">Bedroom : </span>Temple Light</p>
     <hr/>
    </div>
-   <div class="Home_group_class Home_First_Floor_Area_Bedroom group_Lights_Home group_Lights_Home_Floor_First">
+   <div class="Home_group_class Home_First_Floor_Area_Bedroom group_Lights_Home">
     <input class="image_menu_center_second" type="range" value="0" id="HomeFirstBedroomDimmer_Image_ID" min="0" step="1" max="100"/>
     <span class="spantxt_center" type="text" id="HomeFirstBedroomDimmer_Local_Txt_ID_Fix">Dimmer Value : </span>
     <span class="spantxt_center" type="text" id="HomeFirstBedroomDimmer_Local_Txt_ID">0</span>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">First :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">Bedroom : </span>Dimmer : <span class="spantxt_center" type="text" id="HomeFirstBedroomDimmer_Remote_Txt_ID"> Disconnected</span>
+     <span class="spantxt_center group_Light_Txt_Home" type="text">Bedroom : </span>Dimmer : <span class="spantxt_center" type="text" id="HomeFirstBedroomDimmer_Remote_Txt_ID"> Disconnected</span>
     </p>
     <hr/>
    </div>
-   <div class="Home_group_class Home_First_Floor_Area_Bedroom group_Lights_Home group_Lights_Home_Floor_First">
-    <input class="image_menu_center_second" type="image" id="HomeFirstBedroomBulbSteppable_Inc_Image_ID" src="js/widgets/button_variable/up.jpg"/>
+   <div class="Home_group_class Home_First_Floor_Area_Bedroom group_Lights_Home">
+    <input class="image_menu_center_second" type="image" id="HomeFirstBedroomBulbSteppable_Inc_Image_ID" src="../lib/widgets/button_variable/up.jpg"/>
     <span class="spantxt_button_center" type="text" id="HomeFirstBedroomBulbSteppable_Local_Txt_ID">0</span>
-    <input class="image_menu_center_second_sec" type="image" id="HomeFirstBedroomBulbSteppable_Dec_Image_ID" src="js/widgets/button_variable/down.jpg"/>
+    <input class="image_menu_center_second_sec" type="image" id="HomeFirstBedroomBulbSteppable_Dec_Image_ID" src="../lib/widgets/button_variable/down.jpg"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">First :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">Bedroom : </span>Bulb Steppable : <span class="spantxt_center" type="text" id="HomeFirstBedroomBulbSteppable_Remote_Txt_ID"> Disconnected</span>
+     <span class="spantxt_center group_Light_Txt_Home" type="text">Bedroom : </span>Bulb Steppable : <span class="spantxt_center" type="text" id="HomeFirstBedroomBulbSteppable_Remote_Txt_ID"> Disconnected</span>
     </p>
     <hr/>
    </div>
-   <div class="Home_group_class Home_First_Floor_Area_Bedroom group_Lights_Home group_Lights_Home_Floor_First">
+   <div class="Home_group_class Home_First_Floor_Area_Bedroom group_Lights_Home">
     <input class="image_menu_center_second" type="range" value="0" id="HomeFirstBedroomDimmerTube_Image_ID" min="-100" step="1" max="100"/>
     <span class="spantxt_center" type="text" id="HomeFirstBedroomDimmerTube_Local_Txt_ID_Fix">Dimmer_Tube Value : </span>
     <span class="spantxt_center" type="text" id="HomeFirstBedroomDimmerTube_Local_Txt_ID">0</span>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">First :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">Bedroom : </span>Dimmer_Tube : <span class="spantxt_center" type="text" id="HomeFirstBedroomDimmerTube_Remote_Txt_ID"> Disconnected</span>
+     <span class="spantxt_center group_Light_Txt_Home" type="text">Bedroom : </span>Dimmer_Tube : <span class="spantxt_center" type="text" id="HomeFirstBedroomDimmerTube_Remote_Txt_ID"> Disconnected</span>
     </p>
     <hr/>
    </div>
-   <div class="Home_group_class Home_First_Floor_Area_Balcony group_Lights_Home group_Lights_Home_Floor_First">
-    <input class="image_menu_center_first" type="image" id="OneFirstBalconyBulb_Image_ID" onclick="toggle_image(this.id)" src="js/widgets/lightbulb/light-bulb-icon.jpg"/>
+   <div class="Home_group_class Home_First_Floor_Area_Balcony group_Lights_Home">
+    <input class="image_menu_center_first" type="image" id="HomeFirstBalconyBulb_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">First :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">Balcony : </span>Bulb</p>
+     <span class="spantxt_center group_Light_Txt_Home" type="text">Balcony : </span>Bulb</p>
     <hr/>
    </div>
-   <div class="Home_group_class Home_First_Floor_Area_Bedroom1 group_Lights_Home group_Lights_Home_Floor_First">
-    <input class="image_menu_center_first" type="image" id="OneFirstBedroom1Bulb_Image_ID" onclick="toggle_image(this.id)" src="js/widgets/lightbulb/light-bulb-icon.jpg"/>
+   <div class="Home_group_class Home_First_Floor_Area_Bedroom1 group_Lights_Home">
+    <input class="image_menu_center_first" type="image" id="HomeFirstBedroom1Bulb_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">First :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">Bedroom1 : </span>Bulb</p>
+     <span class="spantxt_center group_Light_Txt_Home" type="text">Bedroom1 : </span>Bulb</p>
     <hr/>
    </div>
-   <div class="Home_group_class Home_First_Floor_Area_Kitchen group_Accessories_Home group_Accessories_Home_Floor_First">
-    <input class="image_menu_center_first" type="image" id="OneFirstKitchenFan_Image_ID" onclick="toggle_image(this.id)" src="js/widgets/lightbulb/light-bulb-icon.jpg"/>
+   <div class="Home_group_class Home_First_Floor_Area_Kitchen group_Accessories_Home">
+    <input class="image_menu_center_first" type="image" id="HomeFirstKitchenFan_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">First :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">Kitchen : </span>Fan</p>
+     <span class="spantxt_center group_Accessories_Txt_Home" type="text">Kitchen : </span>Fan</p>
     <hr/>
    </div>
-   <div class="Home_group_class Home_Two_Floor_Area_DrawingRoom group_Accessories_Home group_Accessories_Home_Floor_Two">
-    <input class="image_menu_center_first" type="image" id="OneTwoDrawingRoomFan_Image_ID" onclick="toggle_image(this.id)" src="js/widgets/lightbulb/light-bulb-icon.jpg"/>
+   <div class="Home_group_class Home_First_Floor_Area_DrawingRoom group_Accessories_Home">
+    <input class="image_menu_center_first" type="image" id="HomeFirstDrawingRoomFan_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">Two :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">DrawingRoom : </span>Fan</p>
+     <span class="spantxt_center group_Accessories_Txt_Home" type="text">DrawingRoom : </span>Fan</p>
     <hr/>
    </div>
-   <div class="Home_group_class Home_Two_Floor_Area_DrawingRoom group_Sensors_Home group_Sensors_Home_Floor_Two">
-    <input class="image_menu_center_second" type="image" id="OneTwoDrawingRoomTemperatureSensor_Image_ID" src="js/widgets/measurement/intensity_of_light.jpg"/>
+   <div class="Home_group_class Home_First_Floor_Area_DrawingRoom group_Sensors_Home">
+    <input class="image_menu_center_second" type="image" id="HomeFirstDrawingRoomTemperatureSensor_Image_ID" src="../lib/widgets/measurement/intensity_of_light.jpg"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">Two :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">DrawingRoom : </span>Temperature Sensor : <span class="spantxt_center" type="text" id="OneTwoDrawingRoomTemperatureSensor_Remote_Txt_ID">No Data From Sensor</span>
+     <span class="spantxt_center group_Sensors_Txt_Home" type="text">DrawingRoom : </span>Temperature Sensor : <span class="spantxt_center" type="text" id="HomeFirstDrawingRoomTemperatureSensor_Remote_Txt_ID">No Data From Sensor</span>
     </p>
     <hr/>
    </div>
-   <div class="Home_group_class group_sensor_graph group_sensor_graph_Home group_Sensors_Graph_Home_Floor_Two">
-    <h3 class="imgtxt_Heading_graph">
-     <span class="group_Txt_Home" type="text">Two : </span>DrawingRoom : Temperature Sensor : <span type="text" id="OneTwoDrawingRoomTemperatureSensor_chart_unit_div"> Disconnected</span>
+   <div class="Home_group_class group_sensor_graph group_sensor_graph_Home">
+    <h3 class="imgtxt_Heading_graph">DrawingRoom : Temperature Sensor : <span type="text" id="HomeFirstDrawingRoomTemperatureSensor_chart_unit_div"> Disconnected</span>
     </h3>
-    <div class="graph_sensor epoch category10" id="OneTwoDrawingRoomTemperatureSensor_chart_div"></div>
+    <div class="graph_sensor epoch category10" id="HomeFirstDrawingRoomTemperatureSensor_chart_div"></div>
     <hr/>
    </div>
-   <div class="Home_group_class Home_Two_Floor_Area_DrawingRoom group_Sensors_Home group_Sensors_Home_Floor_Two">
-    <input class="image_menu_center_second" type="image" id="OneTwoDrawingRoomHeater_Image_ID" src="js/widgets/measurement/length.jpg"/>
+   <div class="Home_group_class Home_First_Floor_Area_DrawingRoom group_Sensors_Home">
+    <input class="image_menu_center_second" type="image" id="HomeFirstDrawingRoomHeater_Image_ID" src="../lib/widgets/measurement/length.jpg"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">Two :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">DrawingRoom : </span>Heater : <span class="spantxt_center" type="text" id="OneTwoDrawingRoomHeater_Remote_Txt_ID">No Data From Sensor</span>
+     <span class="spantxt_center group_Sensors_Txt_Home" type="text">DrawingRoom : </span>Heater : <span class="spantxt_center" type="text" id="HomeFirstDrawingRoomHeater_Remote_Txt_ID">No Data From Sensor</span>
     </p>
     <hr/>
    </div>
-   <div class="Home_group_class group_sensor_graph group_sensor_graph_Home group_Sensors_Graph_Home_Floor_Two">
-    <h3 class="imgtxt_Heading_graph">
-     <span class="group_Txt_Home" type="text">Two : </span>DrawingRoom : Heater : <span type="text" id="OneTwoDrawingRoomHeater_chart_unit_div"> Disconnected</span>
+   <div class="Home_group_class group_sensor_graph group_sensor_graph_Home">
+    <h3 class="imgtxt_Heading_graph">DrawingRoom : Heater : <span type="text" id="HomeFirstDrawingRoomHeater_chart_unit_div"> Disconnected</span>
     </h3>
-    <div class="graph_sensor epoch category10" id="OneTwoDrawingRoomHeater_chart_div"></div>
+    <div class="graph_sensor epoch category10" id="HomeFirstDrawingRoomHeater_chart_div"></div>
     <hr/>
    </div>
-   <div class="Home_group_class Home_Two_Floor_Area_DrawingRoom group_Lights_Home group_Lights_Home_Floor_Two">
-    <input class="image_menu_center_second" type="image" id="OneTwoDrawingRoomled_Image_ID" onclick="toggle_image(this.id)" src="js/widgets/lightbulb/light-bulb-icon.jpg"/>
+   <div class="Home_group_class Home_First_Floor_Area_DrawingRoom group_Lights_Home">
+    <input class="image_menu_center_second" type="image" id="HomeFirstDrawingRoomled_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">Two :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">DrawingRoom : </span>led</p>
+     <span class="spantxt_center group_Light_Txt_Home" type="text">DrawingRoom : </span>led</p>
     <hr/>
    </div>
-   <div class="Home_group_class Home_Two_Floor_Area_DrawingRoom group_Accessories_Home group_Accessories_Home_Floor_Two">
-    <input class="image_menu_center_second" type="image" id="OneTwoDrawingRoomtap_Image_ID" onclick="toggle_image(this.id)" src="js/widgets/lightbulb/light-bulb-icon.jpg"/>
+   <div class="Home_group_class Home_First_Floor_Area_DrawingRoom group_Accessories_Home">
+    <input class="image_menu_center_second" type="image" id="HomeFirstDrawingRoomtap_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">Two :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">DrawingRoom : </span>tap</p>
+     <span class="spantxt_center group_Accessories_Txt_Home" type="text">DrawingRoom : </span>tap</p>
     <hr/>
    </div>
-   <div class="Home_group_class Home_Two_Floor_Area_DrawingRoom group_Accessories_Home group_Accessories_Home_Floor_Two">
-    <input class="image_menu_center_second" type="image" id="OneTwoDrawingRoomPress_Image_ID" onclick="toggle_image(this.id)" src="js/widgets/lightbulb/light-bulb-icon.jpg"/>
+   <div class="Home_group_class Home_First_Floor_Area_DrawingRoom group_Accessories_Home">
+    <input class="image_menu_center_second" type="image" id="HomeFirstDrawingRoomPress_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">Two :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">DrawingRoom : </span>Press</p>
+     <span class="spantxt_center group_Accessories_Txt_Home" type="text">DrawingRoom : </span>Press</p>
     <hr/>
    </div>
-   <div class="Home_group_class Home_Two_Floor_Area_Toilet group_Lights_Home group_Lights_Home_Floor_Two">
-    <input class="image_menu_center_first" type="image" id="OneTwoToiletBulb_Image_ID" onclick="toggle_image(this.id)" src="js/widgets/button/off-button.png"/>
+   <div class="Home_group_class Home_First_Floor_Area_Toilet group_Lights_Home">
+    <input class="image_menu_center_first" type="image" id="HomeFirstToiletBulb_Image_ID" src="../lib/widgets/button/off-button.png"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">Two :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">Toilet : </span>Bulb</p>
+     <span class="spantxt_center group_Light_Txt_Home" type="text">Toilet : </span>Bulb</p>
     <hr/>
    </div>
-   <div class="Home_group_class Home_Two_Floor_Area_Balcony1 group_Accessories_Home group_Accessories_Home_Floor_Two">
-    <input class="image_menu_center_first" type="image" id="OneTwoBalcony1Press_Image_ID" onclick="toggle_image(this.id)" src="js/widgets/lightbulb/light-bulb-icon.jpg"/>
+   <div class="Home_group_class Home_First_Floor_Area_Balcony1 group_Accessories_Home">
+    <input class="image_menu_center_first" type="image" id="HomeFirstBalcony1Press_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">Two :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">Balcony1 : </span>Press</p>
+     <span class="spantxt_center group_Accessories_Txt_Home" type="text">Balcony1 : </span>Press</p>
     <hr/>
    </div>
-   <div class="Home_group_class Home_Two_Floor_Area_Loby group_Accessories_Home group_Accessories_Home_Floor_Two">
-    <input class="image_menu_center_first" type="image" id="OneTwoLobyOven_Image_ID" onclick="toggle_image(this.id)" src="js/widgets/lightbulb/light-bulb-icon.jpg"/>
+   <div class="Home_group_class Home_First_Floor_Area_Loby group_Accessories_Home">
+    <input class="image_menu_center_first" type="image" id="HomeFirstLobyOven_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Home" type="text">Two :</span>
-     <span class="spantxt_center group_Floor_Txt_Home" type="text">Loby : </span>Oven</p>
+     <span class="spantxt_center group_Accessories_Txt_Home" type="text">Loby : </span>Oven</p>
     <hr/>
    </div>
    <div class="info_text_Home info_Home_0">
@@ -1319,40 +1176,23 @@
      <hr/>
     </div>
    </div>
-   <div class="Factory_group_class Factory_Ground_Floor_Area_PackingZone group_Accessories_Factory group_Accessories_Factory_Floor_Ground">
-    <input class="image_menu_center_first" type="image" id="FactoryGroundPackingZoneGenerator_Image_ID" onclick="toggle_image(this.id)" src="js/widgets/lightbulb/light-bulb-icon.jpg"/>
+   <div class="Factory_group_class Factory_Ground_Floor_Area_PackingZone group_Accessories_Factory">
+    <input class="image_menu_center_first" type="image" id="FactoryGroundPackingZoneGenerator_Image_ID" src="../lib/widgets/lightbulb/light-bulb-icon.jpg"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Factory" type="text">Ground :</span>
-     <span class="spantxt_center group_Floor_Txt_Factory" type="text">PackingZone : </span>Generator</p>
+     <span class="spantxt_center group_Accessories_Txt_Factory" type="text">PackingZone : </span>Generator</p>
     <hr/>
    </div>
-   <div class="Factory_group_class Factory_Ground_Floor_Area_ProductionZone group_Sensors_Factory group_Sensors_Factory_Floor_Ground">
-    <input class="image_menu_center_first" type="image" id="FactoryGroundProductionZoneBoilerTemperature_Image_ID" src="js/widgets/measurement/temprature.png"/>
+   <div class="Factory_group_class Factory_Ground_Floor_Area_ProductionZone group_Sensors_Factory">
+    <input class="image_menu_center_first" type="image" id="FactoryGroundProductionZoneBoilerTemperature_Image_ID" src="../lib/widgets/measurement/temprature.png"/>
     <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Factory" type="text">Ground :</span>
-     <span class="spantxt_center group_Floor_Txt_Factory" type="text">ProductionZone : </span>Boiler Temperature : <span class="spantxt_center" type="text" id="FactoryGroundProductionZoneBoilerTemperature_Remote_Txt_ID">No Data From Sensor</span>
+     <span class="spantxt_center group_Sensors_Txt_Factory" type="text">ProductionZone : </span>Boiler Temperature : <span class="spantxt_center" type="text" id="FactoryGroundProductionZoneBoilerTemperature_Remote_Txt_ID">No Data From Sensor</span>
     </p>
     <hr/>
    </div>
-   <div class="Factory_group_class group_sensor_graph group_sensor_graph_Factory group_Sensors_Graph_Factory_Floor_Ground">
-    <h3 class="imgtxt_Heading_graph">
-     <span class="group_Txt_Factory" type="text">Ground : </span>ProductionZone : Boiler Temperature : <span type="text" id="FactoryGroundProductionZoneBoilerTemperature_chart_unit_div"> Disconnected</span>
+   <div class="Factory_group_class group_sensor_graph group_sensor_graph_Factory">
+    <h3 class="imgtxt_Heading_graph">ProductionZone : Boiler Temperature : <span type="text" id="FactoryGroundProductionZoneBoilerTemperature_chart_unit_div"> Disconnected</span>
     </h3>
     <div class="graph_sensor epoch category10" id="FactoryGroundProductionZoneBoilerTemperature_chart_div"></div>
-    <hr/>
-   </div>
-   <div class="Factory_group_class Factory_First_Floor_Area_MeetingRoom group_Accessories_Factory group_Accessories_Factory_Floor_First">
-    <input class="image_menu_center_first" type="image" id="FactoryFirstMeetingRoomFan_Image_ID" onclick="toggle_image(this.id)" src="js/widgets/lightbulb/light-bulb-icon.jpg"/>
-    <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Factory" type="text">First :</span>
-     <span class="spantxt_center group_Floor_Txt_Factory" type="text">MeetingRoom : </span>Fan</p>
-    <hr/>
-   </div>
-   <div class="Factory_group_class Factory_First_Floor_Area_ControlRoom group_Lights_Factory group_Lights_Factory_Floor_First">
-    <input class="image_menu_center_first" type="image" id="FactoryFirstControlRoomLight_Image_ID" onclick="toggle_image(this.id)" src="js/widgets/lightbulb/light-bulb-icon.jpg"/>
-    <p class="imgtxt_center">
-     <span class="spantxt_center group_Txt_Factory" type="text">First :</span>
-     <span class="spantxt_center group_Floor_Txt_Factory" type="text">ControlRoom : </span>Light</p>
     <hr/>
    </div>
    <div class="info_text_Factory info_Factory_0">
@@ -2256,6 +2096,6 @@
     </div>
    </div>
   </div>
-  <div id="fotter">Copyright © 2014 VSCP Multi Floor Layout</div>  
+  <div id="fotter">Copyright © 2014 VSCP Single Floor Layout</div>
  </body>
 </html>

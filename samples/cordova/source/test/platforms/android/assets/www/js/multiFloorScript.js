@@ -18,9 +18,167 @@ var div_floor_room_Image = '';
 
 
 
+var w;
+var h;
+
+function vw( val )
+{
+    var temp = val*100;
+    return  temp/w+'%';
+}
+
+function vh( val )
+{
+    var temp = val*100;
+    return  temp/h+'%';
+}
+
+
+/*
+function vw( val )
+{
+    return  w*val+'px';
+}
+
+function vh( val )
+{
+    return  h*val+'px';
+}
+*/
+
+
+
+function css_Adapt()
+{
+
+    w=$(window).width();
+    h=$(window).height();
+
+
+    $('.imgtxt').css({
+                         'font-size': vw(15)
+    });
+
+    $('.imgtxt_center').css({
+                                'font-size': vw(15),
+                                'padding-right' : vw(100)
+    });
+
+    $('.spantxt_center').css({
+                         'font-size': vw(15)
+    });
+
+    $('.imgtxt_scrollmenu').css({
+                                'font-size': vw(15),
+                                'padding-right' : vw(10)
+    });
+
+    $('.hr_scrollable').css({
+                                'width': vw(80)
+    });
+
+    $('.image_scrollable').css({
+                                'width': vw(80),
+                                'height': vh(48)
+    });
+
+
+    $('.image_menu_center_first').css({
+                                'width': vw(80),
+                                'height': vh(48),
+                                'hspace': vh(30),
+                                'padding-left': vw(10)
+    });
+
+
+    $('.image_menu_center_first_sec').css({
+                                'width': vw(80),
+                                'height': vh(48),
+                                'hspace': vh(30),
+                                'padding-left': vw(20)
+    });
+
+
+    $('.image_menu_center_second').css({
+                                'width': vw(80),
+                                'height': vh(48),
+                                'hspace': vw(10),
+                                'vspace': vh(25),
+                                'padding-left': vw(10),
+                                'padding-top': vh(6),
+                                'padding-bottom': vh(6)
+    });
+
+    $('.image_menu_center_second_sec').css({
+                                'width': vw(80),
+                                'height': vh(48),
+                                'hspace': vw(10),
+                                'vspace': vh(25),
+                                'padding-left': vw(10),
+                                'padding-top': vh(6),
+                                'padding-bottom': vh(6)
+    });
+
+    $('.graph_sensor').css({
+                                'width': vw(800),
+                                'height': vh(200)
+    });
+
+    $('.imgtxt_Heading_graph').css({
+                                'padding-left': vw(25)
+    });
+
+    $('.spantxt_button_center').css({
+                                'padding-left': vw(20)
+    });
+
+
+    $('.scrollable').css({
+                                'padding-left': vw(4),
+                                'padding-top': vh(20)
+    });
+
+    $('.scrollableMenu').css({
+                                'padding-left': vw(4),
+                                'padding-top': vh(20)
+    });
+
+    $('.scrollableCenter').css({
+                                'padding-left': vw(4),
+                                'padding-top': vh(20)
+    });
+
+    $('#Menu').css({
+                                'top': vh(115),
+                                'bottom': vh(20),
+                                'width': vw(150)
+    });
+
+
+    $('#center').css({
+                                'top': vh(115),
+                                'bottom': vh(20),
+                                'left': vw(150)
+    });
+}
+
+
+$(document).ready(function() {
+    FastClick.attach(document.body);
+});
+
 function doc_onload(houseType)
 {
 
+    //w=$(window).width()/100;
+    //h=$(window).height()/100;
+
+
+    //alert(w);
+    //alert(h);
+    //css_Adapt();
+
+    //window.addEventListener('orientationchange', doOnOrientationChange);
 
     //if there are multiple houses to be controlled by this html app
     if(houseType == 1)
@@ -741,6 +899,9 @@ function show_Central_widget(parameter,parameter_image_array, parameter_image)
     });
 
 
+    // hide group & floor text
+    hide_group_floor_txt_class();
+
 
 }
 
@@ -797,4 +958,27 @@ function toggle_image(imageId)
       myImage.src='js/widgets/lightbulb/semi-matte-light-bulb-unlit-th.png';
     }
 
+    if(Filename == "off-button.png" )
+    {
+      //alert("hellooooo");
+     myImage.src='js/widgets/button/on-button.png';
+
+    }
+
+    if(Filename == "on-button.png" )
+    {
+      //alert("he");
+      myImage.src='js/widgets/button/off-button.png';
+    }
+
 }
+
+
+function doOnOrientationChange()
+{
+    alert("oo");
+    css_Adapt();
+}
+
+
+
