@@ -7,7 +7,7 @@ Author  : Dinesh Guleria
 
 Project : VSCP 
 
-Release : 1.0.0
+Release : 1.0.2
 
 Contact Us : vscp@googlegroups.com 
 
