@@ -288,6 +288,8 @@ void MainWindow::on_testStepDeletePushButton_clicked()
     QString str = DELETE_CONFIRM_MESSAGE;
     QMessageBox* msgBox;
     QPushButton *yesButton;
+    T_vscpDevicePacket testCaseStepCanMessage;
+    uint16_t i;
 
     // check if test report is already open or not
     if (b_xmlFileAlreadyOpen)
@@ -320,6 +322,19 @@ void MainWindow::on_testStepDeletePushButton_clicked()
                 // Check actual list
                 if(testCaseStepCanPacket_rx.size() > currentIndex.row())
                 {
+                    //decrement the stepnumber after -- current row
+                    for(i=(currentIndex.row()+1);i<testCaseStepCanPacket_rx.size();i++)
+                    {
+                        // read the packet
+                        testCaseStepCanMessage = testCaseStepCanPacket_rx.at(i);
+                        QMessageBox::information(this, "stepvalue", QString::number(testCaseStepCanMessage.stepnumber));
+                        //decrement the step number
+                        testCaseStepCanMessage.stepnumber--;
+                        // replace the packet
+                        testCaseStepCanPacket_rx.replace(i,testCaseStepCanMessage);
+                        QMessageBox::information(this, "stepvalue", QString::number(testCaseStepCanPacket_rx.at(i).stepnumber));
+                    }
+                    // remove the item
                     testCaseStepCanPacket_rx.removeAt(currentIndex.row());
                 }
                 else

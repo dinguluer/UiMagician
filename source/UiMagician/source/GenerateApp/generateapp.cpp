@@ -29,8 +29,12 @@
 #include "ui_generateapp.h"
 #include "../common/timer/SleepTimerDelay.h"
 
-#define VSCP_COPY_RIGHT_SINGLE_FLOOR "Copyright © 2014 VSCP Single Floor Layout"
-#define VSCP_COPY_RIGHT_MULTI_FLOOR  "Copyright © 2014 VSCP Multi Floor Layout"
+//#define VSCP_COPY_RIGHT_SINGLE_FLOOR "Copyright © 2014 VSCP Single Floor Layout"
+//#define VSCP_COPY_RIGHT_MULTI_FLOOR  "Copyright © 2014 VSCP Multi Floor Layout"
+
+#define VSCP_COPY_RIGHT_SINGLE_FLOOR "Copyright © 2015 UiM Single Floor Layout"
+#define VSCP_COPY_RIGHT_MULTI_FLOOR  "Copyright © 2015 UiM Multi Floor Layout"
+
 
 GenerateApp::GenerateApp(QString xmlFileName, QDomElement &xmlRoot, QWidget *parent) :
     QDialog(parent),
