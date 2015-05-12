@@ -2322,7 +2322,8 @@ void GenerateApp::prepareSocketConf(QDomNode &tempNodeDevicePacket, QString Devi
         {
             bLocal  = "false";
         }
-        FloorsSwitchSocketCfgFileString += "bLocal: '" + bLocal + "', ";
+        //FloorsSwitchSocketCfgFileString += "bLocal: '" + bLocal + "', ";
+        FloorsSwitchSocketCfgFileString += "bLocal: " + bLocal + ", ";
         FloorsSwitchSocketCfgFileString += "btnType: " + deviceImage + " , ";
         tempString = tempNodeChild.toElement().attribute(SWITCH_BNOSTATE);
         if(tempString == "0")
@@ -2333,7 +2334,8 @@ void GenerateApp::prepareSocketConf(QDomNode &tempNodeDevicePacket, QString Devi
         {
             bNoState  = "false";
         }
-        FloorsSwitchSocketCfgFileString += "bNoState: '" + bNoState + "', ";
+        //FloorsSwitchSocketCfgFileString += "bNoState: '" + bNoState + "', ";
+        FloorsSwitchSocketCfgFileString += "bNoState: " + bNoState + ", ";
         tempString =tempNodeChild.toElement().attribute(SWITCH_USERNAME);
         if(tempString == "")
         {
