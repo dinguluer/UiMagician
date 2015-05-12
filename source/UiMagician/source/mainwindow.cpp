@@ -327,12 +327,12 @@ void MainWindow::on_testStepDeletePushButton_clicked()
                     {
                         // read the packet
                         testCaseStepCanMessage = testCaseStepCanPacket_rx.at(i);
-                        QMessageBox::information(this, "stepvalue", QString::number(testCaseStepCanMessage.stepnumber));
+                        //QMessageBox::information(this, "stepvalue", QString::number(testCaseStepCanMessage.stepnumber));
                         //decrement the step number
                         testCaseStepCanMessage.stepnumber--;
                         // replace the packet
                         testCaseStepCanPacket_rx.replace(i,testCaseStepCanMessage);
-                        QMessageBox::information(this, "stepvalue", QString::number(testCaseStepCanPacket_rx.at(i).stepnumber));
+                        //QMessageBox::information(this, "stepvalue", QString::number(testCaseStepCanPacket_rx.at(i).stepnumber));
                     }
                     // remove the item
                     testCaseStepCanPacket_rx.removeAt(currentIndex.row());
@@ -2840,8 +2840,8 @@ void MainWindow::on_roomUndoPushButton_clicked()
                          testCaseStepCanPacket_undo.append(testCaseStepCanMessage);
                     }
 
-                    QMessageBox::information(this, "row count", QString::number(model->rowCount()));
-                    QMessageBox::information(this, "packet count", QString::number(testCaseStepCanPacket_rx.size()));
+                    //QMessageBox::information(this, "row count", QString::number(model->rowCount()));
+                    //QMessageBox::information(this, "packet count", QString::number(testCaseStepCanPacket_rx.size()));
                     //update the teststeplist to latest
                     testCaseStepslist_undo.clear();
                     //for(int i=0; 1<testCaseStepCanPacket_rx.size();i++)
@@ -2913,7 +2913,7 @@ void MainWindow::on_roomUndoPushButton_clicked()
         QMessageBox::information(this, "uiMagician", CREATE_OPEN_HOUSE_CONFIGUATION_FILE);
     }
 
-    QMessageBox::information(this, "uiMagician", "exit -- ??");
+    //QMessageBox::information(this, "uiMagician", "exit -- ??");
 }
 
 void MainWindow::on_roomRedoPushButton_clicked()
