@@ -1,0 +1,1 @@
+This folder contains the sample for Android devices.
