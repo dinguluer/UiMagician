@@ -1,0 +1,2111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WidgetWebsocketPacketSwitch</class>
+ <widget class="QDialog" name="WidgetWebsocketPacketSwitch">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>916</width>
+    <height>675</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Switch Ui...</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../AutosResourceFile.qrc">
+    <normaloff>:/Images/Images/fatbee_v2.ico</normaloff>:/Images/Images/fatbee_v2.ico</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QTabWidget" name="WidgetWebsocketPacketSwitchTabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="WebSocketConf">
+      <attribute name="title">
+       <string>Websocket Configure</string>
+      </attribute>
+      <widget class="QLabel" name="urlLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>120</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>URL</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="bLocalLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>220</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>bLocal</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="bNoStateLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>340</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>bNoState</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="urlLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>120</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="bLocalListWidget">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>220</y>
+         <width>221</width>
+         <height>61</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="bNoStateListWidget">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>340</y>
+         <width>221</width>
+         <height>71</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="idLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>30</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>ID</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="idValueLabel">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>31</y>
+         <width>491</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="usernameLabel">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>120</y>
+         <width>101</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>User Name</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="usernameLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>120</y>
+         <width>241</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="domainLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>280</y>
+         <width>241</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="domainLabel">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>280</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Domain</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="passwordLabel">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>200</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Password</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="passwordLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>200</y>
+         <width>241</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="txOnEvent">
+      <attribute name="title">
+       <string>Tx On Event</string>
+      </attribute>
+      <widget class="QListWidget" name="txOnClassListWidget">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>20</y>
+         <width>221</width>
+         <height>131</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOnClassLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Class</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="txOnTypeListWidget">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>20</y>
+         <width>221</width>
+         <height>131</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOnTypeLabel">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Type</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txOnGuidLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>220</y>
+         <width>401</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOnGuidLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>221</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>GUID</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txOnIndexLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>270</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOnIndexLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>270</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Index</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txOnZoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>320</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOnZoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>320</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Zone</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txOnSubZoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>370</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOnSubZoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>370</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Sub Zone</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txOnHeadLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>420</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOnObidLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>471</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Obid</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txOnDataLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>541</y>
+         <width>401</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOnTimeStampLabel">
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>472</y>
+         <width>111</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Time Stamp</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txOnObidLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>470</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOnHeadLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>421</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Head</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txOnTimeStampLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>471</y>
+         <width>231</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOnDataLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>542</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Data</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="txOffEvent">
+      <attribute name="title">
+       <string>Tx Off Event</string>
+      </attribute>
+      <widget class="QLineEdit" name="txOffSubZoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>370</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txOffZoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>320</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOffTypeLabel">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Type</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txOffGuidLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>220</y>
+         <width>401</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOffSubZoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>370</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Sub Zone</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOffClassLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Class</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOffZoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>320</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Zone</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="txOffTypeListWidget">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>20</y>
+         <width>221</width>
+         <height>131</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOffIndexLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>270</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Index</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txOffIndexLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>270</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="txOffClassListWidget">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>20</y>
+         <width>221</width>
+         <height>131</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOffGuidLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>221</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>GUID</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txOffHeadLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>420</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOffObidLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>471</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Obid</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txOffDataLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>541</y>
+         <width>401</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOffTimeStampLabel">
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>472</y>
+         <width>111</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Time Stamp</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txOffObidLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>470</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOffHeadLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>421</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Head</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="txOffTimeStampLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>471</y>
+         <width>231</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="txOffDataLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>542</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Data</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="rxOnEvent">
+      <attribute name="title">
+       <string>Rx On Event</string>
+      </attribute>
+      <widget class="QLineEdit" name="rxOnSubZoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>370</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="rxOnZoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>320</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOnTypeLabel">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Type</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="rxOnGuidLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>220</y>
+         <width>401</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOnSubZoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>370</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Sub Zone</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOnClassLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Class</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOnZoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>320</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Zone</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOnIndexLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>270</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Index</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="rxOnIndexLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>270</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="rxOnTypeListWidget">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>20</y>
+         <width>221</width>
+         <height>131</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOnGuidLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>221</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>GUID</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="rxOnClassListWidget">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>20</y>
+         <width>221</width>
+         <height>131</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="rxOnHeadLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>420</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOnObidLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>471</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Obid</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOnTimeStampLabel">
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>472</y>
+         <width>111</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Time Stamp</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="rxOnObidLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>470</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOnHeadLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>421</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Head</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="rxOnTimeStampLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>471</y>
+         <width>231</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="rxOnDataLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>540</y>
+         <width>401</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOnDataLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>541</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Data</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="rxOffEvent">
+      <attribute name="title">
+       <string>Rx Off Event</string>
+      </attribute>
+      <widget class="QLabel" name="rxOffClassLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Class</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="rxOffTypeListWidget">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>20</y>
+         <width>221</width>
+         <height>131</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="rxOffClassListWidget">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>20</y>
+         <width>221</width>
+         <height>131</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="rxOffIndexLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>270</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOffTypeLabel">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Type</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOffZoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>320</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Zone</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="rxOffSubZoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>370</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="rxOffZoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>320</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOffSubZoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>370</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Sub Zone</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="rxOffGuidLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>220</y>
+         <width>401</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOffGuidDataLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>221</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>GUID</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOffIndexLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>270</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Index</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="rxOffHeadLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>419</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOffHeadLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>420</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Head</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="rxOffObidLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>469</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOffObidLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>470</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Obid</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOffTimeStampLabel">
+       <property name="geometry">
+        <rect>
+         <x>390</x>
+         <y>471</y>
+         <width>111</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Time Stamp</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="rxOffTimeStampLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>470</y>
+         <width>231</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="rxOffDataLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>540</y>
+         <width>401</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="rxOffDataLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>541</y>
+         <width>51</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Data</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="variableConfigure">
+      <attribute name="title">
+       <string>Variable Configure</string>
+      </attribute>
+      <widget class="QLineEdit" name="variableAllowedTimeLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>170</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableAllowedToLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>120</y>
+         <width>101</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Allowed To</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableAllowedTimeLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>170</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Allowed Time</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableAllowedFromLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>70</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableAllowedToLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>120</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableNameLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Name</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableAllowedDaysLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>220</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Allowed Days</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableAllowedFromLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>71</y>
+         <width>131</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Allowed From</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableNameValueLabel">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>20</y>
+         <width>341</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableAllowedDaysMondaycheckBox">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>220</y>
+         <width>41</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Mon</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableAllowedDaysTuesdaycheckBox">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>220</y>
+         <width>41</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Tue</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableAllowedDaysWednesdaycheckBox">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>220</y>
+         <width>41</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Wed</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableAllowedDaysThursdaycheckBox">
+       <property name="geometry">
+        <rect>
+         <x>360</x>
+         <y>220</y>
+         <width>41</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Thur</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableAllowedDaysSaturdaycheckBox">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>250</y>
+         <width>41</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Sat</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableAllowedDaysSundaycheckBox">
+       <property name="geometry">
+        <rect>
+         <x>310</x>
+         <y>250</y>
+         <width>41</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Sun</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="variableActionListWidget">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>290</y>
+         <width>221</width>
+         <height>91</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableActionLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>290</y>
+         <width>161</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Action</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableCommentsLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>550</y>
+         <width>631</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableCommentsLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>550</y>
+         <width>121</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Comments</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableActionParametersSetLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>400</y>
+         <width>151</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Parameters Set</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableActionParametersSetLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>400</y>
+         <width>331</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableGroupIdLabel">
+       <property name="geometry">
+        <rect>
+         <x>480</x>
+         <y>70</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Group ID</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableGroupIdLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>70</y>
+         <width>201</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableAllowedDaysFridaycheckBox">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>250</y>
+         <width>41</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Fri</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableGuidLabel">
+       <property name="geometry">
+        <rect>
+         <x>480</x>
+         <y>120</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>GUID</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableGuidLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>120</y>
+         <width>291</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableIndexLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>640</x>
+         <y>400</y>
+         <width>211</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableSubzoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>500</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>SubZone</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableIndexLabel">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>400</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Index</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableZoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>450</y>
+         <width>61</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Zone</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableZoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>640</x>
+         <y>450</y>
+         <width>201</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableSubzoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>640</x>
+         <y>500</y>
+         <width>211</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variablePriorityLabel">
+       <property name="geometry">
+        <rect>
+         <x>480</x>
+         <y>170</y>
+         <width>61</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Priority</string>
+       </property>
+      </widget>
+      <widget class="QListWidget" name="variablePriorityListWidget">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>170</y>
+         <width>221</width>
+         <height>91</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableControlLabel">
+       <property name="geometry">
+        <rect>
+         <x>480</x>
+         <y>290</y>
+         <width>71</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Control</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableControlCheckZonecheckBox">
+       <property name="geometry">
+        <rect>
+         <x>760</x>
+         <y>320</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Check Zone</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableControlEndScancheckBox">
+       <property name="geometry">
+        <rect>
+         <x>610</x>
+         <y>350</y>
+         <width>141</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>End Scan on this Row</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableControlCheckIndexcheckBox">
+       <property name="geometry">
+        <rect>
+         <x>610</x>
+         <y>320</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Check Index</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableControlCheckSubzonecheckBox">
+       <property name="geometry">
+        <rect>
+         <x>760</x>
+         <y>350</y>
+         <width>101</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Check Subzone</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="variableControlEnableRowcheckBox">
+       <property name="geometry">
+        <rect>
+         <x>760</x>
+         <y>290</y>
+         <width>81</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Enable Row</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableControlValueLabel">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>450</y>
+         <width>71</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLabel" name="variableActionParametersResetLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>450</y>
+         <width>151</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Parameters Reset</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="variableActionParametersResetLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>450</y>
+         <width>331</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="OkPushButton">
+       <property name="text">
+        <string>Ok</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="CancelPushButton">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>urlLineEdit</tabstop>
+  <tabstop>bLocalListWidget</tabstop>
+  <tabstop>bNoStateListWidget</tabstop>
+  <tabstop>usernameLineEdit</tabstop>
+  <tabstop>passwordLineEdit</tabstop>
+  <tabstop>domainLineEdit</tabstop>
+  <tabstop>txOnClassListWidget</tabstop>
+  <tabstop>txOnTypeListWidget</tabstop>
+  <tabstop>txOnGuidLineEdit</tabstop>
+  <tabstop>txOnIndexLineEdit</tabstop>
+  <tabstop>txOnZoneLineEdit</tabstop>
+  <tabstop>txOnSubZoneLineEdit</tabstop>
+  <tabstop>txOnHeadLineEdit</tabstop>
+  <tabstop>txOnObidLineEdit</tabstop>
+  <tabstop>txOnTimeStampLineEdit</tabstop>
+  <tabstop>txOnDataLineEdit</tabstop>
+  <tabstop>txOffClassListWidget</tabstop>
+  <tabstop>txOffTypeListWidget</tabstop>
+  <tabstop>txOffGuidLineEdit</tabstop>
+  <tabstop>txOffIndexLineEdit</tabstop>
+  <tabstop>txOffZoneLineEdit</tabstop>
+  <tabstop>txOffSubZoneLineEdit</tabstop>
+  <tabstop>txOffHeadLineEdit</tabstop>
+  <tabstop>txOffObidLineEdit</tabstop>
+  <tabstop>txOffTimeStampLineEdit</tabstop>
+  <tabstop>txOffDataLineEdit</tabstop>
+  <tabstop>rxOnClassListWidget</tabstop>
+  <tabstop>rxOnTypeListWidget</tabstop>
+  <tabstop>rxOnGuidLineEdit</tabstop>
+  <tabstop>rxOnIndexLineEdit</tabstop>
+  <tabstop>rxOnZoneLineEdit</tabstop>
+  <tabstop>rxOnSubZoneLineEdit</tabstop>
+  <tabstop>rxOnHeadLineEdit</tabstop>
+  <tabstop>rxOnObidLineEdit</tabstop>
+  <tabstop>rxOnTimeStampLineEdit</tabstop>
+  <tabstop>rxOnDataLineEdit</tabstop>
+  <tabstop>rxOffClassListWidget</tabstop>
+  <tabstop>rxOffTypeListWidget</tabstop>
+  <tabstop>rxOffGuidLineEdit</tabstop>
+  <tabstop>rxOffIndexLineEdit</tabstop>
+  <tabstop>rxOffZoneLineEdit</tabstop>
+  <tabstop>rxOffSubZoneLineEdit</tabstop>
+  <tabstop>rxOffHeadLineEdit</tabstop>
+  <tabstop>rxOffObidLineEdit</tabstop>
+  <tabstop>rxOffTimeStampLineEdit</tabstop>
+  <tabstop>rxOffDataLineEdit</tabstop>
+  <tabstop>variableAllowedFromLineEdit</tabstop>
+  <tabstop>variableAllowedToLineEdit</tabstop>
+  <tabstop>variableAllowedTimeLineEdit</tabstop>
+  <tabstop>variableAllowedDaysMondaycheckBox</tabstop>
+  <tabstop>variableAllowedDaysTuesdaycheckBox</tabstop>
+  <tabstop>variableAllowedDaysWednesdaycheckBox</tabstop>
+  <tabstop>variableAllowedDaysThursdaycheckBox</tabstop>
+  <tabstop>variableAllowedDaysFridaycheckBox</tabstop>
+  <tabstop>variableAllowedDaysSaturdaycheckBox</tabstop>
+  <tabstop>variableAllowedDaysSundaycheckBox</tabstop>
+  <tabstop>variableActionListWidget</tabstop>
+  <tabstop>variableActionParametersSetLineEdit</tabstop>
+  <tabstop>variableActionParametersResetLineEdit</tabstop>
+  <tabstop>variableGroupIdLineEdit</tabstop>
+  <tabstop>variableGuidLineEdit</tabstop>
+  <tabstop>variablePriorityListWidget</tabstop>
+  <tabstop>variableControlEnableRowcheckBox</tabstop>
+  <tabstop>variableControlCheckIndexcheckBox</tabstop>
+  <tabstop>variableControlCheckZonecheckBox</tabstop>
+  <tabstop>variableControlEndScancheckBox</tabstop>
+  <tabstop>variableControlCheckSubzonecheckBox</tabstop>
+  <tabstop>variableIndexLineEdit</tabstop>
+  <tabstop>variableZoneLineEdit</tabstop>
+  <tabstop>variableSubzoneLineEdit</tabstop>
+  <tabstop>variableCommentsLineEdit</tabstop>
+  <tabstop>WidgetWebsocketPacketSwitchTabWidget</tabstop>
+  <tabstop>OkPushButton</tabstop>
+  <tabstop>CancelPushButton</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../AutosResourceFile.qrc"/>
+ </resources>
+ <connections/>
+</ui>
