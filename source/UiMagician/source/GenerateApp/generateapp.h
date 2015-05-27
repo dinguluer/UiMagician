@@ -101,6 +101,15 @@ public:
     // Create the HTML App
     void createHtmlApp();
 
+    // Create the output folder
+    void createOpFolder();
+
+    // Create the home output folder
+    void createHomeOpFolder(QString homeName);
+
+    // close the home output files
+    void closeHomeOpFiles();
+
     // Create the General header for HTML
     void createHtmlHead();
 
@@ -164,6 +173,9 @@ public:
 
     //get total groups
     void getTotalGroups(int index);
+
+    // Recursively delete the contents of the directory first
+    bool removeDir(const QString & dirName);
 
     // Public variables
     QString xmlFileNameRef;
@@ -294,6 +306,17 @@ public:
     //file path
     QString xmlVariablesFilePath;
 
+    // home variables.xml
+    QString xmlHomeVariablesFileName;
+    QFile   xmlHomeVariablesFile;
+    QTextStream xmlHomeVariablesStream;
+    // root element of the xml
+    QDomElement xmlHomeVariablesRoot;
+    // xml dom document object
+    QDomDocument xmlHomeVariablesDomDocument;
+    //file path
+    QString xmlHomeVariablesFilePath;
+
     // dm.xml
     QString xmlDmFileName;
     QFile   xmlDmFile;
@@ -304,6 +327,18 @@ public:
     QDomDocument xmlDmDomDocument;
     //file path
     QString xmlDmFilePath;
+
+
+    // dm.xml
+    QString xmlHomeDmFileName;
+    QFile   xmlHomeDmFile;
+    QTextStream xmlHomeDmStream;
+    // root element of the xml
+    QDomElement xmlHomeDmRoot;
+    // xml dom document object
+    QDomDocument xmlHomeDmDomDocument;
+    //file path
+    QString xmlHomeDmFilePath;
 
 private slots:
     void on_okPushButton_clicked();

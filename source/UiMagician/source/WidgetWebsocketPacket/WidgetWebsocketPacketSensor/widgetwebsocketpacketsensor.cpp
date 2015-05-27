@@ -65,34 +65,13 @@ WidgetWebsocketPacketSensor::WidgetWebsocketPacketSensor(T_widgetwebsocketPacket
     ui->sensorGuidLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}"), this ));
     ui->sensorDecimalsLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9]"), this ));
 
-    ui->sensorVariableAllowedFromLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9\\-\\:\\s]{1,19}"), this ));
-    ui->sensorVariableAllowedToLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9\\-\\:\\s]{1,19}"), this ));
-    ui->sensorVariableAllowedTimeLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9\\-\\:\\s]{1,19}"), this ));
-
     //groupId validator
-    ui->sensorVariableGroupIdLineEdit->setValidator(new QRegExpValidator( QRegExp("[a-zA-Z0-9_]*"), this ));
+    //ui->sensorVariableGroupIdLineEdit->setValidator(new QRegExpValidator( QRegExp("[a-zA-Z0-9_]*"), this ));
 
     ui->sensorVariableIndexLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9]{1,3}"), this ));
     ui->sensorVariableZoneLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9]{1,3}"), this ));
     ui->sensorVariableSubzoneLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9]{1,3}"), this ));
 
-
-    //set the list for Action - variableActionListWidget
-    for(int i=0; i< listAction.size() ; i++)
-    {
-        ui->sensorVariableActionListWidget->addItem(listAction.at(i));
-    }
-    ui->sensorVariableActionListWidget->setCurrentRow(0);
-    // set the list for priority
-    for(int i=0; i< listPriority.size() ; i++)
-    {
-        ui->sensorVariablePriorityListWidget->addItem(listPriority.at(i));
-    }
-    ui->sensorVariablePriorityListWidget->setCurrentRow(0);
-    ui->sensorVariableGuidLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}"), this ));
-
-    // non editable
-    ui->sensorVariableActionParametersLineEdit->setReadOnly(true);
     //ui->sensorVariableActionParametersLineEdit->setReadOnly(true);
     //domain should be fixed
     ui->sensorDomainLineEdit->setReadOnly(true);
@@ -240,16 +219,16 @@ void WidgetWebsocketPacketSensor::currentItemChanged_slot()
 //Copy Sensor packet to Dialog
 void WidgetWebsocketPacketSensor::CopySensorPacket()
 {
-    QString action;
-    QString parameterStringValue;
+    //QString action;
+    //QString parameterStringValue;
     int classIndex = 0;
     int typeIndex = 0;
-    int actionval;
+    //int actionval;
 
     //websocket
-    ui->sensorIdValueLabel->setText(sensorPacket_modify.id);
-    ui->sensorGraphIdValueLabel->setText(sensorPacket_modify.graphId);
-    ui->sensorGraphUnitIdValueLabel->setText(sensorPacket_modify.graphUnitId);
+    //-->ui->sensorIdValueLabel->setText(sensorPacket_modify.id);
+    //-->ui->sensorGraphIdValueLabel->setText(sensorPacket_modify.graphId);
+    //-->ui->sensorGraphUnitIdValueLabel->setText(sensorPacket_modify.graphUnitId);
 
     if(sensorPacket_modify.graphType == GRAPH_TYPE_LINE)
     {
@@ -268,7 +247,7 @@ void WidgetWebsocketPacketSensor::CopySensorPacket()
         ui->sensorGraphTypeLineCheckBox->setChecked(true);
     }
 
-    ui->sensorRemoteTxtIdValueLabel->setText(sensorPacket_modify.idRemoteTxt);
+    //-->ui->sensorRemoteTxtIdValueLabel->setText(sensorPacket_modify.idRemoteTxt);
     ui->sensorUrlLineEdit->setText(sensorPacket_modify.url);
     ui->sensorUsernameLineEdit->setText(sensorPacket_modify.userName);
     ui->sensorPasswordLineEdit->setText(sensorPacket_modify.passWord);
@@ -298,13 +277,14 @@ void WidgetWebsocketPacketSensor::CopySensorPacket()
     ui->sensorDecimalsLineEdit->setText(sensorPacket_modify.decimals);
     ui->sensorFormatStringLineEdit->setText(sensorPacket_modify.formatString);
     ui->sensorGuidLineEdit->setText(sensorPacket_modify.guid);
-    ui->sensorCallBackLineEdit->setText(sensorPacket_modify.callback);
+    //-->ui->sensorCallBackLineEdit->setText(sensorPacket_modify.callback);
 
     //Variable
-    ui->sensorVariableNameValueLabel->setText(sensorPacket_modify.packetSensorVariable.name);
-    ui->sensorVariableAllowedFromLineEdit->setText(sensorPacket_modify.packetSensorVariable.allowedFrom);
-    ui->sensorVariableAllowedToLineEdit->setText(sensorPacket_modify.packetSensorVariable.allowedTo);
-    ui->sensorVariableAllowedTimeLineEdit->setText(sensorPacket_modify.packetSensorVariable.allowedTime);
+    //ui->sensorVariableNameValueLabel->setText(sensorPacket_modify.packetSensorVariable.name);
+    //ui->sensorVariableAllowedFromLineEdit->setText(sensorPacket_modify.packetSensorVariable.allowedFrom);
+    //ui->sensorVariableAllowedToLineEdit->setText(sensorPacket_modify.packetSensorVariable.allowedTo);
+    //ui->sensorVariableAllowedTimeLineEdit->setText(sensorPacket_modify.packetSensorVariable.allowedTime);
+    /*
     if(sensorPacket_modify.packetSensorVariable.allowedDays.mon == "true")
     {
         ui->sensorVariableAllowedDaysMondaycheckBox->setChecked(true);
@@ -453,18 +433,11 @@ void WidgetWebsocketPacketSensor::CopySensorPacket()
         actionval = 0;
     }
     ui->sensorVariableActionListWidget->setCurrentRow(actionval);
+    */
     //ui->sensorVariableActionParametersLineEdit->setText(sensorPacket_modify.packetSensorVariable.actionParameters);
-        parameterStringValue = sensorPacket_modify.packetSensorVariable.name + ";9;true;%event.data";
-        ui->sensorVariableActionParametersLineEdit->setText(parameterStringValue);
-    ui->sensorVariableCommentsLineEdit->setText(sensorPacket_modify.packetSensorVariable.comments);
-    if(sensorPacket_modify.packetSensorVariable.control.EnableRow == "true")
-    {
-        ui->sensorVariableControlEnableRowcheckBox->setChecked(true);
-    }
-    else
-    {
-        ui->sensorVariableControlEnableRowcheckBox->setChecked(false);
-    }
+        //-->parameterStringValue = sensorPacket_modify.packetSensorVariable.name + ";9;true;%event.data";
+        //-->ui->sensorVariableActionParametersLineEdit->setText(parameterStringValue);
+    //-->ui->sensorVariableCommentsLineEdit->setText(sensorPacket_modify.packetSensorVariable.comments);
 
     if(sensorPacket_modify.packetSensorVariable.control.checkIndex == "true")
     {
@@ -493,24 +466,14 @@ void WidgetWebsocketPacketSensor::CopySensorPacket()
         ui->sensorVariableControlCheckSubzonecheckBox->setChecked(false);
     }
 
-    if(sensorPacket_modify.packetSensorVariable.control.endScan == "true")
-    {
-        ui->sensorVariableControlEndScancheckBox->setChecked(true);
-    }
-    else
-    {
-        ui->sensorVariableControlEndScancheckBox->setChecked(false);
-    }
-
-    ui->sensorVariableGroupIdLineEdit->setText(sensorPacket_modify.packetSensorVariable.groupId);
+    //ui->sensorVariableGroupIdLineEdit->setText(sensorPacket_modify.packetSensorVariable.groupId);
     // todo --> ui->sensorVariableClassLineEdit->setText(sensorPacket_modify.packetSensorVariable.class_value);
     // todo --> ui->sensorVariableTypeLineEdit->setText(sensorPacket_modify.packetSensorVariable.type_value);
-    ui->sensorVariableGuidLineEdit->setText(sensorPacket_modify.packetSensorVariable.guid);
-    ui->sensorVariablePriorityListWidget->setCurrentRow(sensorPacket_modify.packetSensorVariable.priority.toInt());
+    //-->ui->sensorVariableGuidLineEdit->setText(sensorPacket_modify.packetSensorVariable.guid);
+    //-->ui->sensorVariablePriorityListWidget->setCurrentRow(sensorPacket_modify.packetSensorVariable.priority.toInt());
     ui->sensorVariableIndexLineEdit->setText(sensorPacket_modify.packetSensorVariable.index);
     ui->sensorVariableZoneLineEdit->setText(sensorPacket_modify.packetSensorVariable.zone);
     ui->sensorVariableSubzoneLineEdit->setText(sensorPacket_modify.packetSensorVariable.subzone);
-
 
 }
 
@@ -519,10 +482,10 @@ void WidgetWebsocketPacketSensor::on_OkSensorPushButton_clicked()
     QString action;
     QString typeValue;
     //websocket
-    sensorPacket_modify.id  =  ui->sensorIdValueLabel->text();
+    //sensorPacket_modify.id  =  ui->sensorIdValueLabel->text();
 
-    sensorPacket_modify.graphId = ui->sensorGraphIdValueLabel->text();
-    sensorPacket_modify.graphUnitId = ui->sensorGraphUnitIdValueLabel->text();
+    //sensorPacket_modify.graphId = ui->sensorGraphIdValueLabel->text();
+    //sensorPacket_modify.graphUnitId = ui->sensorGraphUnitIdValueLabel->text();
 
     if(ui->sensorGraphTypeLineCheckBox->isChecked())
     {
@@ -541,7 +504,7 @@ void WidgetWebsocketPacketSensor::on_OkSensorPushButton_clicked()
         // donothing
     }
 
-    sensorPacket_modify.idRemoteTxt = ui->sensorRemoteTxtIdValueLabel->text();
+    //sensorPacket_modify.idRemoteTxt = ui->sensorRemoteTxtIdValueLabel->text();
     sensorPacket_modify.url = ui->sensorUrlLineEdit->text();
 
     sensorPacket_modify.userName = ui->sensorUsernameLineEdit->text();
@@ -575,13 +538,24 @@ void WidgetWebsocketPacketSensor::on_OkSensorPushButton_clicked()
     sensorPacket_modify.decimals = ui->sensorDecimalsLineEdit->text();
     sensorPacket_modify.formatString = ui->sensorFormatStringLineEdit->text();
     sensorPacket_modify.guid = ui->sensorGuidLineEdit->text();
-    sensorPacket_modify.callback = ui->sensorCallBackLineEdit->text();
+    //sensorPacket_modify.callback = ui->sensorCallBackLineEdit->text();
 
     //Variable
-    sensorPacket_modify.packetSensorVariable.name = ui->sensorVariableNameValueLabel->text();
-    sensorPacket_modify.packetSensorVariable.allowedFrom = ui->sensorVariableAllowedFromLineEdit->text();
-    sensorPacket_modify.packetSensorVariable.allowedTo = ui->sensorVariableAllowedToLineEdit->text();
-    sensorPacket_modify.packetSensorVariable.allowedTime = ui->sensorVariableAllowedTimeLineEdit->text();
+    //sensorPacket_modify.packetSensorVariable.name = ui->sensorVariableNameValueLabel->text();
+    //sensorPacket_modify.packetSensorVariable.allowedFrom = ui->sensorVariableAllowedFromLineEdit->text();
+    //sensorPacket_modify.packetSensorVariable.allowedTo = ui->sensorVariableAllowedToLineEdit->text();
+    //sensorPacket_modify.packetSensorVariable.allowedTime = ui->sensorVariableAllowedTimeLineEdit->text();
+    sensorPacket_modify.packetSensorVariable.allowedFrom = "";
+    sensorPacket_modify.packetSensorVariable.allowedTo = "";
+    sensorPacket_modify.packetSensorVariable.allowedTime = "";
+    sensorPacket_modify.packetSensorVariable.allowedDays.mon = "true";
+    sensorPacket_modify.packetSensorVariable.allowedDays.tue = "true";
+    sensorPacket_modify.packetSensorVariable.allowedDays.wed = "true";
+    sensorPacket_modify.packetSensorVariable.allowedDays.thur = "true";
+    sensorPacket_modify.packetSensorVariable.allowedDays.fri = "true";
+    sensorPacket_modify.packetSensorVariable.allowedDays.sat = "true";
+    sensorPacket_modify.packetSensorVariable.allowedDays.sun = "true";
+    /*
     if(ui->sensorVariableAllowedDaysMondaycheckBox->isChecked())
     {
         sensorPacket_modify.packetSensorVariable.allowedDays.mon = "true";
@@ -644,7 +618,9 @@ void WidgetWebsocketPacketSensor::on_OkSensorPushButton_clicked()
     {
         sensorPacket_modify.packetSensorVariable.allowedDays.sun = "false";
     }
-    action = ui->sensorVariableActionListWidget->currentItem()->text();
+    */
+    //action = ui->sensorVariableActionListWidget->currentItem()->text();
+    action = VSCP_DAEMON_ACTION_CODE_STORE_VARIABLE;
     if(action == VSCP_DAEMON_ACTION_CODE_NOOP)
     {
         action = VSCP_DAEMON_ACTION_CODE_NOOP_VALUE;
@@ -731,17 +707,13 @@ void WidgetWebsocketPacketSensor::on_OkSensorPushButton_clicked()
     }
     //ui->sensorVariableActionListWidget->setCurrentRow(sensorPacket_modify.packetSensorVariable.action.toInt());
     sensorPacket_modify.packetSensorVariable.action = action;
-    sensorPacket_modify.packetSensorVariable.actionParameters = ui->sensorVariableActionParametersLineEdit->text();
-    sensorPacket_modify.packetSensorVariable.comments = ui->sensorVariableCommentsLineEdit->text();
-    if(ui->sensorVariableControlEnableRowcheckBox->isChecked())
-    {
-        sensorPacket_modify.packetSensorVariable.control.EnableRow = "true";
-    }
-    else
-    {
-        sensorPacket_modify.packetSensorVariable.control.EnableRow = "false";
-    }
+    //sensorPacket_modify.packetSensorVariable.actionParameters = ui->sensorVariableActionParametersLineEdit->text();
+    QString parameterStringValue = sensorPacket_modify.packetSensorVariable.name + ";9;true;%event.data";
+    sensorPacket_modify.packetSensorVariable.actionParameters = parameterStringValue;
+    //-->sensorPacket_modify.packetSensorVariable.comments = ui->sensorVariableCommentsLineEdit->text();
 
+    sensorPacket_modify.packetSensorVariable.comments = "";
+    sensorPacket_modify.packetSensorVariable.control.EnableRow = "true";
     if(ui->sensorVariableControlCheckIndexcheckBox->isChecked())
     {
         sensorPacket_modify.packetSensorVariable.control.checkIndex = "true";
@@ -768,24 +740,18 @@ void WidgetWebsocketPacketSensor::on_OkSensorPushButton_clicked()
     {
         sensorPacket_modify.packetSensorVariable.control.checkSubzone = "false";
     }
+    sensorPacket_modify.packetSensorVariable.control.endScan = "false";
 
-    if(ui->sensorVariableControlEndScancheckBox->isChecked())
-    {
-        sensorPacket_modify.packetSensorVariable.control.endScan = "true";
-    }
-    else
-    {
-        sensorPacket_modify.packetSensorVariable.control.endScan = "false";
-    }
 
-    sensorPacket_modify.packetSensorVariable.groupId = ui->sensorVariableGroupIdLineEdit->text();
+    //sensorPacket_modify.packetSensorVariable.groupId = ui->sensorVariableGroupIdLineEdit->text();
     // todo --> sensorPacket_modify.packetSensorVariable.class_value = ui->sensorVariableClassLineEdit->text();
     sensorPacket_modify.packetSensorVariable.class_value = sensorPacket_modify.class_value;
     // todo --> sensorPacket_modify.packetSensorVariable.type_value = ui->sensorVariableTypeLineEdit->text();
     sensorPacket_modify.packetSensorVariable.type_value = sensorPacket_modify.type_value;
-    sensorPacket_modify.packetSensorVariable.guid = ui->sensorVariableGuidLineEdit->text();
+    sensorPacket_modify.packetSensorVariable.guid = ui->sensorGuidLineEdit->text();
     //ui->sensorVariablePriorityListWidget->setCurrentRow(sensorPacket_modify.packetSensorVariable.priority.toInt());
-    sensorPacket_modify.packetSensorVariable.priority = QString::number( ui->sensorVariablePriorityListWidget->currentRow());
+    //sensorPacket_modify.packetSensorVariable.priority = QString::number( ui->sensorVariablePriorityListWidget->currentRow());
+    sensorPacket_modify.packetSensorVariable.priority = "0";
     sensorPacket_modify.packetSensorVariable.index = ui->sensorVariableIndexLineEdit->text();
     sensorPacket_modify.packetSensorVariable.zone = ui->sensorVariableZoneLineEdit->text();
     sensorPacket_modify.packetSensorVariable.subzone = ui->sensorVariableSubzoneLineEdit->text();

@@ -900,8 +900,15 @@ void GenerateApp::getSwitchVariableButtonDeviceImage(uint16_t deviceImageNumber 
 void GenerateApp::prepareVariablesDmXmlFile(QDomNode &tempNodeChild , QString PacketType)
 {
     QDomElement NodeElementTemp;
+    QDomNode NodeElementTempHomeVariable;
+    QDomNode NodeElementTempHomeDm;
     QString tempString;
 
+
+    // Make the node element
+    NodeElementTempHomeDm= xmlHomeDmDomDocument.createElement("row");
+    // Make the node element
+    NodeElementTempHomeVariable= xmlHomeVariablesDomDocument.createElement("variable");
     // Make the node element
     NodeElementTemp = xmlVariablesDomDocument.createElement("variable");
     if(PacketType == PACKET_SWITCH_TEXT)
@@ -1019,11 +1026,16 @@ void GenerateApp::prepareVariablesDmXmlFile(QDomNode &tempNodeChild , QString Pa
 
     // Append node to dom document
     xmlVariablesRoot.appendChild(NodeElementTemp);
+    // clone the node
+    NodeElementTempHomeVariable = NodeElementTemp.cloneNode(true);
+    // Append node to Home dom document
+    xmlHomeVariablesRoot.appendChild(NodeElementTempHomeVariable);
 
     //QMessageBox::information(this, "uiMagician", QString::number(xmlVariablesRoot.childNodes().size()));
 
     NodeElementTemp.clear();
 
+    //QMessageBox::information(this, "uiMagician", "check_1");
     //Create dm.xml node
     if(PacketType == PACKET_SWITCH_TEXT)
     {
@@ -1240,10 +1252,18 @@ void GenerateApp::prepareVariablesDmXmlFile(QDomNode &tempNodeChild , QString Pa
 
             // Append node to dom document
             xmlDmRoot.appendChild(NodeElementTemp);
+            // clone the node
+            NodeElementTempHomeDm = NodeElementTemp.cloneNode(true);
+            // Append node to Home dom document
+            xmlHomeDmRoot.appendChild(NodeElementTempHomeDm);
 
 
        //variable OFF event entry
             NodeElementTemp.clear();
+            NodeElementTempHomeDm.clear();
+            // Make the node element
+            NodeElementTempHomeDm= xmlHomeDmDomDocument.createElement("row");
+
             //get the variable name
             tempString = tempNodeChild.toElement().attribute(VARIABLE_GROUPID);
             if(tempString == "")
@@ -1455,6 +1475,10 @@ void GenerateApp::prepareVariablesDmXmlFile(QDomNode &tempNodeChild , QString Pa
 
             // Append node to dom document
             xmlDmRoot.appendChild(NodeElementTemp);
+            // clone the node
+            NodeElementTempHomeDm = NodeElementTemp.cloneNode(true);
+            // Append node to Home dom document
+            xmlHomeDmRoot.appendChild(NodeElementTempHomeDm);
 
     }
     else if(PacketType == PACKET_SENSOR_TEXT)
@@ -1697,6 +1721,10 @@ void GenerateApp::prepareVariablesDmXmlFile(QDomNode &tempNodeChild , QString Pa
 
             // Append node to dom document
             xmlDmRoot.appendChild(NodeElementTemp);
+            // clone the node
+            NodeElementTempHomeDm = NodeElementTemp.cloneNode(true);
+            // Append node to Home dom document
+            xmlHomeDmRoot.appendChild(NodeElementTempHomeDm);
 
     }
     else if(PacketType == PACKET_SLIDER_TEXT)
@@ -1929,6 +1957,10 @@ void GenerateApp::prepareVariablesDmXmlFile(QDomNode &tempNodeChild , QString Pa
 
             // Append node to dom document
             xmlDmRoot.appendChild(NodeElementTemp);
+            // clone the node
+            NodeElementTempHomeDm = NodeElementTemp.cloneNode(true);
+            // Append node to Home dom document
+            xmlHomeDmRoot.appendChild(NodeElementTempHomeDm);
 
     }
     else if(PacketType == PACKET_VARIABLE_SWITCH_TEXT)
@@ -2151,6 +2183,10 @@ void GenerateApp::prepareVariablesDmXmlFile(QDomNode &tempNodeChild , QString Pa
 
             // Append node to dom document
             xmlDmRoot.appendChild(NodeElementTemp);
+            // clone the node
+            NodeElementTempHomeDm = NodeElementTemp.cloneNode(true);
+            // Append node to Home dom document
+            xmlHomeDmRoot.appendChild(NodeElementTempHomeDm);
 
     }
     else
@@ -3148,13 +3184,132 @@ void GenerateApp::prepareSocketConf(QDomNode &tempNodeDevicePacket, QString Devi
 
 }
 
-// Create the General header for HTML
-void GenerateApp::createHtmlHead()
+
+
+// close the home output files
+void GenerateApp::closeHomeOpFiles()
+{
+    // Write home variables.xml content to the file
+     (xmlHomeVariablesStream) << xmlHomeVariablesDomDocument.toString() ;
+     // close the file
+     xmlHomeVariablesFile.flush();
+     xmlHomeVariablesFile.close();
+
+
+     // Write home dm.xml content to the file
+     (xmlHomeDmStream) << xmlHomeDmDomDocument.toString() ;
+     // close the file
+     xmlHomeDmFile.flush();
+     xmlHomeDmFile.close();
+}
+
+// Create the home output folder
+void GenerateApp::createHomeOpFolder(QString homeName)
+{
+    //create the output - folders
+    //http://stackoverflow.com/questions/2241808/checking-if-a-folder-exists-and-creating-folders-in-qt-c
+    QDir dir(htmlFileDirectoryPath + "/output/" + homeName);
+    if (!dir.exists()) {
+        dir.mkpath(".");
+    }
+
+    //QMessageBox::information(this, "tt -> name", "test_1");
+
+    // init home variable.xml variables
+    xmlHomeVariablesFileName.clear();
+    //--->xmlHomeVariablesFile;
+    //--->xmlHomeVariablesStream;
+    // root element of the xml
+    xmlHomeVariablesRoot.clear();
+    // xml dom document object
+    xmlHomeVariablesDomDocument.clear();
+    //file path
+    xmlHomeVariablesFilePath.clear();
+
+
+    // init home dm.xml variables
+    xmlHomeDmFileName.clear();
+    //-->QFile   xmlHomeDmFile;
+    //-->QTextStream xmlHomeDmStream;
+    // root element of the xml
+    xmlHomeDmRoot.clear();
+    // xml dom document object
+    xmlHomeDmDomDocument.clear();
+    //file path
+    xmlHomeDmFilePath.clear();
+
+
+    //create home variables.xml file
+    //set the name of the file
+    xmlHomeVariablesFilePath = htmlFileDirectoryPath + "/output/" + homeName + VARIABLES_FILE_NAME;
+    xmlHomeVariablesFile.setFileName(xmlHomeVariablesFilePath.replace("/", "\\"));
+    if(!xmlHomeVariablesFile.open(QIODevice::ReadWrite|QIODevice::Truncate|QIODevice::Text))
+    {
+        // Fail to open file Message
+        //QMessageBox::information(this, "uiMagician", "Fail to Open file - variables.xml");
+        return;
+        //return FAIL_TO_OPEN_FILE;
+    }
+    //QMessageBox::information(this, "uiMagician", xmlVariablesFilePath);
+    xmlHomeVariablesStream.setDevice(&xmlHomeVariablesFile);
+    xmlHomeVariablesDomDocument.clear();
+    //xmlVariablesDomDocument.setContent(&xmlVariablesFile);
+    // Make the root element
+    xmlHomeVariablesRoot = xmlHomeVariablesDomDocument.createElement(VARIABLES_ROOT_NAME);
+    // Add root to the document
+    xmlHomeVariablesDomDocument.appendChild(xmlHomeVariablesRoot);
+
+
+    //create Home dm.xml file
+    //set the name of the file
+    xmlHomeDmFilePath = htmlFileDirectoryPath + "/output/" + homeName +  DM_FILE_NAME;
+    xmlHomeDmFile.setFileName(xmlHomeDmFilePath.replace("/", "\\"));
+    if(!xmlHomeDmFile.open(QIODevice::ReadWrite|QIODevice::Truncate|QIODevice::Text))
+    {
+        // Fail to open file Message
+        //QMessageBox::information(this, "uiMagician", "Fail to Open file - dm.xml");
+        return;
+        //return FAIL_TO_OPEN_FILE;
+    }
+    //QMessageBox::information(this, "uiMagician", xmlDmFilePath);
+    xmlHomeDmStream.setDevice(&xmlHomeDmFile);
+    xmlHomeDmDomDocument.clear();
+    //xmlDmDomDocument.setContent(&xmlDmFile);
+    // Make the root element
+    xmlHomeDmRoot = xmlHomeDmDomDocument.createElement(DM_ROOT_NAME);
+    // Add root to the document
+    xmlHomeDmDomDocument.appendChild(xmlHomeDmRoot);
+
+    //QMessageBox::information(this, "tt -> name", "test");
+}
+
+// Create the output folder
+void GenerateApp::createOpFolder()
 {
     //Extract absolute file name form - xml file path
     QFileInfo fileInfo(xmlFileNameRef);
     htmlFileDirectoryPath = fileInfo.absolutePath();
-    htmlFilePath = htmlFileDirectoryPath + "/MyHome.html";
+
+    //delete content of output folder
+    //http://stackoverflow.com/questions/11050977/removing-a-non-empty-folder-in-qt
+    QString path = htmlFileDirectoryPath + "/output";
+    removeDir(path);
+    // Add a delay
+    SleepTimerDelay::sleep(2);
+    //QMessageBox::information(this, "tt -> name", "test_111");
+    //create the output - folders
+    //http://stackoverflow.com/questions/2241808/checking-if-a-folder-exists-and-creating-folders-in-qt-c
+    QDir dir(htmlFileDirectoryPath + "/output");
+    if (!dir.exists()) {
+        dir.mkpath(".");
+    }
+
+}
+
+// Create the General header for HTML
+void GenerateApp::createHtmlHead()
+{
+    htmlFilePath = htmlFileDirectoryPath + "/output/MyHome.html";
 
     /*msgBox 	= new QMessageBox();
     msgBox->setText(htmlFilePath.replace("/", "\\"));
@@ -3554,6 +3709,9 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
     for (int p = 0; p < houseNodesList.size(); ++p)
     {
         houseName = houseNodesList.at(p).houseName;
+
+        // Create the home output folder
+        createHomeOpFolder(houseName);
 
         //QMessageBox::information(this,"house name",houseName);
 
@@ -4555,6 +4713,9 @@ void GenerateApp::createFloorDivScrollableCenter(QDomElement &NodeElementMultiFl
         //floorCfgFileString += SingleFloorGroupTxtClass;
         //htmlRoot.appendChild(NodeElement);
 
+        // close the home output files
+        closeHomeOpFiles();
+
     }
 
 
@@ -5181,14 +5342,15 @@ void GenerateApp::createHtmlBody()
 // create the floor configure javascript files
 void GenerateApp::createFloorCfgFiles()
 {
+
     /* set the Html body configure file */
     if(houseFloor == MULTI_FLOOR_HOUSE)
     {
-        floorCfgFilePath = htmlFileDirectoryPath + "/multiFloorCfg.js";
+        floorCfgFilePath = htmlFileDirectoryPath + "/output/multiFloorCfg.js";
     }
     else
     {
-        floorCfgFilePath = htmlFileDirectoryPath + "/singleFloorCfg.js";
+        floorCfgFilePath = htmlFileDirectoryPath + "/output/singleFloorCfg.js";
     }
     //set the name of the file
     floorCfgFile.setFileName(floorCfgFilePath.replace("/", "\\"));
@@ -5209,11 +5371,11 @@ void GenerateApp::createFloorCfgFiles()
     /* set the Html socket configure file */
     if(houseFloor == MULTI_FLOOR_HOUSE)
     {
-        FloorsSocketCfgFilePath = htmlFileDirectoryPath + "/multiFloorsSocketCfg.js";
+        FloorsSocketCfgFilePath = htmlFileDirectoryPath + "/output/multiFloorsSocketCfg.js";
     }
     else
     {
-        FloorsSocketCfgFilePath = htmlFileDirectoryPath + "/singleFloorsSocketCfg.js";
+        FloorsSocketCfgFilePath = htmlFileDirectoryPath + "/output/singleFloorsSocketCfg.js";
     }
     //set the name of the file
     FloorsSocketCfgFile.setFileName(FloorsSocketCfgFilePath.replace("/", "\\"));
@@ -5230,7 +5392,7 @@ void GenerateApp::createFloorCfgFiles()
 
     //create variables.xml file
     //set the name of the file
-    xmlVariablesFilePath = htmlFileDirectoryPath + VARIABLES_FILE_NAME;
+    xmlVariablesFilePath = htmlFileDirectoryPath + "/output" + VARIABLES_FILE_NAME;
     xmlVariablesFile.setFileName(xmlVariablesFilePath.replace("/", "\\"));
     if(!xmlVariablesFile.open(QIODevice::ReadWrite|QIODevice::Truncate|QIODevice::Text))
     {
@@ -5250,7 +5412,7 @@ void GenerateApp::createFloorCfgFiles()
 
     //create dm.xml file
     //set the name of the file
-    xmlDmFilePath = htmlFileDirectoryPath + DM_FILE_NAME;
+    xmlDmFilePath = htmlFileDirectoryPath + "/output" + DM_FILE_NAME;
     xmlDmFile.setFileName(xmlDmFilePath.replace("/", "\\"));
     if(!xmlDmFile.open(QIODevice::ReadWrite|QIODevice::Truncate|QIODevice::Text))
     {
@@ -5267,6 +5429,7 @@ void GenerateApp::createFloorCfgFiles()
     xmlDmRoot = xmlDmDomDocument.createElement(DM_ROOT_NAME);
     // Add root to the document
     xmlDmDomDocument.appendChild(xmlDmRoot);
+
 }
 
 //Create div fotter
@@ -5300,6 +5463,8 @@ void GenerateApp::createHtmlApp()
     //Create floor room list
     createFloorRoomList(housePacketList,xmlRootRef);
 
+    // Create the output folder
+    createOpFolder();
     // Create the General header for HTML
     createHtmlHead();
     // Create fllor configure file
@@ -5435,6 +5600,30 @@ void GenerateApp::getTotalGroups(int index)
     }
 
 
+}
+
+// Recursively delete the contents of the directory first
+bool GenerateApp::removeDir(const QString & dirName)
+{
+    bool result = true;
+    QDir dir(dirName);
+
+    if (dir.exists(dirName)) {
+        Q_FOREACH(QFileInfo info, dir.entryInfoList(QDir::NoDotAndDotDot | QDir::System | QDir::Hidden  | QDir::AllDirs | QDir::Files, QDir::DirsFirst)) {
+            if (info.isDir()) {
+                result = removeDir(info.absoluteFilePath());
+            }
+            else {
+                result = QFile::remove(info.absoluteFilePath());
+            }
+
+            if (!result) {
+                return result;
+            }
+        }
+        result = dir.rmdir(dirName);
+    }
+    return result;
 }
 
 void GenerateApp::on_okPushButton_clicked()

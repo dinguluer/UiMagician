@@ -53,6 +53,8 @@ public:
     //Routines to get value of class & types
     vscpClassTypeObject ClassTypeObject;
 
+    QString sliderVariableActionParameters;
+
 private slots:
     void on_OkSliderPushButton_clicked();
 

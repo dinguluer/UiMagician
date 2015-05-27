@@ -63,10 +63,10 @@ private:
     void setListValue();
 
 private slots :
-    void txOnClassListWidgetcurrentItemChanged_slot();
-    void txOffClassListWidgetcurrentItemChanged_slot();
-    void rxOnClassListWidgetcurrentItemChanged_slot();
-    void rxOffClassListWidgetcurrentItemChanged_slot();
+    //void txOnClassListWidgetcurrentItemChanged_slot();
+    //void txOffClassListWidgetcurrentItemChanged_slot();
+    //void rxOnClassListWidgetcurrentItemChanged_slot();
+    //void rxOffClassListWidgetcurrentItemChanged_slot();
     void on_OkPushButton_clicked();
     void on_CancelPushButton_clicked();
 };

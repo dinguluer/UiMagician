@@ -56,7 +56,7 @@ WidgetWebsocketPacketSlider::WidgetWebsocketPacketSlider(T_widgetWebsocketPacket
     }
     ui->sliderTxTypeListWidget->setCurrentRow(0);
     //data
-    ui->sliderTxGuidLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}"), this ));
+    /*ui->sliderTxGuidLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}"), this ));
     //ui->sliderTxIndexLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9a-fxA-FX]{1,2}"), this ));
     ui->sliderTxIndexLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9]{1,3}"), this ));
     //ui->sliderTxZoneLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9a-fxA-FX]{1,2}"), this ));
@@ -65,7 +65,7 @@ WidgetWebsocketPacketSlider::WidgetWebsocketPacketSlider(T_widgetWebsocketPacket
     ui->sliderTxSubZoneLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9]{1,3}"), this ));
     ui->sliderTxHeadLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9a-fxA-FX]{1,2}"), this ));
     ui->sliderTxObidLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9a-fxA-FX]{1,8}"), this ));
-
+   */
 
     //class
     // Add list item here
@@ -82,7 +82,7 @@ WidgetWebsocketPacketSlider::WidgetWebsocketPacketSlider(T_widgetWebsocketPacket
     }
     ui->sliderRxTypeListWidget->setCurrentRow(0);
     //data
-    ui->sliderRxGuidLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}"), this ));
+    /*ui->sliderRxGuidLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}\\:[0-9a-fxA-FX]{1,2}"), this ));
     //ui->sliderRxIndexLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9a-fxA-FX]{1,2}"), this ));
     ui->sliderRxIndexLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9]{1,3}"), this ));
     //ui->sliderRxZoneLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9a-fxA-FX]{1,2}"), this ));
@@ -118,31 +118,35 @@ WidgetWebsocketPacketSlider::WidgetWebsocketPacketSlider(T_widgetWebsocketPacket
 
     //domain should be fixed
     ui->sliderDomainLineEdit->setReadOnly(true);
+   */
 
     //Copy slider packet to Dialog
     CopySliderPacket();
 
+    //clear the qstring
+    sliderVariableActionParameters.clear();
+    sliderVariableActionParameters = "";
 }
 
 //Copy slider packet to Dialog
 void WidgetWebsocketPacketSlider::CopySliderPacket()
 {
-    QString action;
+    //QString action;
     QString tempString;
     QString rxClass;
     QString rxTypeValue;
-    QString parameterStringValue;
+    //QString parameterStringValue;
     QListWidgetItem dummyCurrentItem;
     QListWidgetItem dummyPreviousItem;
     int classIndex = 0;
     int typeIndex = 0;
-    int actionval;
-    int maxVal;
-    int minVal;
+    //int actionval;
+    //int maxVal;
+    //int minVal;
     //websocket
-    ui->sliderIdValueLabel->setText(sliderPacket_modify.id);
-    ui->sliderLocalTxtIdValueLabel->setText(sliderPacket_modify.idLocalTxt);
-    ui->sliderRemoteTxtIdValueLabel->setText(sliderPacket_modify.idRemoteTxt);
+    //-->ui->sliderIdValueLabel->setText(sliderPacket_modify.id);
+    //-->ui->sliderLocalTxtIdValueLabel->setText(sliderPacket_modify.idLocalTxt);
+    //-->ui->sliderRemoteTxtIdValueLabel->setText(sliderPacket_modify.idRemoteTxt);
     ui->sliderUrlLineEdit->setText(sliderPacket_modify.url);
     ui->sliderMaxLineEdit->setText(sliderPacket_modify.maxValue);
     ui->sliderMinLineEdit->setText(sliderPacket_modify.minValue);
@@ -150,6 +154,18 @@ void WidgetWebsocketPacketSlider::CopySliderPacket()
     ui->sliderPasswordLineEdit->setText(sliderPacket_modify.passWord);
     //domain should be fixed for this release
     ui->sliderDomainLineEdit->setText("mydomain.com");
+    // set the remote node parameters
+    ui->sliderGuidLineEdit->setText(sliderPacket_modify.rxEvent.guid);
+    if(sliderPacket_modify.rxEvent.type_value == VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED_VALUE)
+    {
+        ui->sliderIndexLineEdit->setText(sliderPacket_modify.rxEvent.index);
+    }
+    else
+    {
+        ui->sliderIndexLineEdit->clear();
+    }
+    ui->sliderZoneLineEdit->setText(sliderPacket_modify.rxEvent.zone);
+    ui->sliderSubZoneLineEdit->setText(sliderPacket_modify.rxEvent.subzone);
 
     //Tx event
     tempString = sliderPacket_modify.txEvent.class_value;
@@ -173,7 +189,7 @@ void WidgetWebsocketPacketSlider::CopySliderPacket()
        // set the value of the type list
         on_sliderTxClassListWidget_currentItemChanged(&dummyCurrentItem, &dummyPreviousItem);
     ui->sliderTxTypeListWidget->setCurrentRow(typeIndex);
-    ui->sliderTxGuidLineEdit->setText(sliderPacket_modify.txEvent.guid);
+    /*ui->sliderTxGuidLineEdit->setText(sliderPacket_modify.txEvent.guid);
     // clear Tx line edit
     if(sliderPacket_modify.txEvent.type_value == VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL_VALUE)
     {
@@ -189,7 +205,7 @@ void WidgetWebsocketPacketSlider::CopySliderPacket()
     ui->sliderTxObidLineEdit->setText(sliderPacket_modify.txEvent.obid);
     ui->sliderTxTimeStampLineEdit->setText(sliderPacket_modify.txEvent.timeStamp);
     ui->sliderTxDataLineEdit->setText(sliderPacket_modify.txEvent.data);
-
+*/
     //Rx event
     tempString = sliderPacket_modify.rxEvent.class_value;
     rxClass = tempString;
@@ -214,7 +230,7 @@ void WidgetWebsocketPacketSlider::CopySliderPacket()
         // set the value of the type list
          on_sliderRxClassListWidget_currentItemChanged(&dummyCurrentItem, &dummyPreviousItem);
     ui->sliderRxTypeListWidget->setCurrentRow(typeIndex);
-    ui->sliderRxGuidLineEdit->setText(sliderPacket_modify.rxEvent.guid);
+    /*ui->sliderRxGuidLineEdit->setText(sliderPacket_modify.rxEvent.guid);
 
     // clear Rx line edit
     if(sliderPacket_modify.rxEvent.type_value == VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED_VALUE)
@@ -454,7 +470,7 @@ void WidgetWebsocketPacketSlider::CopySliderPacket()
     ui->sliderVariableIndexLineEdit->setText(sliderPacket_modify.packetSliderVariable.index);
     ui->sliderVariableZoneLineEdit->setText(sliderPacket_modify.packetSliderVariable.zone);
     ui->sliderVariableSubzoneLineEdit->setText(sliderPacket_modify.packetSliderVariable.subzone);
-
+   */
 
 }
 
@@ -629,9 +645,9 @@ void WidgetWebsocketPacketSlider::on_OkSliderPushButton_clicked()
     QString tempStringClass;
     QString tempStringType;
     //websocket
-    sliderPacket_modify.id = ui->sliderIdValueLabel->text();
-    sliderPacket_modify.idLocalTxt = ui->sliderLocalTxtIdValueLabel->text();
-    sliderPacket_modify.idRemoteTxt = ui->sliderRemoteTxtIdValueLabel->text();
+    //-->sliderPacket_modify.id = ui->sliderIdValueLabel->text();
+    //-->sliderPacket_modify.idLocalTxt = ui->sliderLocalTxtIdValueLabel->text();
+    //-->sliderPacket_modify.idRemoteTxt = ui->sliderRemoteTxtIdValueLabel->text();
     sliderPacket_modify.url = ui->sliderUrlLineEdit->text();
     sliderPacket_modify.maxValue = ui->sliderMaxLineEdit->text();
     sliderPacket_modify.minValue = ui->sliderMinLineEdit->text();
@@ -660,17 +676,22 @@ void WidgetWebsocketPacketSlider::on_OkSliderPushButton_clicked()
     sliderPacket_modify.txEvent.class_value = tempStringClass;
     //ui->sliderTxTypeListWidget->setCurrentRow(sliderPacket_modify.txEvent.type_value.toInt());
     sliderPacket_modify.txEvent.type_value = tempStringType;
-    sliderPacket_modify.txEvent.guid = ui->sliderTxGuidLineEdit->text();
-    sliderPacket_modify.txEvent.zone = ui->sliderTxZoneLineEdit->text();
-    sliderPacket_modify.txEvent.subzone = ui->sliderTxSubZoneLineEdit->text();
+    sliderPacket_modify.txEvent.guid = ui->sliderGuidLineEdit->text();
+    sliderPacket_modify.txEvent.zone = ui->sliderZoneLineEdit->text();
+    sliderPacket_modify.txEvent.subzone = ui->sliderSubZoneLineEdit->text();
     if(sliderPacket_modify.txEvent.type_value == VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL_VALUE)
     {
-        sliderPacket_modify.txEvent.index = ui->sliderTxIndexLineEdit->text();
+        sliderPacket_modify.txEvent.index = ui->sliderIndexLineEdit->text();
     }
-    sliderPacket_modify.txEvent.head = ui->sliderTxHeadLineEdit->text();
-    sliderPacket_modify.txEvent.obid = ui->sliderTxObidLineEdit->text();
-    sliderPacket_modify.txEvent.timeStamp = ui->sliderTxTimeStampLineEdit->text();
-    sliderPacket_modify.txEvent.data = ui->sliderTxDataLineEdit->text();
+
+    else
+    {
+        sliderPacket_modify.txEvent.index = "";
+    }
+    sliderPacket_modify.txEvent.head = "";
+    sliderPacket_modify.txEvent.obid = "";
+    sliderPacket_modify.txEvent.timeStamp = "";
+    sliderPacket_modify.txEvent.data = "";
 
     //Rx event
     //ui->sliderRxClassListWidget->setCurrentRow(sliderPacket_modify.rxEvent.class_value.toInt());
@@ -694,27 +715,38 @@ void WidgetWebsocketPacketSlider::on_OkSliderPushButton_clicked()
     sliderPacket_modify.rxEvent.class_value = tempStringClass;
     //ui->sliderRxTypeListWidget->setCurrentRow(sliderPacket_modify.rxEvent.type_value.toInt());
     sliderPacket_modify.rxEvent.type_value = tempStringType;
-    sliderPacket_modify.rxEvent.guid = ui->sliderRxGuidLineEdit->text();
+    sliderPacket_modify.rxEvent.guid = ui->sliderGuidLineEdit->text();
     //sliderPacket_modify.rxEvent.index = ui->sliderRxIndexLineEdit->text();
-    sliderPacket_modify.rxEvent.zone = ui->sliderRxZoneLineEdit->text();
-    sliderPacket_modify.rxEvent.subzone = ui->sliderRxSubZoneLineEdit->text();
+    sliderPacket_modify.rxEvent.zone = ui->sliderZoneLineEdit->text();
+    sliderPacket_modify.rxEvent.subzone = ui->sliderSubZoneLineEdit->text();
     // clear Rx line edit
     if(sliderPacket_modify.rxEvent.type_value == VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED_VALUE)
     {
-      sliderPacket_modify.rxEvent.index = ui->sliderRxIndexLineEdit->text();
+      sliderPacket_modify.rxEvent.index = ui->sliderIndexLineEdit->text();
     }
-    sliderPacket_modify.rxEvent.head = ui->sliderRxHeadLineEdit->text();
-    sliderPacket_modify.rxEvent.obid = ui->sliderRxObidLineEdit->text();
-    sliderPacket_modify.rxEvent.timeStamp = ui->sliderRxTimeStampLineEdit->text();
-    sliderPacket_modify.rxEvent.data = ui->sliderRxDataLineEdit->text();
+    else
+    {
+        sliderPacket_modify.rxEvent.index = "";
+    }
+    sliderPacket_modify.rxEvent.head = "";
+    sliderPacket_modify.rxEvent.obid = "";
+    sliderPacket_modify.rxEvent.timeStamp = "";
+    sliderPacket_modify.rxEvent.data = "";
 
 
     //Variable
-    sliderPacket_modify.packetSliderVariable.name = ui->sliderVariableNameValueLabel->text();
-    sliderPacket_modify.packetSliderVariable.allowedFrom = ui->sliderVariableAllowedFromLineEdit->text();
-    sliderPacket_modify.packetSliderVariable.allowedTo = ui->sliderVariableAllowedToLineEdit->text();
-    sliderPacket_modify.packetSliderVariable.allowedTime = ui->sliderVariableAllowedTimeLineEdit->text();
-    if(ui->sliderVariableAllowedDaysMondaycheckBox->isChecked())
+    //sliderPacket_modify.packetSliderVariable.name = ui->sliderVariableNameValueLabel->text();
+    sliderPacket_modify.packetSliderVariable.allowedFrom = "";
+    sliderPacket_modify.packetSliderVariable.allowedTo = "";
+    sliderPacket_modify.packetSliderVariable.allowedTime = "";
+    sliderPacket_modify.packetSliderVariable.allowedDays.mon = "true";
+    sliderPacket_modify.packetSliderVariable.allowedDays.tue = "true";
+    sliderPacket_modify.packetSliderVariable.allowedDays.wed = "true";
+    sliderPacket_modify.packetSliderVariable.allowedDays.thur = "true";
+    sliderPacket_modify.packetSliderVariable.allowedDays.fri = "true";
+    sliderPacket_modify.packetSliderVariable.allowedDays.sat = "true";
+    sliderPacket_modify.packetSliderVariable.allowedDays.sun = "true";
+    /*if(ui->sliderVariableAllowedDaysMondaycheckBox->isChecked())
     {
         sliderPacket_modify.packetSliderVariable.allowedDays.mon = "true";
     }
@@ -775,8 +807,9 @@ void WidgetWebsocketPacketSlider::on_OkSliderPushButton_clicked()
     else
     {
         sliderPacket_modify.packetSliderVariable.allowedDays.sun = "false";
-    }
-    action = ui->sliderVariableActionListWidget->currentItem()->text();
+    }*/
+    //action = ui->sliderVariableActionListWidget->currentItem()->text();
+    action = VSCP_DAEMON_ACTION_CODE_STORE_VARIABLE;
     if(action == VSCP_DAEMON_ACTION_CODE_NOOP)
     {
         action = VSCP_DAEMON_ACTION_CODE_NOOP_VALUE;
@@ -863,9 +896,18 @@ void WidgetWebsocketPacketSlider::on_OkSliderPushButton_clicked()
     }
     //ui->sliderVariableActionListWidget->setCurrentRow(sliderPacket_modify.packetSliderVariable.action.toInt());
     sliderPacket_modify.packetSliderVariable.action = action;
-    sliderPacket_modify.packetSliderVariable.actionParameters = ui->sliderVariableActionParametersLineEdit->text();
-    sliderPacket_modify.packetSliderVariable.comments = ui->sliderVariableCommentsLineEdit->text();
-    if(ui->sliderVariableControlEnableRowcheckBox->isChecked())
+    //sliderPacket_modify.packetSliderVariable.actionParameters = ui->sliderVariableActionParametersLineEdit->text();
+    if(sliderVariableActionParameters != "")
+    {
+        sliderPacket_modify.packetSliderVariable.actionParameters = sliderVariableActionParameters;
+    }
+    //sliderPacket_modify.packetSliderVariable.comments = ui->sliderVariableCommentsLineEdit->text();
+    sliderPacket_modify.packetSliderVariable.control.EnableRow = "true";
+    sliderPacket_modify.packetSliderVariable.control.checkIndex = "true";
+    sliderPacket_modify.packetSliderVariable.control.checkzone = "true";
+    sliderPacket_modify.packetSliderVariable.control.checkSubzone = "true";
+    sliderPacket_modify.packetSliderVariable.control.endScan = "false";
+    /*if(ui->sliderVariableControlEnableRowcheckBox->isChecked())
     {
         sliderPacket_modify.packetSliderVariable.control.EnableRow = "true";
     }
@@ -908,19 +950,21 @@ void WidgetWebsocketPacketSlider::on_OkSliderPushButton_clicked()
     else
     {
         sliderPacket_modify.packetSliderVariable.control.endScan = "false";
-    }
+    }*/
 
-    sliderPacket_modify.packetSliderVariable.groupId = ui->sliderVariableGroupIdLineEdit->text();
+    //sliderPacket_modify.packetSliderVariable.groupId = ui->sliderVariableGroupIdLineEdit->text();
+    sliderPacket_modify.packetSliderVariable.groupId = "";
     // todo --> sliderPacket_modify.packetSliderVariable.class_value = ui->sliderVariableClassLineEdit->text();
     sliderPacket_modify.packetSliderVariable.class_value = sliderPacket_modify.rxEvent.class_value;
     // todo --> sliderPacket_modify.packetSliderVariable.type_value = ui->sliderVariableTypeLineEdit->text();
     sliderPacket_modify.packetSliderVariable.type_value = sliderPacket_modify.rxEvent.type_value;
-    sliderPacket_modify.packetSliderVariable.guid = ui->sliderVariableGuidLineEdit->text();
+    sliderPacket_modify.packetSliderVariable.guid = ui->sliderGuidLineEdit->text();
     //ui->sliderVariablePriorityListWidget->setCurrentRow(sliderPacket_modify.packetSliderVariable.priority.toInt());
-    sliderPacket_modify.packetSliderVariable.priority = QString::number( ui->sliderVariablePriorityListWidget->currentRow());
-    sliderPacket_modify.packetSliderVariable.index = ui->sliderVariableIndexLineEdit->text();
-    sliderPacket_modify.packetSliderVariable.zone = ui->sliderVariableZoneLineEdit->text();
-    sliderPacket_modify.packetSliderVariable.subzone = ui->sliderVariableSubzoneLineEdit->text();
+    //sliderPacket_modify.packetSliderVariable.priority = QString::number( ui->sliderVariablePriorityListWidget->currentRow());
+    sliderPacket_modify.packetSliderVariable.priority =  "0";
+    sliderPacket_modify.packetSliderVariable.index = ui->sliderIndexLineEdit->text();
+    sliderPacket_modify.packetSliderVariable.zone = ui->sliderZoneLineEdit->text();
+    sliderPacket_modify.packetSliderVariable.subzone = ui->sliderSubZoneLineEdit->text();
 
 
     //Emit a close handler
@@ -942,21 +986,22 @@ void WidgetWebsocketPacketSlider::on_WidgetWebsocketPacketSliderTabWidget_curren
         parameterStringValue = sliderPacket_modify.packetSliderVariable.name + ";9;true;%event.data";
 
         // set read only - false
-        ui->sliderTxIndexLineEdit->setReadOnly(false);
-        ui->sliderRxIndexLineEdit->setReadOnly(false);
+        ui->sliderIndexLineEdit->setReadOnly(false);
+        ui->sliderIndexLineEdit->setReadOnly(false);
     }
     else
     {
         parameterStringValue = sliderPacket_modify.packetSliderVariable.name + ";3;true;%event.data[0]";
 
         // clear Tx & rx line edit
-        ui->sliderTxIndexLineEdit->clear();
-        ui->sliderRxIndexLineEdit->clear();
+        ui->sliderIndexLineEdit->clear();
+        ui->sliderIndexLineEdit->clear();
         // set read only - true
-        ui->sliderTxIndexLineEdit->setReadOnly(true);
-        ui->sliderRxIndexLineEdit->setReadOnly(true);
+        ui->sliderIndexLineEdit->setReadOnly(true);
+        ui->sliderIndexLineEdit->setReadOnly(true);
     }
-    ui->sliderVariableActionParametersLineEdit->setText(parameterStringValue);
+    //ui->sliderVariableActionParametersLineEdit->setText(parameterStringValue);
+    sliderVariableActionParameters = parameterStringValue;
 }
 
 WidgetWebsocketPacketSlider::~WidgetWebsocketPacketSlider()

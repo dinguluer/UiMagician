@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>876</width>
-    <height>678</height>
+    <width>877</width>
+    <height>516</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -130,47 +130,24 @@
         <enum>Qt::Horizontal</enum>
        </property>
       </widget>
-      <widget class="QLabel" name="sensorGraphUnitIdLabel">
+      <widget class="QCheckBox" name="sensorGraphTypeBarCheckBox">
        <property name="geometry">
         <rect>
-         <x>30</x>
-         <y>410</y>
-         <width>111</width>
-         <height>31</height>
+         <x>250</x>
+         <y>340</y>
+         <width>70</width>
+         <height>17</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
        <property name="text">
-        <string>graphUnitId</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorGraphIdLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>330</y>
-         <width>101</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>graphId</string>
+        <string>Bar</string>
        </property>
       </widget>
       <widget class="QLabel" name="sensorGraphTypeLabel">
        <property name="geometry">
         <rect>
          <x>30</x>
-         <y>490</y>
+         <y>330</y>
          <width>91</width>
          <height>31</height>
         </rect>
@@ -184,47 +161,11 @@
         <string>graphType</string>
        </property>
       </widget>
-      <widget class="QLabel" name="sensorGraphIdValueLabel">
-       <property name="geometry">
-        <rect>
-         <x>160</x>
-         <y>330</y>
-         <width>461</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorGraphUnitIdValueLabel">
-       <property name="geometry">
-        <rect>
-         <x>160</x>
-         <y>420</y>
-         <width>461</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
       <widget class="QCheckBox" name="sensorGraphTypeLineCheckBox">
        <property name="geometry">
         <rect>
          <x>160</x>
-         <y>500</y>
+         <y>340</y>
          <width>70</width>
          <height>17</height>
         </rect>
@@ -233,24 +174,11 @@
         <string>Line</string>
        </property>
       </widget>
-      <widget class="QCheckBox" name="sensorGraphTypeBarCheckBox">
-       <property name="geometry">
-        <rect>
-         <x>250</x>
-         <y>500</y>
-         <width>70</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Bar</string>
-       </property>
-      </widget>
       <widget class="QCheckBox" name="sensorGraphTypeAreaCheckBox">
        <property name="geometry">
         <rect>
          <x>350</x>
-         <y>500</y>
+         <y>340</y>
          <width>70</width>
          <height>17</height>
         </rect>
@@ -264,31 +192,13 @@
       <attribute name="title">
        <string>Websocket Configure</string>
       </attribute>
-      <widget class="QLabel" name="sensorUrlLabel">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>140</y>
-         <width>41</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>URL</string>
-       </property>
-      </widget>
       <widget class="QLabel" name="sensorFormatStringLabel">
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>450</y>
+         <y>330</y>
          <width>121</width>
-         <height>21</height>
+         <height>31</height>
         </rect>
        </property>
        <property name="font">
@@ -304,7 +214,7 @@
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>340</y>
+         <y>220</y>
          <width>121</width>
          <height>31</height>
         </rect>
@@ -318,103 +228,21 @@
         <string>Sensor Index</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="sensorUrlLineEdit">
+      <widget class="QListWidget" name="sensorCodingIndexListWidget">
        <property name="geometry">
         <rect>
          <x>150</x>
-         <y>140</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorIdValueLabel">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>30</y>
-         <width>481</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorIdLabel">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>30</y>
-         <width>81</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Image ID</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorClassLabel">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>190</y>
-         <width>61</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Class</string>
-       </property>
-      </widget>
-      <widget class="QListWidget" name="sensorClassListWidget">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>190</y>
+         <y>220</y>
          <width>231</width>
-         <height>131</height>
+         <height>91</height>
         </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorCallBackLabel">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>550</y>
-         <width>81</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Call Back</string>
        </property>
       </widget>
       <widget class="QLabel" name="sensorDecimalsLabel">
        <property name="geometry">
         <rect>
          <x>480</x>
-         <y>340</y>
+         <y>220</y>
          <width>81</width>
          <height>21</height>
         </rect>
@@ -428,13 +256,13 @@
         <string>Decimals</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="sensorFormatStringLineEdit">
+      <widget class="QListWidget" name="sensorClassListWidget">
        <property name="geometry">
         <rect>
          <x>150</x>
-         <y>450</y>
-         <width>401</width>
-         <height>31</height>
+         <y>70</y>
+         <width>231</width>
+         <height>131</height>
         </rect>
        </property>
       </widget>
@@ -442,7 +270,7 @@
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>500</y>
+         <y>380</y>
          <width>81</width>
          <height>21</height>
         </rect>
@@ -456,42 +284,12 @@
         <string>GUID</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="sensorGuidLineEdit">
+      <widget class="QLineEdit" name="sensorFormatStringLineEdit">
        <property name="geometry">
         <rect>
          <x>150</x>
-         <y>500</y>
+         <y>330</y>
          <width>401</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sensorCallBackLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>550</y>
-         <width>401</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QListWidget" name="sensorCodingIndexListWidget">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>340</y>
-         <width>231</width>
-         <height>91</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sensorDecimalsLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>570</x>
-         <y>340</y>
-         <width>141</width>
          <height>31</height>
         </rect>
        </property>
@@ -500,7 +298,7 @@
        <property name="geometry">
         <rect>
          <x>480</x>
-         <y>190</y>
+         <y>70</y>
          <width>61</width>
          <height>21</height>
         </rect>
@@ -514,40 +312,12 @@
         <string>Type</string>
        </property>
       </widget>
-      <widget class="QListWidget" name="sensorTypeListWidget">
-       <property name="geometry">
-        <rect>
-         <x>570</x>
-         <y>190</y>
-         <width>231</width>
-         <height>131</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorRemoteTxtIdValueLabel">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>90</y>
-         <width>571</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorRemoteTxtIdLabel">
+      <widget class="QLabel" name="sensorUrlLabel">
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>90</y>
-         <width>81</width>
+         <y>20</y>
+         <width>41</width>
          <height>21</height>
         </rect>
        </property>
@@ -557,186 +327,34 @@
         </font>
        </property>
        <property name="text">
-        <string>Txt ID</string>
+        <string>URL</string>
        </property>
       </widget>
-     </widget>
-     <widget class="QWidget" name="variableConfigure">
-      <attribute name="title">
-       <string>Variable Configure</string>
-      </attribute>
-      <widget class="QLabel" name="sensorVariableNameValueLabel">
+      <widget class="QLineEdit" name="sensorGuidLineEdit">
        <property name="geometry">
         <rect>
-         <x>210</x>
-         <y>20</y>
-         <width>341</width>
-         <height>21</height>
+         <x>150</x>
+         <y>380</y>
+         <width>401</width>
+         <height>31</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
       </widget>
-      <widget class="QLineEdit" name="sensorVariableAllowedToLineEdit">
+      <widget class="QLineEdit" name="sensorUrlLineEdit">
        <property name="geometry">
         <rect>
-         <x>210</x>
-         <y>120</y>
+         <x>150</x>
+         <y>20</y>
          <width>221</width>
          <height>31</height>
         </rect>
        </property>
       </widget>
-      <widget class="QLineEdit" name="sensorVariableActionParametersLineEdit">
+      <widget class="QLabel" name="sensorClassLabel">
        <property name="geometry">
         <rect>
-         <x>210</x>
-         <y>400</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorVariableAllowedDaysLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>220</y>
-         <width>121</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Allowed Days</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sensorVariableAllowedDaysSaturdaycheckBox">
-       <property name="geometry">
-        <rect>
-         <x>260</x>
-         <y>250</y>
-         <width>41</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Sat</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sensorVariableControlCheckSubzonecheckBox">
-       <property name="geometry">
-        <rect>
-         <x>350</x>
-         <y>520</y>
-         <width>101</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Check Subzone</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sensorVariableAllowedDaysWednesdaycheckBox">
-       <property name="geometry">
-        <rect>
-         <x>310</x>
-         <y>220</y>
-         <width>41</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Wed</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorVariableAllowedToLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>120</y>
-         <width>101</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Allowed To</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sensorVariableAllowedDaysFridaycheckBox">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>250</y>
-         <width>41</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Fri</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sensorVariableCommentsLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>550</y>
-         <width>631</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sensorVariableControlEndScancheckBox">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>520</y>
-         <width>141</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>End Scan on this Row</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorVariableActionParametersLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>400</y>
-         <width>161</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Action Parameters</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorVariableNameLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>20</y>
+         <x>20</x>
+         <y>70</y>
          <width>61</width>
          <height>21</height>
         </rect>
@@ -747,220 +365,34 @@
         </font>
        </property>
        <property name="text">
-        <string>Name</string>
+        <string>Class</string>
        </property>
       </widget>
-      <widget class="QCheckBox" name="sensorVariableControlEnableRowcheckBox">
+      <widget class="QListWidget" name="sensorTypeListWidget">
        <property name="geometry">
         <rect>
-         <x>350</x>
-         <y>460</y>
-         <width>81</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Enable Row</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorVariableActionLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>290</y>
-         <width>161</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Action</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sensorVariableControlCheckIndexcheckBox">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>490</y>
-         <width>81</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Check Index</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sensorVariableAllowedDaysSundaycheckBox">
-       <property name="geometry">
-        <rect>
-         <x>310</x>
-         <y>250</y>
-         <width>41</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Sun</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sensorVariableAllowedDaysThursdaycheckBox">
-       <property name="geometry">
-        <rect>
-         <x>360</x>
-         <y>220</y>
-         <width>41</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Thur</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sensorVariableAllowedDaysMondaycheckBox">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>220</y>
-         <width>41</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Mon</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorVariableCommentsLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>550</y>
-         <width>121</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Comments</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sensorVariableControlCheckZonecheckBox">
-       <property name="geometry">
-        <rect>
-         <x>350</x>
-         <y>490</y>
-         <width>81</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Check Zone</string>
-       </property>
-      </widget>
-      <widget class="QListWidget" name="sensorVariableActionListWidget">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>290</y>
-         <width>221</width>
-         <height>91</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorVariableControlLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>460</y>
-         <width>71</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Control</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sensorVariableAllowedDaysTuesdaycheckBox">
-       <property name="geometry">
-        <rect>
-         <x>260</x>
-         <y>220</y>
-         <width>41</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Tue</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sensorVariableAllowedFromLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
+         <x>570</x>
          <y>70</y>
-         <width>221</width>
+         <width>231</width>
+         <height>131</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="sensorDecimalsLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>220</y>
+         <width>141</width>
          <height>31</height>
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="sensorVariableAllowedFromLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>71</y>
-         <width>131</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Allowed From</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sensorVariableAllowedTimeLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>170</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorVariableAllowedTimeLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>170</y>
-         <width>121</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Allowed Time</string>
-       </property>
-      </widget>
+     </widget>
+     <widget class="QWidget" name="variableConfigure">
+      <attribute name="title">
+       <string>Variable Configure</string>
+      </attribute>
       <widget class="QLabel" name="sensorVariableControlValueLabel">
        <property name="geometry">
         <rect>
@@ -979,30 +411,12 @@
         <string/>
        </property>
       </widget>
-      <widget class="QLabel" name="sensorVariableGuidLabel">
+      <widget class="QLabel" name="sensorVariableControlLabel">
        <property name="geometry">
         <rect>
-         <x>460</x>
-         <y>220</y>
-         <width>81</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>GUID</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorVariablePriorityLabel">
-       <property name="geometry">
-        <rect>
-         <x>460</x>
-         <y>290</y>
-         <width>61</width>
+         <x>20</x>
+         <y>40</y>
+         <width>71</width>
          <height>21</height>
         </rect>
        </property>
@@ -1012,106 +426,63 @@
         </font>
        </property>
        <property name="text">
-        <string>Priority</string>
+        <string>Control</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="sensorVariableGroupIdLineEdit">
+      <widget class="QCheckBox" name="sensorVariableControlCheckIndexcheckBox">
        <property name="geometry">
         <rect>
-         <x>550</x>
-         <y>70</y>
-         <width>201</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sensorVariableGroupIdLabel">
-       <property name="geometry">
-        <rect>
-         <x>460</x>
-         <y>70</y>
+         <x>120</x>
+         <y>40</y>
          <width>81</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Group ID</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sensorVariableGuidLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>550</x>
-         <y>220</y>
-         <width>291</width>
-         <height>31</height>
+         <height>17</height>
         </rect>
        </property>
        <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QListWidget" name="sensorVariablePriorityListWidget">
-       <property name="geometry">
-        <rect>
-         <x>550</x>
-         <y>290</y>
-         <width>221</width>
-         <height>91</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sensorVariableSubzoneLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>550</x>
-         <y>500</y>
-         <width>211</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
+        <string>Check Index</string>
        </property>
       </widget>
       <widget class="QLineEdit" name="sensorVariableZoneLineEdit">
        <property name="geometry">
         <rect>
-         <x>550</x>
-         <y>450</y>
+         <x>120</x>
+         <y>190</y>
          <width>211</width>
          <height>31</height>
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="sensorVariableSubzoneLabel">
+      <widget class="QCheckBox" name="sensorVariableControlCheckZonecheckBox">
        <property name="geometry">
         <rect>
-         <x>460</x>
-         <y>500</y>
+         <x>260</x>
+         <y>40</y>
          <width>81</width>
-         <height>31</height>
+         <height>17</height>
         </rect>
        </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
+       <property name="text">
+        <string>Check Zone</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="sensorVariableControlCheckSubzonecheckBox">
+       <property name="geometry">
+        <rect>
+         <x>260</x>
+         <y>70</y>
+         <width>101</width>
+         <height>17</height>
+        </rect>
        </property>
        <property name="text">
-        <string>SubZone</string>
+        <string>Check Subzone</string>
        </property>
       </widget>
       <widget class="QLabel" name="sensorVariableZoneLabel">
        <property name="geometry">
         <rect>
-         <x>460</x>
-         <y>450</y>
+         <x>30</x>
+         <y>190</y>
          <width>81</width>
          <height>31</height>
         </rect>
@@ -1125,11 +496,24 @@
         <string>Zone</string>
        </property>
       </widget>
+      <widget class="QLineEdit" name="sensorVariableSubzoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>240</y>
+         <width>211</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
       <widget class="QLabel" name="sensorVariableIndexLabel">
        <property name="geometry">
         <rect>
-         <x>460</x>
-         <y>400</y>
+         <x>30</x>
+         <y>140</y>
          <width>81</width>
          <height>31</height>
         </rect>
@@ -1143,11 +527,29 @@
         <string>Index</string>
        </property>
       </widget>
+      <widget class="QLabel" name="sensorVariableSubzoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>240</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>SubZone</string>
+       </property>
+      </widget>
       <widget class="QLineEdit" name="sensorVariableIndexLineEdit">
        <property name="geometry">
         <rect>
-         <x>550</x>
-         <y>400</y>
+         <x>120</x>
+         <y>140</y>
          <width>211</width>
          <height>31</height>
         </rect>
@@ -1194,38 +596,6 @@
   <tabstop>sensorUsernameLineEdit</tabstop>
   <tabstop>sensorPasswordLineEdit</tabstop>
   <tabstop>sensorDomainLineEdit</tabstop>
-  <tabstop>sensorUrlLineEdit</tabstop>
-  <tabstop>sensorClassListWidget</tabstop>
-  <tabstop>sensorTypeListWidget</tabstop>
-  <tabstop>sensorCodingIndexListWidget</tabstop>
-  <tabstop>sensorDecimalsLineEdit</tabstop>
-  <tabstop>sensorFormatStringLineEdit</tabstop>
-  <tabstop>sensorGuidLineEdit</tabstop>
-  <tabstop>sensorCallBackLineEdit</tabstop>
-  <tabstop>sensorVariableAllowedFromLineEdit</tabstop>
-  <tabstop>sensorVariableAllowedToLineEdit</tabstop>
-  <tabstop>sensorVariableAllowedTimeLineEdit</tabstop>
-  <tabstop>sensorVariableAllowedDaysMondaycheckBox</tabstop>
-  <tabstop>sensorVariableAllowedDaysTuesdaycheckBox</tabstop>
-  <tabstop>sensorVariableAllowedDaysWednesdaycheckBox</tabstop>
-  <tabstop>sensorVariableAllowedDaysThursdaycheckBox</tabstop>
-  <tabstop>sensorVariableAllowedDaysFridaycheckBox</tabstop>
-  <tabstop>sensorVariableAllowedDaysSaturdaycheckBox</tabstop>
-  <tabstop>sensorVariableAllowedDaysSundaycheckBox</tabstop>
-  <tabstop>sensorVariableActionListWidget</tabstop>
-  <tabstop>sensorVariableActionParametersLineEdit</tabstop>
-  <tabstop>sensorVariableControlEnableRowcheckBox</tabstop>
-  <tabstop>sensorVariableControlCheckIndexcheckBox</tabstop>
-  <tabstop>sensorVariableControlCheckZonecheckBox</tabstop>
-  <tabstop>sensorVariableControlEndScancheckBox</tabstop>
-  <tabstop>sensorVariableControlCheckSubzonecheckBox</tabstop>
-  <tabstop>sensorVariableCommentsLineEdit</tabstop>
-  <tabstop>sensorVariableGroupIdLineEdit</tabstop>
-  <tabstop>sensorVariableGuidLineEdit</tabstop>
-  <tabstop>sensorVariablePriorityListWidget</tabstop>
-  <tabstop>sensorVariableIndexLineEdit</tabstop>
-  <tabstop>sensorVariableZoneLineEdit</tabstop>
-  <tabstop>sensorVariableSubzoneLineEdit</tabstop>
   <tabstop>OkSensorPushButton</tabstop>
   <tabstop>CancelSensorPushButton</tabstop>
  </tabstops>

@@ -56,9 +56,9 @@ private slots:
 
     void on_CancelvariableSwitchPushButton_clicked();
 
-    void on_variableSwitchTxClassListWidget_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
+    //void on_variableSwitchTxClassListWidget_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
 
-    void on_variableSwitchRxClassListWidget_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
+    //void on_variableSwitchRxClassListWidget_currentItemChanged(QListWidgetItem *current, QListWidgetItem *previous);
 
 private:
     Ui::WidgetWebsocketPacketVariableSwitch *ui;
@@ -68,7 +68,7 @@ private:
     QList<QString> listAction;
     QList<QString> listPriority;
 
-    void setListValue();
+    //void setListValue();
 };
 
 #endif // WIDGETWEBSOCKETPACKETVARIABLESWITCH_H

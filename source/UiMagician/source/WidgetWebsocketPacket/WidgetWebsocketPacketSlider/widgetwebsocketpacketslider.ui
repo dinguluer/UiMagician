@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>916</width>
-    <height>675</height>
+    <width>869</width>
+    <height>514</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,232 +27,22 @@
       <attribute name="title">
        <string>Websocket Configure</string>
       </attribute>
+      <widget class="QLineEdit" name="sliderIndexLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>380</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
       <widget class="QLineEdit" name="sliderUrlLineEdit">
        <property name="geometry">
         <rect>
          <x>150</x>
-         <y>190</y>
+         <y>20</y>
          <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderIdValueLabel">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>40</y>
-         <width>491</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderUrlLabel">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>190</y>
-         <width>41</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>URL</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderIdLabel">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>30</y>
-         <width>81</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Image ID</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderMinLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>270</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderMaxLabel">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>270</y>
-         <width>91</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Min Value</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderMaxLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>350</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderMinLabel">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>350</y>
-         <width>91</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Max Value</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderLocalTxtIdValueLabel">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>80</y>
-         <width>561</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderLocalTxtIdLabel">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>80</y>
-         <width>101</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Local Txt ID</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderRemoteTxtIdValueLabel">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>130</y>
-         <width>561</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderRemoteTxtIdLabel">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>130</y>
-         <width>121</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Remote Txt ID</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderDomainLabel">
-       <property name="geometry">
-        <rect>
-         <x>410</x>
-         <y>350</y>
-         <width>91</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Domain</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderDomainLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>540</x>
-         <y>350</y>
-         <width>241</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderUsernameLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>540</x>
-         <y>190</y>
-         <width>241</width>
          <height>31</height>
         </rect>
        </property>
@@ -261,7 +51,7 @@
        <property name="geometry">
         <rect>
          <x>410</x>
-         <y>190</y>
+         <y>20</y>
          <width>101</width>
          <height>21</height>
         </rect>
@@ -275,21 +65,95 @@
         <string>User Name</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="sliderPasswordLineEdit">
+      <widget class="QLineEdit" name="sliderMinLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>100</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="sliderSubZoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>310</y>
+         <width>81</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Sub Zone</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="sliderMaxLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>180</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="sliderZoneLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>310</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Zone</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="sliderDomainLineEdit">
        <property name="geometry">
         <rect>
          <x>540</x>
-         <y>270</y>
+         <y>180</y>
          <width>241</width>
          <height>31</height>
         </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="sliderUrlLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>20</y>
+         <width>41</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>URL</string>
        </property>
       </widget>
       <widget class="QLabel" name="sliderPasswordLabel">
        <property name="geometry">
         <rect>
          <x>410</x>
-         <y>270</y>
+         <y>100</y>
          <width>91</width>
          <height>21</height>
         </rect>
@@ -303,18 +167,13 @@
         <string>Password</string>
        </property>
       </widget>
-     </widget>
-     <widget class="QWidget" name="txEvent">
-      <attribute name="title">
-       <string>Tx Event</string>
-      </attribute>
-      <widget class="QLabel" name="sliderTxHeadLabel">
+      <widget class="QLabel" name="sliderMaxLabel">
        <property name="geometry">
         <rect>
-         <x>30</x>
-         <y>421</y>
-         <width>51</width>
-         <height>20</height>
+         <x>20</x>
+         <y>100</y>
+         <width>91</width>
+         <height>21</height>
         </rect>
        </property>
        <property name="font">
@@ -323,24 +182,88 @@
         </font>
        </property>
        <property name="text">
-        <string>Head</string>
+        <string>Min Value</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="sliderTxZoneLineEdit">
+      <widget class="QLineEdit" name="sliderZoneLineEdit">
        <property name="geometry">
         <rect>
-         <x>130</x>
-         <y>320</y>
+         <x>150</x>
+         <y>310</y>
          <width>221</width>
          <height>31</height>
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="sliderTxDataLabel">
+      <widget class="QLabel" name="sliderIndexLabel">
        <property name="geometry">
         <rect>
-         <x>30</x>
-         <y>542</y>
+         <x>20</x>
+         <y>380</y>
+         <width>51</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Index</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="sliderDomainLabel">
+       <property name="geometry">
+        <rect>
+         <x>410</x>
+         <y>180</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Domain</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="sliderUsernameLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>20</y>
+         <width>241</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="sliderMinLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>180</y>
+         <width>91</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Max Value</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="sliderGuidLabel">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>251</y>
          <width>51</width>
          <height>20</height>
         </rect>
@@ -351,9 +274,44 @@
         </font>
        </property>
        <property name="text">
-        <string>Data</string>
+        <string>GUID</string>
        </property>
       </widget>
+      <widget class="QLineEdit" name="sliderSubZoneLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>310</y>
+         <width>221</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="sliderGuidLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>150</x>
+         <y>250</y>
+         <width>401</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="sliderPasswordLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>100</y>
+         <width>241</width>
+         <height>31</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="txEvent">
+      <attribute name="title">
+       <string>Tx Event</string>
+      </attribute>
       <widget class="QLabel" name="sliderTxClassLabel">
        <property name="geometry">
         <rect>
@@ -382,118 +340,6 @@
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="sliderTxSubZoneLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>370</y>
-         <width>81</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Sub Zone</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderTxGuidLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>190</y>
-         <width>401</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderTxObidLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>470</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderTxGuidLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>191</y>
-         <width>51</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>GUID</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderTxZoneLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>320</y>
-         <width>41</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Zone</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderTxDataLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>541</y>
-         <width>401</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderTxObidLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>471</y>
-         <width>51</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Obid</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderTxSubZoneLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>370</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
       <widget class="QListWidget" name="sliderTxTypeListWidget">
        <property name="geometry">
         <rect>
@@ -501,26 +347,6 @@
          <y>20</y>
          <width>221</width>
          <height>131</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderTxHeadLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>420</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderTxTimeStampLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>530</x>
-         <y>471</y>
-         <width>231</width>
-         <height>31</height>
         </rect>
        </property>
       </widget>
@@ -542,75 +368,11 @@
         <string>Type</string>
        </property>
       </widget>
-      <widget class="QLabel" name="sliderTxTimeStampLabel">
-       <property name="geometry">
-        <rect>
-         <x>390</x>
-         <y>472</y>
-         <width>111</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Time Stamp</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderTxIndexLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>260</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderTxIndexLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>260</y>
-         <width>51</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Index</string>
-       </property>
-      </widget>
      </widget>
      <widget class="QWidget" name="rxEvent">
       <attribute name="title">
        <string>Rx Event</string>
       </attribute>
-      <widget class="QLabel" name="sliderRxZoneLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>320</y>
-         <width>41</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Zone</string>
-       </property>
-      </widget>
       <widget class="QLabel" name="sliderRxClassLabel">
        <property name="geometry">
         <rect>
@@ -627,98 +389,6 @@
        </property>
        <property name="text">
         <string>Class</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderRxObidLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>471</y>
-         <width>51</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Obid</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderRxHeadLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>421</y>
-         <width>51</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Head</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderRxGuidLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>190</y>
-         <width>51</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>GUID</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderRxSubZoneLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>370</y>
-         <width>81</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Sub Zone</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderRxGuidLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>189</y>
-         <width>401</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderRxDataLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>541</y>
-         <width>401</width>
-         <height>31</height>
-        </rect>
        </property>
       </widget>
       <widget class="QListWidget" name="sliderRxClassListWidget">
@@ -741,92 +411,6 @@
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="sliderRxDataLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>542</y>
-         <width>51</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Data</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderRxTimeStampLabel">
-       <property name="geometry">
-        <rect>
-         <x>390</x>
-         <y>472</y>
-         <width>111</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Time Stamp</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderRxSubZoneLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>370</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderRxTimeStampLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>530</x>
-         <y>471</y>
-         <width>231</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderRxHeadLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>420</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderRxObidLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>470</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderRxZoneLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>320</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
       <widget class="QLabel" name="sliderRxTypeLabel">
        <property name="geometry">
         <rect>
@@ -843,609 +427,6 @@
        </property>
        <property name="text">
         <string>Type</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderRxIndexLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>260</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderRxIndexLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>260</y>
-         <width>51</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Index</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QWidget" name="VariableConfigure">
-      <attribute name="title">
-       <string>Variable Configure</string>
-      </attribute>
-      <widget class="QLineEdit" name="sliderVariableGuidLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>550</x>
-         <y>120</y>
-         <width>291</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderVariableSubzoneLabel">
-       <property name="geometry">
-        <rect>
-         <x>590</x>
-         <y>500</y>
-         <width>81</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>SubZone</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sliderVariableAllowedDaysThursdaycheckBox">
-       <property name="geometry">
-        <rect>
-         <x>360</x>
-         <y>220</y>
-         <width>41</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Thur</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderVariableNameLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>20</y>
-         <width>61</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Name</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderVariableGroupIdLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>550</x>
-         <y>70</y>
-         <width>201</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderVariableControlLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>460</y>
-         <width>71</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Control</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderVariableZoneLabel">
-       <property name="geometry">
-        <rect>
-         <x>590</x>
-         <y>450</y>
-         <width>81</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Zone</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderVariableCommentsLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>550</y>
-         <width>121</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Comments</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sliderVariableControlCheckIndexcheckBox">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>490</y>
-         <width>81</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Check Index</string>
-       </property>
-      </widget>
-      <widget class="QListWidget" name="sliderVariableActionListWidget">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>290</y>
-         <width>221</width>
-         <height>91</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QListWidget" name="sliderVariablePriorityListWidget">
-       <property name="geometry">
-        <rect>
-         <x>550</x>
-         <y>170</y>
-         <width>221</width>
-         <height>91</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderVariableActionParametersLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>400</y>
-         <width>371</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderVariableAllowedDaysLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>220</y>
-         <width>121</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Allowed Days</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sliderVariableControlCheckSubzonecheckBox">
-       <property name="geometry">
-        <rect>
-         <x>350</x>
-         <y>520</y>
-         <width>101</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Check Subzone</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderVariableGroupIdLabel">
-       <property name="geometry">
-        <rect>
-         <x>460</x>
-         <y>70</y>
-         <width>81</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Group ID</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderVariableAllowedTimeLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>170</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderVariableNameValueLabel">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>20</y>
-         <width>341</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderVariableCommentsLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>550</y>
-         <width>631</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderVariableSubzoneLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>680</x>
-         <y>500</y>
-         <width>161</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sliderVariableAllowedDaysMondaycheckBox">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>220</y>
-         <width>41</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Mon</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderVariableAllowedTimeLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>170</y>
-         <width>121</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Allowed Time</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderVariableActionLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>290</y>
-         <width>161</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Action</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sliderVariableAllowedDaysSaturdaycheckBox">
-       <property name="geometry">
-        <rect>
-         <x>260</x>
-         <y>250</y>
-         <width>41</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Sat</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderVariableAllowedFromLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>70</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderVariableAllowedToLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>120</y>
-         <width>101</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Allowed To</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sliderVariableAllowedDaysSundaycheckBox">
-       <property name="geometry">
-        <rect>
-         <x>310</x>
-         <y>250</y>
-         <width>41</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Sun</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sliderVariableAllowedDaysTuesdaycheckBox">
-       <property name="geometry">
-        <rect>
-         <x>260</x>
-         <y>220</y>
-         <width>41</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Tue</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderVariableActionParametersLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>400</y>
-         <width>161</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Action Parameters</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderVariableGuidLabel">
-       <property name="geometry">
-        <rect>
-         <x>460</x>
-         <y>120</y>
-         <width>81</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>GUID</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderVariableZoneLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>680</x>
-         <y>450</y>
-         <width>161</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderVariablePriorityLabel">
-       <property name="geometry">
-        <rect>
-         <x>460</x>
-         <y>170</y>
-         <width>61</width>
-         <height>21</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Priority</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderVariableAllowedToLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>120</y>
-         <width>221</width>
-         <height>31</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sliderVariableControlEnableRowcheckBox">
-       <property name="geometry">
-        <rect>
-         <x>350</x>
-         <y>460</y>
-         <width>81</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Enable Row</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sliderVariableAllowedDaysFridaycheckBox">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>250</y>
-         <width>41</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Fri</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sliderVariableAllowedDaysWednesdaycheckBox">
-       <property name="geometry">
-        <rect>
-         <x>310</x>
-         <y>220</y>
-         <width>41</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Wed</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderVariableAllowedFromLabel">
-       <property name="geometry">
-        <rect>
-         <x>30</x>
-         <y>71</y>
-         <width>131</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Allowed From</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sliderVariableControlCheckZonecheckBox">
-       <property name="geometry">
-        <rect>
-         <x>350</x>
-         <y>490</y>
-         <width>81</width>
-         <height>17</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Check Zone</string>
-       </property>
-      </widget>
-      <widget class="QCheckBox" name="sliderVariableControlEndScancheckBox">
-       <property name="geometry">
-        <rect>
-         <x>210</x>
-         <y>520</y>
-         <width>141</width>
-         <height>20</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>End Scan on this Row</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="sliderVariableIndexLabel">
-       <property name="geometry">
-        <rect>
-         <x>590</x>
-         <y>400</y>
-         <width>81</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Index</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="sliderVariableIndexLineEdit">
-       <property name="geometry">
-        <rect>
-         <x>680</x>
-         <y>400</y>
-         <width>161</width>
-         <height>31</height>
-        </rect>
        </property>
       </widget>
      </widget>
@@ -1486,58 +467,12 @@
  </widget>
  <tabstops>
   <tabstop>WidgetWebsocketPacketSliderTabWidget</tabstop>
-  <tabstop>sliderUrlLineEdit</tabstop>
-  <tabstop>sliderMinLineEdit</tabstop>
-  <tabstop>sliderMaxLineEdit</tabstop>
-  <tabstop>sliderUsernameLineEdit</tabstop>
-  <tabstop>sliderPasswordLineEdit</tabstop>
-  <tabstop>sliderDomainLineEdit</tabstop>
   <tabstop>sliderTxClassListWidget</tabstop>
   <tabstop>sliderTxTypeListWidget</tabstop>
-  <tabstop>sliderTxGuidLineEdit</tabstop>
-  <tabstop>sliderTxZoneLineEdit</tabstop>
-  <tabstop>sliderTxSubZoneLineEdit</tabstop>
-  <tabstop>sliderTxHeadLineEdit</tabstop>
-  <tabstop>sliderTxObidLineEdit</tabstop>
-  <tabstop>sliderTxTimeStampLineEdit</tabstop>
-  <tabstop>sliderTxDataLineEdit</tabstop>
   <tabstop>sliderRxClassListWidget</tabstop>
   <tabstop>sliderRxTypeListWidget</tabstop>
-  <tabstop>sliderRxGuidLineEdit</tabstop>
-  <tabstop>sliderRxZoneLineEdit</tabstop>
-  <tabstop>sliderRxSubZoneLineEdit</tabstop>
-  <tabstop>sliderRxHeadLineEdit</tabstop>
-  <tabstop>sliderRxObidLineEdit</tabstop>
-  <tabstop>sliderRxTimeStampLineEdit</tabstop>
-  <tabstop>sliderRxDataLineEdit</tabstop>
-  <tabstop>sliderVariableAllowedFromLineEdit</tabstop>
-  <tabstop>sliderVariableAllowedToLineEdit</tabstop>
-  <tabstop>sliderVariableAllowedTimeLineEdit</tabstop>
-  <tabstop>sliderVariableAllowedDaysMondaycheckBox</tabstop>
-  <tabstop>sliderVariableAllowedDaysTuesdaycheckBox</tabstop>
-  <tabstop>sliderVariableAllowedDaysWednesdaycheckBox</tabstop>
-  <tabstop>sliderVariableAllowedDaysThursdaycheckBox</tabstop>
-  <tabstop>sliderVariableAllowedDaysFridaycheckBox</tabstop>
-  <tabstop>sliderVariableAllowedDaysSaturdaycheckBox</tabstop>
-  <tabstop>sliderVariableAllowedDaysSundaycheckBox</tabstop>
-  <tabstop>sliderVariableActionListWidget</tabstop>
-  <tabstop>sliderVariableActionParametersLineEdit</tabstop>
-  <tabstop>sliderVariableControlEnableRowcheckBox</tabstop>
-  <tabstop>sliderVariableControlCheckIndexcheckBox</tabstop>
-  <tabstop>sliderVariableControlCheckZonecheckBox</tabstop>
-  <tabstop>sliderVariableControlEndScancheckBox</tabstop>
-  <tabstop>sliderVariableControlCheckSubzonecheckBox</tabstop>
-  <tabstop>sliderVariableGroupIdLineEdit</tabstop>
-  <tabstop>sliderVariableGuidLineEdit</tabstop>
-  <tabstop>sliderVariablePriorityListWidget</tabstop>
-  <tabstop>sliderVariableZoneLineEdit</tabstop>
-  <tabstop>sliderVariableSubzoneLineEdit</tabstop>
-  <tabstop>sliderVariableCommentsLineEdit</tabstop>
   <tabstop>OkSliderPushButton</tabstop>
   <tabstop>CancelSliderPushButton</tabstop>
-  <tabstop>sliderTxIndexLineEdit</tabstop>
-  <tabstop>sliderRxIndexLineEdit</tabstop>
-  <tabstop>sliderVariableIndexLineEdit</tabstop>
  </tabstops>
  <resources>
   <include location="../../AutosResourceFile.qrc"/>

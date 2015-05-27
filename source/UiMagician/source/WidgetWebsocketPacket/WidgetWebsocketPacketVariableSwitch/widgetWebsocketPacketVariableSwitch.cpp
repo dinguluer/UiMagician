@@ -24,6 +24,16 @@
 **--------------------------------------------------------------------------*/
 
 
+/*
+
+TX -->
+class : control
+type : dim lamp
+rx -->
+class : control
+type : level changed
+*/
+
 #include "widgetWebsocketPacketVariableSwitch.h"
 #include "ui_widgetwebsocketpacketvariableswitch.h"
 
@@ -34,13 +44,14 @@ WidgetWebsocketPacketVariableSwitch::WidgetWebsocketPacketVariableSwitch(T_widge
 {
     ui->setupUi(this);
 
-    setListValue();
+    // -->setListValue();
 
     //ui->sensorUrlLineEdit->setValidator(new QRegExpValidator( QRegExp("[w]{1,1}[s]{1,1}[s]{1,1}\\:\\/\\/[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\:[0-9]{1,4}" ), this ));
     ui->variableSwitchUrlLineEdit->setValidator(new QRegExpValidator( QRegExp("[w]{1,1}[s]{1,2}\\:\\/\\/[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\:[0-9]{1,4}" ), this ));
     ui->variableSwitchMinLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9]{1,3}"), this ));
     ui->variableSwitchMaxLineEdit->setValidator(new QRegExpValidator( QRegExp("[0-9]{1,3}"), this ));
 
+/*
     //class
     // Add list item here
     for(int i=0; i< listClass.size() ; i++)
@@ -115,6 +126,7 @@ WidgetWebsocketPacketVariableSwitch::WidgetWebsocketPacketVariableSwitch(T_widge
     ui->variableSwitchRxDataLineEdit->setReadOnly(true);
     //domain should be fixed
     ui->variableSwitchDomainLineEdit->setReadOnly(true);
+*/
 
     //Copy slider packet to Dialog
     CopyVariableSwitchPacket();
@@ -124,19 +136,19 @@ WidgetWebsocketPacketVariableSwitch::WidgetWebsocketPacketVariableSwitch(T_widge
 //Copy slider packet to Dialog
 void WidgetWebsocketPacketVariableSwitch::CopyVariableSwitchPacket()
 {
-    QString action;
-    QString tempString;
-    QString parameterStringValue;
-    QListWidgetItem dummyCurrentItem;
-    QListWidgetItem dummyPreviousItem;
-    int classIndex = 0;
-    int typeIndex = 0;
-    int actionval;
+    //QString action;
+    //QString tempString;
+    //QString parameterStringValue;
+    //QListWidgetItem dummyCurrentItem;
+    //QListWidgetItem dummyPreviousItem;
+    //int classIndex = 0;
+    //int typeIndex = 0;
+    //int actionval;
     //websocket
-    ui->variableSwitchIncIdValueLabel->setText(variableSwitchPacket_modify.idIncImage);
-    ui->variableSwitchDecIdValueLabel->setText(variableSwitchPacket_modify.idDecImage);
-    ui->variableSwitchLocalTxtIdValueLabel->setText(variableSwitchPacket_modify.idLocalTxt);
-    ui->variableSwitchRemoteTxtIdValueLabel->setText(variableSwitchPacket_modify.idRemoteTxt);
+    //-->ui->variableSwitchIncIdValueLabel->setText(variableSwitchPacket_modify.idIncImage);
+    //-->ui->variableSwitchDecIdValueLabel->setText(variableSwitchPacket_modify.idDecImage);
+    //-->ui->variableSwitchLocalTxtIdValueLabel->setText(variableSwitchPacket_modify.idLocalTxt);
+    //-->ui->variableSwitchRemoteTxtIdValueLabel->setText(variableSwitchPacket_modify.idRemoteTxt);
     ui->variableSwitchUrlLineEdit->setText(variableSwitchPacket_modify.url);
     ui->variableSwitchMaxLineEdit->setText(variableSwitchPacket_modify.maxValue);
     ui->variableSwitchMinLineEdit->setText(variableSwitchPacket_modify.minValue);
@@ -144,7 +156,12 @@ void WidgetWebsocketPacketVariableSwitch::CopyVariableSwitchPacket()
     ui->variableSwitchPasswordLineEdit->setText(variableSwitchPacket_modify.passWord);
     //domain should be fixed for this release
     ui->variableSwitchDomainLineEdit->setText("mydomain.com");
+    // enter for remote -- node
+    ui->variableSwitchGuidLineEdit->setText(variableSwitchPacket_modify.txEvent.guid);
+    ui->variableSwitchZoneLineEdit->setText(variableSwitchPacket_modify.txEvent.zone);
+    ui->variableSwitchSubZoneLineEdit->setText(variableSwitchPacket_modify.txEvent.subzone);
 
+/*
     //Tx event
     tempString = variableSwitchPacket_modify.txEvent.class_value;
     if(tempString == VSCP_CLASS1_INFORMATION_VALUE)
@@ -373,15 +390,6 @@ void WidgetWebsocketPacketVariableSwitch::CopyVariableSwitchPacket()
         ui->variableSwitchVariableControlEnableRowcheckBox->setChecked(false);
     }
 
-    /*if(variableSwitchPacket_modify.packetVariableSwitchVariable.control.checkIndex == "true")
-    {
-        ui->variableSwitchVariableControlCheckIndexcheckBox->setChecked(true);
-    }
-    else
-    {
-        ui->variableSwitchVariableControlCheckIndexcheckBox->setChecked(false);
-    }*/
-
     if(variableSwitchPacket_modify.packetVariableSwitchVariable.control.checkzone == "true")
     {
         ui->variableSwitchVariableControlCheckZonecheckBox->setChecked(true);
@@ -416,10 +424,11 @@ void WidgetWebsocketPacketVariableSwitch::CopyVariableSwitchPacket()
     ui->variableSwitchVariablePriorityListWidget->setCurrentRow(variableSwitchPacket_modify.packetVariableSwitchVariable.priority.toInt());
     ui->variableSwitchVariableZoneLineEdit->setText(variableSwitchPacket_modify.packetVariableSwitchVariable.zone);
     ui->variableSwitchVariableSubzoneLineEdit->setText(variableSwitchPacket_modify.packetVariableSwitchVariable.subzone);
-
+*/
 
 }
 
+/*
 void WidgetWebsocketPacketVariableSwitch::setListValue()
 {
     listClass << VSCP_CLASS1_INFORMATION << VSCP_CLASS1_CONTROL ;
@@ -584,27 +593,34 @@ void WidgetWebsocketPacketVariableSwitch::on_variableSwitchRxClassListWidget_cur
     }
 
 }
-
+*/
 void WidgetWebsocketPacketVariableSwitch::on_OkvariableSwitchPushButton_clicked()
 {
     QString action;
     QString tempStringClass;
     QString tempStringType;
+    QString masterGuid;
+    QString masterZone;
+    QString masterSubZone;
     //websocket
-    variableSwitchPacket_modify.idIncImage = ui->variableSwitchIncIdValueLabel->text();
-    variableSwitchPacket_modify.idDecImage = ui->variableSwitchDecIdValueLabel->text();
-    variableSwitchPacket_modify.idLocalTxt = ui->variableSwitchLocalTxtIdValueLabel->text();
-    variableSwitchPacket_modify.idRemoteTxt = ui->variableSwitchRemoteTxtIdValueLabel->text();
+    //-->variableSwitchPacket_modify.idIncImage = ui->variableSwitchIncIdValueLabel->text();
+    //-->variableSwitchPacket_modify.idDecImage = ui->variableSwitchDecIdValueLabel->text();
+    //-->variableSwitchPacket_modify.idLocalTxt = ui->variableSwitchLocalTxtIdValueLabel->text();
+    //-->variableSwitchPacket_modify.idRemoteTxt = ui->variableSwitchRemoteTxtIdValueLabel->text();
     variableSwitchPacket_modify.url = ui->variableSwitchUrlLineEdit->text();
     variableSwitchPacket_modify.maxValue = ui->variableSwitchMaxLineEdit->text();
     variableSwitchPacket_modify.minValue = ui->variableSwitchMinLineEdit->text();
     variableSwitchPacket_modify.userName = ui->variableSwitchUsernameLineEdit->text();
     variableSwitchPacket_modify.passWord = ui->variableSwitchPasswordLineEdit->text();
     variableSwitchPacket_modify.domain = ui->variableSwitchDomainLineEdit->text();
+    masterGuid = ui->variableSwitchGuidLineEdit->text();
+    masterZone = ui->variableSwitchZoneLineEdit->text();
+    masterSubZone = ui->variableSwitchSubZoneLineEdit->text();
+
 
     //Tx event
     //ui->variableSwitchTxClassListWidget->setCurrentRow(variableSwitchPacket_modify.txEvent.class_value.toInt());
-    if( ui->variableSwitchTxClassListWidget->currentItem()->text() == VSCP_CLASS1_INFORMATION)
+    /*if( ui->variableSwitchTxClassListWidget->currentItem()->text() == VSCP_CLASS1_INFORMATION)
     {
         tempStringClass = VSCP_CLASS1_INFORMATION_VALUE;
         tempStringType = ui->variableSwitchTxTypeListWidget->currentItem()->text();
@@ -619,22 +635,25 @@ void WidgetWebsocketPacketVariableSwitch::on_OkvariableSwitchPushButton_clicked(
     else
     {
         // Do nothing
-    }
+    }*/
+    tempStringClass = VSCP_CLASS1_CONTROL_VALUE;
+    tempStringType = VSCP_TYPE_CONTROL_DIM_LAMPS;
+    ClassTypeObject.getControlTypeValue(tempStringType);
     //variableSwitchPacket_modify.txEvent.class_value = QString:tempStringType:number( ui->variableSwitchTxClassListWidget->currentRow());
     variableSwitchPacket_modify.txEvent.class_value = tempStringClass;
     //ui->variableSwitchTxTypeListWidget->setCurrentRow(variableSwitchPacket_modify.txEvent.type_value.toInt());
     variableSwitchPacket_modify.txEvent.type_value = tempStringType;
-    variableSwitchPacket_modify.txEvent.guid = ui->variableSwitchTxGuidLineEdit->text();
-    variableSwitchPacket_modify.txEvent.zone = ui->variableSwitchTxZoneLineEdit->text();
-    variableSwitchPacket_modify.txEvent.subzone = ui->variableSwitchTxSubZoneLineEdit->text();
-    variableSwitchPacket_modify.txEvent.head = ui->variableSwitchTxHeadLineEdit->text();
-    variableSwitchPacket_modify.txEvent.obid = ui->variableSwitchTxObidLineEdit->text();
-    variableSwitchPacket_modify.txEvent.timeStamp = ui->variableSwitchTxTimeStampLineEdit->text();
-    variableSwitchPacket_modify.txEvent.data = ui->variableSwitchTxDataLineEdit->text();
+    variableSwitchPacket_modify.txEvent.guid = masterGuid;
+    variableSwitchPacket_modify.txEvent.zone = masterZone;
+    variableSwitchPacket_modify.txEvent.subzone = masterSubZone;
+    variableSwitchPacket_modify.txEvent.head = "";
+    variableSwitchPacket_modify.txEvent.obid = "";
+    variableSwitchPacket_modify.txEvent.timeStamp = "";
+    variableSwitchPacket_modify.txEvent.data = "";
 
     //Rx event
     //ui->variableSwitchRxClassListWidget->setCurrentRow(variableSwitchPacket_modify.rxEvent.class_value.toInt());
-    if( ui->variableSwitchRxClassListWidget->currentItem()->text() == VSCP_CLASS1_INFORMATION)
+    /*if( ui->variableSwitchRxClassListWidget->currentItem()->text() == VSCP_CLASS1_INFORMATION)
     {
         tempStringClass = VSCP_CLASS1_INFORMATION_VALUE;
         tempStringType = ui->variableSwitchRxTypeListWidget->currentItem()->text();
@@ -649,25 +668,36 @@ void WidgetWebsocketPacketVariableSwitch::on_OkvariableSwitchPushButton_clicked(
     else
     {
         // Do nothing
-    }
+    }*/
+    tempStringClass = VSCP_CLASS1_INFORMATION_VALUE;
+    tempStringType = VSCP_TYPE_INFORMATION_LEVEL_CHANGED;
+    ClassTypeObject.getInformationTypeValue(tempStringType);
     //variableSwitchPacket_modify.rxEvent.class_value = QString:tempStringType:number( ui->variableSwitchRxClassListWidget->currentRow());
     variableSwitchPacket_modify.rxEvent.class_value = tempStringClass;
     //ui->variableSwitchRxTypeListWidget->setCurrentRow(variableSwitchPacket_modify.rxEvent.type_value.toInt());
     variableSwitchPacket_modify.rxEvent.type_value = tempStringType;
-    variableSwitchPacket_modify.rxEvent.guid = ui->variableSwitchRxGuidLineEdit->text();
-    variableSwitchPacket_modify.rxEvent.zone = ui->variableSwitchRxZoneLineEdit->text();
-    variableSwitchPacket_modify.rxEvent.subzone = ui->variableSwitchRxSubZoneLineEdit->text();
-    variableSwitchPacket_modify.rxEvent.head = ui->variableSwitchRxHeadLineEdit->text();
-    variableSwitchPacket_modify.rxEvent.obid = ui->variableSwitchRxObidLineEdit->text();
-    variableSwitchPacket_modify.rxEvent.timeStamp = ui->variableSwitchRxTimeStampLineEdit->text();
-    variableSwitchPacket_modify.rxEvent.data = ui->variableSwitchRxDataLineEdit->text();
+    variableSwitchPacket_modify.rxEvent.guid = masterGuid;
+    variableSwitchPacket_modify.rxEvent.zone = masterZone;
+    variableSwitchPacket_modify.rxEvent.subzone = masterSubZone;
+    variableSwitchPacket_modify.rxEvent.head = "";
+    variableSwitchPacket_modify.rxEvent.obid = "";
+    variableSwitchPacket_modify.rxEvent.timeStamp = "";
+    variableSwitchPacket_modify.rxEvent.data = "";
 
 
     //Variable
-    variableSwitchPacket_modify.packetVariableSwitchVariable.name = ui->variableSwitchVariableNameValueLabel->text();
-    variableSwitchPacket_modify.packetVariableSwitchVariable.allowedFrom = ui->variableSwitchVariableAllowedFromLineEdit->text();
-    variableSwitchPacket_modify.packetVariableSwitchVariable.allowedTo = ui->variableSwitchVariableAllowedToLineEdit->text();
-    variableSwitchPacket_modify.packetVariableSwitchVariable.allowedTime = ui->variableSwitchVariableAllowedTimeLineEdit->text();
+    //-->variableSwitchPacket_modify.packetVariableSwitchVariable.name = ui->variableSwitchVariableNameValueLabel->text();
+    variableSwitchPacket_modify.packetVariableSwitchVariable.allowedFrom = "";
+    variableSwitchPacket_modify.packetVariableSwitchVariable.allowedTo = "";
+    variableSwitchPacket_modify.packetVariableSwitchVariable.allowedTime = "";
+    variableSwitchPacket_modify.packetVariableSwitchVariable.allowedDays.mon = "true";
+    variableSwitchPacket_modify.packetVariableSwitchVariable.allowedDays.tue = "true";
+    variableSwitchPacket_modify.packetVariableSwitchVariable.allowedDays.wed = "true";
+    variableSwitchPacket_modify.packetVariableSwitchVariable.allowedDays.thur = "true";
+    variableSwitchPacket_modify.packetVariableSwitchVariable.allowedDays.fri = "true";
+    variableSwitchPacket_modify.packetVariableSwitchVariable.allowedDays.sat = "true";
+    variableSwitchPacket_modify.packetVariableSwitchVariable.allowedDays.sun = "true";
+    /*
     if(ui->variableSwitchVariableAllowedDaysMondaycheckBox->isChecked())
     {
         variableSwitchPacket_modify.packetVariableSwitchVariable.allowedDays.mon = "true";
@@ -729,8 +759,9 @@ void WidgetWebsocketPacketVariableSwitch::on_OkvariableSwitchPushButton_clicked(
     else
     {
         variableSwitchPacket_modify.packetVariableSwitchVariable.allowedDays.sun = "false";
-    }
-    action = ui->variableSwitchVariableActionListWidget->currentItem()->text();
+    }*/
+    //action = ui->variableSwitchVariableActionListWidget->currentItem()->text();
+    action = VSCP_DAEMON_ACTION_CODE_STORE_VARIABLE;
     if(action == VSCP_DAEMON_ACTION_CODE_NOOP)
     {
         action = VSCP_DAEMON_ACTION_CODE_NOOP_VALUE;
@@ -817,9 +848,14 @@ void WidgetWebsocketPacketVariableSwitch::on_OkvariableSwitchPushButton_clicked(
     }
     //ui->variableSwitchVariableActionListWidget->setCurrentRow(variableSwitchPacket_modify.packetVariableSwitchVariable.action.toInt());
     variableSwitchPacket_modify.packetVariableSwitchVariable.action = action;
-    variableSwitchPacket_modify.packetVariableSwitchVariable.actionParameters = ui->variableSwitchVariableActionParametersLineEdit->text();
-    variableSwitchPacket_modify.packetVariableSwitchVariable.comments = ui->variableSwitchVariableCommentsLineEdit->text();
-    if(ui->variableSwitchVariableControlEnableRowcheckBox->isChecked())
+    //-->variableSwitchPacket_modify.packetVariableSwitchVariable.actionParameters = ui->variableSwitchVariableActionParametersLineEdit->text();
+    //-->variableSwitchPacket_modify.packetVariableSwitchVariable.comments = ui->variableSwitchVariableCommentsLineEdit->text();
+    variableSwitchPacket_modify.packetVariableSwitchVariable.comments = "";
+    variableSwitchPacket_modify.packetVariableSwitchVariable.control.EnableRow = "true";
+    variableSwitchPacket_modify.packetVariableSwitchVariable.control.checkzone = "true";
+    variableSwitchPacket_modify.packetVariableSwitchVariable.control.checkSubzone = "true";
+    variableSwitchPacket_modify.packetVariableSwitchVariable.control.endScan = "false";
+    /*if(ui->variableSwitchVariableControlEnableRowcheckBox->isChecked())
     {
         variableSwitchPacket_modify.packetVariableSwitchVariable.control.EnableRow = "true";
     }
@@ -828,14 +864,6 @@ void WidgetWebsocketPacketVariableSwitch::on_OkvariableSwitchPushButton_clicked(
         variableSwitchPacket_modify.packetVariableSwitchVariable.control.EnableRow = "false";
     }
 
-    /*if(ui->variableSwitchVariableControlCheckIndexcheckBox->isChecked())
-    {
-        variableSwitchPacket_modify.packetVariableSwitchVariable.control.checkIndex = "true";
-    }
-    else
-    {
-        variableSwitchPacket_modify.packetVariableSwitchVariable.control.checkIndex = "false";;
-    }*/
     variableSwitchPacket_modify.packetVariableSwitchVariable.control.checkIndex = "false";;
 
     if(ui->variableSwitchVariableControlCheckZonecheckBox->isChecked())
@@ -863,18 +891,19 @@ void WidgetWebsocketPacketVariableSwitch::on_OkvariableSwitchPushButton_clicked(
     else
     {
         variableSwitchPacket_modify.packetVariableSwitchVariable.control.endScan = "false";
-    }
+    }*/
 
-    variableSwitchPacket_modify.packetVariableSwitchVariable.groupId = ui->variableSwitchVariableGroupIdLineEdit->text();
+    variableSwitchPacket_modify.packetVariableSwitchVariable.groupId = "";
     // todo --> variableSwitchPacket_modify.packetVariableSwitchVariable.class_value = ui->variableSwitchVariableClassLineEdit->text();
     variableSwitchPacket_modify.packetVariableSwitchVariable.class_value = variableSwitchPacket_modify.rxEvent.class_value;
     // todo --> variableSwitchPacket_modify.packetVariableSwitchVariable.type_value = ui->variableSwitchVariableTypeLineEdit->text();
     variableSwitchPacket_modify.packetVariableSwitchVariable.type_value = variableSwitchPacket_modify.rxEvent.type_value;
-    variableSwitchPacket_modify.packetVariableSwitchVariable.guid = ui->variableSwitchVariableGuidLineEdit->text();
+    variableSwitchPacket_modify.packetVariableSwitchVariable.guid = masterGuid;
     //ui->variableSwitchVariablePriorityListWidget->setCurrentRow(variableSwitchPacket_modify.packetVariableSwitchVariable.priority.toInt());
-    variableSwitchPacket_modify.packetVariableSwitchVariable.priority = QString::number( ui->variableSwitchVariablePriorityListWidget->currentRow());
-    variableSwitchPacket_modify.packetVariableSwitchVariable.zone = ui->variableSwitchVariableZoneLineEdit->text();
-    variableSwitchPacket_modify.packetVariableSwitchVariable.subzone = ui->variableSwitchVariableSubzoneLineEdit->text();
+    //variableSwitchPacket_modify.packetVariableSwitchVariable.priority = QString::number( ui->variableSwitchVariablePriorityListWidget->currentRow());
+    variableSwitchPacket_modify.packetVariableSwitchVariable.priority = "0";
+    variableSwitchPacket_modify.packetVariableSwitchVariable.zone = masterZone;
+    variableSwitchPacket_modify.packetVariableSwitchVariable.subzone = masterSubZone;
 
 
     //Emit a close handler
