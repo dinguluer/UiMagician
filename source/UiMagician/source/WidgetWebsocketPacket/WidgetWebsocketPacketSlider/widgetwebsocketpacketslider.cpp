@@ -478,7 +478,7 @@ void WidgetWebsocketPacketSlider::setListValue()
 {
     listClass << VSCP_CLASS1_INFORMATION << VSCP_CLASS1_CONTROL ;
 
-    listType   << VSCP_TYPE_INFORMATION_GENERAL << VSCP_TYPE_INFORMATION_BUTTON << VSCP_TYPE_INFORMATION_MOUSE
+    /*listType   << VSCP_TYPE_INFORMATION_GENERAL << VSCP_TYPE_INFORMATION_BUTTON << VSCP_TYPE_INFORMATION_MOUSE
               << VSCP_TYPE_INFORMATION_ON << VSCP_TYPE_INFORMATION_OFF << VSCP_TYPE_INFORMATION_ALIVE
               << VSCP_TYPE_INFORMATION_TERMINATING << VSCP_TYPE_INFORMATION_OPENED << VSCP_TYPE_INFORMATION_CLOSED
               << VSCP_TYPE_INFORMATION_NODE_HEARTBEAT << VSCP_TYPE_INFORMATION_BELOW_LIMIT << VSCP_TYPE_INFORMATION_ABOVE_LIMIT
@@ -496,6 +496,9 @@ void WidgetWebsocketPacketSlider::setListValue()
               << VSCP_TYPE_INFORMATION_SUNRISE << VSCP_TYPE_INFORMATION_SUNSET << VSCP_TYPE_INFORMATION_START_OF_RECORD
               << VSCP_TYPE_INFORMATION_END_OF_RECORD << VSCP_TYPE_INFORMATION_PRESET_ACTIVE << VSCP_TYPE_INFORMATION_DETECT
               << VSCP_TYPE_INFORMATION_OVERFLOW << VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED
+                 ;*/
+
+    listType   << VSCP_TYPE_INFORMATION_LEVEL_CHANGED << VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED
                  ;
 
     listPriority << VSCP_PRIORITY7 << VSCP_PRIORITY6 << VSCP_PRIORITY5 << VSCP_PRIORITY4 << VSCP_PRIORITY3
@@ -518,7 +521,7 @@ void WidgetWebsocketPacketSlider::on_sliderTxClassListWidget_currentItemChanged(
     {
         ui->sliderTxTypeListWidget->clear();
         listType.clear();
-        listType   << VSCP_TYPE_INFORMATION_GENERAL << VSCP_TYPE_INFORMATION_BUTTON << VSCP_TYPE_INFORMATION_MOUSE
+        /*listType   << VSCP_TYPE_INFORMATION_GENERAL << VSCP_TYPE_INFORMATION_BUTTON << VSCP_TYPE_INFORMATION_MOUSE
                   << VSCP_TYPE_INFORMATION_ON << VSCP_TYPE_INFORMATION_OFF << VSCP_TYPE_INFORMATION_ALIVE
                   << VSCP_TYPE_INFORMATION_TERMINATING << VSCP_TYPE_INFORMATION_OPENED << VSCP_TYPE_INFORMATION_CLOSED
                   << VSCP_TYPE_INFORMATION_NODE_HEARTBEAT << VSCP_TYPE_INFORMATION_BELOW_LIMIT << VSCP_TYPE_INFORMATION_ABOVE_LIMIT
@@ -536,6 +539,9 @@ void WidgetWebsocketPacketSlider::on_sliderTxClassListWidget_currentItemChanged(
                   << VSCP_TYPE_INFORMATION_SUNRISE << VSCP_TYPE_INFORMATION_SUNSET << VSCP_TYPE_INFORMATION_START_OF_RECORD
                   << VSCP_TYPE_INFORMATION_END_OF_RECORD << VSCP_TYPE_INFORMATION_PRESET_ACTIVE << VSCP_TYPE_INFORMATION_DETECT
                   << VSCP_TYPE_INFORMATION_OVERFLOW << VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED
+                     ;*/
+
+        listType   << VSCP_TYPE_INFORMATION_LEVEL_CHANGED << VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED
                      ;
         // Add item
         for(int i=0; i< listType.size() ; i++)
@@ -549,7 +555,7 @@ void WidgetWebsocketPacketSlider::on_sliderTxClassListWidget_currentItemChanged(
     {
         ui->sliderTxTypeListWidget->clear();
         listType.clear();
-        listType   << VSCP_TYPE_CONTROL_GENERAL << VSCP_TYPE_CONTROL_MUTE << VSCP_TYPE_CONTROL_ALL_LAMPS
+        /*listType   << VSCP_TYPE_CONTROL_GENERAL << VSCP_TYPE_CONTROL_MUTE << VSCP_TYPE_CONTROL_ALL_LAMPS
                   << VSCP_TYPE_CONTROL_OPEN << VSCP_TYPE_CONTROL_CLOSE << VSCP_TYPE_CONTROL_TURNON
                   << VSCP_TYPE_CONTROL_TURNOFF << VSCP_TYPE_CONTROL_START << VSCP_TYPE_CONTROL_STOP
                   << VSCP_TYPE_CONTROL_RESET << VSCP_TYPE_CONTROL_INTERRUPT << VSCP_TYPE_CONTROL_SLEEP
@@ -560,6 +566,9 @@ void WidgetWebsocketPacketSlider::on_sliderTxClassListWidget_currentItemChanged(
                   << VSCP_TYPE_CONTROL_ZONED_STREAM_DATA << VSCP_TYPE_CONTROL_SET_PRESET << VSCP_TYPE_CONTROL_TOGGLE_STATE
                   << VSCP_TYPE_CONTROL_TIMED_PULE_ON << VSCP_TYPE_CONTROL_TIMED_PULSE_OFF << VSCP_TYPE_CONTROL_SET_COUNTRY_LANGUAGE
                   << VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL
+                     ;*/
+
+        listType   << VSCP_TYPE_CONTROL_DIM_LAMPS << VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL
                      ;
         // Add item
         for(int i=0; i< listType.size() ; i++)
@@ -582,7 +591,7 @@ void WidgetWebsocketPacketSlider::on_sliderRxClassListWidget_currentItemChanged(
     {
         ui->sliderRxTypeListWidget->clear();
         listType.clear();
-        listType   << VSCP_TYPE_INFORMATION_GENERAL << VSCP_TYPE_INFORMATION_BUTTON << VSCP_TYPE_INFORMATION_MOUSE
+        /*listType   << VSCP_TYPE_INFORMATION_GENERAL << VSCP_TYPE_INFORMATION_BUTTON << VSCP_TYPE_INFORMATION_MOUSE
                   << VSCP_TYPE_INFORMATION_ON << VSCP_TYPE_INFORMATION_OFF << VSCP_TYPE_INFORMATION_ALIVE
                   << VSCP_TYPE_INFORMATION_TERMINATING << VSCP_TYPE_INFORMATION_OPENED << VSCP_TYPE_INFORMATION_CLOSED
                   << VSCP_TYPE_INFORMATION_NODE_HEARTBEAT << VSCP_TYPE_INFORMATION_BELOW_LIMIT << VSCP_TYPE_INFORMATION_ABOVE_LIMIT
@@ -600,6 +609,9 @@ void WidgetWebsocketPacketSlider::on_sliderRxClassListWidget_currentItemChanged(
                   << VSCP_TYPE_INFORMATION_SUNRISE << VSCP_TYPE_INFORMATION_SUNSET << VSCP_TYPE_INFORMATION_START_OF_RECORD
                   << VSCP_TYPE_INFORMATION_END_OF_RECORD << VSCP_TYPE_INFORMATION_PRESET_ACTIVE << VSCP_TYPE_INFORMATION_DETECT
                   << VSCP_TYPE_INFORMATION_OVERFLOW << VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED
+                     ;*/
+
+        listType   << VSCP_TYPE_INFORMATION_LEVEL_CHANGED << VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED
                      ;
         // Add item
         for(int i=0; i< listType.size() ; i++)
@@ -613,7 +625,7 @@ void WidgetWebsocketPacketSlider::on_sliderRxClassListWidget_currentItemChanged(
     {
         ui->sliderRxTypeListWidget->clear();
         listType.clear();
-        listType   << VSCP_TYPE_CONTROL_GENERAL << VSCP_TYPE_CONTROL_MUTE << VSCP_TYPE_CONTROL_ALL_LAMPS
+        /*listType   << VSCP_TYPE_CONTROL_GENERAL << VSCP_TYPE_CONTROL_MUTE << VSCP_TYPE_CONTROL_ALL_LAMPS
                   << VSCP_TYPE_CONTROL_OPEN << VSCP_TYPE_CONTROL_CLOSE << VSCP_TYPE_CONTROL_TURNON
                   << VSCP_TYPE_CONTROL_TURNOFF << VSCP_TYPE_CONTROL_START << VSCP_TYPE_CONTROL_STOP
                   << VSCP_TYPE_CONTROL_RESET << VSCP_TYPE_CONTROL_INTERRUPT << VSCP_TYPE_CONTROL_SLEEP
@@ -624,6 +636,9 @@ void WidgetWebsocketPacketSlider::on_sliderRxClassListWidget_currentItemChanged(
                   << VSCP_TYPE_CONTROL_ZONED_STREAM_DATA << VSCP_TYPE_CONTROL_SET_PRESET << VSCP_TYPE_CONTROL_TOGGLE_STATE
                   << VSCP_TYPE_CONTROL_TIMED_PULE_ON << VSCP_TYPE_CONTROL_TIMED_PULSE_OFF << VSCP_TYPE_CONTROL_SET_COUNTRY_LANGUAGE
                   << VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL
+                     ;*/
+
+        listType   << VSCP_TYPE_CONTROL_DIM_LAMPS << VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL
                      ;
         // Add item
         for(int i=0; i< listType.size() ; i++)
@@ -981,6 +996,8 @@ void WidgetWebsocketPacketSlider::on_WidgetWebsocketPacketSliderTabWidget_curren
 {
     QString parameterStringValue;
 
+    //QMessageBox::information(this, "name", "1");
+
     if((ui->sliderRxTypeListWidget->currentItem()->text() == VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED) || (ui->sliderTxTypeListWidget->currentItem()->text()  == VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL))
     {
         parameterStringValue = sliderPacket_modify.packetSliderVariable.name + ";9;true;%event.data";
@@ -1002,6 +1019,8 @@ void WidgetWebsocketPacketSlider::on_WidgetWebsocketPacketSliderTabWidget_curren
     }
     //ui->sliderVariableActionParametersLineEdit->setText(parameterStringValue);
     sliderVariableActionParameters = parameterStringValue;
+
+        //QMessageBox::information(this, "name", "2");
 }
 
 WidgetWebsocketPacketSlider::~WidgetWebsocketPacketSlider()

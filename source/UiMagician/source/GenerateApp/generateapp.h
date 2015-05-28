@@ -38,6 +38,13 @@
 #define SINGLE_HOUSE   "One"
 #define MULTI_HOUSE    "Multi"
 
+#define HTML_APP         "HTML"
+#define MOBILE_APP       "MOBILE"
+
+#define APP_SIZE_1       "1"
+#define APP_SIZE_2       "2"
+#define APP_SIZE_3       "3"
+#define APP_SIZE_4       "4"
 
 #define VARIABLES_FILE_NAME  "/variables.xml"
 #define VARIABLES_ROOT_NAME  "persistent"
@@ -177,6 +184,11 @@ public:
 
     // Recursively delete the contents of the directory first
     bool removeDir(const QString & dirName);
+
+    // set the app type
+    QString appType;
+    // set the app size
+    QString appSize;
 
     // Public variables
     QString xmlFileNameRef;
@@ -347,6 +359,16 @@ private slots:
     void on_closePushButton_clicked();
 
     void on_htmlAppCheckBox_clicked();
+
+    void on_mobileAppCheckBox_clicked();
+
+    void on_size_1_checkBox_clicked();
+
+    void on_size_2_checkBox_clicked();
+
+    void on_size_3_checkBox_clicked();
+
+    void on_size_4_checkBox_clicked();
 
 private:
     Ui::GenerateApp *ui;

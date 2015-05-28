@@ -91,6 +91,12 @@ GenerateApp::GenerateApp(QString xmlFileName, QDomElement &xmlRoot, QWidget *par
     sensorSubzone = "";
     //set the check box by default
     ui->htmlAppCheckBox->setChecked(true);
+    //set the default app size
+    ui->size_1_checkBox->setChecked(true);
+
+    //set the default app type & size
+    appType = HTML_APP;
+    appSize = APP_SIZE_1;
     // Progress bar set value
     ui->appGenerationProgressBar->setValue(25);
 
@@ -140,241 +146,250 @@ void GenerateApp::getSensorDeviceImage(uint16_t deviceImageNumber , QString &sen
     switch ( deviceImageNumber ) {
 
         case 0:
-           sensorImageSrc = "../lib/widgets/measurement/length.jpg";
+           sensorImageSrc = "/widgets/measurement/length.jpg";
            break;
 
         case 1:
-            sensorImageSrc = "../lib/widgets/measurement/count.jpg";
+            sensorImageSrc = "/widgets/measurement/count.jpg";
             break;
 
         case 2:
-            sensorImageSrc = "../lib/widgets/measurement/length.jpg";
+            sensorImageSrc = "/widgets/measurement/length.jpg";
             break;
 
         case 3:
-            sensorImageSrc = "../lib/widgets/measurement/mass.jpg";
+            sensorImageSrc = "/widgets/measurement/mass.jpg";
             break;
 
        case 4:
-            sensorImageSrc = "../lib/widgets/measurement/time.jpg";
+            sensorImageSrc = "/widgets/measurement/time.jpg";
             break;
 
         case 5:
-            sensorImageSrc = "../lib/widgets/measurement/electric_current.jpg";
+            sensorImageSrc = "/widgets/measurement/electric_current.jpg";
             break;
 
         case 6:
-            sensorImageSrc = "../lib/widgets/measurement/temprature.png";
+            sensorImageSrc = "/widgets/measurement/temprature.png";
             break;
 
         case 7:
-            sensorImageSrc = "../lib/widgets/measurement/amount_of_substance.jpg";
+            sensorImageSrc = "/widgets/measurement/amount_of_substance.jpg";
             break;
 
         case 8:
-            sensorImageSrc = "../lib/widgets/measurement/intensity_of_light.jpg";
+            sensorImageSrc = "/widgets/measurement/intensity_of_light.jpg";
             break;
 
         case 9:
-            sensorImageSrc = "../lib/widgets/measurement/frequency.jpg";
+            sensorImageSrc = "/widgets/measurement/frequency.jpg";
             break;
 
         case 10:
-            sensorImageSrc = "../lib/widgets/measurement/radioactivity.jpg";
+            sensorImageSrc = "/widgets/measurement/radioactivity.jpg";
             break;
 
         case 11:
-            sensorImageSrc = "../lib/widgets/measurement/force.png";
+            sensorImageSrc = "/widgets/measurement/force.png";
             break;
 
         case 12:
-            sensorImageSrc = "../lib/widgets/measurement/pressure.jpg";
+            sensorImageSrc = "/widgets/measurement/pressure.jpg";
             break;
 
         case 13:
-            sensorImageSrc = "../lib/widgets/measurement/energy.jpg";
+            sensorImageSrc = "/widgets/measurement/energy.jpg";
             break;
 
         case 14:
-            sensorImageSrc = "../lib/widgets/measurement/power.png";
+            sensorImageSrc = "/widgets/measurement/power.png";
             break;
 
         case 15:
-            sensorImageSrc = "../lib/widgets/measurement/electrical_charge.png";
+            sensorImageSrc = "/widgets/measurement/electrical_charge.png";
             break;
 
         case 16:
-            sensorImageSrc = "../lib/widgets/measurement/electrical_potential_voltage.png";
+            sensorImageSrc = "/widgets/measurement/electrical_potential_voltage.png";
             break;
 
         case 17:
-            sensorImageSrc = "../lib/widgets/measurement/electrical_capacitance.jpg";
+            sensorImageSrc = "/widgets/measurement/electrical_capacitance.jpg";
             break;
 
         case 18:
-            sensorImageSrc = "../lib/widgets/measurement/electrical_resistance.png";
+            sensorImageSrc = "/widgets/measurement/electrical_resistance.png";
             break;
 
         case 19:
-            sensorImageSrc = "../lib/widgets/measurement/electrical_conductance.png";
+            sensorImageSrc = "/widgets/measurement/electrical_conductance.png";
             break;
 
         case 20:
-            sensorImageSrc = "../lib/widgets/measurement/electrical_magnetic_field.png";
+            sensorImageSrc = "/widgets/measurement/electrical_magnetic_field.png";
             break;
 
         case 21:
-            sensorImageSrc = "../lib/widgets/measurement/electrical_magnetic_flux.png";
+            sensorImageSrc = "/widgets/measurement/electrical_magnetic_flux.png";
             break;
 
         case 22:
-            sensorImageSrc = "../lib/widgets/measurement/electrical_magnetic_flux_density.png";
+            sensorImageSrc = "/widgets/measurement/electrical_magnetic_flux_density.png";
             break;
 
         case 23:
-            sensorImageSrc = "../lib/widgets/measurement/electrical_inductance.jpg";
+            sensorImageSrc = "/widgets/measurement/electrical_inductance.jpg";
             break;
 
         case 24:
-            sensorImageSrc = "../lib/widgets/measurement/flux.jpg";
+            sensorImageSrc = "/widgets/measurement/flux.jpg";
             break;
 
         case 25:
-            sensorImageSrc = "../lib/widgets/measurement/illuminance.jpg";
+            sensorImageSrc = "/widgets/measurement/illuminance.jpg";
             break;
 
         case 26:
-            sensorImageSrc = "../lib/widgets/measurement/dose.png";
+            sensorImageSrc = "/widgets/measurement/dose.png";
             break;
 
         case 27:
-            sensorImageSrc = "../lib/widgets/measurement/catalyst.jpg";
+            sensorImageSrc = "/widgets/measurement/catalyst.jpg";
             break;
 
         case 28:
-            sensorImageSrc = "../lib/widgets/measurement/volume.jpg";
+            sensorImageSrc = "/widgets/measurement/volume.jpg";
             break;
 
         case 29:
-            sensorImageSrc = "../lib/widgets/measurement/sound_intensity.jpg";
+            sensorImageSrc = "/widgets/measurement/sound_intensity.jpg";
 
             break;
 
         case 30:
-            sensorImageSrc = "../lib/widgets/measurement/angle.jpg";
+            sensorImageSrc = "/widgets/measurement/angle.jpg";
             break;
 
         case 31:
-            sensorImageSrc = "../lib/widgets/measurement/position.png";
+            sensorImageSrc = "/widgets/measurement/position.png";
             break;
 
         case 32:
-            sensorImageSrc = "../lib/widgets/measurement/speed.jpg";
+            sensorImageSrc = "/widgets/measurement/speed.jpg";
             break;
 
         case 33:
-            sensorImageSrc = "../lib/widgets/measurement/acceleration.png";
+            sensorImageSrc = "/widgets/measurement/acceleration.png";
             break;
 
         case 34:
-            sensorImageSrc = "../lib/widgets/measurement/tension.png";
+            sensorImageSrc = "/widgets/measurement/tension.png";
             break;
 
         case 35:
-            sensorImageSrc = "../lib/widgets/measurement/humidity.png";
+            sensorImageSrc = "/widgets/measurement/humidity.png";
             break;
 
         case 36:
-            sensorImageSrc = "../lib/widgets/measurement/flowmeter.jpg";
+            sensorImageSrc = "/widgets/measurement/flowmeter.jpg";
             break;
 
         case 37:
-            sensorImageSrc = "../lib/widgets/measurement/thermal_resistance.png";
+            sensorImageSrc = "/widgets/measurement/thermal_resistance.png";
             break;
 
         case 38:
-            sensorImageSrc = "../lib/widgets/measurement/refractive_power.jpg";
+            sensorImageSrc = "/widgets/measurement/refractive_power.jpg";
             break;
 
         case 39:
-            sensorImageSrc = "../lib/widgets/measurement/viscosity.png";
+            sensorImageSrc = "/widgets/measurement/viscosity.png";
             break;
 
         case 40:
-            sensorImageSrc = "../lib/widgets/measurement/sound_impedance.png";
+            sensorImageSrc = "/widgets/measurement/sound_impedance.png";
             break;
 
         case 41:
-            sensorImageSrc = "../lib/widgets/measurement/sound_resistance.png";
+            sensorImageSrc = "/widgets/measurement/sound_resistance.png";
             break;
 
         case 42:
-            sensorImageSrc = "../lib/widgets/measurement/Electric_elasticity.jpg";
+            sensorImageSrc = "/widgets/measurement/Electric_elasticity.jpg";
             break;
 
         case 43:
-            sensorImageSrc = "../lib/widgets/measurement/luminous_energy.jpg";
+            sensorImageSrc = "/widgets/measurement/luminous_energy.jpg";
             break;
 
         case 44:
-            sensorImageSrc = "../lib/widgets/measurement/luminance.jpg";
+            sensorImageSrc = "/widgets/measurement/luminance.jpg";
             break;
 
         case 45:
-            sensorImageSrc = "../lib/widgets/measurement/chemical_concentration.png";
+            sensorImageSrc = "/widgets/measurement/chemical_concentration.png";
             break;
 
         case 46:
-            sensorImageSrc = "../lib/widgets/measurement/reserved.jpg";
+            sensorImageSrc = "/widgets/measurement/reserved.jpg";
             break;
 
         case 47:
-            sensorImageSrc = "../lib/widgets/measurement/dose.png";
+            sensorImageSrc = "/widgets/measurement/dose.png";
             break;
 
         case 48:
-            sensorImageSrc = "../lib/widgets/measurement/reserved.jpg";
+            sensorImageSrc = "/widgets/measurement/reserved.jpg";
             break;
 
         case 49:
-            sensorImageSrc = "../lib/widgets/measurement/dewpoint.jpg";
+            sensorImageSrc = "/widgets/measurement/dewpoint.jpg";
             break;
 
         case 50:
-            sensorImageSrc = "../lib/widgets/measurement/relative_level.png";
+            sensorImageSrc = "/widgets/measurement/relative_level.png";
             break;
 
         case 51:
-            sensorImageSrc = "../lib/widgets/measurement/altitude.png";
+            sensorImageSrc = "/widgets/measurement/altitude.png";
             break;
 
         case 52:
-            sensorImageSrc = "../lib/widgets/measurement/area.jpg";
+            sensorImageSrc = "/widgets/measurement/area.jpg";
             break;
 
         case 53:
-            sensorImageSrc = "../lib/widgets/measurement/radiant_intensity.png";
+            sensorImageSrc = "/widgets/measurement/radiant_intensity.png";
             break;
 
         case 54:
-            sensorImageSrc = "../lib/widgets/measurement/radiance.jpg";
+            sensorImageSrc = "/widgets/measurement/radiance.jpg";
             break;
 
         case 55:
-            sensorImageSrc = "../lib/widgets/measurement/irradiance.jpg";
+            sensorImageSrc = "/widgets/measurement/irradiance.jpg";
             break;
 
         case 56:
-            sensorImageSrc = "../lib/widgets/measurement/spectral_radiance.jpg";
+            sensorImageSrc = "/widgets/measurement/spectral_radiance.jpg";
             break;
 
         case 57:
-            sensorImageSrc = "../lib/widgets/measurement/spectral_irradiance.jpg";
+            sensorImageSrc = "/widgets/measurement/spectral_irradiance.jpg";
             break;
 
         default:
-           sensorImageSrc  = "../lib/widgets/measurement/reserved.jpg";
+           sensorImageSrc  = "/widgets/measurement/reserved.jpg";
             break;
+    }
+
+    if(appType == HTML_APP)
+    {
+        sensorImageSrc = "../lib" + sensorImageSrc;
+    }
+    else
+    {
+        sensorImageSrc = "js" + sensorImageSrc;
     }
 
 }
@@ -385,481 +400,492 @@ void GenerateApp::getSwitchDeviceImage(uint16_t deviceImageNumber , QString &ima
 
     switch ( deviceImageNumber ) {
         case 1:
-            imageOn = "../lib/widgets/button/pressong.png";
-            imageOff = "../lib/widgets/button/pressoffg.png";
+            imageOn = "/widgets/button/pressong.png";
+            imageOff = "/widgets/button/pressoffg.png";
             break;
 
         case 2:
-            imageOn = "../lib/widgets/button/pressono.png";
-            imageOff = "../lib/widgets/button/pressoffo.png";
+            imageOn = "/widgets/button/pressono.png";
+            imageOff = "/widgets/button/pressoffo.png";
             break;
 
         case 3:
-            imageOn = "../lib/widgets/button/jbb1o.png";
+            imageOn = "/widgets/button/jbb1o.png";
             break;
 
        case 4:
-            imageOn = "../lib/widgets/button/jbb2o.png";
-            imageOff = "../lib/widgets/button/jbb2.png";
+            imageOn = "/widgets/button/jbb2o.png";
+            imageOff = "/widgets/button/jbb2.png";
             break;
 
         case 5:
-            imageOn = "../lib/widgets/button/jbgo.png";
-            imageOff = "../lib/widgets/button/jbg.png";
+            imageOn = "/widgets/button/jbgo.png";
+            imageOff = "/widgets/button/jbg.png";
             break;
 
         case 6:
-            imageOn = "../lib/widgets/button/jboo.png";
-            imageOff = "../lib/widgets/button/jbo.png";
+            imageOn = "/widgets/button/jboo.png";
+            imageOff = "/widgets/button/jbo.png";
             break;
 
         case 7:
-            imageOn = "../lib/widgets/button/jbro.png";
-            imageOff = "../lib/widgets/button/jbr.png";
+            imageOn = "/widgets/button/jbro.png";
+            imageOff = "/widgets/button/jbr.png";
             break;
 
         case 8:
-            imageOn = "../lib/widgets/button/jbwo.png";
-            imageOff = "../lib/widgets/button/jbw.png";
+            imageOn = "/widgets/button/jbwo.png";
+            imageOff = "/widgets/button/jbw.png";
             break;
 
         case 9:
-            imageOn = "../lib/widgets/button/jbyo.png";
-            imageOff = "../lib/widgets/button/jby.png";
+            imageOn = "/widgets/button/jbyo.png";
+            imageOff = "/widgets/button/jby.png";
             break;
 
         case 10:
-            imageOn = "../lib/widgets/button/jellyon.png";
-            imageOff = "../lib/widgets/button/jellyoff.png";
+            imageOn = "/widgets/button/jellyon.png";
+            imageOff = "/widgets/button/jellyoff.png";
             break;
 
         case 11:
-            imageOn = "../lib/widgets/button/dualpushgreymirror.png";
-            imageOff = "../lib/widgets/button/dualpushgrey.png";
+            imageOn = "/widgets/button/dualpushgreymirror.png";
+            imageOff = "/widgets/button/dualpushgrey.png";
             break;
 
         case 12:
-            imageOn = "../lib/widgets/button/klunk.png";
-            imageOff = "../lib/widgets/button/klunkmirror.png";
+            imageOn = "/widgets/button/klunk.png";
+            imageOff = "/widgets/button/klunkmirror.png";
             break;
 
         case 13:
-            imageOn = "../lib/widgets/button/klunk2.png";
-            imageOff = "../lib/widgets/button/klunk2mirror.png";
+            imageOn = "/widgets/button/klunk2.png";
+            imageOff = "/widgets/button/klunk2mirror.png";
             break;
 
         case 14:
-            imageOn = "../lib/widgets/button/klunk4.png";
-            imageOff = "../lib/widgets/button/klunk4mirror.png";
+            imageOn = "/widgets/button/klunk4.png";
+            imageOff = "/widgets/button/klunk4mirror.png";
             break;
 
         case 15:
-            imageOn = "../lib/widgets/button/polyblue.png";
-            imageOff = "../lib/widgets/button/polywhiteH.png";
+            imageOn = "/widgets/button/polyblue.png";
+            imageOff = "/widgets/button/polywhiteH.png";
             break;
 
         case 16:
-            imageOn = "../lib/widgets/button/polyredV.png";
-            imageOff = "../lib/widgets/button/polywhiteV.png";
+            imageOn = "/widgets/button/polyredV.png";
+            imageOff = "/widgets/button/polywhiteV.png";
             break;
 
         case 17:
-            imageOn = "../lib/widgets/button/pressonS.png";
-            imageOff = "../lib/widgets/button/pressoffS.png";
+            imageOn = "/widgets/button/pressonS.png";
+            imageOff = "/widgets/button/pressoffS.png";
             break;
 
         case 18:
-            imageOn = "../lib/widgets/button/pressonSb.png";
-            imageOff = "../lib/widgets/button/pressoffSb.png";
+            imageOn = "/widgets/button/pressonSb.png";
+            imageOff = "/widgets/button/pressoffSb.png";
             break;
 
         case 19:
-            imageOn = "../lib/widgets/button/pressonSg.png";
-            imageOff = "../lib/widgets/button/pressoffSg.png";
+            imageOn = "/widgets/button/pressonSg.png";
+            imageOff = "/widgets/button/pressoffSg.png";
             break;
 
         case 20:
-            imageOn = "../lib/widgets/button/pressonSy.png";
-            imageOff = "../lib/widgets/button/pressoffSy.png";
+            imageOn = "/widgets/button/pressonSy.png";
+            imageOff = "/widgets/button/pressoffSy.png";
             break;
 
         case 21:
-            imageOn = "../lib/widgets/button/pushout.png";
-            imageOff = "../lib/widgets/button/pushin.png";
+            imageOn = "/widgets/button/pushout.png";
+            imageOff = "/widgets/button/pushin.png";
             break;
 
         case 22:
-            imageOn = "../lib/widgets/button/pushoutw.png";
-            imageOff = "../lib/widgets/button/pushinw.png";
+            imageOn = "/widgets/button/pushoutw.png";
+            imageOff = "/widgets/button/pushinw.png";
             break;
 
         case 23:
-            imageOn = "../lib/widgets/button/rockerblack.png";
-            imageOff = "../lib/widgets/button/rockerblackleft.png";
+            imageOn = "/widgets/button/rockerblack.png";
+            imageOff = "/widgets/button/rockerblackleft.png";
             break;
 
         case 24:
-            imageOn = "../lib/widgets/button/rockerblue.png";
-            imageOff = "../lib/widgets/button/rockerblueleft.png";
+            imageOn = "/widgets/button/rockerblue.png";
+            imageOff = "/widgets/button/rockerblueleft.png";
             break;
 
         case 25:
-            imageOn = "../lib/widgets/button/rockergrey.png";
-            imageOff = "../lib/widgets/button/rockergreyleft.png";
+            imageOn = "/widgets/button/rockergrey.png";
+            imageOff = "/widgets/button/rockergreyleft.png";
             break;
 
         case 26:
-            imageOn = "../lib/widgets/button/rockerred.png";
-            imageOff = "../lib/widgets/button/rockerredleft.png";
+            imageOn = "/widgets/button/rockerred.png";
+            imageOff = "/widgets/button/rockerredleft.png";
             break;
 
         case 27:
-            imageOn = "../lib/widgets/button/rockersmoothd.png";
-            imageOff = "../lib/widgets/button/rockersmooth.png";
+            imageOn = "/widgets/button/rockersmoothd.png";
+            imageOff = "/widgets/button/rockersmooth.png";
             break;
 
 
         case 28:
-            imageOn = "../lib/widgets/button/rockersmoothBBd.png";
-            imageOff = "../lib/widgets/button/rockersmoothBB.png";
+            imageOn = "/widgets/button/rockersmoothBBd.png";
+            imageOff = "/widgets/button/rockersmoothBB.png";
             break;
 
         case 29:
-            imageOn = "../lib/widgets/button/rockersmoothBBLd.png";
-            imageOff = "../lib/widgets/button/rockersmoothBBL.png";
+            imageOn = "/widgets/button/rockersmoothBBLd.png";
+            imageOff = "/widgets/button/rockersmoothBBL.png";
             break;
 
         case 30:
-            imageOn = "../lib/widgets/button/rockersmoothBCd.png";
-            imageOff = "../lib/widgets/button/rockersmoothBC.png";
+            imageOn = "/widgets/button/rockersmoothBCd.png";
+            imageOff = "/widgets/button/rockersmoothBC.png";
             break;
 
         case 31:
-            imageOn = "../lib/widgets/button/rockersmoothBGd.png";
-            imageOff = "../lib/widgets/button/rockersmoothBG.png";
+            imageOn = "/widgets/button/rockersmoothBGd.png";
+            imageOff = "/widgets/button/rockersmoothBG.png";
             break;
 
         case 32:
-            imageOn = "../lib/widgets/button/rockersmoothBGRd.png";
-            imageOff = "../lib/widgets/button/rockersmoothBGR.png";
+            imageOn = "/widgets/button/rockersmoothBGRd.png";
+            imageOff = "/widgets/button/rockersmoothBGR.png";
             break;
 
         case 33:
-            imageOn = "../lib/widgets/button/rockersmoothBWd.png";
-            imageOff = "../lib/widgets/button/rockersmoothBW.png";
+            imageOn = "/widgets/button/rockersmoothBWd.png";
+            imageOff = "/widgets/button/rockersmoothBW.png";
             break;
 
         case 34:
-            imageOn = "../lib/widgets/button/rockersmoothBWRd.png";
-            imageOff = "../lib/widgets/button/rockersmoothBWR.png";
+            imageOn = "/widgets/button/rockersmoothBWRd.png";
+            imageOff = "/widgets/button/rockersmoothBWR.png";
             break;
 
         case 35:
-            imageOn = "../lib/widgets/button/rockerwhite.png";
-            imageOff = "../lib/widgets/button/rockerwhiteleft.png";
+            imageOn = "/widgets/button/rockerwhite.png";
+            imageOff = "/widgets/button/rockerwhiteleft.png";
             break;
 
         case 36:
-            imageOn = "../lib/widgets/button/sidbon.png";
-            imageOff = "../lib/widgets/button/sidb.png";
+            imageOn = "/widgets/button/sidbon.png";
+            imageOff = "/widgets/button/sidb.png";
             break;
 
         case 37:
-            imageOn = "../lib/widgets/button/sidbongreen.png";
-            imageOff = "../lib/widgets/button/sidb.png";
+            imageOn = "/widgets/button/sidbongreen.png";
+            imageOff = "/widgets/button/sidb.png";
             break;
 
         case 38:
-            imageOn = "../lib/widgets/button/sidbonblue.png";
-            imageOff = "../lib/widgets/button/sidb.png";
+            imageOn = "/widgets/button/sidbonblue.png";
+            imageOff = "/widgets/button/sidb.png";
             break;
 
         case 39:
-            imageOn = "../lib/widgets/button/solinaOn.png";
-            imageOff = "../lib/widgets/button/solinaOff.png";
+            imageOn = "/widgets/button/solinaOn.png";
+            imageOff = "/widgets/button/solinaOff.png";
             break;
 
         case 40:
-            imageOn = "../lib/widgets/button/led-orange-round-button-in.png";
-            imageOff = "../lib/widgets/button/led-orange-round-button-out.png";
+            imageOn = "/widgets/button/led-orange-round-button-in.png";
+            imageOff = "/widgets/button/led-orange-round-button-out.png";
             break;
 
         case 41:
-            imageOn = "../lib/widgets/button/led_circle_red.png";
-            imageOff = "../lib/widgets/button/led_circle_grey.png";
+            imageOn = "/widgets/button/led_circle_red.png";
+            imageOff = "/widgets/button/led_circle_grey.png";
             break;
 
         case 42:
-            imageOn = "../lib/widgets/button/led_circle_yellow_.png";
-            imageOff = "../lib/widgets/button/led_circle_grey.png";
+            imageOn = "/widgets/button/led_circle_yellow_.png";
+            imageOff = "/widgets/button/led_circle_grey.png";
             break;
 
         case 43:
-            imageOn = "../lib/widgets/button/led-green.png";
-            imageOff = "../lib/widgets/button/led_circle_grey.png";
+            imageOn = "/widgets/button/led-green.png";
+            imageOff = "/widgets/button/led_circle_grey.png";
             break;
 
         case 44:
-            imageOn = "../lib/widgets/button/led-green-button2.png";
-            imageOff = "../lib/widgets/button/led_circle_grey.png";
+            imageOn = "/widgets/button/led-green-button2.png";
+            imageOff = "/widgets/button/led_circle_grey.png";
             break;
 
         case 45:
-            imageOn = "../lib/widgets/button/led_circle_green.png";
-            imageOff = "../lib/widgets/button/led_circle_grey.png";
+            imageOn = "/widgets/button/led_circle_green.png";
+            imageOff = "/widgets/button/led_circle_grey.png";
             break;
 
         case 46:
-            imageOn = "../lib/widgets/button/led_circle_orange.png";
-            imageOff = "../lib/widgets/button/led_circle_grey.png";
+            imageOn = "/widgets/button/led_circle_orange.png";
+            imageOff = "/widgets/button/led_circle_grey.png";
 
             break;
 
         case 47:
-            imageOn = "../lib/widgets/button/led_circle_purple.png";
-            imageOff = "../lib/widgets/button/led_circle_grey.png";
+            imageOn = "/widgets/button/led_circle_purple.png";
+            imageOff = "/widgets/button/led_circle_grey.png";
             break;
 
         case 48:
-            imageOn = "../lib/widgets/button/led_circle_blue.png";
-            imageOff = "../lib/widgets/button/led_circle_grey.png";
+            imageOn = "/widgets/button/led_circle_blue.png";
+            imageOff = "/widgets/button/led_circle_grey.png";
 
             break;
 
         case 49:
-            imageOn = "../lib/widgets/button/led-red-on.png";
-            imageOff = "../lib/widgets/button/led-red-off.png";
+            imageOn = "/widgets/button/led-red-on.png";
+            imageOff = "/widgets/button/led-red-off.png";
             break;
 
         case 50:
-            imageOn = "../lib/widgets/button/led-green.png";
-            imageOff = "../lib/widgets/button/led_circle_green.png";
+            imageOn = "/widgets/button/led-green.png";
+            imageOff = "/widgets/button/led_circle_green.png";
             break;
 
         case 51:
-            imageOn = "../lib/widgets/button/led_circle_green.png";
-            imageOff = "../lib/widgets/button/led-red-off.png";
+            imageOn = "/widgets/button/led_circle_green.png";
+            imageOff = "/widgets/button/led-red-off.png";
             break;
 
         case 52:
-            imageOn = "../lib/widgets/button/poweron.png";
-            imageOff = "../lib/widgets/button/poweroff.png";
+            imageOn = "/widgets/button/poweron.png";
+            imageOff = "/widgets/button/poweroff.png";
             break;
 
         case 53:
-            imageOn = "../lib/widgets/button/push-button-light-blue.png";
-            imageOff = "../lib/widgets/button/push-button-glossy-red.png";
+            imageOn = "/widgets/button/push-button-light-blue.png";
+            imageOff = "/widgets/button/push-button-glossy-red.png";
             break;
 
         case 54:
-            imageOn = "../lib/widgets/button/push-button-yellow-glossy.png";
-            imageOff = "../lib/widgets/button/push-button-glossy-red.png";
+            imageOn = "/widgets/button/push-button-yellow-glossy.png";
+            imageOff = "/widgets/button/push-button-glossy-red.png";
             break;
 
         case 55:
-            imageOn = "../lib/widgets/button/push-button-light-blue.png";
-            imageOff = "../lib/widgets/button/push-button-yellow-glossy.png";
+            imageOn = "/widgets/button/push-button-light-blue.png";
+            imageOff = "/widgets/button/push-button-yellow-glossy.png";
             break;
 
         case 56:
-            imageOn = "../lib/widgets/button/light_switch_on.png";
-            imageOff = "../lib/widgets/button/light_switch_off.png";
+            imageOn = "/widgets/button/light_switch_on.png";
+            imageOff = "/widgets/button/light_switch_off.png";
             break;
 
         case 57:
-            imageOn = "../lib/widgets/button/sw2.png";
-            imageOff = "../lib/widgets/button/sw1.png";
+            imageOn = "/widgets/button/sw2.png";
+            imageOff = "/widgets/button/sw1.png";
             break;
 
         case 58:
-            imageOn = "../lib/widgets/button/sw3.png";
-            imageOff = "../lib/widgets/button/sw5.png";
+            imageOn = "/widgets/button/sw3.png";
+            imageOff = "/widgets/button/sw5.png";
             break;
 
         case 59:
-            imageOn = "../lib/widgets/button/switch3.png";
-            imageOff = "../lib/widgets/button/switch1.png";
+            imageOn = "/widgets/button/switch3.png";
+            imageOff = "/widgets/button/switch1.png";
             break;
 
         case 60:
-            imageOn = "../lib/widgets/button/touchy.png";
-            imageOff = "../lib/widgets/button/touchoy.png";
+            imageOn = "/widgets/button/touchy.png";
+            imageOff = "/widgets/button/touchoy.png";
             break;
 
         case 61:
-            imageOn = "../lib/widgets/button/touchw.png";
-            imageOff = "../lib/widgets/button/touchow.png";
+            imageOn = "/widgets/button/touchw.png";
+            imageOff = "/widgets/button/touchow.png";
             break;
 
         case 62:
-            imageOn = "../lib/widgets/button/toucho.png";
-            imageOff = "../lib/widgets/button/touchoo.png";
+            imageOn = "/widgets/button/toucho.png";
+            imageOff = "/widgets/button/touchoo.png";
             break;
 
         case 63:
-            imageOn = "../lib/widgets/button/btn_led_rectangular_vh_black.png";
-            imageOff = "../lib/widgets/button/btn_led_rectangular_v_black.png";
+            imageOn = "/widgets/button/btn_led_rectangular_vh_black.png";
+            imageOff = "/widgets/button/btn_led_rectangular_v_black.png";
             break;
 
         case 64:
-            imageOn = "../lib/widgets/button/btn-led_rounded_vh_black.png";
-            imageOff = "../lib/widgets/button/btn-led_rounded_v_black.png";
+            imageOn = "/widgets/button/btn-led_rounded_vh_black.png";
+            imageOff = "/widgets/button/btn-led_rounded_v_black.png";
             break;
 
         case 65:
-            imageOn = "../lib/widgets/button/btn-led_rounded_vh_grey.png";
-            imageOff = "../lib/widgets/button/btn-led_rounded_v_grey.png";
+            imageOn = "/widgets/button/btn-led_rounded_vh_grey.png";
+            imageOff = "/widgets/button/btn-led_rounded_v_grey.png";
             break;
 
         case 66:
-            imageOn = "../lib/widgets/button/btn_pressdown_on.png";
-            imageOff = "../lib/widgets/button/btn_pressdown_off.png";
+            imageOn = "/widgets/button/btn_pressdown_on.png";
+            imageOff = "/widgets/button/btn_pressdown_off.png";
             break;
 
         case 67:
-            imageOn = "../lib/widgets/button/btn_pressdown2_on.png";
-            imageOff = "../lib/widgets/button/btn_pressdown2_off.png";
+            imageOn = "/widgets/button/btn_pressdown2_on.png";
+            imageOff = "/widgets/button/btn_pressdown2_off.png";
             break;
 
         case 68:
-            imageOn = "../lib/widgets/button/red-rectangle-blank-button-on.png";
-            imageOff = "../lib/widgets/button/red-rectangle-blank-button2-off.png";
+            imageOn = "/widgets/button/red-rectangle-blank-button-on.png";
+            imageOff = "/widgets/button/red-rectangle-blank-button2-off.png";
             break;
 
         case 69:
-            imageOn = "../lib/widgets/button/run-push-button-on.png";
-            imageOff = "../lib/widgets/button/run-push-button-off.png";
+            imageOn = "/widgets/button/run-push-button-on.png";
+            imageOff = "/widgets/button/run-push-button-off.png";
             break;
 
         case 70:
-            imageOn = "../lib/widgets/button/btn-silver-on.png";
-            imageOff = "../lib/widgets/button/btn-silver-off.png";
+            imageOn = "/widgets/button/btn-silver-on.png";
+            imageOff = "/widgets/button/btn-silver-off.png";
             break;
 
         case 71:
-            imageOn = "../lib/widgets/button/stop.png";
-            imageOff = "../lib/widgets/button/start.png";
+            imageOn = "/widgets/button/stop.png";
+            imageOff = "/widgets/button/start.png";
             break;
 
         case 72:
-            imageOn = "../lib/widgets/button/switch-knob-on.png";
-            imageOff = "../lib/widgets/button/switch-knob-off.png";
+            imageOn = "/widgets/button/switch-knob-on.png";
+            imageOff = "/widgets/button/switch-knob-off.png";
             break;
 
         case 73:
-            imageOn = "../lib/widgets/button/SwtchON1.png";
-            imageOff = "../lib/widgets/button/SwtchOF1.png";
+            imageOn = "/widgets/button/SwtchON1.png";
+            imageOff = "/widgets/button/SwtchOF1.png";
             break;
 
         case 74:
-            imageOn = "../lib/widgets/button/system-shut-down-on.png";
-            imageOff = "../lib/widgets/button/system-shut-down-off.png";
+            imageOn = "/widgets/button/system-shut-down-on.png";
+            imageOff = "/widgets/button/system-shut-down-off.png";
             break;
 
         case 75:
-            imageOn = "../lib/widgets/button/brami_Square_Black_Crystal_Button.on.png";
-            imageOff = "../lib/widgets/button/brami_Square_Black_Crystal_Button.off.png";
+            imageOn = "/widgets/button/brami_Square_Black_Crystal_Button.on.png";
+            imageOff = "/widgets/button/brami_Square_Black_Crystal_Button.off.png";
             break;
 
         case 76:
-            imageOn = "../lib/widgets/button/btncpgreen-on.png";
-            imageOff = "../lib/widgets/button/btncpgreen-off.png";
+            imageOn = "/widgets/button/btncpgreen-on.png";
+            imageOff = "/widgets/button/btncpgreen-off.png";
             break;
 
         case 77:
-            imageOn = "../lib/widgets/button/btncpmag-on.png";
-            imageOff = "../lib/widgets/button/btncpmag-off.png";
+            imageOn = "/widgets/button/btncpmag-on.png";
+            imageOff = "/widgets/button/btncpmag-off.png";
             break;
 
         case 78:
-            imageOn = "../lib/widgets/button/button-for-numbers-on.png";
-            imageOff = "../lib/widgets/button/button-for-numbers-off.png";
+            imageOn = "/widgets/button/button-for-numbers-on.png";
+            imageOff = "/widgets/button/button-for-numbers-off.png";
             break;
 
         case 79:
-            imageOn = "../lib/widgets/button/button-green-on.png";
-            imageOff = "../lib/widgets/button/button-green-off.png";
+            imageOn = "/widgets/button/button-green-on.png";
+            imageOff = "/widgets/button/button-green-off.png";
             break;
 
         case 80:
-            imageOn = "../lib/widgets/button/button-on.png";
-            imageOff = "../lib/widgets/button/button-off.png";
+            imageOn = "/widgets/button/button-on.png";
+            imageOff = "/widgets/button/button-off.png";
             break;
 
         case 81:
-            imageOn = "../lib/widgets/button/button-power-on.png";
-            imageOff = "../lib/widgets/button/button-power-off.png";
+            imageOn = "/widgets/button/button-power-on.png";
+            imageOff = "/widgets/button/button-power-off.png";
             break;
 
         case 82:
-            imageOn = "../lib/widgets/button/btn-grey-rounded-on.png";
-            imageOff = "../lib/widgets/button/btn-grey-rounded-off.png";
+            imageOn = "/widgets/button/btn-grey-rounded-on.png";
+            imageOff = "/widgets/button/btn-grey-rounded-off.png";
             break;
 
         case 83:
-            imageOn = "../lib/widgets/button/btn-grey-on.png";
-            imageOff = "../lib/widgets/button/btn-grey-off.png";
+            imageOn = "/widgets/button/btn-grey-on.png";
+            imageOff = "/widgets/button/btn-grey-off.png";
             break;
 
         case 84:
-            imageOn = "../lib/widgets/button/interruptor-on.png";
-            imageOff = "../lib/widgets/button/interruptor-off.png";
+            imageOn = "/widgets/button/interruptor-on.png";
+            imageOff = "/widgets/button/interruptor-off.png";
             break;
 
         case 85:
-            imageOn = "../lib/widgets/button/knife_switch_on.png";
-            imageOff = "../lib/widgets/button/knife_switch_off.png";
+            imageOn = "/widgets/button/knife_switch_on.png";
+            imageOff = "/widgets/button/knife_switch_off.png";
             break;
 
         case 86:
-            imageOn = "../lib/widgets/button/on-button.png";
-            imageOff = "../lib/widgets/button/off-button.png";
+            imageOn = "/widgets/button/on-button.png";
+            imageOff = "/widgets/button/off-button.png";
             break;
 
         case 87:
-            imageOn = "../lib/widgets/button/btn-modern-on.png";
-            imageOff = "../lib/widgets/button/btn-modern-off.png";
+            imageOn = "/widgets/button/btn-modern-on.png";
+            imageOff = "/widgets/button/btn-modern-off.png";
             break;
 
         case 88:
-            imageOn = "../lib/widgets/button/btn-oldstyle-on.png";
-            imageOff = "../lib/widgets/button/btn-oldstyle-off.png";
+            imageOn = "/widgets/button/btn-oldstyle-on.png";
+            imageOff = "/widgets/button/btn-oldstyle-off.png";
             break;
 
         case 89:
-            imageOn = "../lib/widgets/button/orange-button-on.png";
-            imageOff = "../lib/widgets/button/orange-button-off.png";
+            imageOn = "/widgets/button/orange-button-on.png";
+            imageOff = "/widgets/button/orange-button-off.png";
             break;
 
         case 90:
-            imageOn = "../lib/widgets/light/lightbulb1_on.png";
-            imageOff = "../lib/widgets/light/lightbulb1_off.png";
+            imageOn = "/widgets/light/lightbulb1_on.png";
+            imageOff = "/widgets/light/lightbulb1_off.png";
             break;
 
         case 91:
-            imageOn = "../lib/widgets/light/light_red.gif";
-            imageOff = "../lib/widgets/light/light_green.gif";
+            imageOn = "/widgets/light/light_red.gif";
+            imageOff = "/widgets/light/light_green.gif";
             break;
 
         case 92:
-            imageOn = "../lib/widgets/lightbulb/semi-matte-light-bulb-lit-th.png";
-            imageOff = "../lib/widgets/lightbulb/semi-matte-light-bulb-unlit-th.png";
+            imageOn = "/widgets/lightbulb/semi-matte-light-bulb-lit-th.png";
+            imageOff = "/widgets/lightbulb/semi-matte-light-bulb-unlit-th.png";
             break;
 
         case 93:
-            imageOn = "../lib/widgets/lightbulb/lightbulb-th.png";
-            imageOff = "../lib/widgets/lightbulb/lightbulb-white-th.png";
+            imageOn = "/widgets/lightbulb/lightbulb-th.png";
+            imageOff = "/widgets/lightbulb/lightbulb-white-th.png";
             break;
 
         case 94:
-            imageOn = "../lib/widgets/lightbulb/glossy-light-bulb.jpg";
-            imageOff = "../lib/widgets/lightbulb/light-bulb-icon.jpg";
+            imageOn = "/widgets/lightbulb/glossy-light-bulb.jpg";
+            imageOff = "/widgets/lightbulb/light-bulb-icon.jpg";
             break;
 
         default:
-            imageOn = "../lib/widgets/button/presson.png";
-            imageOff = "../lib/widgets/button/pressoff.png";
+            imageOn = "/widgets/button/presson.png";
+            imageOff = "/widgets/button/pressoff.png";
             break;
+    }
+
+    if(appType == HTML_APP)
+    {
+        imageOn = "../lib" + imageOn;
+        imageOff = "../lib" + imageOff;
+    }
+    else
+    {
+        imageOn = "js" + imageOn;
+        imageOff = "js" + imageOff;
     }
 }
 
@@ -870,13 +896,23 @@ void GenerateApp::getSliderDeviceImage(uint16_t deviceImageNumber , QString &ima
     // #define FIRST_SLIDER_IMAGE                     "2"
     switch ( deviceImageNumber ) {
     case 2:
-        imageSlider = "../lib/widgets/button_variable/sliderDefault.png";
+        imageSlider = "/widgets/button_variable/sliderDefault.png";
         break;
 
     default:
-        imageSlider = "../lib/widgets/button_variable/sliderDefault.png";
+        imageSlider = "/widgets/button_variable/sliderDefault.png";
         break;
     }
+
+    if(appType == HTML_APP)
+    {
+        imageSlider = "../lib" + imageSlider;
+    }
+    else
+    {
+        imageSlider = "js" + imageSlider;
+    }
+
 }
 
 //get switch variable button Image URL
@@ -884,15 +920,26 @@ void GenerateApp::getSwitchVariableButtonDeviceImage(uint16_t deviceImageNumber 
 {    
     switch ( deviceImageNumber ) {
     case 1:
-        switchButtonUpImageSrc = "../lib/widgets/button_variable/up.jpg";
-        switchButtonDownImageSrc = "../lib/widgets/button_variable/down.jpg";
+        switchButtonUpImageSrc = "/widgets/button_variable/up.jpg";
+        switchButtonDownImageSrc = "/widgets/button_variable/down.jpg";
         break;
 
     default:
-        switchButtonUpImageSrc = "../lib/widgets/button_variable/up.jpg";
-        switchButtonDownImageSrc = "../lib/widgets/button_variable/down.jpg";
+        switchButtonUpImageSrc = "/widgets/button_variable/up.jpg";
+        switchButtonDownImageSrc = "/widgets/button_variable/down.jpg";
         break;
 
+    }
+
+    if(appType == HTML_APP)
+    {
+        switchButtonUpImageSrc = "../lib" + switchButtonUpImageSrc;
+        switchButtonDownImageSrc = "../lib" + switchButtonDownImageSrc;
+    }
+    else
+    {
+        switchButtonUpImageSrc = "js" + switchButtonUpImageSrc;
+        switchButtonDownImageSrc = "js" + switchButtonDownImageSrc;
     }
 }
 
@@ -3360,11 +3407,123 @@ void GenerateApp::createHtmlHead()
        NodeElementChild.setAttribute("type","text/css");
        if(houseFloor == MULTI_FLOOR_HOUSE)
        {
-           stringAttributeTxt = "../css/multiFloorStyle.css";
+
+           if(appSize == APP_SIZE_1)
+           {
+               if(appType == HTML_APP)
+               {
+                   stringAttributeTxt = "../css/multiFloorStyle.css";
+               }
+               else
+               {
+                   stringAttributeTxt = "css/multiFloorStyle.css";
+               }
+           }
+           else if(appSize == APP_SIZE_2)
+           {
+               if(appType == HTML_APP)
+               {
+                   stringAttributeTxt = "../css/multiFloorStyle_mobile_1.css";
+               }
+               else
+               {
+                   stringAttributeTxt = "css/multiFloorStyle_mobile_1.css";
+               }
+
+           }
+           else if(appSize == APP_SIZE_3)
+           {
+               if(appType == HTML_APP)
+               {
+                   stringAttributeTxt = "../css/multiFloorStyle_mobile_2.css";
+               }
+               else
+               {
+                   stringAttributeTxt = "css/multiFloorStyle_mobile_2.css";
+               }
+           }
+           else if(appSize == APP_SIZE_4)
+           {
+               if(appType == HTML_APP)
+               {
+                   stringAttributeTxt = "../css/multiFloorStyle_mobile_3.css";
+               }
+               else
+               {
+                   stringAttributeTxt = "css/multiFloorStyle_mobile_3.css";
+               }
+           }
+           else
+           {
+               if(appType == HTML_APP)
+               {
+                   stringAttributeTxt = "../css/multiFloorStyle.css";
+               }
+               else
+               {
+                   stringAttributeTxt = "css/multiFloorStyle.css";
+               }
+           }
        }
        else
        {
-           stringAttributeTxt = "../css/singleFloorStyle.css";
+           if(appSize == APP_SIZE_1)
+           {
+               if(appType == HTML_APP)
+               {
+                   stringAttributeTxt = "../css/singleFloorStyle.css";
+               }
+               else
+               {
+                   stringAttributeTxt = "css/singleFloorStyle.css";
+               }
+           }
+           else if(appSize == APP_SIZE_2)
+           {
+               if(appType == HTML_APP)
+               {
+                   stringAttributeTxt = "../css/singleFloorStyle_mobile_1.css";
+               }
+               else
+               {
+                   stringAttributeTxt = "css/singleFloorStyle_mobile_1.css";
+               }
+           }
+           else if(appSize == APP_SIZE_3)
+           {
+               if(appType == HTML_APP)
+               {
+                   stringAttributeTxt = "../css/singleFloorStyle_mobile_2.css";
+               }
+               else
+               {
+                   stringAttributeTxt = "css/singleFloorStyle_mobile_2.css";
+               }
+           }
+           else if(appSize == APP_SIZE_4)
+           {
+               if(appType == HTML_APP)
+               {
+                   stringAttributeTxt = "../css/singleFloorStyle_mobile_3.css";
+               }
+               else
+               {
+                   stringAttributeTxt = "css/singleFloorStyle_mobile_3.css";
+               }
+           }
+           else
+           {
+
+               if(appType == HTML_APP)
+               {
+                   stringAttributeTxt = "../css/singleFloorStyle.css";
+               }
+               else
+               {
+                   stringAttributeTxt = "css/singleFloorStyle.css";
+               }
+           }
+
        }
        NodeElementChild.setAttribute("href",stringAttributeTxt);
        NodeElement.appendChild(NodeElementChild);
@@ -3373,7 +3532,14 @@ void GenerateApp::createHtmlHead()
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
        NodeElementChild.setAttribute("rel","stylesheet");
        NodeElementChild.setAttribute("type","text/css");
-       stringAttributeTxt = "../css/info.css";
+       if(appType == HTML_APP)
+       {
+           stringAttributeTxt = "../css/info.css";
+       }
+       else
+       {
+           stringAttributeTxt = "css/info.css";
+       }
        NodeElementChild.setAttribute("href",stringAttributeTxt);
        NodeElement.appendChild(NodeElementChild);
        //Create link node
@@ -3381,7 +3547,14 @@ void GenerateApp::createHtmlHead()
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
        NodeElementChild.setAttribute("rel","stylesheet");
        NodeElementChild.setAttribute("type","text/css");
-       stringAttributeTxt = "../css/epoch.min.css";
+       if(appType == HTML_APP)
+       {
+           stringAttributeTxt = "../css/epoch.min.css";
+       }
+       else
+       {
+           stringAttributeTxt = "css/epoch.min.css";
+       }
        NodeElementChild.setAttribute("href",stringAttributeTxt);
        NodeElement.appendChild(NodeElementChild);
        if(xmlType == MULTI_HOUSE)
@@ -3391,7 +3564,14 @@ void GenerateApp::createHtmlHead()
            NodeElementChild = htmlDomDocument.createElement(nodeChildName);
            NodeElementChild.setAttribute("rel","stylesheet");
            NodeElementChild.setAttribute("type","text/css");
-           stringAttributeTxt = "../css/side_menu.css";
+           if(appType == HTML_APP)
+           {
+               stringAttributeTxt = "../css/side_menu.css";
+           }
+           else
+           {
+               stringAttributeTxt = "css/side_menu.css";
+           }
            NodeElementChild.setAttribute("href",stringAttributeTxt);
            NodeElement.appendChild(NodeElementChild);
        }
@@ -3399,11 +3579,36 @@ void GenerateApp::createHtmlHead()
        {
            //Do nothing
        }
+       // create cordova.js node
+       if(appType == MOBILE_APP)
+       {
+           //Create setting jquery script node
+           nodeChildName = "script";
+           NodeElementChild = htmlDomDocument.createElement(nodeChildName);
+           NodeElementChild.setAttribute("type","text/javascript");
+           NodeElementChild.setAttribute("src","cordova.js");
+           stringTxtNode = "";
+           textNode = htmlDomDocument.createTextNode(stringTxtNode);
+           NodeElementChild.appendChild(textNode);
+           NodeElement.appendChild(NodeElementChild);
+
+       }
+       else
+       {
+           // Do nothing
+       }
        //Create setting jquery script node
        nodeChildName = "script";
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
        NodeElementChild.setAttribute("type","text/javascript");
-       NodeElementChild.setAttribute("src","../lib/jquery.min.js");
+       if(appType == HTML_APP)
+       {
+           NodeElementChild.setAttribute("src","../lib/jquery.min.js");
+       }
+       else
+       {
+           NodeElementChild.setAttribute("src","js/jquery.min.js");
+       }
        stringTxtNode = "";
        textNode = htmlDomDocument.createTextNode(stringTxtNode);
        NodeElementChild.appendChild(textNode);
@@ -3412,7 +3617,14 @@ void GenerateApp::createHtmlHead()
        nodeChildName = "script";
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
        NodeElementChild.setAttribute("type","text/javascript");
-       NodeElementChild.setAttribute("src","../lib/d3.min.js");
+       if(appType == HTML_APP)
+       {
+           NodeElementChild.setAttribute("src","../lib/d3.min.js");
+       }
+       else
+       {
+           NodeElementChild.setAttribute("src","js/d3.min.js");
+       }
        stringTxtNode = "";
        textNode = htmlDomDocument.createTextNode(stringTxtNode);
        NodeElementChild.appendChild(textNode);
@@ -3421,7 +3633,14 @@ void GenerateApp::createHtmlHead()
        nodeChildName = "script";
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
        NodeElementChild.setAttribute("type","text/javascript");
-       NodeElementChild.setAttribute("src","../lib/epoch.min.js");
+       if(appType == HTML_APP)
+       {
+           NodeElementChild.setAttribute("src","../lib/epoch.min.js");
+       }
+       else
+       {
+           NodeElementChild.setAttribute("src","js/epoch.min.js");
+       }
        stringTxtNode = "";
        textNode = htmlDomDocument.createTextNode(stringTxtNode);
        NodeElementChild.appendChild(textNode);
@@ -3430,7 +3649,14 @@ void GenerateApp::createHtmlHead()
        nodeChildName = "script";
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
        NodeElementChild.setAttribute("type","text/javascript");
-       NodeElementChild.setAttribute("src","../lib/wz_jsgraphics.js");
+       if(appType == HTML_APP)
+       {
+           NodeElementChild.setAttribute("src","../lib/wz_jsgraphics.js");
+       }
+       else
+       {
+           NodeElementChild.setAttribute("src","js/wz_jsgraphics.js");
+       }
        stringTxtNode = "";
        textNode = htmlDomDocument.createTextNode(stringTxtNode);
        NodeElementChild.appendChild(textNode);
@@ -3439,7 +3665,15 @@ void GenerateApp::createHtmlHead()
        nodeChildName = "script";
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
        NodeElementChild.setAttribute("type","text/javascript");
-       NodeElementChild.setAttribute("src","../lib/md5.js");
+       if(appType == HTML_APP)
+       {
+           NodeElementChild.setAttribute("src","../lib/md5.js");
+       }
+       else
+       {
+           NodeElementChild.setAttribute("src","js/md5.js");
+       }
+
        stringTxtNode = "";
        textNode = htmlDomDocument.createTextNode(stringTxtNode);
        NodeElementChild.appendChild(textNode);
@@ -3448,7 +3682,16 @@ void GenerateApp::createHtmlHead()
        nodeChildName = "script";
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
        NodeElementChild.setAttribute("type","text/javascript");
-       NodeElementChild.setAttribute("src","../lib/infoInit.js");
+       //NodeElementChild.setAttribute("src","../lib/infoInit.js");
+       if(appType == HTML_APP)
+       {
+           NodeElementChild.setAttribute("src","../lib/infoInit.js");
+       }
+       else
+       {
+           NodeElementChild.setAttribute("src","js/infoInit.js");
+       }
+
        stringTxtNode = "";
        textNode = htmlDomDocument.createTextNode(stringTxtNode);
        NodeElementChild.appendChild(textNode);
@@ -3461,11 +3704,28 @@ void GenerateApp::createHtmlHead()
            NodeElementChild.setAttribute("type","text/javascript");
            if(houseFloor == SINGLE_FLOOR_HOUSE)
            {
-               NodeElementChild.setAttribute("src","../lib/side_menu_house_single.js");
+               //NodeElementChild.setAttribute("src","../lib/side_menu_house_single.js");
+               if(appType == HTML_APP)
+               {
+                   NodeElementChild.setAttribute("src","../lib/side_menu_house_single.js");
+               }
+               else
+               {
+                   NodeElementChild.setAttribute("src","js/side_menu_house_single.js");
+               }
+
            }
            else
            {
-               NodeElementChild.setAttribute("src","../lib/side_menu_house.js");
+               //NodeElementChild.setAttribute("src","../lib/side_menu_house.js");
+               if(appType == HTML_APP)
+               {
+                   NodeElementChild.setAttribute("src","../lib/side_menu_house.js");
+               }
+               else
+               {
+                   NodeElementChild.setAttribute("src","js/side_menu_house.js");
+               }
            }
            stringTxtNode = "";
            textNode = htmlDomDocument.createTextNode(stringTxtNode);
@@ -3480,7 +3740,15 @@ void GenerateApp::createHtmlHead()
        nodeChildName = "script";
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
        NodeElementChild.setAttribute("type","text/javascript");
-       NodeElementChild.setAttribute("src","../lib/vscpwslib.js");
+       //NodeElementChild.setAttribute("src","../lib/vscpwslib.js");
+       if(appType == HTML_APP)
+       {
+           NodeElementChild.setAttribute("src","../lib/vscpwslib.js");
+       }
+       else
+       {
+           NodeElementChild.setAttribute("src","js/vscpwslib.js");
+       }
        stringTxtNode = "";
        textNode = htmlDomDocument.createTextNode(stringTxtNode);
        NodeElementChild.appendChild(textNode);
@@ -3489,7 +3757,15 @@ void GenerateApp::createHtmlHead()
        nodeChildName = "script";
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
        NodeElementChild.setAttribute("type","text/javascript");
-       NodeElementChild.setAttribute("src","../lib/vscpStateButton_mod.js");
+       //NodeElementChild.setAttribute("src","../lib/vscpStateButton_mod.js");
+       if(appType == HTML_APP)
+       {
+           NodeElementChild.setAttribute("src","../lib/vscpStateButton_mod.js");
+       }
+       else
+       {
+           NodeElementChild.setAttribute("src","js/vscpStateButton_mod.js");
+       }
        stringTxtNode = "";
        textNode = htmlDomDocument.createTextNode(stringTxtNode);
        NodeElementChild.appendChild(textNode);
@@ -3498,7 +3774,15 @@ void GenerateApp::createHtmlHead()
        nodeChildName = "script";
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
        NodeElementChild.setAttribute("type","text/javascript");
-       NodeElementChild.setAttribute("src","../lib/vscpSimpleText_mod.js");
+       //NodeElementChild.setAttribute("src","../lib/vscpSimpleText_mod.js");
+       if(appType == HTML_APP)
+       {
+           NodeElementChild.setAttribute("src","../lib/vscpSimpleText_mod.js");
+       }
+       else
+       {
+           NodeElementChild.setAttribute("src","js/vscpSimpleText_mod.js");
+       }
        stringTxtNode = "";
        textNode = htmlDomDocument.createTextNode(stringTxtNode);
        NodeElementChild.appendChild(textNode);
@@ -3507,7 +3791,15 @@ void GenerateApp::createHtmlHead()
        nodeChildName = "script";
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
        NodeElementChild.setAttribute("type","text/javascript");
-       NodeElementChild.setAttribute("src","../lib/vscpslider.js");
+       //NodeElementChild.setAttribute("src","../lib/vscpslider.js");
+       if(appType == HTML_APP)
+       {
+           NodeElementChild.setAttribute("src","../lib/vscpslider.js");
+       }
+       else
+       {
+           NodeElementChild.setAttribute("src","js/vscpslider.js");
+       }
        stringTxtNode = "";
        textNode = htmlDomDocument.createTextNode(stringTxtNode);
        NodeElementChild.appendChild(textNode);
@@ -3516,7 +3808,15 @@ void GenerateApp::createHtmlHead()
        nodeChildName = "script";
        NodeElementChild = htmlDomDocument.createElement(nodeChildName);
        NodeElementChild.setAttribute("type","text/javascript");
-       NodeElementChild.setAttribute("src","../lib/vscpVariableButton.js");
+       //NodeElementChild.setAttribute("src","../lib/vscpVariableButton.js");
+       if(appType == HTML_APP)
+       {
+           NodeElementChild.setAttribute("src","../lib/vscpVariableButton.js");
+       }
+       else
+       {
+           NodeElementChild.setAttribute("src","js/vscpVariableButton.js");
+       }
        stringTxtNode = "";
        textNode = htmlDomDocument.createTextNode(stringTxtNode);
        NodeElementChild.appendChild(textNode);
@@ -3527,11 +3827,27 @@ void GenerateApp::createHtmlHead()
        NodeElementChild.setAttribute("type","text/javascript");
        if(houseFloor == MULTI_FLOOR_HOUSE)
        {
-           stringAttributeTxt = "../lib/multiFloorsSocketCfg.js";
+           //stringAttributeTxt = "../lib/multiFloorsSocketCfg.js";
+           if(appType == HTML_APP)
+           {
+               stringAttributeTxt = "../lib/multiFloorsSocketCfg.js";
+           }
+           else
+           {
+               stringAttributeTxt = "js/multiFloorsSocketCfg.js";
+           }
        }
        else
        {
-           stringAttributeTxt = "../lib/singleFloorsSocketCfg.js";
+           //stringAttributeTxt = "../lib/singleFloorsSocketCfg.js";
+           if(appType == HTML_APP)
+           {
+               stringAttributeTxt = "../lib/singleFloorsSocketCfg.js";
+           }
+           else
+           {
+               stringAttributeTxt = "js/singleFloorsSocketCfg.js";
+           }
        }
        NodeElementChild.setAttribute("src",stringAttributeTxt);
        stringTxtNode = "";
@@ -3544,11 +3860,27 @@ void GenerateApp::createHtmlHead()
        NodeElementChild.setAttribute("type","text/javascript");
        if(houseFloor == MULTI_FLOOR_HOUSE)
        {
-           stringAttributeTxt = "../lib/multiFloorCfg.js";
+           //stringAttributeTxt = "../lib/multiFloorCfg.js";
+           if(appType == HTML_APP)
+           {
+               stringAttributeTxt = "../lib/multiFloorCfg.js";
+           }
+           else
+           {
+               stringAttributeTxt = "js/multiFloorCfg.js";
+           }
        }
        else
        {
-           stringAttributeTxt = "../lib/singleFloorCfg.js";
+           //stringAttributeTxt = "../lib/singleFloorCfg.js";
+           if(appType == HTML_APP)
+           {
+               stringAttributeTxt = "../lib/singleFloorCfg.js";
+           }
+           else
+           {
+               stringAttributeTxt = "js/singleFloorCfg.js";
+           }
        }
        NodeElementChild.setAttribute("src",stringAttributeTxt);
        stringTxtNode = "";
@@ -3561,11 +3893,27 @@ void GenerateApp::createHtmlHead()
        NodeElementChild.setAttribute("type","text/javascript");
        if(houseFloor == MULTI_FLOOR_HOUSE)
        {
-           stringAttributeTxt = "../lib/multiFloorScript.js";
+           //stringAttributeTxt = "../lib/multiFloorScript.js";
+           if(appType == HTML_APP)
+           {
+               stringAttributeTxt = "../lib/multiFloorScript.js";
+           }
+           else
+           {
+               stringAttributeTxt = "js/multiFloorScript.js";
+           }
        }
        else
        {
-           stringAttributeTxt = "../lib/singleFloorScript.js";
+           //stringAttributeTxt = "../lib/singleFloorScript.js";
+           if(appType == HTML_APP)
+           {
+               stringAttributeTxt = "../lib/singleFloorScript.js";
+           }
+           else
+           {
+               stringAttributeTxt = "js/singleFloorScript.js";
+           }
        }
        NodeElementChild.setAttribute("src",stringAttributeTxt);
        stringTxtNode = "";
@@ -5628,14 +5976,50 @@ bool GenerateApp::removeDir(const QString & dirName)
 
 void GenerateApp::on_okPushButton_clicked()
 {
+    //set progress bar
+    ui->appGenerationProgressBar->setValue(65);
 
-    // Create the HTML App - by default
-    createHtmlApp();
-
+    //set the app type
     if(ui->mobileAppCheckBox->isChecked())
     {
         //Generate Mobile apps
+        appType = MOBILE_APP;
     }
+    else if(ui->mobileAppCheckBox->isChecked())
+    {
+        //Generate HTML apps
+        appType = HTML_APP;
+    }
+    else
+    {
+        //Generate HTML apps
+        appType = HTML_APP;
+    }
+
+    //set the app size
+    if(ui->size_1_checkBox->isChecked())
+    {
+        appSize = APP_SIZE_1;
+    }
+    else if(ui->size_2_checkBox->isChecked())
+    {
+        appSize = APP_SIZE_2;
+    }
+    else if(ui->size_3_checkBox->isChecked())
+    {
+        appSize = APP_SIZE_3;
+    }
+    else if(ui->size_4_checkBox->isChecked())
+    {
+        appSize = APP_SIZE_4;
+    }
+    else
+    {
+        appSize = APP_SIZE_1;
+    }
+
+    // Create the HTML App - by default
+    createHtmlApp();
 
     // Update progress bar value
     ui->appGenerationProgressBar->setValue(100);
@@ -5651,6 +6035,45 @@ void GenerateApp::on_htmlAppCheckBox_clicked()
 {
     //set the check box by default
     ui->htmlAppCheckBox->setChecked(true);
+    ui->mobileAppCheckBox->setChecked(false);
+}
+
+void GenerateApp::on_mobileAppCheckBox_clicked()
+{
+    ui->mobileAppCheckBox->setChecked(true);
+    ui->htmlAppCheckBox->setChecked(false);
+}
+
+void GenerateApp::on_size_1_checkBox_clicked()
+{
+    ui->size_1_checkBox->setChecked(true);
+    ui->size_2_checkBox->setChecked(false);
+    ui->size_3_checkBox->setChecked(false);
+    ui->size_4_checkBox->setChecked(false);
+}
+
+void GenerateApp::on_size_2_checkBox_clicked()
+{
+    ui->size_1_checkBox->setChecked(false);
+    ui->size_2_checkBox->setChecked(true);
+    ui->size_3_checkBox->setChecked(false);
+    ui->size_4_checkBox->setChecked(false);
+}
+
+void GenerateApp::on_size_3_checkBox_clicked()
+{
+    ui->size_1_checkBox->setChecked(false);
+    ui->size_2_checkBox->setChecked(false);
+    ui->size_3_checkBox->setChecked(true);
+    ui->size_4_checkBox->setChecked(false);
+}
+
+void GenerateApp::on_size_4_checkBox_clicked()
+{
+    ui->size_1_checkBox->setChecked(false);
+    ui->size_2_checkBox->setChecked(false);
+    ui->size_3_checkBox->setChecked(false);
+    ui->size_4_checkBox->setChecked(true);
 }
 
 void GenerateApp::on_closePushButton_clicked()

@@ -116,7 +116,15 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
         NodeElementChildTemp.setAttribute("id","house_menu_Image");
         NodeElementChildTemp.setAttribute("type","image");
         NodeElementChildTemp.setAttribute("class","image_scrollable");
-        NodeElementChildTemp.setAttribute("src","../lib/widgets/menu/show-menu-icon.png");
+        //NodeElementChildTemp.setAttribute("src","../lib/widgets/menu/show-menu-icon.png");
+        if(appType == HTML_APP)
+        {
+            NodeElementChildTemp.setAttribute("src","../lib/widgets/menu/show-menu-icon.png");
+        }
+        else
+        {
+            NodeElementChildTemp.setAttribute("src","js/widgets/menu/show-menu-icon.png");
+        }
         //NodeElementChildTemp.setAttribute("alt",floorNameId);
         OnClickText = "house_onclick()"
                 ;
@@ -254,7 +262,16 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
                 NodeElementChildTemp.setAttribute("id",roomNameImageId);
                 NodeElementChildTemp.setAttribute("type","image");
                 NodeElementChildTemp.setAttribute("class","image_scrollable");
-                NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+                //NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+                if(appType == HTML_APP)
+                {
+                    NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+                }
+                else
+                {
+                    NodeElementChildTemp.setAttribute("src","js/widgets/room/room_unselected.png");
+                }
+
                 //NodeElementChildTemp.setAttribute("alt",floorNameId);
                 OnClickText = "show_area_single(" "div_class_scrollable_Image,"
                         "'" + roomNameImageId + "',"
@@ -451,7 +468,15 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
             NodeElementChildTemp.setAttribute("id",groupImageId);
             NodeElementChildTemp.setAttribute("type","image");
             NodeElementChildTemp.setAttribute("class","image_scrollable");
-            NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            //NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            if(appType == HTML_APP)
+            {
+                NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            }
+            else
+            {
+                NodeElementChildTemp.setAttribute("src","js/widgets/room/room_unselected.png");
+            }
             //NodeElementChildTemp.setAttribute("alt",floorNameId);
             OnClickText = "show_area_group(" "div_class_scrollable_Image,"
                     "'" + groupImageId + "',"
@@ -537,7 +562,15 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
             NodeElementChildTemp.setAttribute("id",groupImageId);
             NodeElementChildTemp.setAttribute("type","image");
             NodeElementChildTemp.setAttribute("class","image_scrollable");
-            NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            //NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            if(appType == HTML_APP)
+            {
+                NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            }
+            else
+            {
+                NodeElementChildTemp.setAttribute("src","js/widgets/room/room_unselected.png");
+            }
             //NodeElementChildTemp.setAttribute("alt",floorNameId);
             OnClickText = "show_area_single(" "div_class_scrollable_Image,"
                     "'" + groupImageId + "',"
@@ -599,7 +632,15 @@ void GenerateApp::createSingleFloorDivScrollable(QDomElement &NodeElementSingleF
         NodeElementChildTemp.setAttribute("id",roomNameImageId);
         NodeElementChildTemp.setAttribute("type","image");
         NodeElementChildTemp.setAttribute("class","image_scrollable");
-        NodeElementChildTemp.setAttribute("src","../lib/widgets/info/info.jpg");
+        //NodeElementChildTemp.setAttribute("src","../lib/widgets/info/info.jpg");
+        if(appType == HTML_APP)
+        {
+            NodeElementChildTemp.setAttribute("src","../lib/widgets/info/info.jpg");
+        }
+        else
+        {
+            NodeElementChildTemp.setAttribute("src","js/widgets/info/info.jpg");
+        }
         //NodeElementChildTemp.setAttribute("alt",floorNameId);
         //OnClickText = "alert('Info clicked')";
         OnClickText = "show_info(" "div_class_scrollable_Image,"

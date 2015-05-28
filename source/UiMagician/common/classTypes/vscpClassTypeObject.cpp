@@ -392,7 +392,20 @@ int vscpClassTypeObject::getInformationTypeListIndex(QString &tempType)
 {
     int indexValue = 0;
 
-    if(tempType == VSCP_TYPE_INFORMATION_GENERAL_VALUE)
+    if(tempType == VSCP_TYPE_INFORMATION_LEVEL_CHANGED_VALUE)
+    {
+        indexValue = 0;
+    }
+    else if(tempType == VSCP_TYPE_INFORMATION_BIG_LEVEL_CHANGED_VALUE)
+    {
+        indexValue = 1;
+    }
+    else
+    {
+        indexValue = 0;
+    }
+
+    /*if(tempType == VSCP_TYPE_INFORMATION_GENERAL_VALUE)
     {
         indexValue = 0;
     }
@@ -604,7 +617,7 @@ int vscpClassTypeObject::getInformationTypeListIndex(QString &tempType)
     {
         indexValue = 0;
     }
-
+*/
     return indexValue;
 }
 
@@ -613,7 +626,20 @@ int vscpClassTypeObject::getControlTypeListIndex(QString &tempType)
 {
     int indexValue = 0;
 
-    if(tempType == VSCP_TYPE_CONTROL_GENERAL_VALUE)
+    if(tempType == VSCP_TYPE_CONTROL_DIM_LAMPS_VALUE)
+    {
+        indexValue = 0;
+    }
+    else if(tempType == VSCP_TYPE_CONTROL_BIG_CHANGE_LEVEL_VALUE)
+    {
+        indexValue = 1;
+    }
+    else
+    {
+        indexValue = 0;
+    }
+
+/*    if(tempType == VSCP_TYPE_CONTROL_GENERAL_VALUE)
     {
         indexValue = 0;
     }
@@ -740,7 +766,7 @@ int vscpClassTypeObject::getControlTypeListIndex(QString &tempType)
     else
     {
         indexValue = 0;
-    }
+    }*/
 
 
     return indexValue;

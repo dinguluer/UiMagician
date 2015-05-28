@@ -161,7 +161,15 @@ void GenerateApp::createMultiFloorDivScrollable(QDomElement &NodeElementMultiFlo
         NodeElementChildTemp.setAttribute("id","house_menu_Image");
         NodeElementChildTemp.setAttribute("type","image");
         NodeElementChildTemp.setAttribute("class","image_scrollable");
-        NodeElementChildTemp.setAttribute("src","../lib/widgets/menu/show-menu-icon.png");
+        //NodeElementChildTemp.setAttribute("src","../lib/widgets/menu/show-menu-icon.png");
+        if(appType == HTML_APP)
+        {
+            NodeElementChildTemp.setAttribute("src","../lib/widgets/menu/show-menu-icon.png");
+        }
+        else
+        {
+            NodeElementChildTemp.setAttribute("src","js/widgets/menu/show-menu-icon.png");
+        }
         //NodeElementChildTemp.setAttribute("alt",floorNameId);
         OnClickText = "house_onclick()"
                 ;
@@ -312,7 +320,15 @@ void GenerateApp::createMultiFloorDivScrollable(QDomElement &NodeElementMultiFlo
             NodeElementChildTemp.setAttribute("id",floorNameImageId);
             NodeElementChildTemp.setAttribute("type","image");
             NodeElementChildTemp.setAttribute("class","image_scrollable");
-            NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            //NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            if(appType == HTML_APP)
+            {
+                NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            }
+            else
+            {
+                NodeElementChildTemp.setAttribute("src","js/widgets/room/room_unselected.png");
+            }
             //NodeElementChildTemp.setAttribute("alt",floorNameId);
             floorArea = floorNameId  + "_Area";
             OnClickText = "show_area(" "'" + floorArea + "',"
@@ -389,7 +405,15 @@ void GenerateApp::createMultiFloorDivScrollable(QDomElement &NodeElementMultiFlo
         NodeElementChildTemp.setAttribute("id",floorNameImageId);
         NodeElementChildTemp.setAttribute("type","image");
         NodeElementChildTemp.setAttribute("class","image_scrollable");
-        NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+        //NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+        if(appType == HTML_APP)
+        {
+            NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+        }
+        else
+        {
+            NodeElementChildTemp.setAttribute("src","js/widgets/room/room_unselected.png");
+        }
         //NodeElementChildTemp.setAttribute("alt",floorNameId);
         OnClickText = "show_group(" "'" + floorNameId + "_group" "'," +
                 "'" + floorNameId + "_Image" "'," +
@@ -452,7 +476,15 @@ void GenerateApp::createMultiFloorDivScrollable(QDomElement &NodeElementMultiFlo
         NodeElementChildTemp.setAttribute("id",floorNameImageId);
         NodeElementChildTemp.setAttribute("type","image");
         NodeElementChildTemp.setAttribute("class","image_scrollable");
-        NodeElementChildTemp.setAttribute("src","../lib/widgets/info/info.jpg");
+        //NodeElementChildTemp.setAttribute("src","../lib/widgets/info/info.jpg");
+        if(appType == HTML_APP)
+        {
+            NodeElementChildTemp.setAttribute("src","../lib/widgets/info/info.jpg");
+        }
+        else
+        {
+            NodeElementChildTemp.setAttribute("src","js/widgets/info/info.jpg");
+        }
         //NodeElementChildTemp.setAttribute("alt",floorNameId);
         //OnClickText = "alert('Info clicked')";
         /*OnClickText = "show_info(" "'"  "info_text"  "',"
@@ -763,12 +795,28 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
                 if(j == 0)
                 {
                     NodeElementChildTemp.setAttribute("class","image_menu_center_first");
-                    NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_selected.jpg");
+                    //NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_selected.jpg");
+                    if(appType == HTML_APP)
+                    {
+                        NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_selected.jpg");
+                    }
+                    else
+                    {
+                        NodeElementChildTemp.setAttribute("src","js/widgets/room/room_selected.jpg");;
+                    }
                 }
                 else
                 {
                     NodeElementChildTemp.setAttribute("class","image_menu_center_second");
-                    NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+                    //NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+                    if(appType == HTML_APP)
+                    {
+                        NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+                    }
+                    else
+                    {
+                        NodeElementChildTemp.setAttribute("src","js/widgets/room/room_unselected.png");
+                    }
                 }
                 OnClickText = "show_Central_widget(" "'" + floorNameArea + "_" + nodeDataTextRoom + "',"
                         "div_class_" + floorNameArea + "_Images" ","
@@ -989,7 +1037,15 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
                 NodeElementChildTemp.setAttribute("id",groupImageId);
                 NodeElementChildTemp.setAttribute("type","image");
                 NodeElementChildTemp.setAttribute("class","image_menu_center_second");
-                NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+                //NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+                if(appType == HTML_APP)
+                {
+                    NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+                }
+                else
+                {
+                    NodeElementChildTemp.setAttribute("src","js/widgets/room/room_unselected.png");
+                }
                 OnClickText = "show_Floor_Group(" "'" + groupDivId + "',"
                         "div_class_" + floorNameArea + "_Images" ","
                         "'" + groupImageId + "')"
@@ -1061,7 +1117,15 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
                 NodeElementChildTemp.setAttribute("id",groupImageId);
                 NodeElementChildTemp.setAttribute("type","image");
                 NodeElementChildTemp.setAttribute("class","image_menu_center_second");
-                NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+                //NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+                if(appType == HTML_APP)
+                {
+                    NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+                }
+                else
+                {
+                    NodeElementChildTemp.setAttribute("src","js/widgets/room/room_unselected.png");
+                }
                 OnClickText = "show_Floor_Group(" "'" + groupDivId + "',"
                         "div_class_" + floorNameArea + "_Images" ","
                         "'" + groupImageId + "')"
@@ -1286,7 +1350,15 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
             {
                 NodeElementChildTemp.setAttribute("class","image_menu_center_second");
             }
-            NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            //NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            if(appType == HTML_APP)
+            {
+                NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            }
+            else
+            {
+                NodeElementChildTemp.setAttribute("src","js/widgets/room/room_unselected.png");
+            }
             OnClickText = "show_area_group(" "'" + groupClass + "',"
                     "'" + groupImageId + "')"
                     ;
@@ -1340,7 +1412,15 @@ void GenerateApp::createMultiFloorDivScrollableMenu(QDomElement &NodeElementMult
             NodeElementChildTemp.setAttribute("type","image");
             NodeElementChildTemp.setAttribute("class","image_menu_center_second");
 
-            NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            //NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            if(appType == HTML_APP)
+            {
+                NodeElementChildTemp.setAttribute("src","../lib/widgets/room/room_unselected.png");
+            }
+            else
+            {
+                NodeElementChildTemp.setAttribute("src","js/widgets/room/room_unselected.png");
+            }
             OnClickText = "show_area_group(" "'" + groupClass + "',"
                     "'" + groupImageId + "')"
                     ;
