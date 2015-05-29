@@ -3720,11 +3720,53 @@ void GenerateApp::createHtmlHead()
                //NodeElementChild.setAttribute("src","../lib/side_menu_house.js");
                if(appType == HTML_APP)
                {
-                   NodeElementChild.setAttribute("src","../lib/side_menu_house.js");
+                   //NodeElementChild.setAttribute("src","../lib/side_menu_house.js");
+                   if(appSize == APP_SIZE_1)
+                   {
+                       NodeElementChild.setAttribute("src","../lib/side_menu_house.js");
+                   }
+                   else if(appSize == APP_SIZE_2)
+                   {
+                       NodeElementChild.setAttribute("src","../lib/side_menu_house_1.js");
+
+                   }
+                   else if(appSize == APP_SIZE_3)
+                   {
+                       NodeElementChild.setAttribute("src","../lib/side_menu_house_2.js");
+                   }
+                   else if(appSize == APP_SIZE_4)
+                   {
+                       NodeElementChild.setAttribute("src","../lib/side_menu_house_2.js");
+                   }
+                   else
+                   {
+                       NodeElementChild.setAttribute("src","../lib/side_menu_house_2.js");
+                   }
                }
                else
                {
-                   NodeElementChild.setAttribute("src","js/side_menu_house.js");
+                   //NodeElementChild.setAttribute("src","js/side_menu_house.js");
+                   if(appSize == APP_SIZE_1)
+                   {
+                       NodeElementChild.setAttribute("src","js/side_menu_house.js");
+                   }
+                   else if(appSize == APP_SIZE_2)
+                   {
+                       NodeElementChild.setAttribute("src","js/side_menu_house_1.js");
+
+                   }
+                   else if(appSize == APP_SIZE_3)
+                   {
+                       NodeElementChild.setAttribute("src","js/side_menu_house_2.js");
+                   }
+                   else if(appSize == APP_SIZE_4)
+                   {
+                       NodeElementChild.setAttribute("src","js/side_menu_house_2.js");
+                   }
+                   else
+                   {
+                       NodeElementChild.setAttribute("src","js/side_menu_house_2.js");
+                   }
                }
            }
            stringTxtNode = "";
