@@ -5608,6 +5608,7 @@ void GenerateApp::createHouseSelectDiv(QDomElement &NodeElementDivHouseSelect)
         NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
         houseNameImageId = houseName + "_ID";
         NodeElementChildTemp.setAttribute("id",houseNameImageId);
+        NodeElementChildTemp.setAttribute("class","spantxt_center");
         //NodeElementChildTemp.setAttribute("alt",floorNameId);
         OnClickText = "selectId(" "this.id," +
                 QString::number(j) + ","  +
