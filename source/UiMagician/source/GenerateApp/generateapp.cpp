@@ -94,6 +94,10 @@ GenerateApp::GenerateApp(QString xmlFileName, QDomElement &xmlRoot, QWidget *par
     //set the default app size
     ui->size_1_checkBox->setChecked(true);
 
+    // non editable checkbox
+    ui->size_2_checkBox->setEnabled(false);
+    ui->size_4_checkBox->setEnabled(false);
+
     //set the default app type & size
     appType = HTML_APP;
     appSize = APP_SIZE_1;
@@ -5608,7 +5612,15 @@ void GenerateApp::createHouseSelectDiv(QDomElement &NodeElementDivHouseSelect)
         NodeElementChildTemp = htmlDomDocument.createElement(nodeChildNameTemp);
         houseNameImageId = houseName + "_ID";
         NodeElementChildTemp.setAttribute("id",houseNameImageId);
-        NodeElementChildTemp.setAttribute("class","spantxt_center");
+        if(appSize == APP_SIZE_1)
+        {
+            NodeElementChildTemp.setAttribute("class","spantxt_center");
+        }
+        else
+        {
+            //NodeElementChildTemp.setAttribute("class","spantxt_menu");
+            NodeElementChildTemp.setAttribute("class","spantxt_center");
+        }
         //NodeElementChildTemp.setAttribute("alt",floorNameId);
         OnClickText = "selectId(" "this.id," +
                 QString::number(j) + ","  +
