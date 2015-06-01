@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.DineshGuleria.UiMagician" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <preference name="webView" value="org.crosswalk.engine.XWalkWebViewEngine" />
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="WebSocket">
+        <param name="android-package" value="com.knowledgecode.cordova.websocket.WebSocket" />
+    </feature>
+    <allow-intent href="market:*" />
+    <splash density="land-hdpi" src="res/drawable-xhdpi/screen.png" />
+    <splash density="land-ldpi" src="res/drawable-xhdpi/screen.png" />
+    <splash density="land-mdpi" src="res/drawable-xhdpi/screen.png" />
+    <splash density="land-xhdpi" src="res/drawable-xhdpi/screen.png" />
+    <splash density="port-hdpi" src="res/drawable-xhdpi/screen.png" />
+    <splash density="port-ldpi" src="res/drawable-xhdpi/screen.png" />
+    <splash density="port-mdpi" src="res/drawable-xhdpi/screen.png" />
+    <splash density="port-xhdpi" src="res/drawable-xhdpi/screen.png" />
+    <name>UiMagician</name>
+    <description>
+       Sample App for IoT used in VSCP project ..!!
+    </description>
+    <author email="din.gulu.er@gmail.com" href="https://sites.google.com/site/uimagician/">
+        UiMagician team ..!!
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <icon density="mdpi" height="57" src="res/icon/icon.png" width="57" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="4000" />
+</widget>
+<!-- From: file:/D:/temp/test/single/cross_plugin/UiMagician/platforms/android/res/xml/config.xml -->

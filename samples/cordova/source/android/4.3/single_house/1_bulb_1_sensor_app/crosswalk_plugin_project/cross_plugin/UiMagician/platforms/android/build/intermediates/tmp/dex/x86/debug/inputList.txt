@@ -1,0 +1,3 @@
+D:\temp\test\single\cross_plugin\UiMagician\platforms\android\build\intermediates\classes\x86\debug
+D:\temp\test\single\cross_plugin\UiMagician\platforms\android\build\intermediates\pre-dexed\x86\debug\classes-99fac195e6cf6a371f5754e607aed391aa7d9c2c.jar
+D:\temp\test\single\cross_plugin\UiMagician\platforms\android\build\intermediates\pre-dexed\x86\debug\classes-1a3725b0b241da1515579705e773383665c2b2cb.jar

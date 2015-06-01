@@ -1,0 +1,99 @@
+/*
+  Author = Dinesh Guleria
+  VSCP Developer
+  Date : 27-3-2014
+*/
+
+
+.time_left_box_class {
+    color:#DDDFED;
+    font-size: 10px;
+    float: right;
+    padding-right : 20px;
+}
+
+.time_right_box_class {
+    color:#DDDFED;
+    font-size: 10px;
+    float: left;
+    padding-left : 20px;
+}
+
+.padding_Info_text {
+    padding-top : 50px;
+    padding-bottom : 10px;
+}
+
+.blue_box, .green_box, .button_div{
+    display: block;
+    clear:both;
+}
+.blue_box span {
+    border-radius: 10px;
+    background-color: blue;
+    color: white;
+    padding: 10px 5px;
+    display: block;
+    float: right;
+}
+
+.green_box span {
+    border-radius: 10px;
+    background-color: green;
+    color: white;
+    padding: 10px 5px;
+    display: block;
+    float: left;
+
+}
+
+.arrow_right  {
+        position: relative;
+        background: #1e05fc;
+        border: 1px solid #c2e1f5;
+    border-radius: 10px;
+    display: block;
+    float: right;
+    clear:both;
+    right : 20px;
+}
+.arrow_right:after, .arrow_right:before {
+        left: 100%;
+        top: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+}
+
+.arrow_right:after {
+        border-color: rgba(30, 5, 252, 0);
+        border-left-color: #1e05fc;
+        border-width: 5px;
+        margin-top: -5px;
+}
+
+.arrow_left {
+        position: relative;
+        background: green;
+        left : 20px;
+}
+.arrow_left:after, .arrow_left:before {
+        right: 100%;
+        top: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+}
+
+.arrow_left:after {
+        border-color: rgba(136, 183, 213, 0);
+        border-right-color: green;
+        border-width: 5px;
+        margin-top: 13px;
+}
