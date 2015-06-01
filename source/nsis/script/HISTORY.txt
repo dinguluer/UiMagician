@@ -1,3 +1,16 @@
+readme for release 1.0.3
+========================
+
+- This release use to simplyfy the generation of UiM XML configuration file, user have to enter only required data for each device.
+  Also if you have multiple houses then UiM will generate the seperate dm.xml & variables.xml file for each house.
+  Added the Intex Xdk project in the installer for cloud based Mobile app generation.
+- Target system: QT - 4.8.1
+- Plan for next release :--
+  1> Make UiM further as user friendly & end users tool.
+
+
+Dinesh Guleria. India 2015-06-01
+
 readme for release 1.0.2
 ========================
 

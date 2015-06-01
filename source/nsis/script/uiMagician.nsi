@@ -2,8 +2,8 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "uiMagician"
-!define PRODUCT_VERSION "1.0.2"
-!define PRODUCT_PUBLISHER "VSCP"
+!define PRODUCT_VERSION "1.0.3"
+!define PRODUCT_PUBLISHER "Dinesh Guleria"
 !define PRODUCT_WEB_SITE "http://www.vscp.org/"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\uiMagician.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
@@ -40,10 +40,12 @@
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
 OutFile "UiMagician_Setup.exe"
+RequestExecutionLevel admin
 InstallDir "$PROGRAMFILES\uiMagician"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
 ShowUnInstDetails show
+
 
 Section "MainSection" SEC01
   SetOutPath "$PROGRAMFILES\uiMagician"
@@ -62,6 +64,7 @@ Section "MainSection" SEC01
   File "HelpContent.xml"
   File "Readme.txt"
   File "HISTORY.txt"
+  File /a /r "intel_xdx\"
 SectionEnd
 
 Section -AdditionalIcons
@@ -94,6 +97,7 @@ Function un.onInit
 FunctionEnd
 
 Section Uninstall
+;  SetShellVarContext all
   Delete "$INSTDIR\${PRODUCT_NAME}.url"
   Delete "$INSTDIR\uninst.exe"
   Delete "$PROGRAMFILES\uiMagician\Readme.txt"
@@ -108,13 +112,16 @@ Section Uninstall
   Delete "$PROGRAMFILES\uiMagician\uiMagicianLicence.txt"
   Delete "$PROGRAMFILES\uiMagician\fatbee_v2.ico"
   Delete "$PROGRAMFILES\uiMagician\HISTORY.txt"
-    
+
+;  RMDir /r "$PROGRAMFILES\uiMagician\intel_xdx"
+;  RMDir /r "$INSTDIR\intel_xdx"
+
   Delete "$SMPROGRAMS\uiMagician\Uninstall.lnk"
   Delete "$SMPROGRAMS\uiMagician\Website.lnk"
   Delete "$DESKTOP\uiMagician.lnk"
   Delete "$SMPROGRAMS\uiMagician\uiMagician.lnk"
 
-  RMDir "$SMPROGRAMS\uiMagician"
+  RMDir /r "$INSTDIR"
 
   DeleteRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
   DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"
