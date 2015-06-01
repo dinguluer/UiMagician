@@ -1,0 +1,12 @@
+<persistent>
+ <variable type="bool">
+  <name>FactoryGroundPackingZoneGenerator_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="data">
+  <name>FactoryGroundProductionZoneBoilerTemperature_VAR</name>
+  <value>0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00</value>
+  <note>This is an sensor Measurement Data variable</note>
+ </variable>
+</persistent>

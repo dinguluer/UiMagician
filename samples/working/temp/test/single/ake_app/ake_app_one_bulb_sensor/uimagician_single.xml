@@ -1,0 +1,38 @@
+<Rooms_Zone>
+ <Room>
+  <RoomName>Bedroom</RoomName>
+  <FloorName>First</FloorName>
+  <HouseName>Home</HouseName>
+  <Device>
+   <DeviceName>Bulb</DeviceName>
+   <DeviceType>Switch</DeviceType>
+   <DeviceSubType>Switch - ON/OFF</DeviceSubType>
+   <DeviceImage>94</DeviceImage>
+   <DeviceInfo>Light</DeviceInfo>
+   <SwitchPacket>
+    <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="1" url="ws://104.236.235.81:8080" bLocal="1" id="HomeFirstBedroomBulb_Image_ID"/>
+    <TxOnEvent Class="30" Subzone="0" Guid="" Type="5" Data="" Zone="0" Index="40" Obid="" Head="" Timestamp=""/>
+    <TxOffEvent Class="30" Subzone="0" Guid="" Type="6" Data="" Zone="0" Index="40" Obid="" Head="" Timestamp=""/>
+    <RxOnEvent Class="20" Subzone="0" Guid="" Type="3" Data="" Zone="0" Index="40" Obid="" Head="" Timestamp=""/>
+    <RxOffEvent Class="20" Subzone="0" Guid="" Type="4" Data="" Zone="0" Index="40" Obid="" Head="" Timestamp=""/>
+    <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="HomeFirstBedroomBulb_VAR;2;true;true" TypeOff="4" ActionParametersReset="HomeFirstBedroomBulb_VAR;2;true;false" Control="0x80000038" Subzone="0" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="HomeFirstBedroomBulb_VAR" ClassOn="20" Index="40" Comments=""/>
+   </SwitchPacket>
+  </Device>
+ </Room>
+ <Room>
+  <RoomName>Garden</RoomName>
+  <FloorName>First</FloorName>
+  <HouseName>Home</HouseName>
+  <Device>
+   <DeviceName>Temperature Sensor</DeviceName>
+   <DeviceType>Sensor</DeviceType>
+   <DeviceSubType>Sensor - Default</DeviceSubType>
+   <DeviceImage>9</DeviceImage>
+   <DeviceInfo>Sensor</DeviceInfo>
+   <SensorPacket>
+    <WebsocketConfigure graphType="line" password="d50c3180375c27927c22e42a379c3f67" graphUnitId="HomeFirstGardenTemperatureSensor_chart_unit_div" class="10" codingIndex="2" graphId="HomeFirstGardenTemperatureSensor_chart_div" domain="mydomain.com" userName="admin" Guid="FF:FF:FF:FF:FF:FF:FF:F7:03:00:00:00:00:00:00:00" url="ws://104.236.235.81:8080" FormatString="{0} Degrees {1}" type="6" Decimals="1" id="HomeFirstGardenTemperatureSensor_Image_ID" idRemoteTxt="HomeFirstGardenTemperatureSensor_Remote_Txt_ID" Callback=""/>
+    <VariableConfigure ActionParameters="HomeFirstGardenTemperatureSensor_VAR;9;true;%event.data" GroupID="ooone" AllowedTo="" Priority="0" Action="0x00000050" Class="10" Subzone="" Control="0x80000000" Guid="FF:FF:FF:FF:FF:FF:FF:F7:03:00:00:00:00:00:00:00" AllowedTime="" Type="6" AllowedFrom="" Comments="" Name="HomeFirstGardenTemperatureSensor_VAR" Zone="" AllowedDays="mtwtfss" Index=""/>
+   </SensorPacket>
+  </Device>
+ </Room>
+</Rooms_Zone>

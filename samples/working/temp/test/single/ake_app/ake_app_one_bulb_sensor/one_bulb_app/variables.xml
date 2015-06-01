@@ -1,0 +1,7 @@
+<persistent>
+ <variable type="bool">
+  <name>HomeFirstBedroomBulb_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+</persistent>

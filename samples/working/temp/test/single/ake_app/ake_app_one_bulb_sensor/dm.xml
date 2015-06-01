@@ -1,0 +1,45 @@
+<dm>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="3"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>HomeFirstBedroomBulb_VAR;2;true;true</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>40</index>
+  <zone>0</zone>
+  <subzone>0</subzone>
+ </row>
+ <row enable="true" groupid="switches">
+  <mask class="65535" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="65535"></mask>
+  <filter class="20" priority="0" GUID="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00" type="4"></filter>
+  <control>0x80000038</control>
+  <action>0x00000050</action>
+  <param>HomeFirstBedroomBulb_VAR;2;true;false</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index>40</index>
+  <zone>0</zone>
+  <subzone>0</subzone>
+ </row>
+ <row enable="true" groupid="ooone">
+  <mask class="65535" priority="0" GUID="FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF:FF" type="65535"></mask>
+  <filter class="10" priority="0" GUID="FF:FF:FF:FF:FF:FF:FF:F7:03:00:00:00:00:00:00:00" type="6"></filter>
+  <control>0x80000000</control>
+  <action>0x00000050</action>
+  <param>HomeFirstGardenTemperatureSensor_VAR;9;true;%event.data</param>
+  <comment></comment>
+  <allowed_from>1970-01-01 00:00:00</allowed_from>
+  <allowed_to>2099-01-01 00:00:00</allowed_to>
+  <allowed_weekdays>mtwtfss</allowed_weekdays>
+  <allowed_time>*-*-* *:*:*</allowed_time>
+  <index bmeasurement="true">*-*-* *:*:*</index>
+ </row>
+</dm>

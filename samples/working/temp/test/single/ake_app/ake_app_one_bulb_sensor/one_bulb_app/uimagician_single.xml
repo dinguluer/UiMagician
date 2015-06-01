@@ -1,0 +1,22 @@
+<Rooms_Zone>
+ <Room>
+  <RoomName>Bedroom</RoomName>
+  <FloorName>First</FloorName>
+  <HouseName>Home</HouseName>
+  <Device>
+   <DeviceName>Bulb</DeviceName>
+   <DeviceType>Switch</DeviceType>
+   <DeviceSubType>Switch - ON/OFF</DeviceSubType>
+   <DeviceImage>94</DeviceImage>
+   <DeviceInfo>Light</DeviceInfo>
+   <SwitchPacket>
+    <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="1" url="ws://104.236.235.81:8080" bLocal="1" id="HomeFirstBedroomBulb_Image_ID"/>
+    <TxOnEvent Class="30" Subzone="0" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <TxOffEvent Class="30" Subzone="0" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOnEvent Class="20" Subzone="0" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <RxOffEvent Class="20" Subzone="0" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
+    <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="HomeFirstBedroomBulb_VAR;2;true;true" TypeOff="4" ActionParametersReset="HomeFirstBedroomBulb_VAR;2;true;false" Control="0x80000038" Subzone="0" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="HomeFirstBedroomBulb_VAR" ClassOn="20" Index="0" Comments=""/>
+   </SwitchPacket>
+  </Device>
+ </Room>
+</Rooms_Zone>
