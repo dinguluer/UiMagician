@@ -7,8 +7,8 @@ Author  : Dinesh Guleria
 
 Project : VSCP 
 
-Release : 1.0.2
+Release : 1.0.3
 
 Contact Us : vscp@googlegroups.com 
 
-Web Link : http://www.vscp.org/wiki/doku.php/modules/uimagician
+Web Link : http://www.vscp.org/wiki/doku.php/tools/uimagician
