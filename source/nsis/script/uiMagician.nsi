@@ -64,6 +64,7 @@ Section "MainSection" SEC01
   File "HelpContent.xml"
   File "Readme.txt"
   File "HISTORY.txt"
+  File /a /r "html_app\"
   File /a /r "intel_xdx\"
 SectionEnd
 
