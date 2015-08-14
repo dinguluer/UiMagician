@@ -43,6 +43,9 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
 
+    // copy the install directory path
+    install_path =  a.applicationDirPath();
+
     //Show the main window
     MainWindow w;
 

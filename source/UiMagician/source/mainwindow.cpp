@@ -34,6 +34,8 @@
 #include "ui_mainwindow.h"
 
 
+QString install_path;
+
 /*----------------------------------------------------------------------------
 ** Function    : MainWindow
 ** Description : Constructor for MainWindow
@@ -123,6 +125,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //Initialise the variables
     initialiseVariables();
 
+    //QMessageBox::information(this, "UiM Install Path", install_path);
 }
 
 /*----------------------------------------------------------------------------

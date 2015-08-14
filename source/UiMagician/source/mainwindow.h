@@ -58,6 +58,9 @@
 #include "WidgetHelp/helpcontent.h"
 #include "GenerateApp/generateapp.h"
 
+
+extern QString install_path;
+
 /*---------------------------------------------------------------------------
 ** Name Space Decleration
 */
