@@ -11,6 +11,9 @@ knowledge of HTML, javascript, CSS, PhoneGap. To generate HTML app from
 UiMagician you only have to know knowledge of IoT protocol &amp;
 packet format which are Tx/Rx by your device.
 
+Release 1.0.3(Ujjayati) of Uim comes with an dummy project for Intel Xdk with this
+you can generate Mobile apps on Intel cloud server.
+
 # UiMagician for VSCP Tool details
 * Author  : Dinesh Guleria
 * Author Email : din.gulu.er@gmail.com
