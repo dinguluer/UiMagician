@@ -17,9 +17,7 @@ packet format which are Tx/Rx by your device.
 * Project : UiMagician for VSCP
 * Release : 1.0.3 (Ujjayati)
 * Licence :  GNU GPL v.2
-* Contact Us : din.gulu.er@gmail.com
-               vscp@googlegroups.com
-               uimagician@googlegroups.com
+* Contact Us : din.gulu.er@gmail.com or vscp@googlegroups.com or uimagician@googlegroups.com
 * [Web Link for UiMagician](https://sites.google.com/site/uimagician)
 * [Download source code](https://github.com/dinguluer/UiMagician/tree/master/source/UiMagician)
 * [Download latest release](https://sourceforge.net/projects/uimagician)
