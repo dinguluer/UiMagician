@@ -467,6 +467,11 @@ void MainWindow::on_actionNew_triggered()
             closeExistingFile(xmlFileName, xmlFile, xmlDomDocument);
             //Re-initialise all the variables
             initialiseVariables();
+            //clear xml root -- 07-03-2016
+            xmlRoot.clear();
+            xmlDomDocument.clear();
+            xmlDomDocumentOrg.clear();
+            xmlDomDocumentRedo.clear();
           // create new file
           openFile(xmlFileName, xmlFile, xmlDomDocument, xmlDomDocumentOrg, CREATE_NEW_FILE);
 
@@ -758,10 +763,12 @@ void MainWindow::on_testCaseSavePushButton_clicked()
                     //xmlUpdateNode(testCaseNode , currentSelectedTestCaseNode);
                     xmlLibObject.xmlUpdateNode(xmlRoot, testCaseNode , currentSelectedTestCaseNode);
                     //xmlCloseFile();
+                    //QMessageBox::information(this, "uiMagician", "if"); //07-03-2016
 
                 }
                 else  //Append node in xml
                 {
+                    //QMessageBox::information(this, "uiMagician", "else"); //07-03-2016
                     //xmlAppendNode(xmlRoot,testCaseNode);
                     xmlLibObject.xmlAppendNode(xmlRoot,testCaseNode);
                 }
@@ -883,6 +890,12 @@ void MainWindow::on_actionClose_Project_triggered()
 
             //Re-initialise all the variables
             initialiseVariables();
+
+            //clear xml root -- 07-03-2016
+            xmlRoot.clear();
+            xmlDomDocument.clear();
+            xmlDomDocumentOrg.clear();
+            xmlDomDocumentRedo.clear();
 
             // Increase height of the first row
             //row = 0;
@@ -1023,6 +1036,7 @@ void MainWindow::on_appGeneratePushButton_clicked()
     // check if test report is already open or not
     if (b_xmlFileAlreadyOpen)
     {
+        //QMessageBox::information(this, "xmlFileName", xmlFileName); //07-03-2016
         //close file to sort
         closeExistingFile(xmlFileName, xmlFile, xmlDomDocument);
         //Re-initialise all the variables

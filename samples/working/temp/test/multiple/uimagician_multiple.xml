@@ -170,12 +170,12 @@
    <DeviceImage>94</DeviceImage>
    <DeviceInfo>Accessories</DeviceInfo>
    <SwitchPacket>
-    <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="OneTwoDrawingRoomFan_Image_ID"/>
+    <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="HomeTwoDrawingRoomFan_Image_ID"/>
     <TxOnEvent Class="30" Subzone="6" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <TxOffEvent Class="30" Subzone="6" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <RxOnEvent Class="20" Subzone="6" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <RxOffEvent Class="20" Subzone="6" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneTwoDrawingRoomFan_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneTwoDrawingRoomFan_VAR;2;true;false" Control="0x80000038" Subzone="6" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="yyy" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneTwoDrawingRoomFan_VAR" ClassOn="20" Index="0" Comments="Orient Fan cealing top."/>
+    <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneTwoDrawingRoomFan_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneTwoDrawingRoomFan_VAR;2;true;false" Control="0x80000038" Subzone="6" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="yyy" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="HomeTwoDrawingRoomFan_VAR" ClassOn="20" Index="0" Comments="Orient Fan cealing top."/>
    </SwitchPacket>
   </Device>
   <Device>
@@ -185,8 +185,8 @@
    <DeviceImage>9</DeviceImage>
    <DeviceInfo>Sensor</DeviceInfo>
    <SensorPacket>
-    <WebsocketConfigure graphType="area" password="d50c3180375c27927c22e42a379c3f67" graphUnitId="OneTwoDrawingRoomTemperatureSensor_chart_unit_div" class="10" codingIndex="0" graphId="OneTwoDrawingRoomTemperatureSensor_chart_div" domain="mydomain.com" userName="admin" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:02" url="ws://192.168.65.153:8089" FormatString="{0} Degrees {1}" type="6" Decimals="1" id="OneTwoDrawingRoomTemperatureSensor_Image_ID" idRemoteTxt="OneTwoDrawingRoomTemperatureSensor_Remote_Txt_ID" Callback=""/>
-    <VariableConfigure ActionParameters="OneTwoDrawingRoomTemperatureSensor_VAR;9;true;%event.data" GroupID="ooone" AllowedTo="" Priority="0" Action="0x00000050" Class="10" Subzone="" Control="0x80000000" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:02" AllowedTime="" Type="6" AllowedFrom="" Comments="" Name="OneTwoDrawingRoomTemperatureSensor_VAR" Zone="" AllowedDays="mtwtfss" Index=""/>
+    <WebsocketConfigure graphType="area" password="d50c3180375c27927c22e42a379c3f67" graphUnitId="HomeTwoDrawingRoomTemperatureSensor_chart_unit_div" class="10" codingIndex="0" graphId="HomeTwoDrawingRoomTemperatureSensor_chart_div" domain="mydomain.com" userName="admin" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:02" url="ws://192.168.65.153:8089" FormatString="{0} Degrees {1}" type="6" Decimals="1" id="HomeTwoDrawingRoomTemperatureSensor_Image_ID" idRemoteTxt="HomeTwoDrawingRoomTemperatureSensor_Remote_Txt_ID" Callback=""/>
+    <VariableConfigure ActionParameters="OneTwoDrawingRoomTemperatureSensor_VAR;9;true;%event.data" GroupID="ooone" AllowedTo="" Priority="0" Action="0x00000050" Class="10" Subzone="" Control="0x80000000" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:02" AllowedTime="" Type="6" AllowedFrom="" Comments="" Name="HomeTwoDrawingRoomTemperatureSensor_VAR" Zone="" AllowedDays="mtwtfss" Index=""/>
    </SensorPacket>
   </Device>
   <Device>
@@ -196,8 +196,8 @@
    <DeviceImage>1</DeviceImage>
    <DeviceInfo>Sensor</DeviceInfo>
    <SensorPacket>
-    <WebsocketConfigure graphType="bar" password="d50c3180375c27927c22e42a379c3f67" graphUnitId="OneTwoDrawingRoomHeater_chart_unit_div" class="10" codingIndex="0" graphId="OneTwoDrawingRoomHeater_chart_div" domain="mydomain.com" userName="admin" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:03" url="ws://192.168.65.153:8089" FormatString="{0} Degrees {1}" type="6" Decimals="1" id="OneTwoDrawingRoomHeater_Image_ID" idRemoteTxt="OneTwoDrawingRoomHeater_Remote_Txt_ID" Callback=""/>
-    <VariableConfigure ActionParameters="OneTwoDrawingRoomHeater_VAR;9;true;%event.data" GroupID="" AllowedTo="" Priority="0" Action="0x00000050" Class="10" Subzone="" Control="0x80000000" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:03" AllowedTime="" Type="6" AllowedFrom="" Comments="" Name="OneTwoDrawingRoomHeater_VAR" Zone="" AllowedDays="mtwtfss" Index=""/>
+    <WebsocketConfigure graphType="bar" password="d50c3180375c27927c22e42a379c3f67" graphUnitId="HomeTwoDrawingRoomHeater_chart_unit_div" class="10" codingIndex="0" graphId="HomeTwoDrawingRoomHeater_chart_div" domain="mydomain.com" userName="admin" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:03" url="ws://192.168.65.153:8089" FormatString="{0} Degrees {1}" type="6" Decimals="1" id="HomeTwoDrawingRoomHeater_Image_ID" idRemoteTxt="HomeTwoDrawingRoomHeater_Remote_Txt_ID" Callback=""/>
+    <VariableConfigure ActionParameters="OneTwoDrawingRoomHeater_VAR;9;true;%event.data" GroupID="" AllowedTo="" Priority="0" Action="0x00000050" Class="10" Subzone="" Control="0x80000000" Guid="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:03" AllowedTime="" Type="6" AllowedFrom="" Comments="" Name="HomeTwoDrawingRoomHeater_VAR" Zone="" AllowedDays="mtwtfss" Index=""/>
    </SensorPacket>
   </Device>
   <Device>
@@ -207,12 +207,12 @@
    <DeviceImage>94</DeviceImage>
    <DeviceInfo>Light</DeviceInfo>
    <SwitchPacket>
-    <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="OneTwoDrawingRoomled_Image_ID"/>
+    <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="HomeTwoDrawingRoomled_Image_ID"/>
     <TxOnEvent Class="30" Subzone="7" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <TxOffEvent Class="30" Subzone="7" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <RxOnEvent Class="20" Subzone="7" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <RxOffEvent Class="20" Subzone="7" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneTwoDrawingRoomled_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneTwoDrawingRoomled_VAR;2;true;false" Control="0x80000038" Subzone="7" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneTwoDrawingRoomled_VAR" ClassOn="20" Index="0" Comments=""/>
+    <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneTwoDrawingRoomled_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneTwoDrawingRoomled_VAR;2;true;false" Control="0x80000038" Subzone="7" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="HomeTwoDrawingRoomled_VAR" ClassOn="20" Index="0" Comments=""/>
    </SwitchPacket>
   </Device>
   <Device>
@@ -222,12 +222,12 @@
    <DeviceImage>94</DeviceImage>
    <DeviceInfo>Accessories</DeviceInfo>
    <SwitchPacket>
-    <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="OneTwoDrawingRoomtap_Image_ID"/>
+    <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="1" id="HomeTwoDrawingRoomtap_Image_ID"/>
     <TxOnEvent Class="30" Subzone="8" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <TxOffEvent Class="30" Subzone="8" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <RxOnEvent Class="20" Subzone="8" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <RxOffEvent Class="20" Subzone="8" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneTwoDrawingRoomtap_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneTwoDrawingRoomtap_VAR;2;true;false" Control="0x80000038" Subzone="8" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneTwoDrawingRoomtap_VAR" ClassOn="20" Index="0" Comments=""/>
+    <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneTwoDrawingRoomtap_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneTwoDrawingRoomtap_VAR;2;true;false" Control="0x80000038" Subzone="8" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="HomeTwoDrawingRoomtap_VAR" ClassOn="20" Index="0" Comments=""/>
    </SwitchPacket>
   </Device>
   <Device>
@@ -237,12 +237,12 @@
    <DeviceImage>94</DeviceImage>
    <DeviceInfo>Accessories</DeviceInfo>
    <SwitchPacket>
-    <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="0" id="OneTwoDrawingRoomPress_Image_ID"/>
+    <WebsocketConfigure password="d50c3180375c27927c22e42a379c3f67" domain="mydomain.com" userName="admin" bNoState="0" url="ws://192.168.65.153:8089" bLocal="0" id="HomeTwoDrawingRoomPress_Image_ID"/>
     <TxOnEvent Class="30" Subzone="9" Guid="" Type="5" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <TxOffEvent Class="30" Subzone="9" Guid="" Type="6" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <RxOnEvent Class="20" Subzone="9" Guid="" Type="3" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
     <RxOffEvent Class="20" Subzone="9" Guid="" Type="4" Data="" Zone="0" Index="0" Obid="" Head="" Timestamp=""/>
-    <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneTwoDrawingRoomPress_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneTwoDrawingRoomPress_VAR;2;true;false" Control="0x80000038" Subzone="9" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="OneTwoDrawingRoomPress_VAR" ClassOn="20" Index="0" Comments=""/>
+    <VariableConfigure TypeOn="3" AllowedFrom="" Action="0x00000050" ActionParametersSet="OneTwoDrawingRoomPress_VAR;2;true;true" TypeOff="4" ActionParametersReset="OneTwoDrawingRoomPress_VAR;2;true;false" Control="0x80000038" Subzone="9" ClassOff="20" Guid="" Zone="0" AllowedTo="" GroupID="" AllowedTime="" AllowedDays="mtwtfss" Priority="0" Name="HomeTwoDrawingRoomPress_VAR" ClassOn="20" Index="0" Comments=""/>
    </SwitchPacket>
   </Device>
  </Room>
