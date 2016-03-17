@@ -1,8 +1,0 @@
-D:\temp\test\single\ake_app\ake_app_one_bulb_sensor\one_bulb_app\demo\mobile_app\2_crosswalk\websocket_plugin_added\icon_changed\UiMagician\platforms\android\ant-build\UiMagician-debug-unaligned.apk : \
-D:\temp\test\single\ake_app\ake_app_one_bulb_sensor\one_bulb_app\demo\mobile_app\2_crosswalk\websocket_plugin_added\icon_changed\UiMagician\platforms\android\ant-build\UiMagician.ap_ \
-D:\temp\test\single\ake_app\ake_app_one_bulb_sensor\one_bulb_app\demo\mobile_app\2_crosswalk\websocket_plugin_added\icon_changed\UiMagician\platforms\android\ant-build\classes.dex \
-D:\temp\test\single\ake_app\ake_app_one_bulb_sensor\one_bulb_app\demo\mobile_app\2_crosswalk\websocket_plugin_added\icon_changed\UiMagician\platforms\android\CordovaLib\ant-build\classes.jar \
-D:\temp\test\single\ake_app\ake_app_one_bulb_sensor\one_bulb_app\demo\mobile_app\2_crosswalk\websocket_plugin_added\icon_changed\UiMagician\platforms\android\CordovaLib\xwalk_core_library\ant-build\classes.jar \
-D:\temp\test\single\ake_app\ake_app_one_bulb_sensor\one_bulb_app\demo\mobile_app\2_crosswalk\websocket_plugin_added\icon_changed\UiMagician\platforms\android\CordovaLib\xwalk_core_library\libs\xwalk_core_library_java_library_part.jar \
-D:\temp\test\single\ake_app\ake_app_one_bulb_sensor\one_bulb_app\demo\mobile_app\2_crosswalk\websocket_plugin_added\icon_changed\UiMagician\platforms\android\CordovaLib\xwalk_core_library\libs\xwalk_core_library_java_app_part.jar \
-D:\temp\test\single\ake_app\ake_app_one_bulb_sensor\one_bulb_app\demo\mobile_app\2_crosswalk\websocket_plugin_added\icon_changed\UiMagician\platforms\android\CordovaLib\xwalk_core_library\libs\armeabi-v7a\libxwalkcore.so \

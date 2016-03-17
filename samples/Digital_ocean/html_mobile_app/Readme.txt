@@ -1,0 +1,1 @@
+This is work area for sample app working with digital ocean server..>!!!

@@ -1,0 +1,22 @@
+<persistent>
+ <variable type="data">
+  <name>OneFirstGardenTemperature_VAR</name>
+  <value>0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00</value>
+  <note>This is an sensor Measurement Data variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneFirstGardenSprinkle_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneFirstBedroomBulb_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+ <variable type="bool">
+  <name>OneFirstKitchenLight_VAR</name>
+  <value>false</value>
+  <note>A boolean Switch variable</note>
+ </variable>
+</persistent>
