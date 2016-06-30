@@ -6,6 +6,8 @@ UiMagician is tool to generate HTML & Mobile apps for IOT.
 [UiMagician](https://sites.google.com/site/uimagician/) project development started on March 2010,
 to make IoT easy for end users.
 
+Programming Language Used for developing UiMagician is Qt & C++.
+
 If one have to generate simple HTML/Mobile app you should have good
 knowledge of HTML, javascript, CSS, PhoneGap. To generate HTML app from
 UiMagician you only have to know knowledge of IoT protocol &amp;
