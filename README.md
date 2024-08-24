@@ -16,6 +16,15 @@ packet format which are Tx/Rx by your device.
 Release 1.0.3(Ujjayati) of Uim comes with an dummy project for Intel Xdk with this
 you can generate Mobile apps on Intel cloud server.
 
+# UiMagician Video Tutorial
+* [Intro duction part 1](https://www.youtube.com/watch?v=PEjwPAKOvw4]
+* [Intro duction part 2](https://www.youtube.com/watch?v=82Pm0sbfIHQ)
+
+* [Demo 1](https://www.youtube.com/watch?v=LXl3c9jNFs8)
+* [Demo 1](https://www.youtube.com/watch?v=hsvA-qYidAw)
+* [Demo 1](https://www.youtube.com/watch?v=MgxiYQOqvdk)
+* [Demo 1](https://www.youtube.com/watch?v=L1pIaCmUPOM)
+
 # UiMagician for VSCP Tool details
 * Author  : Dinesh Guleria
 * Author Email : din.gulu.er@gmail.com
@@ -31,10 +40,10 @@ you can generate Mobile apps on Intel cloud server.
 - Mailing list Ask your technical questions here :uimagician@googlegroups.com
 
 # UiM for VSCP Releases
-* UiMagician Fourth Release – release 1.0.3 (Ujjayati) : Date - 01-06-2015
-* UiMagician Third Release – release 1.0.2 (Riddhi) : Date - 03-02-2015
-* UiMagician Second Release – release 1.0.1 (Prakash) : Date - 18-12-2014
-* UiMagician First release – release 1.0.0 (Jyot) : Date - 17-10-2014
+* UiMagician Fourth Release â€“ release 1.0.3 (Ujjayati) : Date - 01-06-2015
+* UiMagician Third Release â€“ release 1.0.2 (Riddhi) : Date - 03-02-2015
+* UiMagician Second Release â€“ release 1.0.1 (Prakash) : Date - 18-12-2014
+* UiMagician First release â€“ release 1.0.0 (Jyot) : Date - 17-10-2014
 
 # Licensing
 UiMagician is released under commercial and [GNU GPL v.2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) open source licenses.
