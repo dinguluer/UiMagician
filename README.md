@@ -17,7 +17,7 @@ Release 1.0.3(Ujjayati) of Uim comes with an dummy project for Intel Xdk with th
 you can generate Mobile apps on Intel cloud server.
 
 # UiMagician Video Tutorial
-* [Intro duction part 1](https://www.youtube.com/watch?v=PEjwPAKOvw4]
+* [Intro duction part 1](https://www.youtube.com/watch?v=PEjwPAKOvw4)
 * [Intro duction part 2](https://www.youtube.com/watch?v=82Pm0sbfIHQ)
 
 * [Demo 1](https://www.youtube.com/watch?v=LXl3c9jNFs8)
