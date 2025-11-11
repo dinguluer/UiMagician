@@ -1,4 +1,4 @@
-# <img src="[https://4a955bfd-a-62cb3a1a-s-sites.googlegroups.com/site/uimagician/home/UIMagician_small.png?attachauth=ANoY7crjD9IILuCrksH_PlpSuxCKoAiwiE2X_KAmFSPGsH322YuueE-X5kP4lrHV6S72HTQqb6syuJHu8uxQju94--l1t9zZVBC40wFVRwiRGPFaY4XmjQ0Fm_ftWR4f0u7OkjxtqAWdCRYVkhei6-z-44OAzJAtKWhrYyBBafjJHljk3Uwh2ax03w2jugQUpUzrLHjG3Lh5lsaqV6OtM9lYCvhC8e8ADjFz-g7Nb-QnkQ0b83AjK2s%3D&attredirects=0](https://github.com/dinguluer/UiMagician/blob/master/samples/UI__Magician__388x256.png)" width="64" height="64"> UiMagician - HTML &amp; Mobile apps for IOT
+# <img src="[https://github.com/dinguluer/UiMagician/blob/master/samples/UI__Magician__388x256.png" width="64" height="64"> UiMagician - HTML &amp; Mobile apps for IOT
 
 ![](https://i0.wp.com/opensource.org/wp-content/uploads/2023/03/cropped-OSI-horizontal-large.png?fit=640%2C229&quality=80&ssl=1 "License")
 
