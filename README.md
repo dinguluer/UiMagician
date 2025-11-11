@@ -30,7 +30,7 @@ you can generate Mobile apps on Intel cloud server.
 * Author Email : din.gulu.er@gmail.com
 * Project : UiMagician for VSCP
 * Release : 1.0.3 (Ujjayati)
-* Licence :  GNU GPL v.2
+* Licence :  MIT
 * [Web Link for UiMagician](https://sites.google.com/site/uimagician)
 * [Download source code](https://github.com/dinguluer/UiMagician/tree/master/source/UiMagician)
 * [Download latest release](https://sourceforge.net/projects/uimagician)
@@ -46,5 +46,5 @@ you can generate Mobile apps on Intel cloud server.
 * UiMagician First release – release 1.0.0 (Jyot) : Date - 17-10-2014
 
 # Licensing
-UiMagician is released under commercial and [GNU GPL v.2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.html) open source licenses.
+UiMagician is released under [MIT](https://opensource.org/license/mit) open source licenses.
 
